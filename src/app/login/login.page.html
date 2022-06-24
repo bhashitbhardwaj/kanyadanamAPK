@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="ion-text-center logo">
+      <img src="/assets/images/knnewlogo.png">
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding bg">
+  <ion-card>
+    <ion-text color="dark" class="ion-text-center">
+      <h3 class="highlighted-text"><span >Login </span>and begin <br> with a <br> beautiful journey</h3>
+    </ion-text>
+    <ion-text color="dark" class="ion-text-center">
+      <p>Already a member? Please enter your Email id </p>
+    </ion-text>
+    <ion-list class="ion-padding">
+      <ion-item>
+        <ion-label position="floating">Email Address</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Password</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Keep me Logged in</ion-label>
+        <ion-checkbox slot="start"></ion-checkbox>
+      </ion-item>
+      <ion-text color="danger">
+        <p [routerLink]="['/forgotpassword']">Forgot password?</p>
+      </ion-text>
+   
+      <ion-button expand="block" color="primary" [routerLink]="'/tabs'">Login</ion-button>
+      <ion-text color="dark" class="ion-text-center">
+        <h6 class="highlighted-text">Don't have an account?<br><span [routerLink]="['/signup']">SIGN UP FREE </span></h6>
+      </ion-text>
+    </ion-list>
+  </ion-card>
+ 
+</ion-content>
+

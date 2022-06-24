@@ -1,0 +1,9 @@
+ion-content{
+    --background: url(/assets/images/login-bg.jpg) 50%;
+    }
+.highlighted-text{
+    font-weight: bold;
+    span{
+        color: var(--ion-color-primary);
+    }
+}

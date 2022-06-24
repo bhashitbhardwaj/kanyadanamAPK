@@ -1,0 +1,215 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="primary"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center logo">
+      <img src="/assets/images/knnewlogo.png">
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Edit Profile</ion-card-title>
+    </ion-card-header>
+    <ion-list class="ion-padding">
+      <ion-item>
+        <ion-label position="floating">Please enter your full name</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Enter your mobile number</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Email Address</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+      <ion-list>
+        <ion-radio-group value="Male">
+          <ion-list-header>
+            <ion-label>Gender</ion-label>
+          </ion-list-header>
+          <ion-item>
+            <ion-label>Male</ion-label>
+            <ion-radio slot="start" value="Male"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>Female</ion-label>
+            <ion-radio slot="start" value="Female"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </ion-list>
+      <ion-item>
+        <ion-label>Create profile for</ion-label>
+        <ion-select interface="popover" placeholder="Create profile for">
+          <ion-select-option value="brown">Brown</ion-select-option>
+          <ion-select-option value="blonde">Blonde</ion-select-option>
+          <ion-select-option value="black">Black</ion-select-option>
+          <ion-select-option value="red">Red</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Date of Birth (MM/DD/YYYY)</ion-label>
+        <ion-datetime displayFormat="MM/DD/YYYY" min="1950-01-01"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label>Religion</ion-label>
+        <ion-select interface="popover" placeholder="Religion">
+          <ion-select-option value="brown">Brown</ion-select-option>
+          <ion-select-option value="blonde">Blonde</ion-select-option>
+          <ion-select-option value="black">Black</ion-select-option>
+          <ion-select-option value="red">Red</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Aadhar Card Number</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Community</ion-label>
+        <ionic-selectable
+          [(ngModel)]="port"
+          [items]="ports"
+          headerColor="primary"
+          placeholder="Community"
+          itemValueField="id"
+          itemTextField="name"
+          [canSearch]="true"
+          (onChange)="portChange($event)">
+        </ionic-selectable>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Sub Community</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Mother Tongue</ion-label>
+        <ionic-selectable
+          [(ngModel)]="port"
+          [items]="ports"
+          headerColor="primary"
+          placeholder="Mother Tongue"
+          itemValueField="id"
+          itemTextField="name"
+          [canSearch]="true"
+          (onChange)="portChange($event)">
+        </ionic-selectable>
+      </ion-item>
+      <ion-item>
+        <ion-label>Your Marital Status</ion-label>
+        <ion-select interface="popover" placeholder="Your Marital Status">
+          <ion-select-option value="brown">Brown</ion-select-option>
+          <ion-select-option value="blonde">Blonde</ion-select-option>
+          <ion-select-option value="black">Black</ion-select-option>
+          <ion-select-option value="red">Red</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>Country</ion-label>
+        <ionic-selectable
+          [(ngModel)]="port"
+          [items]="ports"
+          headerColor="primary"
+          placeholder="Country"
+          itemValueField="id"
+          itemTextField="name"
+          [canSearch]="true"
+          (onChange)="portChange($event)">
+        </ionic-selectable>
+      </ion-item>
+      <ion-item>
+        <ion-label>State</ion-label>
+        <ionic-selectable
+          [(ngModel)]="port"
+          [items]="ports"
+          headerColor="primary"
+          placeholder="State"
+          itemValueField="id"
+          itemTextField="name"
+          [canSearch]="true"
+          (onChange)="portChange($event)">
+        </ionic-selectable>
+      </ion-item>
+      <ion-item>
+        <ion-label>City</ion-label>
+        <ionic-selectable
+          [(ngModel)]="port"
+          [items]="ports"
+          headerColor="primary"
+          placeholder="City"
+          itemValueField="id"
+          itemTextField="name"
+          [canSearch]="true"
+          (onChange)="portChange($event)">
+        </ionic-selectable>
+      </ion-item>
+      <ion-item>
+        <ion-label>What's Your diet?</ion-label>
+        <ion-select interface="popover" placeholder="What's Your diet?">
+          <ion-select-option value="brown">Brown</ion-select-option>
+          <ion-select-option value="blonde">Blonde</ion-select-option>
+          <ion-select-option value="black">Black</ion-select-option>
+          <ion-select-option value="red">Red</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-list>
+        <ion-radio-group value="biff">
+          <ion-list-header>
+            <ion-label>Smoking?</ion-label>
+          </ion-list-header>
+      
+          <ion-item>
+            <ion-label>No</ion-label>
+            <ion-radio slot="start" value="biff"></ion-radio>
+          </ion-item>
+      
+          <ion-item>
+            <ion-label>Occasionally</ion-label>
+            <ion-radio slot="start" value="griff"></ion-radio>
+          </ion-item>
+      
+          <ion-item>
+            <ion-label>Yes</ion-label>
+            <ion-radio slot="start" value="buford"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </ion-list>
+      <ion-list>
+        <ion-radio-group value="biff">
+          <ion-list-header>
+            <ion-label>Drinking?</ion-label>
+          </ion-list-header>
+      
+          <ion-item>
+            <ion-label>No</ion-label>
+            <ion-radio slot="start" value="biff"></ion-radio>
+          </ion-item>
+      
+          <ion-item>
+            <ion-label>Occasionally</ion-label>
+            <ion-radio slot="start" value="griff"></ion-radio>
+          </ion-item>
+      
+          <ion-item>
+            <ion-label>Yes</ion-label>
+            <ion-radio slot="start" value="buford"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </ion-list>
+      <ion-item>
+        <ion-label position="stacked">About/Description (min 50 character)</ion-label>
+        <ion-textarea minlength=50 rows="5" cols="20"  placeholder="I am glad you are interested in my profile. I have completed my Bachelors. I am a grounded person, who values family happiness and hard work.I am looking for a girl to marry who would understand me."></ion-textarea>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Family Description (min 50
+          charactor)</ion-label>
+        <ion-textarea minlength=50 ></ion-textarea>
+      </ion-item>
+      <ion-button expand="block" color="primary">Update Profile</ion-button>
+    </ion-list>
+  </ion-card>
+ 
+</ion-content>

@@ -1,0 +1,107 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="primary"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center logo">
+      <img src="/assets/images/knnewlogo.png">
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Edit Physical Details</ion-card-title>
+    </ion-card-header>
+    <ion-list class="ion-padding">
+      <ion-item>
+        <ion-label>Height</ion-label>
+        <ionic-selectable [(ngModel)]="port" [items]="ports" headerColor="primary" placeholder="Height"
+          itemValueField="id" itemTextField="name" [canSearch]="true" (onChange)="portChange($event)">
+        </ionic-selectable>
+      </ion-item>
+      <ion-list>
+        <ion-radio-group value="Slim">
+          <ion-list-header>
+            <ion-label>Body Type?</ion-label>
+          </ion-list-header>
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-label>Slim</ion-label>
+                <ion-radio slot="start" value="Slim"></ion-radio>
+              </ion-item>
+
+              <ion-item>
+                <ion-label>Athletic</ion-label>
+                <ion-radio slot="start" value="Athletic"></ion-radio>
+              </ion-item>
+            </ion-col>
+            <ion-col>
+              <ion-item>
+                <ion-label>Average</ion-label>
+                <ion-radio slot="start" value="Average"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>Heavy</ion-label>
+                <ion-radio slot="start" value="Heavy"></ion-radio>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-radio-group>
+      </ion-list>
+      <ion-list>
+        <ion-radio-group value="Very Fair">
+          <ion-list-header>
+            <ion-label>Skin Tone?</ion-label>
+          </ion-list-header>
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-label>Very Fair</ion-label>
+                <ion-radio slot="start" value="Very Fair"></ion-radio>
+              </ion-item>
+
+              <ion-item>
+                <ion-label>Fair</ion-label>
+                <ion-radio slot="start" value="Fair"></ion-radio>
+              </ion-item>
+            </ion-col>
+            <ion-col>
+              <ion-item>
+                <ion-label>Wheatish</ion-label>
+                <ion-radio slot="start" value="Wheatish"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>Dark</ion-label>
+                <ion-radio slot="start" value="Dark"></ion-radio>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-radio-group>
+      </ion-list>
+      <ion-list>
+        <ion-radio-group value="None">
+          <ion-list-header>
+            <ion-label>Any Disability?</ion-label>
+          </ion-list-header>
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-label>None</ion-label>
+                <ion-radio slot="start" value="None"></ion-radio>
+              </ion-item>
+
+              <ion-item>
+                <ion-label>Physical Disability</ion-label>
+                <ion-radio slot="start" value="Physical Disability"></ion-radio>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-radio-group>
+      </ion-list>
+      <ion-button expand="block" color="primary">Update Profile</ion-button>
+    </ion-list>
+  </ion-card>
+</ion-content>

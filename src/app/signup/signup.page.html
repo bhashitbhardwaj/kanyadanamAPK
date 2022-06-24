@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="ion-text-center logo">
+      <img src="/assets/images/knnewlogo.png">
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding bg">
+  <ion-card>
+    <ion-text color="dark" class="ion-text-center">
+      <h3 class="highlighted-text"><span >Let's </span>set up your account, <br>while we find Matches for you!</h3>
+    </ion-text>
+    <ion-list class="ion-padding">
+      <ion-item>
+        <ion-label position="floating">Please enter your full name</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Date of Birth (MM/DD/YYYY)</ion-label>
+        <ion-datetime displayFormat="MM/DD/YYYY" min="1950-01-01"></ion-datetime>
+      </ion-item>
+      <ion-list>
+        <ion-radio-group value="Male">
+          <ion-list-header>
+            <ion-label>Gender</ion-label>
+          </ion-list-header>
+          <ion-item>
+            <ion-label>Male</ion-label>
+            <ion-radio slot="start" value="Male"></ion-radio>
+          </ion-item>
+      
+          <ion-item>
+            <ion-label>Female</ion-label>
+            <ion-radio slot="start" value="Female"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </ion-list>
+      <ion-item>
+        <ion-label>Create profile for</ion-label>
+        <ion-select interface="popover" placeholder="Create profile for">
+          <ion-select-option value="brown">Brown</ion-select-option>
+          <ion-select-option value="blonde">Blonde</ion-select-option>
+          <ion-select-option value="black">Black</ion-select-option>
+          <ion-select-option value="red">Red</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Enter your mobile number</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Email Address</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Password</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+      <ion-button expand="block" color="primary" [routerLink]="'/tabs'">Register</ion-button>
+      <ion-text color="dark" class="ion-text-center">
+        <h6 class="highlighted-text">Already have a account!!!<br><span [routerLink]="['/login']">SIGN IN </span></h6>
+      </ion-text>
+    </ion-list>
+  </ion-card>
+ 
+</ion-content>
