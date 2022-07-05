@@ -15,16 +15,14 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-card>
-    <ion-avatar item-center>
-      <img src="/assets/images/dummy.jpeg">
-    </ion-avatar>
-    <ion-card-content>
+  <ion-card class="scroll_card">
+    <img src="/assets/images/dummy.jpeg">
+    <div class="data">
       <p class="name">
         Ajay kumar
       </p>
       <p>
-          25yrs, 5'5" Banking Professional
+          25yrs, 5'5" * Banking Professional
       </p>
       <p>
           Hindi, Saini
@@ -32,7 +30,9 @@
       <p>
           Meerut, Utter Pradesh
       </p>
-    </ion-card-content>
+      <hr>
+    </div>
+   
     <ion-row>
       <ion-col>
         <ion-button size="small" shape="round" color="light">

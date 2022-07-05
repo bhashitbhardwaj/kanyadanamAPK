@@ -1,0 +1,37 @@
+.scroll_card{
+    img{
+        height: 300px;
+    }
+    .data{
+        font-weight: 500;
+        margin-top: -77px;
+        height: 70px;
+        .name{
+            font-size: 16px;
+            padding-bottom: 5px;
+        }
+    }
+    p{
+        font-weight: 500;
+        color: white;
+        padding: 0px 5px 0px 15px;
+        text-align: left;
+        margin: 0px;
+        font-size: 13px;
+    }
+}
+.about{
+    padding: 15px;
+    h6{
+        margin-top: 0px;
+    }
+    p{
+        font-size: 13px;
+        font-weight: 400;
+        padding: 0px;
+        color: inherit;
+    }
+    h3{
+        color: gray;
+    }
+}

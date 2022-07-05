@@ -1,0 +1,42 @@
+.scroll_card {
+    img {
+        width: 180px;
+        height: 180px;
+        border-radius: 90px;
+    }
+
+    .data {
+        font-weight: 500;
+        hr {
+            background: lightgrey;
+            margin: 10px;
+        }
+
+        .name {
+            padding-bottom: 5px;
+            font-size: 16px;
+            font-weight: 400;
+            color: black;
+        }
+
+        .button_list {
+            position: relative;
+            border-top-style: solid;
+            border-top-color: white;
+            border-top-width: 1px;
+        }
+
+        p {
+            font-weight: 500;
+            padding: 0px 5px 0px 15px;
+            text-align: left;
+            margin: 0px;
+            font-size: 13px;
+        }
+    }
+}
+
+ion-card {
+    position: relative;
+    text-align: center;
+}
