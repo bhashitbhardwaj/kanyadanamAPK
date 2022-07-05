@@ -6,7 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page {
-
+  slideOpts = {
+    slidesPerView: 2.2,
+    freeMode: true
+  }
   constructor() {}
 
 }
