@@ -1,0 +1,73 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button color="primary"></ion-back-button>
+        </ion-buttons>
+        <ion-title class="ion-text-center logo">
+            <img src="/assets/images/knnewlogo.png">
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+    <ion-card>
+        <ion-card-header>
+            <ion-card-title>Add Your Horoscope</ion-card-title>
+        </ion-card-header>
+        <ion-list class="ion-padding">
+            <ion-item>
+                <ion-label>Country of Birth</ion-label>
+                <ionic-selectable [(ngModel)]="port" [items]="ports" headerColor="primary" placeholder="Country" itemValueField="id" itemTextField="name" [canSearch]="true" (onChange)="portChange($event)">
+                </ionic-selectable>
+            </ion-item>
+            <ion-item>
+                <ion-label>State of Birth</ion-label>
+                <ionic-selectable [(ngModel)]="port" [items]="ports" headerColor="primary" placeholder="State" itemValueField="id" itemTextField="name" [canSearch]="true" (onChange)="portChange($event)">
+                </ionic-selectable>
+            </ion-item>
+            <ion-item>
+                <ion-label>City of Birth</ion-label>
+                <ionic-selectable [(ngModel)]="port" [items]="ports" headerColor="primary" placeholder="City" itemValueField="id" itemTextField="name" [canSearch]="true" (onChange)="portChange($event)">
+                </ionic-selectable>
+            </ion-item>
+            <ion-item>
+                <ion-label>D.O.B with BirthTime</ion-label>
+                <ion-datetime displayFormat="D MMM YYYY h:mm a" min="1980" max="2010" value="2005-06-17T11:06Z"></ion-datetime>
+            </ion-item>
+            <ion-item>
+                <ion-label>Horoscope Format</ion-label>
+                <ion-select interface="action-sheet" placeholder="">
+                    <ion-select-option value="South Indian">South Indian</ion-select-option>
+                    <ion-select-option value="North Indian">North Indian</ion-select-option>
+                    <ion-select-option value="East Indian">East Indian</ion-select-option>
+                    <ion-select-option value="Kerala">Kerala</ion-select-option>
+                </ion-select>
+            </ion-item>
+            <ion-list>
+                <ion-radio-group value="biff">
+                    <ion-list-header>
+                        <ion-label>Setting</ion-label>
+                    </ion-list-header>
+
+                    <ion-item>
+                        <ion-label>Visible to all members</ion-label>
+                        <ion-radio slot="start" value="biff"></ion-radio>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label>Visible to contacted and accepted members</ion-label>
+                        <ion-radio slot="start" value="griff"></ion-radio>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label>Hide from all</ion-label>
+                        <ion-radio slot="start" value="buford"></ion-radio>
+                    </ion-item>
+                </ion-radio-group>
+            </ion-list>
+
+            <ion-button expand="block" color="primary">Submit</ion-button>
+        </ion-list>
+    </ion-card>
+
+</ion-content>

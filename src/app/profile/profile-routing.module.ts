@@ -31,7 +31,15 @@ const routes: Routes = [
   {
     path: 'educationprofessiondetails',
     loadChildren: () => import('./educationprofessiondetails/educationprofessiondetails.module').then( m => m.EducationprofessiondetailsPageModule)
+  },  {
+    path: 'biodata',
+    loadChildren: () => import('./biodata/biodata.module').then( m => m.BiodataPageModule)
+  },
+  {
+    path: 'horoscope',
+    loadChildren: () => import('./horoscope/horoscope.module').then( m => m.HoroscopePageModule)
   }
+
 ];
 
 @NgModule({
