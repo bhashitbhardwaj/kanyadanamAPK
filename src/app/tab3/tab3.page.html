@@ -6,13 +6,47 @@
     <ion-title class="ion-text-center logo">
       <img src="/assets/images/knnewlogo.png">
     </ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+          <ion-icon slot="icon-only" name="search"></ion-icon>
+      </ion-button>
+  </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-card>
+    <ion-avatar item-center>
+      <img src="/assets/images/dummy.jpeg">
+    </ion-avatar>
+    <ion-card-content>
+      <p class="name">
+        Ajay kumar
+      </p>
+      <p>
+          25yrs, 5'5" Banking Professional
+      </p>
+      <p>
+          Hindi, Saini
+      </p>
+      <p>
+          Meerut, Utter Pradesh
+      </p>
+    </ion-card-content>
+    <ion-row>
+      <ion-col>
+        <ion-button size="small" shape="round" color="light">
+          <ion-icon slot="start" name="close-circle-outline"></ion-icon>
+          Decline
+        </ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button size="small" shape="round">
+          <ion-icon slot="start" name="checkmark-circle-outline"></ion-icon>
+          Accept
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  
+  </ion-card>
 </ion-content>

@@ -7,9 +7,10 @@
     .name{
         font-weight: 500;
         color: white;
-        line-height: 30px;
-        background: lightgrey;
-        margin-top: -35px;
+        line-height: 25px;
+        position: relative;
+        background: rgb(128,128,128, 0.5);
+        margin-top: -27px;
     }
     p{
         padding: 0px 5px 0px 5px;
@@ -31,8 +32,8 @@
     display: flex;
     background-color: lightgray;
     .title1{
-        width: 50%;
-        font-size: 13px;
+        width: 70%;
+        font-size: 15px;
         padding-left: 10px;
         margin-top: 10px;
         margin-bottom: 10px;
@@ -40,8 +41,8 @@
     .title2{
         color: #D9495E;
         text-align: right;
-        width: 50%;
-        font-size: 13px;
+        width: 30%;
+        font-size: 15px;
         padding-right: 10px;
         margin-top: 10px;
         margin-bottom: 10px;
