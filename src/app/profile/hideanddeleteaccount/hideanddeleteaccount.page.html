@@ -1,0 +1,55 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button color="primary"></ion-back-button>
+        </ion-buttons>
+        <ion-title class="ion-text-center logo">
+            <img src="/assets/images/knnewlogo.png">
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+    <ion-card>
+        <ion-card-header>
+            <ion-card-title>Hide & Delete Account</ion-card-title>
+        </ion-card-header>
+        <ion-list class="ion-padding">
+
+            <ion-list>
+                <ion-radio-group value="Male">
+                    <ion-list-header>
+                        <ion-label>Hide Account</ion-label>
+                    </ion-list-header>
+                    <ion-item>
+                        <ion-label>Yes</ion-label>
+                        <ion-radio slot="start" value="Yes"></ion-radio>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>No</ion-label>
+                        <ion-radio slot="start" value="No"></ion-radio>
+                    </ion-item>
+                </ion-radio-group>
+            </ion-list>
+            <ion-list>
+                <ion-radio-group value="biff">
+                    <ion-list-header>
+                        <ion-label>Delete Account</ion-label>
+                    </ion-list-header>
+
+                    <ion-item>
+                        <ion-label>Yes</ion-label>
+                        <ion-radio slot="start" value="Yes"></ion-radio>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label>No</ion-label>
+                        <ion-radio slot="start" value="No"></ion-radio>
+                    </ion-item>
+                </ion-radio-group>
+            </ion-list>
+            <ion-button expand="block" color="primary">Save</ion-button>
+        </ion-list>
+    </ion-card>
+
+</ion-content>

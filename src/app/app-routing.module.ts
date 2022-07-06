@@ -33,7 +33,15 @@ const routes: Routes = [
   {
     path: 'member-detail',
     loadChildren: () => import('./member-detail/member-detail.module').then( m => m.MemberDetailPageModule)
+  },  {
+    path: 'search',
+    loadChildren: () => import('./search/search.module').then( m => m.SearchPageModule)
+  },
+  {
+    path: 'advancesearch',
+    loadChildren: () => import('./advancesearch/advancesearch.module').then( m => m.AdvancesearchPageModule)
   }
+
 
 ];
 @NgModule({

@@ -1,40 +1,71 @@
-  ion-card {
-    position: relative;
-    text-align: center;
-  }
-  .scroll_card{
-    .wishlist{
-        font-size: 20px;
-        position: absolute;
-    }
-    img{
-        height: 300px;
-    }
-    .data{
-        font-weight: 500;
-        margin-top: -155px;
-        .name{
-            font-size: 16px;
-            padding-bottom: 5px;
-        }
-        .button_list{
-            margin-top: 5px;
-            position: relative;
-            border-top-style: solid;
-            border-top-color: white;
-            border-top-width: 1px;
-        }
-    }
-    p{
-        font-weight: 500;
-        color: white;
-        padding: 0px 5px 0px 15px;
-        text-align: left;
-        margin: 0px;
-        font-size: 13px;
-    }
-    ion-button{
-        height: 30px;
-        font-size: 10px;
-    }
-}
+      ion-card {
+          position: relative;
+          text-align: center;
+      }
+      
+      //Bhashit
+      .scroll_button_matches {
+          width: 100%;
+          white-space: nowrap;
+          max-width: 1000px;
+          -webkit-overflow-scrolling: touch;
+          flex-wrap: nowrap;
+          overflow-x: scroll !important;
+          overflow-y: hidden;
+          overflow: auto;
+          &::-webkit-scrollbar {
+              display: none;
+          }
+      }
+      
+      .btn {
+          height: 30px;
+          --font-size: medium;
+          border-radius: 0%;
+          padding: 0px 8px 0px 2px;
+          --border-radius: 5px;
+      }
+      
+      ion-slide {
+          width: 200px !important;
+      }
+      
+      //bhashit
+      .scroll_card {
+          .wishlist {
+              font-size: 20px;
+              position: absolute;
+          }
+          img {
+              height: 300px;
+          }
+          .data {
+              font-weight: 500;
+              margin-top: -155px;
+              .name {
+                  font-size: 16px;
+                  padding-bottom: 5px;
+              }
+              .button_list {
+                  margin-top: 5px;
+                  position: relative;
+                  border-top-style: solid;
+                  border-top-color: white;
+                  border-top-width: 1px;
+              }
+          }
+          p {
+              font-weight: 500;
+              color: white;
+              padding: 0px 5px 0px 15px;
+              text-align: left;
+              margin: 0px;
+              font-size: 13px;
+          }
+          ion-button {
+              height: 30px;
+              font-size: 10px;
+          }
+      }
+      
+      //

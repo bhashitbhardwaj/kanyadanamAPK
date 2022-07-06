@@ -1,86 +1,94 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title class="ion-text-center logo">
-      <img src="/assets/images/knnewlogo.png">
-    </ion-title>
-    <ion-buttons slot="end">
-      <ion-button>
-          <ion-icon slot="icon-only" name="search"></ion-icon>
-      </ion-button>
-  </ion-buttons>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title class="ion-text-center logo">
+            <img src="/assets/images/knnewlogo.png">
+        </ion-title>
+        <ion-buttons slot="end">
+            <ion-button>
+                <ion-icon slot="icon-only" name="search"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true" class="card-background-page">
-  <ion-card class="scroll_card" [routerLink]="'/member-detail'">
-    <ion-button class="wishlist" size="large" fill="clear">
-      <ion-icon slot="start" name="heart-outline"></ion-icon>
-    </ion-button>
-    <img src="/assets/images/dummy.jpeg"/>
-    <div class="data">
-      <p class="name">
-        Ajay kumar
-      </p>
-      <p>
-          25yrs, 5'5" * Banking Professional
-      </p>
-      <p>
-          Hindi, Saini
-      </p>
-      <p>
-          Meerut, Utter Pradesh
-      </p>
-        <ion-row class="button_list">
-          <ion-col>
-            <ion-button size="small" shape="round" color="light">
-              <ion-icon slot="start" name="close-circle-outline"></ion-icon>
-              Decline
-            </ion-button>
-          </ion-col>
-          <ion-col>
-            <ion-button size="small" shape="round">
-              <ion-icon slot="start" name="checkmark-circle-outline"></ion-icon>
-              Connect Now
-            </ion-button>
-          </ion-col>
-        </ion-row>
+    <div scrollX="true" direction="x" overflow-scroll="false" class="scroll_button_matches">
+        <ion-button fill="outline" class="btn">New Matches (10)</ion-button>
+        <ion-button fill="outline" class="btn">Today's Matches (9)</ion-button>
+        <ion-button fill="outline" class="btn">My Matches (50+)</ion-button>
+        <ion-button fill="outline" class="btn">More Matches</ion-button>
+        <ion-button fill="outline" class="btn">Recently Viewed</ion-button>
     </div>
-  </ion-card>
-  <ion-card class="scroll_card">
-    <ion-button class="wishlist" size="large" fill="clear">
-      <ion-icon slot="start" name="heart-outline"></ion-icon>
-    </ion-button>
-    <img src="/assets/images/card-amsterdam.png"/>
-    <div class="data">
-      <p class="name">
-        Ajay kumar
-      </p>
-      <p>
-          25yrs, 5'5" Banking Professional
-      </p>
-      <p>
-          Hindi, Saini
-      </p>
-      <p>
-          Meerut, Utter Pradesh
-      </p>
-        <ion-row class="button_list">
-          <ion-col>
-            <ion-button size="small" shape="round" color="light">
-              <ion-icon slot="start" name="close-circle-outline"></ion-icon>
-              Decline
-            </ion-button>
-          </ion-col>
-          <ion-col>
-            <ion-button size="small" shape="round">
-              <ion-icon slot="start" name="checkmark-circle-outline"></ion-icon>
-              Connect Now
-            </ion-button>
-          </ion-col>
-        </ion-row>
-    </div>
-  </ion-card>
+
+    <ion-card class="scroll_card" [routerLink]="'/member-detail'">
+        <ion-button class="wishlist" size="large" fill="clear">
+            <ion-icon slot="start" name="heart-outline"></ion-icon>
+        </ion-button>
+        <img src="/assets/images/dummy.jpeg" />
+        <div class="data">
+            <p class="name">
+                Ajay kumar
+            </p>
+            <p>
+                25yrs, 5'5" * Banking Professional
+            </p>
+            <p>
+                Hindi, Saini
+            </p>
+            <p>
+                Meerut, Utter Pradesh
+            </p>
+            <ion-row class="button_list">
+                <ion-col>
+                    <ion-button size="small" shape="round" color="light">
+                        <ion-icon slot="start" name="close-circle-outline"></ion-icon>
+                        Decline
+                    </ion-button>
+                </ion-col>
+                <ion-col>
+                    <ion-button size="small" shape="round">
+                        <ion-icon slot="start" name="checkmark-circle-outline"></ion-icon>
+                        Connect Now
+                    </ion-button>
+                </ion-col>
+            </ion-row>
+        </div>
+    </ion-card>
+    <ion-card class="scroll_card">
+        <ion-button class="wishlist" size="large" fill="clear">
+            <ion-icon slot="start" name="heart-outline"></ion-icon>
+        </ion-button>
+        <img src="/assets/images/card-amsterdam.png" />
+        <div class="data">
+            <p class="name">
+                Ajay kumar
+            </p>
+            <p>
+                25yrs, 5'5" Banking Professional
+            </p>
+            <p>
+                Hindi, Saini
+            </p>
+            <p>
+                Meerut, Utter Pradesh
+            </p>
+            <ion-row class="button_list">
+                <ion-col>
+                    <ion-button size="small" shape="round" color="light">
+                        <ion-icon slot="start" name="close-circle-outline"></ion-icon>
+                        Decline
+                    </ion-button>
+                </ion-col>
+                <ion-col>
+                    <ion-button size="small" shape="round">
+                        <ion-icon slot="start" name="checkmark-circle-outline"></ion-icon>
+                        Connect Now
+                    </ion-button>
+                </ion-col>
+            </ion-row>
+        </div>
+    </ion-card>
 </ion-content>

@@ -38,6 +38,14 @@ const routes: Routes = [
   {
     path: 'horoscope',
     loadChildren: () => import('./horoscope/horoscope.module').then( m => m.HoroscopePageModule)
+  },
+  {
+    path: 'hideanddeleteaccount',
+    loadChildren: () => import('./hideanddeleteaccount/hideanddeleteaccount.module').then( m => m.HideanddeleteaccountPageModule)
+  },
+  {
+    path: 'horoscopesetting',
+    loadChildren: () => import('./horoscopesetting/horoscopesetting.module').then( m => m.HoroscopesettingPageModule)
   }
 
 ];
