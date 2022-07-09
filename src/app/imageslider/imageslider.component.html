@@ -1,0 +1,20 @@
+<ion-content>
+  <ion-item lines="none">
+    <ion-icon name="close" slot="end" (click)="dismiss()" style="font-size: 30px; color: #000"></ion-icon>
+ 
+  </ion-item>
+  <div class="zoom-box">
+    <ion-slides pager="true" [options]="slideOpts">
+      <ion-slide>
+        <div class="swiper-zoom-container">
+          <img class="card-img" src="/assets/images/dummy.jpeg"/>
+        </div>
+      </ion-slide>
+      <ion-slide>
+        <div class="swiper-zoom-container">
+          <img class="card-img" src="/assets/images/dummy.jpeg"/>
+        </div>
+      </ion-slide>
+    </ion-slides>
+  </div>
+</ion-content>

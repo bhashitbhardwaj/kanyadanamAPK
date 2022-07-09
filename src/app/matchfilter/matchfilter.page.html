@@ -1,0 +1,137 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="dismiss()">
+          <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+      </ion-button>
+      <ion-title>Refine</ion-title>
+  </ion-buttons>
+  
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <ion-card>
+    <ion-list class="ion-padding">
+      <ion-item>
+        <ion-label>Create profile for</ion-label>
+        <ion-select interface="popover" placeholder="Create profile for">
+          <ion-select-option value="brown">Brown</ion-select-option>
+          <ion-select-option value="blonde">Blonde</ion-select-option>
+          <ion-select-option value="black">Black</ion-select-option>
+          <ion-select-option value="red">Red</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Date of Birth (MM/DD/YYYY)</ion-label>
+        <ion-datetime displayFormat="MM/DD/YYYY" min="1950-01-01"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label>Religion</ion-label>
+        <ion-select interface="popover" placeholder="Religion">
+          <ion-select-option value="brown">Brown</ion-select-option>
+          <ion-select-option value="blonde">Blonde</ion-select-option>
+          <ion-select-option value="black">Black</ion-select-option>
+          <ion-select-option value="red">Red</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Aadhar Card Number</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Community</ion-label>
+        <ionic-selectable
+          [(ngModel)]="port"
+          [items]="ports"
+          headerColor="primary"
+          placeholder="Community"
+          itemValueField="id"
+          itemTextField="name"
+          [canSearch]="true"
+          (onChange)="portChange($event)">
+        </ionic-selectable>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Sub Community</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Mother Tongue</ion-label>
+        <ionic-selectable
+          [(ngModel)]="port"
+          [items]="ports"
+          headerColor="primary"
+          placeholder="Mother Tongue"
+          itemValueField="id"
+          itemTextField="name"
+          [canSearch]="true"
+          (onChange)="portChange($event)">
+        </ionic-selectable>
+      </ion-item>
+      <ion-item>
+        <ion-label>Your Marital Status</ion-label>
+        <ion-select interface="popover" placeholder="Your Marital Status">
+          <ion-select-option value="brown">Brown</ion-select-option>
+          <ion-select-option value="blonde">Blonde</ion-select-option>
+          <ion-select-option value="black">Black</ion-select-option>
+          <ion-select-option value="red">Red</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>Country</ion-label>
+        <ionic-selectable
+          [(ngModel)]="port"
+          [items]="ports"
+          headerColor="primary"
+          placeholder="Country"
+          itemValueField="id"
+          itemTextField="name"
+          [canSearch]="true"
+          (onChange)="portChange($event)">
+        </ionic-selectable>
+      </ion-item>
+      <ion-item>
+        <ion-label>State</ion-label>
+        <ionic-selectable
+          [(ngModel)]="port"
+          [items]="ports"
+          headerColor="primary"
+          placeholder="State"
+          itemValueField="id"
+          itemTextField="name"
+          [canSearch]="true"
+          (onChange)="portChange($event)">
+        </ionic-selectable>
+      </ion-item>
+      <ion-item>
+        <ion-label>City</ion-label>
+        <ionic-selectable
+          [(ngModel)]="port"
+          [items]="ports"
+          headerColor="primary"
+          placeholder="City"
+          itemValueField="id"
+          itemTextField="name"
+          [canSearch]="true"
+          (onChange)="portChange($event)">
+        </ionic-selectable>
+      </ion-item>
+      <ion-item>
+        <ion-label>What's Your diet?</ion-label>
+        <ion-select interface="popover" placeholder="What's Your diet?">
+          <ion-select-option value="brown">Brown</ion-select-option>
+          <ion-select-option value="blonde">Blonde</ion-select-option>
+          <ion-select-option value="black">Black</ion-select-option>
+          <ion-select-option value="red">Red</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+   
+  </ion-card>
+ 
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-button expand="block" >Refine Search</ion-button>
+  </ion-toolbar>
+</ion-footer>

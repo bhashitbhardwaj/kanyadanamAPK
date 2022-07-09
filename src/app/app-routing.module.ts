@@ -40,6 +40,10 @@ const routes: Routes = [
   {
     path: 'advancesearch',
     loadChildren: () => import('./advancesearch/advancesearch.module').then( m => m.AdvancesearchPageModule)
+  },
+  {
+    path: 'matchfilter',
+    loadChildren: () => import('./matchfilter/matchfilter.module').then( m => m.MatchfilterPageModule)
   }
 
 

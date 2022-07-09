@@ -15,6 +15,14 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <div scrollX="true" direction="x" overflow-scroll="false" class="scroll_button_matches">
+    <ion-button fill="outline" class="btn">received (10)</ion-button>
+    <ion-button fill="outline" class="btn">accepted (9)</ion-button>
+    <ion-button fill="outline" class="btn">sent items (50+)</ion-button>
+    <ion-button fill="outline" class="btn">requests</ion-button>
+    <ion-button fill="outline" class="btn">expired</ion-button>
+    <ion-button fill="outline" class="btn">deleted</ion-button>
+</div>
   <ion-card class="scroll_card">
     <img src="/assets/images/dummy.jpeg">
     <div class="data">
@@ -35,13 +43,13 @@
    
     <ion-row>
       <ion-col>
-        <ion-button size="small" shape="round" color="light">
+        <ion-button size="small" expand="block" color="light">
           <ion-icon slot="start" name="close-circle-outline"></ion-icon>
           Decline
         </ion-button>
       </ion-col>
       <ion-col>
-        <ion-button size="small" shape="round">
+        <ion-button size="small" expand="block">
           <ion-icon slot="start" name="checkmark-circle-outline"></ion-icon>
           Accept
         </ion-button>

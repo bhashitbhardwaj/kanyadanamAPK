@@ -15,8 +15,9 @@
 </ion-header>
 
 <ion-content>
+
   <ion-card class="scroll_card">
-    <img src="/assets/images/dummy.jpeg" />
+    <img (click)="openModal()" src="/assets/images/dummy.jpeg" />
     <div class="data">
       <p class="name">
         Ajay kumar
@@ -31,14 +32,16 @@
         Meerut, Utter Pradesh
       </p>
     </div>
+  </ion-card>
+  <ion-card>
     <div class="about">
       <h6>About Ajay Saini</h6>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-          industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
-          scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into
-          electronic typesetting.</p>
+      <p>Hello, here is a quick introduction about my daughter.
+        She has completed her  B.Tech. We are looking for Jaat working in MNC, or Government job.Her optimistic personality is adored by one and all. 
+        Please drop in a message if you would like to know more.</p>
     </div>
   </ion-card>
+
 <ion-card>
   <div class="about">
     <h6>Basic Detials</h6>
@@ -83,7 +86,109 @@
           <p>Hindu, Hindi</p>
         </ion-label>
       </ion-item>
+      <ion-item>
+        <ion-icon name="people-circle-outline" slot="start" color="primary"></ion-icon>
+        <ion-label>
+          <h3>Community</h3>
+          <p>Saini</p>
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="people-outline" slot="start" color="primary"></ion-icon>
+        <ion-label>
+          <h3>Gothra</h3>
+          <p>Bharadwaj</p>
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="restaurant-outline" slot="start" color="primary"></ion-icon>
+        <ion-label>
+          <h3>Diet Preference</h3>
+          <p>Vegetarian</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-card>
+<ion-card>
+  <div class="about">
+    <h6>Contact Detials</h6>
+    <ion-list>
+      <ion-item>
+        <ion-icon name="call-outline" slot="start" color="primary"></ion-icon>
+        <ion-label>
+          <h3>Contact No.</h3>
+          <p>8523882090</p>
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="mail-outline" slot="start" color="primary"></ion-icon>
+        <ion-label>
+          <h3>Email ID</h3>
+          <p>ajaysaini@gmail.com</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-card>
+<ion-card>
+  <div class="about">
+    <h6>Faimly Details</h6>
+    <p>Our family is originally from Meerut. Her father is employed and her mother is a homemaker. She has 1 brother (unmarried) and 1 sister (unmarried).</p>
+  </div>
+</ion-card>
+<ion-card>
+  <div class="about">
+    <h6>Career & Education</h6>
+    <ion-list>
+      <ion-item>
+        <ion-icon name="briefcase-outline" slot="start" color="primary"></ion-icon>
+        <ion-label>
+          <h3>Profession</h3>
+          <p>Software Developer</p>
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="business-outline" slot="start" color="primary"></ion-icon>
+        <ion-label>
+          <h3>Company Name</h3>
+          <p>TCS</p>
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="wallet-outline" slot="start" color="primary"></ion-icon>
+        <ion-label>
+          <h3>Annual Income</h3>
+          <p>10-15Lakh annually</p>
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="school-outline" slot="start" color="primary"></ion-icon>
+        <ion-label>
+          <h3>Education Field</h3>
+          <p>Engineering</p>
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="book-outline" slot="start" color="primary"></ion-icon>
+        <ion-label>
+          <h3>Education Field</h3>
+          <p>Engineering</p>
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="home-outline" slot="start" color="primary"></ion-icon>
+        <ion-label>
+          <h3>College Name</h3>
+          <p>NIT Jamshedpur</p>
+        </ion-label>
+      </ion-item>
     </ion-list>
   </div>
 </ion-card>
 </ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-button expand="full">Connect Now</ion-button>
+  </ion-toolbar>
+</ion-footer>

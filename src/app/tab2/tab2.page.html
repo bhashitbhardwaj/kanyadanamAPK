@@ -23,7 +23,7 @@
         <ion-button fill="outline" class="btn">Recently Viewed</ion-button>
     </div>
 
-    <ion-card class="scroll_card" [routerLink]="'/member-detail'">
+    <ion-card class="scroll_card"  (click) = "openDetailpage()">
         <ion-button class="wishlist" size="large" fill="clear">
             <ion-icon slot="start" name="heart-outline"></ion-icon>
         </ion-button>
@@ -43,13 +43,13 @@
             </p>
             <ion-row class="button_list">
                 <ion-col>
-                    <ion-button size="small" shape="round" color="light">
+                    <ion-button size="small" expand="block" color="light" (click) = "showAlert();$event.stopPropagation();">
                         <ion-icon slot="start" name="close-circle-outline"></ion-icon>
                         Decline
                     </ion-button>
                 </ion-col>
                 <ion-col>
-                    <ion-button size="small" shape="round">
+                    <ion-button size="small" expand="block" (click) = "showAlert();$event.stopPropagation();">
                         <ion-icon slot="start" name="checkmark-circle-outline"></ion-icon>
                         Connect Now
                     </ion-button>
@@ -57,7 +57,7 @@
             </ion-row>
         </div>
     </ion-card>
-    <ion-card class="scroll_card">
+    <ion-card class="scroll_card" (click) = "openDetailpage()">
         <ion-button class="wishlist" size="large" fill="clear">
             <ion-icon slot="start" name="heart-outline"></ion-icon>
         </ion-button>
@@ -77,13 +77,13 @@
             </p>
             <ion-row class="button_list">
                 <ion-col>
-                    <ion-button size="small" shape="round" color="light">
+                    <ion-button size="small" expand="block" color="light" (click) = "showAlert();$event.stopPropagation();">
                         <ion-icon slot="start" name="close-circle-outline"></ion-icon>
                         Decline
                     </ion-button>
                 </ion-col>
                 <ion-col>
-                    <ion-button size="small" shape="round">
+                    <ion-button size="small" expand="block" (click) = "showAlert();$event.stopPropagation();">
                         <ion-icon slot="start" name="checkmark-circle-outline"></ion-icon>
                         Connect Now
                     </ion-button>
@@ -91,4 +91,10 @@
             </ion-row>
         </div>
     </ion-card>
+<!-- fab placed to the top end -->
+<ion-fab vertical="top" horizontal="end" slot="fixed">
+    <ion-fab-button size="small" (click)="openModal()">
+      <ion-icon name="funnel-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>
