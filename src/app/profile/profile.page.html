@@ -9,43 +9,400 @@
     </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
+<ion-content >
+    <ion-card class="scroll_card">
+        <img src="/assets/images/dummy.jpeg">
+        <div class="data">
+          <p class="name">
+            View/Edit
+          </p>
+          <p>
+            Ajay kumar (SD88878)
+          </p>
+        </div>
+    </ion-card>
     <ion-card>
         <ion-card-header>
-            <ion-card-title>Manage your profile</ion-card-title>
+            <ion-card-title color="primary">Manage your profile</ion-card-title>
         </ion-card-header>
-        <ion-list class="ion-padding">
-            <ion-item [routerLink]="'editprofile'">
-                <ion-label>Edit Personal Profile</ion-label>
-            </ion-item>
-            <ion-item [routerLink]="'contactfilter'">
-                <ion-label>Set Contact Filters</ion-label>
-            </ion-item>
-            <ion-item [routerLink]="'editpartnerprofile'">
-                <ion-label>Edit Partner Profile</ion-label>
-            </ion-item>
-            <ion-item [routerLink]="'contactdetails'">
-                <ion-label>Edit Contact Details</ion-label>
-            </ion-item>
-            <ion-item [routerLink]="'physicalappearance'">
-                <ion-label>Physical Appearance </ion-label>
-            </ion-item>
-            <ion-item [routerLink]="'educationprofessiondetails'">
-                <ion-label>Edit Qualification & Profession Details</ion-label>
-            </ion-item>
-            <ion-item [routerLink]="'biodata'">
-                <ion-label>Add / Edit Your Biodata</ion-label>
-            </ion-item>
-            <ion-item [routerLink]="'horoscope'">
-                <ion-label>Add Your Horoscope</ion-label>
-            </ion-item>
-            <ion-item [routerLink]="'hideanddeleteaccount'">
-                <ion-label>Hide & Delete Account</ion-label>
-            </ion-item>
-            <ion-item [routerLink]="'horoscopesetting'">
-                <ion-label>Horoscope Settings</ion-label>
-            </ion-item>
-
-        </ion-list>
+        <ion-row class="button_list">
+            <ion-col size="6" [routerLink]="'editprofile'">
+                <ion-text color="danger">
+                    <p>Edit Personal Profile</p>
+                  </ion-text>
+            </ion-col>
+            <ion-col size="6" [routerLink]="'contactfilter'">
+                <ion-text color="danger">
+                    <p>Set Contact Filters</p>
+                </ion-text>
+            </ion-col>
+        </ion-row>
+        <ion-row class="button_list">
+            <ion-col size="6" [routerLink]="'editpartnerprofile'">
+                <ion-text color="danger">
+                    <p>Edit Partner Profile</p>
+                  </ion-text>
+            </ion-col>
+            <ion-col size="6" [routerLink]="'contactdetails'">
+                <ion-text color="danger">
+                    <p>Edit Contact Details</p>
+                </ion-text>
+            </ion-col>
+        </ion-row>
+        <ion-row class="button_list">
+            <ion-col size="6" [routerLink]="'physicalappearance'">
+                <ion-text color="danger">
+                    <p>Physical Appearance</p>
+                  </ion-text>
+            </ion-col>
+            <ion-col size="6" [routerLink]="'educationprofessiondetails'">
+                <ion-text color="danger">
+                    <p>Edit Qualification & Profession Details</p>
+                </ion-text>
+            </ion-col>
+        </ion-row>
+        <ion-row class="button_list">
+            <ion-col size="6" [routerLink]="'biodata'">
+                <ion-text color="danger">
+                    <p>Add / Edit Your Biodata</p>
+                  </ion-text>
+            </ion-col>
+            <ion-col size="6" [routerLink]="'horoscope'">
+                <ion-text color="danger">
+                    <p>Add Your Horoscope</p>
+                </ion-text>
+            </ion-col>
+        </ion-row>
+        <ion-row class="button_list">
+            <ion-col size="6" [routerLink]="'hideanddeleteaccount'">
+                <ion-text color="danger">
+                    <p>Hide & Delete Account</p>
+                  </ion-text>
+            </ion-col>
+            <ion-col size="6" [routerLink]="'horoscopesetting'">
+                <ion-text color="danger">
+                    <p>Horoscope Settings</p>
+                </ion-text>
+            </ion-col>
+        </ion-row>
+    </ion-card>
+    <ion-card>
+        <ion-card-header>
+            <ion-card-title color="primary">Basic Info</ion-card-title>
+        </ion-card-header>
+        <ion-row class="button_list">
+            <ion-col size="5">
+               <p class="lable_title">Posted By</p>
+            </ion-col>
+            <ion-col size="7">
+                <p>: Self</p>
+            </ion-col>
+        </ion-row>
+        <ion-row class="button_list">
+            <ion-col size="5">
+               <p class="lable_title">Age</p>
+            </ion-col>
+            <ion-col size="7">
+                <p>: 30</p>
+            </ion-col>
+        </ion-row>
+        <ion-row class="button_list">
+            <ion-col size="5">
+               <p class="lable_title">Height</p>
+            </ion-col>
+            <ion-col size="7">
+                <p>: 5'8" (165)</p>
+            </ion-col>
+        </ion-row>
+        <ion-row class="button_list">
+            <ion-col size="5">
+               <p class="lable_title">Marital Status</p>
+            </ion-col>
+            <ion-col size="7">
+                <p>: Never Married</p>
+            </ion-col>
+        </ion-row>
+        <ion-row class="button_list">
+            <ion-col size="5">
+               <p class="lable_title">Health Information</p>
+            </ion-col>
+            <ion-col size="7">
+                <p>: None</p>
+            </ion-col>
+        </ion-row>
+        <ion-row class="button_list">
+            <ion-col size="5">
+               <p class="lable_title">Disability</p>
+            </ion-col>
+            <ion-col size="7">
+                <p>: Not Specified</p>
+            </ion-col>
+        </ion-row>
+    </ion-card>
+    <ion-card>
+        <ion-card-header>
+            <ion-card-title color="primary">More about Myself, Partner and Family</ion-card-title>
+        </ion-card-header>
+        <ion-row class="button_list">
+            <ion-col>
+                <p>This is me in a nutshell. In terms of education, I have completed Masters. I've been an active student throughout my academic years. I am a Software Developer by profession.
+                    I thrive in a light-hearted atmosphere and believe in making every moment count. Someone calm yet confident in nature would be a dream match. If you feel we would get along well, please feel free to express interest.</p>
+            </ion-col>
+        </ion-row>
+    </ion-card>
+    <ion-card>
+        <ion-card-header>
+            <ion-card-title color="primary">Religious Background</ion-card-title>
+        </ion-card-header>
+        <ion-row class="button_list">
+            <ion-col size="5">
+               <p class="lable_title">Religion</p>
+            </ion-col>
+            <ion-col size="7">
+                <p>: Hindu</p>
+            </ion-col>
+        </ion-row>
+        <ion-row class="button_list">
+            <ion-col size="5">
+               <p class="lable_title">Community</p>
+            </ion-col>
+            <ion-col size="7">
+                <p>: Saini</p>
+            </ion-col>
+        </ion-row>
+        <ion-row class="button_list">
+            <ion-col size="5">
+               <p class="lable_title">Sub community</p>
+            </ion-col>
+            <ion-col size="7">
+                <p>: Not Specified</p>
+            </ion-col>
+        </ion-row>
+        <ion-row class="button_list">
+            <ion-col size="5">
+               <p class="lable_title">Gothra / Gothram</p>
+            </ion-col>
+            <ion-col size="7">
+                <p>: Not Specified</p>
+            </ion-col>
+        </ion-row>
+        <ion-row class="button_list">
+            <ion-col size="5">
+               <p class="lable_title">Mother Tongue</p>
+            </ion-col>
+            <ion-col size="7">
+                <p>: Hindi</p>
+            </ion-col>
+        </ion-row>
+        <ion-row class="button_list">
+            <ion-col size="5">
+               <p class="lable_title">Cast No Bar</p>
+            </ion-col>
+            <ion-col size="7">
+                <p>: Yes</p>
+            </ion-col>
+        </ion-row>
+    </ion-card>
+    <ion-card>
+        <ion-card-header>
+            <ion-card-title color="primary">Location, Eduction and Career</ion-card-title>
+        </ion-card-header>
+        <ion-row class="button_list">
+            <ion-col size="5">
+               <p class="lable_title">Country Living in</p>
+            </ion-col>
+            <ion-col size="7">
+                <p>: India</p>
+            </ion-col>
+        </ion-row>
+        <ion-row class="button_list">
+            <ion-col size="5">
+               <p class="lable_title">State Living in</p>
+            </ion-col>
+            <ion-col size="7">
+                <p>: Utter Pradesh</p>
+            </ion-col>
+        </ion-row>
+        <ion-row class="button_list">
+            <ion-col size="5">
+               <p class="lable_title">City Living in</p>
+            </ion-col>
+            <ion-col size="7">
+                <p>: Meerut</p>
+            </ion-col>
+        </ion-row>
+        <ion-row class="button_list">
+            <ion-col size="5">
+               <p class="lable_title">Residency Status</p>
+            </ion-col>
+            <ion-col size="7">
+                <p>: Citizen</p>
+            </ion-col>
+        </ion-row>
+        <ion-row class="button_list">
+            <ion-col size="5">
+               <p class="lable_title">ZIP/PIN code</p>
+            </ion-col>
+            <ion-col size="7">
+                <p>: 230999</p>
+            </ion-col>
+        </ion-row>
+        <ion-row class="button_list">
+            <ion-col size="5">
+               <p class="lable_title">Highest Qualification</p>
+            </ion-col>
+            <ion-col size="7">
+                <p>: MCA</p>
+            </ion-col>
+        </ion-row>
+        <ion-row class="button_list">
+            <ion-col size="5">
+               <p class="lable_title">collge</p>
+            </ion-col>
+            <ion-col size="7">
+                <p>: NIT Jamshedpur</p>
+            </ion-col>
+        </ion-row>
+        <ion-row class="button_list">
+            <ion-col size="5">
+               <p class="lable_title">Working with</p>
+            </ion-col>
+            <ion-col size="7">
+                <p>: Private Company</p>
+            </ion-col>
+        </ion-row>
+        <ion-row class="button_list">
+            <ion-col size="5">
+               <p class="lable_title">Working as</p>
+            </ion-col>
+            <ion-col size="7">
+                <p>: Software Develoepr</p>
+            </ion-col>
+        </ion-row>
+        <ion-row class="button_list">
+            <ion-col size="5">
+               <p class="lable_title">Annual Income</p>
+            </ion-col>
+            <ion-col size="7">
+                <p>: INR 20 - 25 lakh</p>
+            </ion-col>
+        </ion-row>
+        <ion-row class="button_list">
+            <ion-col size="5">
+               <p class="lable_title">Employer Name</p>
+            </ion-col>
+            <ion-col size="7">
+                <p>: TCS</p>
+            </ion-col>
+        </ion-row>
+    </ion-card>
+    <ion-card>
+        <ion-card-header>
+            <ion-card-title color="primary">Partner Preferences</ion-card-title>
+        </ion-card-header>
+        <ion-row class="button_list">
+            <ion-col size="5">
+               <p class="lable_title">Age</p>
+            </ion-col>
+            <ion-col size="7">
+                <p>: 30</p>
+            </ion-col>
+        </ion-row>
+        <ion-row class="button_list">
+            <ion-col size="5">
+               <p class="lable_title">Height</p>
+            </ion-col>
+            <ion-col size="7">
+                <p>: 5'8" (165)</p>
+            </ion-col>
+        </ion-row>
+        <ion-row class="button_list">
+            <ion-col size="5">
+               <p class="lable_title">Marital Status</p>
+            </ion-col>
+            <ion-col size="7">
+                <p>: Never Married</p>
+            </ion-col>
+        </ion-row>
+        <ion-row class="button_list">
+            <ion-col size="5">
+               <p class="lable_title">Country Living in</p>
+            </ion-col>
+            <ion-col size="7">
+                <p>: India</p>
+            </ion-col>
+        </ion-row>
+        <ion-row class="button_list">
+            <ion-col size="5">
+               <p class="lable_title">State Living in</p>
+            </ion-col>
+            <ion-col size="7">
+                <p>: Utter Pradesh</p>
+            </ion-col>
+        </ion-row>
+        <ion-row class="button_list">
+            <ion-col size="5">
+               <p class="lable_title">City Living in</p>
+            </ion-col>
+            <ion-col size="7">
+                <p>: Meerut</p>
+            </ion-col>
+        </ion-row>
+        <ion-row class="button_list">
+            <ion-col size="5">
+               <p class="lable_title">Residency Status</p>
+            </ion-col>
+            <ion-col size="7">
+                <p>: Citizen</p>
+            </ion-col>
+        </ion-row>
+        <ion-row class="button_list">
+            <ion-col size="5">
+               <p class="lable_title">ZIP/PIN code</p>
+            </ion-col>
+            <ion-col size="7">
+                <p>: 230999</p>
+            </ion-col>
+        </ion-row>
+        <ion-row class="button_list">
+            <ion-col size="5">
+               <p class="lable_title">Highest Qualification</p>
+            </ion-col>
+            <ion-col size="7">
+                <p>: MCA</p>
+            </ion-col>
+        </ion-row>
+        <ion-row class="button_list">
+            <ion-col size="5">
+               <p class="lable_title">collge</p>
+            </ion-col>
+            <ion-col size="7">
+                <p>: NIT Jamshedpur</p>
+            </ion-col>
+        </ion-row>
+        <ion-row class="button_list">
+            <ion-col size="5">
+               <p class="lable_title">Working with</p>
+            </ion-col>
+            <ion-col size="7">
+                <p>: Private Company</p>
+            </ion-col>
+        </ion-row>
+        <ion-row class="button_list">
+            <ion-col size="5">
+               <p class="lable_title">Working as</p>
+            </ion-col>
+            <ion-col size="7">
+                <p>: Software Develoepr</p>
+            </ion-col>
+        </ion-row>
+        <ion-row class="button_list">
+            <ion-col size="5">
+               <p class="lable_title">Annual Income</p>
+            </ion-col>
+            <ion-col size="7">
+                <p>: INR 20 - 25 lakh</p>
+            </ion-col>
+        </ion-row>
     </ion-card>
 </ion-content>
