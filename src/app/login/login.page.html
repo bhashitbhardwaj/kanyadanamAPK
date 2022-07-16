@@ -14,15 +14,22 @@
     <ion-text color="dark" class="ion-text-center">
       <p>Already a member? Please enter your Email id </p>
     </ion-text>
+    <form [formGroup]="rForm">
     <ion-list class="ion-padding">
       <ion-item>
         <ion-label position="floating">Email Address</ion-label>
-        <ion-input></ion-input>
+        <ion-input type="email" formControlName="email" required ></ion-input>
       </ion-item>
+      <div>
+        <div class="alert" *ngIf="!rForm.controls['email'].valid && rForm.controls['email'].touched">Please Enter a valid email id.</div>
+    </div>
       <ion-item>
         <ion-label position="floating">Password</ion-label>
-        <ion-input></ion-input>
+        <ion-input type="password" formControlName="password" required></ion-input>
       </ion-item>
+      <div>
+        <div class="alert" *ngIf="!rForm.controls['password'].valid && rForm.controls['password'].touched">Please Enter password</div>
+    </div>
       <ion-item>
         <ion-label>Keep me Logged in</ion-label>
         <ion-checkbox slot="start"></ion-checkbox>
@@ -30,12 +37,12 @@
       <ion-text color="danger">
         <p [routerLink]="['/forgotpassword']">Forgot password?</p>
       </ion-text>
-   
-      <ion-button expand="block" color="primary" [routerLink]="'/tabs'">Login</ion-button>
+      <ion-button expand="block" color="primary" [disabled]="!rForm.valid" (click)="login()">Login</ion-button>
       <ion-text color="dark" class="ion-text-center">
         <h6 class="highlighted-text">Don't have an account?<br><span [routerLink]="['/signup']">SIGN UP FREE </span></h6>
       </ion-text>
     </ion-list>
+  </form>
   </ion-card>
  
 </ion-content>
