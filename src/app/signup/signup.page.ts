@@ -17,7 +17,7 @@ export class SignupPage implements OnInit {
     private api: ApiService,
     private toast: ToastService
   ) {
-    this.rForm = signupForm.group({
+    this.rForm = this.signupForm.group({
       name: [null,Validators.required],
       dob:[null,Validators.required],
       gender:["Male",Validators.required],

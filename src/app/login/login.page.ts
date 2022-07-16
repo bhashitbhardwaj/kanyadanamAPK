@@ -17,7 +17,7 @@ export class LoginPage implements OnInit {
     private api: ApiService,
     private toast: ToastService
   ) {
-    this.rForm = loginForm.group({
+    this.rForm = this.loginForm.group({
       'email': ["", Validators.compose([
         Validators.required,
         Validators.minLength(5),
