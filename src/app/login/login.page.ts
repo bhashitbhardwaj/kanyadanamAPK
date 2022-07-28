@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ApiService } from '../provider/api.service';
 import { LoaderService } from '../provider/loader.service';
 import { ToastService } from '../provider/toast.service';
@@ -12,6 +13,7 @@ import { ToastService } from '../provider/toast.service';
 export class LoginPage implements OnInit {
   rForm: FormGroup;
   constructor(
+    private router: Router,
     private loginForm: FormBuilder,
     private loader: LoaderService,
     private api: ApiService,
@@ -34,13 +36,14 @@ export class LoginPage implements OnInit {
     this.loader.Show('Loading...');
     this.api.postData('api/login',this.rForm.value).subscribe(res=>{
        this.loader.Hide();
-       if(res)
+       if(res.status)
        {
-         console.log(res)
+         console.log(res);
+         this.router.navigateByUrl('/tabs');
        }
        else{
           this.toast.Notify({
-            message:res,
+            message:res.message,
             duration:3000,
             position:'top'
           })

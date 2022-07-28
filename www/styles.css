@@ -1228,3 +1228,20 @@ sub {
   width: 150px;
   padding-top: 5px;
 }
+.product-zoom-modal {
+  --width: 100%;
+  background: rgba(255, 255, 255, 0.9);
+}
+ion-card-header {
+  background: #f7f7f9 !important;
+  padding: 10px;
+}
+ion-card-header ion-card-title {
+  text-align: left;
+  font-size: 17px;
+}
+.alert {
+  color: red;
+  margin-left: 15px;
+  margin-bottom: 5px;
+}
