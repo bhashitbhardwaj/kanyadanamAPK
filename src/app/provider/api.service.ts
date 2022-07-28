@@ -8,6 +8,7 @@ import { catchError, tap } from 'rxjs/operators';
 })
 export class ApiService {
   endpoint = 'http://kanyadanam.com/';
+  //endpoint = 'http://localhost:9000/kanyadanam_framwork/public/';
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
