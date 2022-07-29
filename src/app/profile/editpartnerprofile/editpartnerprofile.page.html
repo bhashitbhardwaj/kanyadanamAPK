@@ -17,83 +17,55 @@
     </ion-card-header>
     <ion-list class="ion-padding">
       <ion-item>
-        <ion-range min="18" max="45"  dual-knobs pin [value]="{ lower: 21, upper: 36 }">
+        <ion-range min="18" max="45"  dual-knobs pin [(ngModel)]="selectedData.age">
           <ion-label slot="start">Age 18</ion-label>
-           <ion-label slot="end">Age 45</ion-label>
+          <ion-label slot="end">Age 45</ion-label>
         </ion-range>
       </ion-item>
       <ion-item>
         <ion-label>Height From</ion-label>
-        <ionic-selectable
-          [(ngModel)]="port"
-          [items]="ports"
-          placeholder="Height From"
-          itemValueField="id"
-          headerColor="primary"
-          itemTextField="name"
-          [canSearch]="true"
-          (onChange)="portChange($event)">
-        </ionic-selectable>
+        <ion-select interface="popover" [(ngModel)]="selectedData.heightFrom">
+          <ion-select-option *ngFor="let data of dropDown.heightFrom" [value]="data.id">{{data.height_label_feet}}</ion-select-option>
+        </ion-select>
       </ion-item>
       <ion-item>
         <ion-label>Height To</ion-label>
-        <ionic-selectable
-          [(ngModel)]="port"
-          [items]="ports"
-          itemValueField="id"
-          placeholder="Height To"
-          itemTextField="name"
-          headerColor="primary"
-          [canSearch]="true"
-          (onChange)="portChange($event)">
-        </ionic-selectable>
+        <ion-select interface="popover" [(ngModel)]="selectedData.heightTo">
+          <ion-select-option *ngFor="let data of dropDown.heightFrom" [value]="data.id">{{data.height_label_feet}}</ion-select-option>
+        </ion-select>
       </ion-item>
       <ion-item>
         <ion-label>Marital Status</ion-label>
-        <ion-select multiple="true" interface="popover" placeholder="Marital Status">
-          <ion-select-option value="brown">Brown</ion-select-option>
-          <ion-select-option value="blonde">Blonde</ion-select-option>
-          <ion-select-option value="black">Black</ion-select-option>
-          <ion-select-option value="red">Red</ion-select-option>
+        <ion-select multiple="true" interface="popover" [(ngModel)]="selectedData.marital_status">
+          <ion-select-option value="1">Brown</ion-select-option>
+          <ion-select-option value="2">Blonde</ion-select-option>
+          <ion-select-option value="3">Black</ion-select-option>
+          <ion-select-option value="4">Red</ion-select-option>
         </ion-select>
       </ion-item>
       <ion-item>
         <ion-label>Religion</ion-label>
-        <ion-select multiple="true" interface="popover" placeholder="Religion">
-          <ion-select-option value="brown">Brown</ion-select-option>
-          <ion-select-option value="blonde">Blonde</ion-select-option>
-          <ion-select-option value="black">Black</ion-select-option>
-          <ion-select-option value="red">Red</ion-select-option>
+        <ion-select multiple="true" interface="popover" [(ngModel)]="selectedData.religion">
+          <ion-select-option *ngFor="let data of dropDown.religions" [value]="data.id">{{data.religion}}</ion-select-option>
         </ion-select>
       </ion-item>
       <ion-item>
         <ion-label>Mother Tongue</ion-label>
-        <ionic-selectable
-          [(ngModel)]="port"
-          [items]="ports"
-          [isMultiple]="true"
-          itemValueField="id"
-          placeholder="Mother Tongue"
-          [isConfirmButtonEnabled]="true"
-          headerColor="primary"
-          itemTextField="name"
-          [canSearch]="true"
-          (onChange)="portChange($event)">
-        </ionic-selectable>
+        <ion-select multiple="true" interface="popover" [(ngModel)]="selectedData.tongue">
+          <ion-select-option *ngFor="let data of dropDown.tongues" [value]="data.tongue_id">{{data.tongue}}</ion-select-option>
+        </ion-select>
       </ion-item>
       <ion-item>
         <ion-label>Community</ion-label>
         <ionic-selectable
-          [(ngModel)]="port"
-          [items]="ports"
+          [(ngModel)]="selectedData.community"
+          [items]="dropDown.communities"
           [isMultiple]="true"
-          placeholder="Community"
           [isConfirmButtonEnabled]="true"
           headerColor="primary"
           itemValueField="id"
-          itemTextField="name"
-          [canSearch]="true"
-          (onChange)="portChange($event)">
+          itemTextField="community"
+          [canSearch]="true">
         </ionic-selectable>
       </ion-item>
       <ion-text color="dark">
@@ -102,31 +74,28 @@
       <ion-item>
         <ion-label>Country in Living</ion-label>
         <ionic-selectable
-          [(ngModel)]="port"
-          [items]="ports"
-          [isMultiple]="true"
-          placeholder="Country in Living"
+          [(ngModel)]="selectedData.country"
+          [items]="dropDown.countries"
+          [isMultiple]="false"
           [isConfirmButtonEnabled]="true"
           headerColor="primary"
           itemValueField="id"
           itemTextField="name"
           [canSearch]="true"
-          (onChange)="portChange($event)">
+          (onChange)="countryChange($event)">
         </ionic-selectable>
       </ion-item>
       <ion-item>
         <ion-label>State in Living</ion-label>
         <ionic-selectable
-          [(ngModel)]="port"
-          [items]="ports"
+          [(ngModel)]="selectedData.state"
+          [items]="dropDown.states"
           [isMultiple]="true"
-          placeholder="State in Living"
           [isConfirmButtonEnabled]="true"
           headerColor="primary"
           itemValueField="id"
           itemTextField="name"
-          [canSearch]="true"
-          (onChange)="portChange($event)">
+          [canSearch]="true">
         </ionic-selectable>
       </ion-item>
       <ion-text color="dark">
@@ -135,49 +104,45 @@
       <ion-item>
         <ion-label>Education</ion-label>
         <ionic-selectable
-          [(ngModel)]="port"
-          [items]="ports"
+          [(ngModel)]="selectedData.education"
+          [items]="dropDown.communities"
           [isMultiple]="true"
-          placeholder="Education"
           [isConfirmButtonEnabled]="true"
           headerColor="primary"
           itemValueField="id"
-          itemTextField="name"
-          [canSearch]="true"
-          (onChange)="portChange($event)">
+          itemTextField="community"
+          [canSearch]="true">
         </ionic-selectable>
       </ion-item>
       <ion-item>
         <ion-label>Workign With</ion-label>
-        <ion-select multiple="true" interface="popover" placeholder="Marital Status">
-          <ion-select-option value="brown">Brown</ion-select-option>
-          <ion-select-option value="blonde">Blonde</ion-select-option>
-          <ion-select-option value="black">Black</ion-select-option>
-          <ion-select-option value="red">Red</ion-select-option>
+        <ion-select multiple="true" interface="popover" [(ngModel)]="selectedData.workign_with">
+          <ion-select-option value="1">Brown</ion-select-option>
+          <ion-select-option value="2">Blonde</ion-select-option>
+          <ion-select-option value="3">Black</ion-select-option>
+          <ion-select-option value="4">Red</ion-select-option>
         </ion-select>
       </ion-item>
       <ion-item>
         <ion-label>Profession Area</ion-label>
         <ionic-selectable
-          [(ngModel)]="port"
-          [items]="ports"
+          [(ngModel)]="selectedData.profession_area"
+          [items]="dropDown.communities"
           [isMultiple]="true"
-          placeholder="Profession Area"
           [isConfirmButtonEnabled]="true"
           headerColor="primary"
           itemValueField="id"
-          itemTextField="name"
-          [canSearch]="true"
-          (onChange)="portChange($event)">
+          itemTextField="community"
+          [canSearch]="true">
         </ionic-selectable>
       </ion-item>
       <ion-item>
         <ion-label>Annual Income</ion-label>
-        <ion-select interface="popover" placeholder="Marital Status">
-          <ion-select-option value="brown">Brown</ion-select-option>
-          <ion-select-option value="blonde">Blonde</ion-select-option>
-          <ion-select-option value="black">Black</ion-select-option>
-          <ion-select-option value="red">Red</ion-select-option>
+        <ion-select interface="popover" [(ngModel)]="selectedData.annual_income">
+          <ion-select-option value="1">Brown</ion-select-option>
+          <ion-select-option value="2">Blonde</ion-select-option>
+          <ion-select-option value="3">Black</ion-select-option>
+          <ion-select-option value="4">Red</ion-select-option>
         </ion-select>
       </ion-item>
       <ion-text color="dark">
@@ -186,18 +151,18 @@
       <ion-text color="dark">
         <h5>Profile created by</h5>
       </ion-text>
-      <ion-item *ngFor="let entry of form">
+      <ion-item *ngFor="let entry of owners">
         <ion-label>{{entry.val}}</ion-label>
-        <ion-checkbox slot="start" [(ngModel)]="entry.isChecked"></ion-checkbox>
+        <ion-checkbox slot="start" [value] = "entry.val" [(ngModel)]="entry.isChecked"></ion-checkbox>
       </ion-item>
       <ion-text color="dark">
         <h5>Diet</h5>
       </ion-text>
-      <ion-item *ngFor="let entry of diet">
+      <ion-item *ngFor="let entry of diets">
         <ion-label>{{entry.val}}</ion-label>
-        <ion-checkbox slot="start" [(ngModel)]="entry.isChecked"></ion-checkbox>
+        <ion-checkbox slot="start" [value] = "entry.val" [(ngModel)]="entry.isChecked"></ion-checkbox>
       </ion-item>
-      <ion-button expand="block" color="primary">Save & Continue</ion-button>
+      <ion-button expand="block" color="primary" (click)="save()">Save & Continue</ion-button>
     </ion-list>
   </ion-card>
 </ion-content>
