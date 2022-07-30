@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from '../provider/api.service';
 import { LoaderService } from '../provider/loader.service';
+import { StorageService } from '../provider/storage.service';
 import { ToastService } from '../provider/toast.service';
 
 @Component({
@@ -17,7 +18,8 @@ export class LoginPage implements OnInit {
     private loginForm: FormBuilder,
     private loader: LoaderService,
     private api: ApiService,
-    private toast: ToastService
+    private toast: ToastService,
+    private storage: StorageService
   ) {
     this.rForm = this.loginForm.group({
       'email': ["", Validators.compose([
@@ -30,7 +32,9 @@ export class LoginPage implements OnInit {
    }
 
   ngOnInit() {
+
   }
+  
   login()
   {
     this.loader.Show('Loading...');
@@ -39,6 +43,7 @@ export class LoginPage implements OnInit {
        if(res.status)
        {
          console.log(res);
+         this.storage.Set('userData',res.data);
          this.router.navigateByUrl('/tabs');
        }
        else{

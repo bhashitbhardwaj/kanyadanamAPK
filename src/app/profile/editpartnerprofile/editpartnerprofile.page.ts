@@ -70,7 +70,7 @@ export class EditpartnerprofilePage implements OnInit {
     });
     console.log('save:', this.selectedData);
     this.loader.Show('Loading...');
-    this.api.postData('api/login',
+    this.api.postDataWithAuth('api/updatePartnerPreferences',
     {
       age_from:this.selectedData.age.lower,
       age_to:this.selectedData.age.upper,
@@ -93,7 +93,12 @@ export class EditpartnerprofilePage implements OnInit {
        if(res.status)
        {
          console.log(res);
-         this.router.navigateByUrl('/tabs');
+         this.toast.Notify({
+          message:res.msg,
+          duration:3000,
+          position:'top'
+        })
+         this.router.navigateByUrl('/profile');
        }
        else{
           this.toast.Notify({

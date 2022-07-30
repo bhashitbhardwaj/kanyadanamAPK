@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
+import { StorageService } from './storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,10 +14,33 @@ export class ApiService {
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
-  constructor(private httpClient: HttpClient) { }
+
+  httpOptionsAuth:any;
+
+  constructor(
+    private httpClient: HttpClient,
+    private storage: StorageService
+    ) {
+    var userdata:any = this.storage.Get('userData');
+    this.httpOptionsAuth = {
+      headers: new HttpHeaders(
+        { 
+          'Content-Type': 'application/json',
+          usercode: userdata.uniq_id
+        }
+      ),
+    };
+   }
 
   postData(url,user): Observable<any> {
     return this.httpClient.post(this.endpoint + url, JSON.stringify(user), this.httpOptions)
+      .pipe(
+        catchError(this.handleError('Error occured'))
+      );
+  }
+
+  postDataWithAuth(url,user): Observable<any> {
+    return this.httpClient.post(this.endpoint + url, JSON.stringify(user), this.httpOptionsAuth)
       .pipe(
         catchError(this.handleError('Error occured'))
       );
