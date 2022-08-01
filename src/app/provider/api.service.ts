@@ -26,7 +26,7 @@ export class ApiService {
       headers: new HttpHeaders(
         { 
           'Content-Type': 'application/json',
-          usercode: userdata.uniq_id
+          usercode:(userdata)? userdata.uniq_id: ''
         }
       ),
     };
