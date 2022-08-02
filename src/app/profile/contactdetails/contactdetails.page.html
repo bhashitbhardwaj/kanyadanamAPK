@@ -1,77 +1,81 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button color="primary"></ion-back-button>
-    </ion-buttons>
-    <ion-title class="ion-text-center logo">
-      <img src="/assets/images/knnewlogo.png">
-    </ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button color="primary"></ion-back-button>
+        </ion-buttons>
+        <ion-title class="ion-text-center logo">
+            <img src="/assets/images/knnewlogo.png">
+        </ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>My contact Details</ion-card-title>
-    </ion-card-header>
-    <ion-list class="ion-padding">
-      <ion-text color="dark">
-        <h4 class="header">Contact Number</h4>
-      </ion-text>
-      <ion-item>
-        <ion-label position="floating">Enter your mobile number</ion-label>
-        <ion-input value="8523882090" readonly></ion-input>
-      </ion-item>
-      <ion-text color="dark">
-        <h4 class="header">Contact details and display status</h4>
-      </ion-text>
-      <ion-item>
-        <ion-label position="floating">Name of contact person</ion-label>
-        <ion-input></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label>Relationship with the member</ion-label>
-        <ion-select interface="popover" placeholder="Marital Status">
-          <ion-select-option value="brown">Brown</ion-select-option>
-          <ion-select-option value="blonde">Blonde</ion-select-option>
-          <ion-select-option value="black">Black</ion-select-option>
-          <ion-select-option value="red">Red</ion-select-option>
-        </ion-select>
-      </ion-item>
-      <ion-text color="dark">
-        <h5>Convenient time to call</h5>
-      </ion-text>
-      <ion-item>
-        <ion-label>To</ion-label>
-        <ion-datetime displayFormat="h a" [(ngModel)]="myTimeTo"></ion-datetime>
-      </ion-item>   
-      <ion-item>
-        <ion-label>From</ion-label>
-        <ion-datetime displayFormat="h a" [(ngModel)]="myTimeFrom"></ion-datetime>
-      </ion-item>   
-      <ion-list>
-        <ion-radio-group value="b">
-          <ion-list-header>
-            <ion-label>Contact display setting</ion-label>
-          </ion-list-header>
-      
-          <ion-item>
-            <ion-label>Visible to all Premium Members</ion-label>
-            <ion-radio slot="start" value="a"></ion-radio>
-          </ion-item>
-      
-          <ion-item>
-            <ion-label>Visible to Premium Members you wish to Connect with</ion-label>
-            <ion-radio slot="start" value="b"></ion-radio>
-          </ion-item>
-      
-          <ion-item>
-            <ion-label>Not visible to anyone (Hide Phonenumber)</ion-label>
-            <ion-radio slot="start" value="c"></ion-radio>
-          </ion-item>
-        </ion-radio-group>
-      </ion-list>
-      <ion-button expand="block" color="primary">Save & Continue</ion-button>
-    </ion-list>
+    <ion-card>
+        <ion-card-header>
+            <ion-card-title>My contact Details</ion-card-title>
+        </ion-card-header>
+        <ion-list class="ion-padding">
+            <ion-text color="dark">
+                <h4 class="header">Contact Number</h4>
+            </ion-text>
+            <ion-item>
+                <ion-label position="floating">Enter your mobile number</ion-label>
+                <ion-input value="8523882090" readonly></ion-input>
+            </ion-item>
+            <ion-text color="dark">
+                <h4 class="header">Contact details and display status</h4>
+            </ion-text>
+            <ion-item>
+                <ion-label position="floating">Name of contact person</ion-label>
+                <ion-input></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label>Relationship with the member</ion-label>
+                <ion-select interface="popover" placeholder="Marital Status">
+                    <ion-select-option value="Self">Self</ion-select-option>
+                    <ion-select-option value="Parent">Parent</ion-select-option>
+                    <ion-select-option value="Guardian">Guardian</ion-select-option>
+                    <ion-select-option value="Sibling">Sibling</ion-select-option>
+                    <ion-select-option value="Friend">Friend</ion-select-option>
+                    <ion-select-option value="Relative">Relative</ion-select-option>
+                    <ion-select-option value="Other">Other</ion-select-option>
+
+                </ion-select>
+            </ion-item>
+            <ion-text color="dark">
+                <h5>Convenient time to call</h5>
+            </ion-text>
+            <ion-item>
+                <ion-label>To</ion-label>
+                <ion-datetime displayFormat="h a" [(ngModel)]="myTimeTo"></ion-datetime>
+            </ion-item>
+            <ion-item>
+                <ion-label>From</ion-label>
+                <ion-datetime displayFormat="h a" [(ngModel)]="myTimeFrom"></ion-datetime>
+            </ion-item>
+            <ion-list>
+                <ion-radio-group value="b">
+                    <ion-list-header>
+                        <ion-label>Contact display setting</ion-label>
+                    </ion-list-header>
+
+                    <ion-item>
+                        <ion-label>Visible to all Premium Members</ion-label>
+                        <ion-radio slot="start" value="a"></ion-radio>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label>Visible to Premium Members you wish to Connect with</ion-label>
+                        <ion-radio slot="start" value="b"></ion-radio>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label>Not visible to anyone (Hide Phonenumber)</ion-label>
+                        <ion-radio slot="start" value="c"></ion-radio>
+                    </ion-item>
+                </ion-radio-group>
+            </ion-list>
+            <ion-button expand="block" color="primary">Save & Continue</ion-button>
+        </ion-list>
     </ion-card>
 </ion-content>
