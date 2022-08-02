@@ -13,19 +13,11 @@ import { ToastService } from 'src/app/provider/toast.service';
 export class EditpartnerprofilePage implements OnInit {
   dropDown: any = {};
   selectedData: any = {};
-  //diets = [];
-  //diets: any = [];
   public owners = [
-    { val: 'Doesnt matter', isChecked: true },
+    { val: 'Doesnt matter', isChecked: false },
     { val: 'Self', isChecked: false },
     { val: 'Parent / Guardian', isChecked: false },
     { val: 'Sibling / Friend /Others', isChecked: false }
-  ];
-  public diets = [
-    { val: 'Vegetarian', isChecked: true },
-    { val: 'Vegetarian', isChecked: false },
-    { val: 'Non-Vegetarian', isChecked: false },
-    { val: 'Vegan', isChecked: false }
   ];
 
   constructor(
@@ -39,9 +31,9 @@ export class EditpartnerprofilePage implements OnInit {
 
   save() {
     this.selectedData.diets = []
-    this.diets.forEach(obj => {
+    this.dropDown.diets.forEach(obj => {
       if (obj.isChecked) {
-        this.selectedData.diets.push(obj.val);
+        this.selectedData.diets.push(obj.name);
       }
     });
     this.selectedData.owners = []
@@ -49,6 +41,11 @@ export class EditpartnerprofilePage implements OnInit {
       if (obj.isChecked) {
         this.selectedData.owners.push(obj.val);
       }
+    });
+    var tongue =[];
+    this.selectedData.tongue= this.selectedData.tongue || [];
+    this.selectedData.tongue.forEach(obj => {
+      tongue.push(obj.tongue_id)
     });
     var community =[];
     this.selectedData.community= this.selectedData.community || [];
@@ -70,24 +67,29 @@ export class EditpartnerprofilePage implements OnInit {
     this.selectedData.profession_area.forEach(obj => {
       profession_area.push(obj.id)
     });
+    var annualincome =[];
+    this.selectedData.annual_income = this.selectedData.annual_income || [];
+    this.selectedData.annual_income.forEach(obj => {
+      annualincome.push(obj.id)
+    });
     console.log('save:', this.selectedData);
     this.loader.Show('Loading...');
     this.api.postDataWithAuth('api/updatePartnerPreferences',
     {
       age_from:this.selectedData.age.lower,
       age_to:this.selectedData.age.upper,
-      height_from:this.selectedData.heightFrom,
-      height_to:this.selectedData.heightTo,
-      tongue:this.selectedData.tongue,
+      height_from:(this.selectedData.heightFrom)?this.selectedData.heightFrom.id:'',
+      height_to:(this.selectedData.heightTo)?this.selectedData.heightTo.id:'',
+      tongue:tongue,
       martialstatus:this.selectedData.marital_status,
       religion_id:this.selectedData.religion,
       community_id:community,
-      country_id:[this.selectedData.country.id],
+      country_id:(this.selectedData.country)?[this.selectedData.country.id]:[],
       state_id:state,
       education_level:education,
       workwith:this.selectedData.workign_with,
       occupation:profession_area,
-      annualincome:this.selectedData.annual_income,
+      annualincome:annualincome,
       profile_created_by:this.selectedData.owners,
       diet:this.selectedData.diets
     }).subscribe(res=>{
@@ -100,7 +102,7 @@ export class EditpartnerprofilePage implements OnInit {
           duration:3000,
           position:'top'
         })
-         this.router.navigateByUrl('/profile');
+        this.router.navigateByUrl('/profile');
        }
        else{
           this.toast.Notify({
@@ -200,7 +202,6 @@ export class EditpartnerprofilePage implements OnInit {
         })
       }
     })
-    //Created By Bhashit
 
     this.api.getData('api/getMartialStatus').subscribe(res => {
       if (res.status) {
@@ -280,21 +281,91 @@ export class EditpartnerprofilePage implements OnInit {
         })
       }
     })
-    // this.api.getData('api/getDietPrefrence').subscribe(res => {
-    //   if (res.status) {
-    //     console.log(res);
-    //     this.diets.diets = res.data;
-    //     //console.log(this.diets.diets[0].name);
-    //   }
-    //   else {
-    //     this.toast.Notify({
-    //       message: res.message,
-    //       duration: 3000,
-    //       position: 'top'
-    //     })
-    //   }
-    // })
-
-    //Created By Bhashit
+    this.api.getData('api/getDietPrefrence').subscribe(res => {
+      if (res.status) {
+        console.log(res);
+        res.data.forEach(element => {
+          element.isChecked = false;
+        });
+        console.log(res.data);
+        this.dropDown.diets = res.data;
+      }
+      else {
+        this.toast.Notify({
+          message: res.message,
+          duration: 3000,
+          position: 'top'
+        })
+      }
+    })
+    this.getPartnerPrefeences()
   }
+
+  getPartnerPrefeences()
+  {
+    this.loader.Show('Loading...');
+    this.api.postDataWithAuth('api/getPartnerPreferences',{}).subscribe(res => {
+      this.loader.Hide();
+      if (res.status) {
+        console.log(res.data.user_detail);
+        if(res.data.user_detail && res.data.user_detail)
+        {
+          this.selectedData.age = { lower: res.data.user_detail.age_from, upper: res.data.user_detail.age_to };
+          this.selectedData.heightFrom = {
+            height_label_feet: res.data.user_detail.height_from[0].height_label_feet,
+            id: res.data.user_detail.height_from[0].id,
+          } 
+          this.selectedData.heightTo = {
+            height_label_feet: res.data.user_detail.height_to[0].height_label_feet,
+            id: res.data.user_detail.height_to[0].id,
+          } 
+          this.selectedData.marital_status =[];
+          res.data.user_detail.martialstatus.forEach(element => {
+            this.selectedData.marital_status.push(element.id)
+          });
+          this.selectedData.religion =[];
+          res.data.user_detail.religion.forEach(element => {
+            this.selectedData.religion.push(element.id)
+          });
+          this.selectedData.workign_with =[];
+          res.data.user_detail.workwith.forEach(element => {
+            this.selectedData.workign_with.push(element.id)
+          });
+          this.selectedData.tongue = res.data.user_detail.tongue;
+          this.selectedData.community = res.data.user_detail.community;
+          this.selectedData.state = res.data.user_detail.state_id;
+          this.selectedData.education = res.data.user_detail.education_level;
+          this.selectedData.profession_area = res.data.user_detail.occupation;
+          this.selectedData.annual_income = res.data.user_detail.annualincome;
+          res.data.user_detail.diet.forEach(element => {
+             for (let index = 0; index < this.dropDown.diets.length; index++) {
+              const element1 = this.dropDown.diets[index];
+               if(element == element1.name)
+               {
+                this.dropDown.diets[index].isChecked = true;
+               }
+             }
+          });
+          res.data.user_detail.profile_created_by.forEach(element => {
+            for (let index = 0; index < this.owners.length; index++) {
+             const element1 = this.owners[index];
+              if(element == element1.val)
+              {
+               this.owners[index].isChecked = true;
+              }
+            }
+         });
+        }
+        
+      }
+      else {
+        this.toast.Notify({
+          message: res.message,
+          duration: 3000,
+          position: 'top'
+        })
+      }
+    })
+  }
+
 }

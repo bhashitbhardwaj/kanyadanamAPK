@@ -40,8 +40,9 @@
             </ion-item>
             <ion-item>
                 <ion-label>Religion</ion-label>
-                <ionic-selectable [(ngModel)]="selectedData.religion" [items]="dropDown.religions" [isMultiple]="true" [isConfirmButtonEnabled]="true" headerColor="primary" itemValueField="id" itemTextField="religion" [canSearch]="true">
-                </ionic-selectable>
+                <ion-select multiple="true" interface="popover" [(ngModel)]="selectedData.religion">
+                    <ion-select-option *ngFor="let data of dropDown.religions" [value]="data.id">{{data.religion}}</ion-select-option>
+                </ion-select>
             </ion-item>
             <ion-item>
                 <ion-label>Mother Tongue</ion-label>
@@ -58,7 +59,7 @@
             </ion-text>
             <ion-item>
                 <ion-label>Country in Living</ion-label>
-                <ionic-selectable [(ngModel)]="selectedData.country" [items]="dropDown.countries" [isMultiple]="true" [isConfirmButtonEnabled]="true" headerColor="primary" itemValueField="id" itemTextField="name" [canSearch]="true" (onChange)="countryChange($event)">
+                <ionic-selectable [(ngModel)]="selectedData.country" [items]="dropDown.countries" [isMultiple]="false" [isConfirmButtonEnabled]="true" headerColor="primary" itemValueField="id" itemTextField="name" [canSearch]="true" (onChange)="countryChange($event)">
                 </ionic-selectable>
             </ion-item>
             <ion-item>
@@ -69,20 +70,16 @@
             <ion-text color="dark">
                 <h4 class="header">Education & Profession Details</h4>
             </ion-text>
-            <!-- <ion-item>
-                <ion-label>Education Field</ion-label>
-                <ionic-selectable [(ngModel)]="selectedData.education_field" [items]="dropDown.educationFields" [isMultiple]="true" [isConfirmButtonEnabled]="true" headerColor="primary" itemValueField="id" itemTextField="name" [canSearch]="true">
-                </ionic-selectable>
-            </ion-item> -->
             <ion-item>
                 <ion-label>Education Level</ion-label>
-                <ionic-selectable [(ngModel)]="selectedData.education_level" [items]="dropDown.educationLevels" [isMultiple]="true" [isConfirmButtonEnabled]="true" headerColor="primary" itemValueField="id" itemTextField="name" [canSearch]="true">
+                <ionic-selectable [(ngModel)]="selectedData.education" [items]="dropDown.educationLevels" [isMultiple]="true" [isConfirmButtonEnabled]="true" headerColor="primary" itemValueField="id" itemTextField="name" [canSearch]="true">
                 </ionic-selectable>
             </ion-item>
             <ion-item>
                 <ion-label>Workign With</ion-label>
-                <ionic-selectable [(ngModel)]="selectedData.workign_with" [items]="dropDown.workWiths" [isMultiple]="true" [isConfirmButtonEnabled]="true" headerColor="primary" itemValueField="id" itemTextField="name" [canSearch]="true">
-                </ionic-selectable>
+                <ion-select multiple="true" interface="popover" [(ngModel)]="selectedData.workign_with">
+                    <ion-select-option *ngFor="let data of dropDown.workWiths" [value]="data.id">{{data.name}}</ion-select-option>
+                </ion-select>
             </ion-item>
             <ion-item>
                 <ion-label>Profession Area</ion-label>
@@ -102,14 +99,14 @@
             </ion-text>
             <ion-item *ngFor="let entry of owners">
                 <ion-label>{{entry.val}}</ion-label>
-                <ion-checkbox slot="start" [value]="entry.val" [(ngModel)]="entry.isChecked"></ion-checkbox>
+                <ion-checkbox slot="start" [(ngModel)]="entry.isChecked"></ion-checkbox>
             </ion-item>
             <ion-text color="dark">
                 <h5>Diet</h5>
             </ion-text>
-            <ion-item *ngFor="let entry of diets">
-                <ion-label>{{entry.val}}</ion-label>
-                <ion-checkbox slot="start" [value]="entry.name" [(ngModel)]="entry.isChecked"></ion-checkbox>
+            <ion-item *ngFor="let entry of dropDown.diets">
+                <ion-label>{{entry.name}}</ion-label>
+                <ion-checkbox slot="start" [(ngModel)]="entry.isChecked"></ion-checkbox>
             </ion-item>
             <ion-button expand="block" color="primary" (click)="save()">Save & Continue</ion-button>
         </ion-list>
