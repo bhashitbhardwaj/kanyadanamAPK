@@ -13,6 +13,8 @@ import { ToastService } from 'src/app/provider/toast.service';
 export class EditpartnerprofilePage implements OnInit {
   dropDown: any = {};
   selectedData: any = {};
+  //diets = [];
+  //diets: any = [];
   public owners = [
     { val: 'Doesnt matter', isChecked: true },
     { val: 'Self', isChecked: false },
@@ -20,7 +22,7 @@ export class EditpartnerprofilePage implements OnInit {
     { val: 'Sibling / Friend /Others', isChecked: false }
   ];
   public diets = [
-    { val: 'Doesnt matter', isChecked: true },
+    { val: 'Vegetarian', isChecked: true },
     { val: 'Vegetarian', isChecked: false },
     { val: 'Non-Vegetarian', isChecked: false },
     { val: 'Vegan', isChecked: false }
@@ -133,7 +135,7 @@ export class EditpartnerprofilePage implements OnInit {
   }
 
   ngOnInit() {
-    this.api.getData('api/getHeights/0').subscribe(res => {
+    this.api.getData('api/getHeights').subscribe(res => {
       if (res.status) {
         console.log(res);
         this.dropDown.heightFrom = res.data;
@@ -185,7 +187,7 @@ export class EditpartnerprofilePage implements OnInit {
         })
       }
     })
-    this.api.getData('api/getCountries/0').subscribe(res => {
+    this.api.getData('api/getCountries').subscribe(res => {
       if (res.status) {
         console.log(res);
         this.dropDown.countries = res.data;
@@ -198,5 +200,101 @@ export class EditpartnerprofilePage implements OnInit {
         })
       }
     })
+    //Created By Bhashit
+
+    this.api.getData('api/getMartialStatus').subscribe(res => {
+      if (res.status) {
+        console.log(res);
+        this.dropDown.martialstatus = res.data;
+      }
+      else {
+        this.toast.Notify({
+          message: res.message,
+          duration: 3000,
+          position: 'top'
+        })
+      }
+    })
+    this.api.getData('api/getOccupation').subscribe(res => {
+      if (res.status) {
+        console.log(res);
+        this.dropDown.occupations = res.data;
+      }
+      else {
+        this.toast.Notify({
+          message: res.message,
+          duration: 3000,
+          position: 'top'
+        })
+      }
+    })
+    this.api.getData('api/getWorkWith').subscribe(res => {
+      if (res.status) {
+        console.log(res);
+        this.dropDown.workWiths = res.data;
+      }
+      else {
+        this.toast.Notify({
+          message: res.message,
+          duration: 3000,
+          position: 'top'
+        })
+      }
+    })
+    this.api.getData('api/getEducationLevels').subscribe(res => {
+      if (res.status) {
+        console.log(res);
+        this.dropDown.educationLevels = res.data;
+      }
+      else {
+        this.toast.Notify({
+          message: res.message,
+          duration: 3000,
+          position: 'top'
+        })
+      }
+    })
+    this.api.getData('api/getEducationFields').subscribe(res => {
+      if (res.status) {
+        console.log(res);
+        this.dropDown.educationFields = res.data;
+      }
+      else {
+        this.toast.Notify({
+          message: res.message,
+          duration: 3000,
+          position: 'top'
+        })
+      }
+    })
+    this.api.getData('api/getAnnualIncomes').subscribe(res => {
+      if (res.status) {
+        console.log(res);
+        this.dropDown.annualIncomes = res.data;
+      }
+      else {
+        this.toast.Notify({
+          message: res.message,
+          duration: 3000,
+          position: 'top'
+        })
+      }
+    })
+    // this.api.getData('api/getDietPrefrence').subscribe(res => {
+    //   if (res.status) {
+    //     console.log(res);
+    //     this.diets.diets = res.data;
+    //     //console.log(this.diets.diets[0].name);
+    //   }
+    //   else {
+    //     this.toast.Notify({
+    //       message: res.message,
+    //       duration: 3000,
+    //       position: 'top'
+    //     })
+    //   }
+    // })
+
+    //Created By Bhashit
   }
 }
