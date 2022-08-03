@@ -24,61 +24,20 @@ export class EducationprofessiondetailsPage implements OnInit {
 
   //Save data Function
   save() {
-    this.selectedData.diets = []
-    this.dropDown.diets.forEach(obj => {
-      if (obj.isChecked) {
-        this.selectedData.diets.push(obj.name);
-      }
-    });
-    // this.selectedData.owners = []
-    // this.owners.forEach(obj => {
-    //   if (obj.isChecked) {
-    //     this.selectedData.owners.push(obj.val);
-    //   }
-    // });
-    var tongue =[];
-    this.selectedData.tongue= this.selectedData.tongue || [];
-    this.selectedData.tongue.forEach(obj => {
-      tongue.push(obj.tongue_id)
-    });
-    
     var education =[];
     this.selectedData.education= this.selectedData.education || [];
     this.selectedData.education.forEach(obj => {
       education.push(obj.id)
     });
-    var educationfield =[];
-    this.selectedData.educationfield= this.selectedData.educationfield || [];
-    this.selectedData.educationfield.forEach(obj => {
-      educationfield.push(obj.id)
-    });
-    var profession_area =[];
-    this.selectedData.profession_area= this.selectedData.profession_area || [];
-    this.selectedData.profession_area.forEach(obj => {
-      profession_area.push(obj.id)
-    });
-    var annual_income =[];
-    this.selectedData.annual_income = this.selectedData.annual_income || [];
-    this.selectedData.annual_income.forEach(obj => {
-      annual_income.push(obj.id)
-    });
-    // var annualincome =[];
-    // this.selectedData.annual_income = this.selectedData.annual_income || [];
-    // this.selectedData.annual_income.forEach(obj => {
-    //   annualincome.push(obj.id)
-    // });
     console.log('save:', this.selectedData);
     this.loader.Show('Loading...');
-    this.api.postDataWithAuth('api/updatePartnerPreferences',
+    this.api.postDataWithAuth('api/updateEducationProfessionDetails',
     {
-      
-      education_level:education,
-      education_field:educationfield,
-      workwith:this.selectedData.workign_with,
-      occupation:profession_area,
-      annualincome:annual_income,
-      profile_created_by:this.selectedData.owners,
-      diet:this.selectedData.diets
+      "education_level":education,
+      "education_field":this.selectedData.educationfield.id,
+      "workwith":this.selectedData.workign_with,
+      "occupation":this.selectedData.profession_area.id,
+      "annualincome":this.selectedData.annual_income.id
     }).subscribe(res=>{
        this.loader.Hide();
        if(res.status)
@@ -178,17 +137,11 @@ export class EducationprofessiondetailsPage implements OnInit {
     this.api.postDataWithAuth('api/getEducationProfessionDetails',{}).subscribe(res => {
       this.loader.Hide();
       if (res.status) {
-        //console.log(res.data.user_detail);
+        console.log(res.data.user_detail);
         if(res.data.user_detail && res.data.user_detail)
         { 
-            console.log(res.data.user_detail);
               if(res.data.user_detail!=null){
-                this.selectedData.workign_with =[];
-                res.data.user_detail.workwith.forEach(element => {
-                  this.selectedData.workign_with.push(element.id)
-                });
-                
-                //this.selectedData.workign_with = res.data.user_detail.workwith;
+                this.selectedData.workign_with = res.data.user_detail.workwith[0].id;
                 this.selectedData.community = res.data.user_detail.community;
                 this.selectedData.country = res.data.user_detail.country_id;
                 this.selectedData.state = res.data.user_detail.state_id;
@@ -197,9 +150,7 @@ export class EducationprofessiondetailsPage implements OnInit {
                 this.selectedData.profession_area = res.data.user_detail.occupation[0];
                 this.selectedData.annual_income = res.data.user_detail.annualincome[0];
               }
-        
         }
-        
       }
       else {
         this.toast.Notify({
@@ -210,6 +161,4 @@ export class EducationprofessiondetailsPage implements OnInit {
       }
     })
   }
-  
-
 }

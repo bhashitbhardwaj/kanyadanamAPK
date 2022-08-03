@@ -19,8 +19,6 @@ export class ProfilePage implements OnInit {
   ) { }
 
   ngOnInit() {
-
-    
     this.api.postDataWithAuth('api/getProfileByUniqueID',  {})
     .subscribe(res => {
       if (res.status) {
@@ -35,8 +33,6 @@ export class ProfilePage implements OnInit {
         })
       }
     });
-
-    
 }
   
 

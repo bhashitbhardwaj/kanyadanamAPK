@@ -30,10 +30,10 @@
       <div>
         <div class="alert" *ngIf="!rForm.controls['password'].valid && rForm.controls['password'].touched">Please Enter password</div>
     </div>
-      <ion-item>
+      <!-- <ion-item>
         <ion-label>Keep me Logged in</ion-label>
         <ion-checkbox slot="start"></ion-checkbox>
-      </ion-item>
+      </ion-item> -->
       <ion-text color="danger">
         <p [routerLink]="['/forgotpassword']">Forgot password?</p>
       </ion-text>

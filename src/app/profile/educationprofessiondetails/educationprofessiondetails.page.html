@@ -32,7 +32,7 @@
             </ion-item>
             <ion-item>
                 <ion-label>You Work With</ion-label>
-                <ion-select multiple="false" interface="popover" placeholder="You Work with" [(ngModel)]="selectedData.workign_with">
+                <ion-select interface="popover" placeholder="You Work with" [(ngModel)]="selectedData.workign_with">
                     <ion-select-option *ngFor="let data of dropDown.workWiths" [value]="data.id">{{data.name}}</ion-select-option>
                 </ion-select>
             </ion-item>
