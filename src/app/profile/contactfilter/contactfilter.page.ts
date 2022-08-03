@@ -25,7 +25,6 @@ export class ContactfilterPage implements OnInit {
   
 
   ngOnInit() {
-
     this.api.getData('api/getHeights').subscribe(res => {
       if (res.status) {
         console.log(res);
@@ -109,6 +108,58 @@ export class ContactfilterPage implements OnInit {
 
   }
 
+  save()
+  {
+    var tongue =[];
+    this.selectedData.tongue= this.selectedData.tongue || [];
+    this.selectedData.tongue.forEach(obj => {
+      tongue.push(obj.tongue_id)
+    });
+    var community =[];
+    this.selectedData.community= this.selectedData.community || [];
+    this.selectedData.community.forEach(obj => {
+      community.push(obj.id)
+    });
+    var country =[];
+    this.selectedData.country= this.selectedData.country || [];
+    this.selectedData.country.forEach(obj => {
+      country.push(obj.id)
+    });
+    console.log('save:', this.selectedData);
+    this.loader.Show('Loading...');
+    this.api.postDataWithAuth('api/updateContactFilters',
+    {
+      age_from:this.selectedData.age.lower,
+      age_to:this.selectedData.age.upper,
+      height_from:(this.selectedData.heightFrom)?this.selectedData.heightFrom.id:'',
+      height_to:(this.selectedData.heightTo)?this.selectedData.heightTo.id:'',
+      tongue:tongue,
+      martialstatus:this.selectedData.marital_status,
+      religion_id:this.selectedData.religion,
+      community_id:community,
+      country_id:country
+    }).subscribe(res=>{
+       this.loader.Hide();
+       if(res.status)
+       {
+         console.log(res);
+         this.toast.Notify({
+          message:res.msg,
+          duration:3000,
+          position:'top'
+        })
+        this.router.navigateByUrl('/profile');
+       }
+       else{
+          this.toast.Notify({
+            message:res.message,
+            duration:3000,
+            position:'top'
+          })
+       }
+    })
+  }
+
   getContactFilters()
   {
     this.loader.Show('Loading...');
@@ -116,10 +167,10 @@ export class ContactfilterPage implements OnInit {
       this.loader.Hide();
       if (res.status) {
         console.log(res.data.user_detail.contact_filter);
-        if(res.data.user_detail.contact_filter && res.data.user_detail.contact_filter)
-        { console.log(res.data.user_detail.contact_filter.age_from);
+        if(res.data.user_detail.contact_filter && res.data.user_detail.contact_filter.length)
+        { 
+          console.log(res.data.user_detail.contact_filter.age_from);
           this.selectedData.age = { lower: res.data.user_detail.contact_filter.age_from, upper: res.data.user_detail.contact_filter.age_to };
-          //console.log(res.data.user_detail.contact_filter.height_from);
           this.selectedData.heightFrom = {
             height_label_feet: res.data.user_detail.contact_filter.height_from[0].height_label_feet,
             id: res.data.user_detail.contact_filter.height_from[0].id,
@@ -141,7 +192,6 @@ export class ContactfilterPage implements OnInit {
           this.selectedData.community = res.data.user_detail.contact_filter.community_id;
           this.selectedData.country = res.data.user_detail.contact_filter.country_id;
         }
-        
       }
       else {
         this.toast.Notify({
@@ -152,6 +202,4 @@ export class ContactfilterPage implements OnInit {
       }
     })
   }
-
-
 }

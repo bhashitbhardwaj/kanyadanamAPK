@@ -14,21 +14,31 @@
     <ion-card-header>
       <ion-card-title>Edit Profile</ion-card-title>
     </ion-card-header>
+    <form [formGroup]="rForm">
     <ion-list class="ion-padding">
       <ion-item>
         <ion-label position="floating">Please enter your full name</ion-label>
-        <ion-input></ion-input>
+        <ion-input type="text" formControlName="name"></ion-input>
       </ion-item>
+      <div>
+        <div class="alert" *ngIf="!rForm.controls['name'].valid && rForm.controls['name'].touched">Please Enter a valid Name.</div>
+    </div>
       <ion-item>
         <ion-label position="floating">Enter your mobile number</ion-label>
-        <ion-input></ion-input>
+        <ion-input type="tel" formControlName="mobile"></ion-input>
       </ion-item>
+      <div>
+        <div class="alert" *ngIf="!rForm.controls['mobile'].valid && rForm.controls['mobile'].touched">Please Enter a valid Mobile Number.</div>
+    </div>
       <ion-item>
         <ion-label position="floating">Email Address</ion-label>
-        <ion-input></ion-input>
+        <ion-input type="email" formControlName="email"></ion-input>
       </ion-item>
+      <div>
+        <div class="alert" *ngIf="!rForm.controls['email'].valid && rForm.controls['email'].touched">Please Enter a valid Email.</div>
+    </div>
       <ion-list>
-        <ion-radio-group value="Male">
+        <ion-radio-group value="Male" formControlName="gender">
           <ion-list-header>
             <ion-label>Gender</ion-label>
           </ion-list-header>
@@ -44,116 +54,74 @@
       </ion-list>
       <ion-item>
         <ion-label>Create profile for</ion-label>
-        <ion-select interface="popover" placeholder="Create profile for">
-          <ion-select-option value="brown">Brown</ion-select-option>
-          <ion-select-option value="blonde">Blonde</ion-select-option>
-          <ion-select-option value="black">Black</ion-select-option>
-          <ion-select-option value="red">Red</ion-select-option>
+        <ion-select interface="popover" formControlName="create_profile_for">
+          <ion-select-option value="Self">Self</ion-select-option>
+          <ion-select-option value="Son">Son</ion-select-option>
+          <ion-select-option value="Daughter">Daughter</ion-select-option>
+          <ion-select-option value="Brother">Brother</ion-select-option>
+          <ion-select-option value="Sister">Sister</ion-select-option>
         </ion-select>
       </ion-item>
+      <div>
+        <div class="alert" *ngIf="!rForm.controls['create_profile_for'].valid && rForm.controls['create_profile_for'].touched">Please Select a valid Create profile for.</div>
+    </div>
       <ion-item>
         <ion-label position="floating">Date of Birth (MM/DD/YYYY)</ion-label>
-        <ion-datetime displayFormat="MM/DD/YYYY" min="1950-01-01"></ion-datetime>
+        <ion-datetime presentation="date" formControlName="dob" displayFormat="MM/DD/YYYY" min="1950-01-01"></ion-datetime>
       </ion-item>
+      <div>
+        <div class="alert" *ngIf="!rForm.controls['dob'].valid && rForm.controls['dob'].touched">Please Enter a valid Date of Birth.</div>
+    </div>
       <ion-item>
         <ion-label>Religion</ion-label>
-        <ion-select interface="popover" placeholder="Religion">
-          <ion-select-option value="brown">Brown</ion-select-option>
-          <ion-select-option value="blonde">Blonde</ion-select-option>
-          <ion-select-option value="black">Black</ion-select-option>
-          <ion-select-option value="red">Red</ion-select-option>
+        <ion-select interface="popover" formControlName="religion">
+            <ion-select-option *ngFor="let data of dropDown.religions" [value]="data.id">{{data.religion}}</ion-select-option>
         </ion-select>
-      </ion-item>
+    </ion-item>
       <ion-item>
         <ion-label position="floating">Aadhar Card Number</ion-label>
         <ion-input></ion-input>
       </ion-item>
       <ion-item>
         <ion-label>Community</ion-label>
-        <ionic-selectable
-          [(ngModel)]="port"
-          [items]="ports"
-          headerColor="primary"
-          placeholder="Community"
-          itemValueField="id"
-          itemTextField="name"
-          [canSearch]="true"
-          (onChange)="portChange($event)">
+        <ionic-selectable formControlName="community" [items]="dropDown.communities" [isMultiple]="false" [isConfirmButtonEnabled]="true" headerColor="primary" itemValueField="id" itemTextField="community" [canSearch]="true">
         </ionic-selectable>
-      </ion-item>
+    </ion-item>
       <ion-item>
         <ion-label position="floating">Sub Community</ion-label>
         <ion-input></ion-input>
       </ion-item>
       <ion-item>
         <ion-label>Mother Tongue</ion-label>
-        <ionic-selectable
-          [(ngModel)]="port"
-          [items]="ports"
-          headerColor="primary"
-          placeholder="Mother Tongue"
-          itemValueField="id"
-          itemTextField="name"
-          [canSearch]="true"
-          (onChange)="portChange($event)">
+        <ionic-selectable formControlName="tongue" [items]="dropDown.tongues" [isMultiple]="true" [isConfirmButtonEnabled]="true" headerColor="primary" itemValueField="tongue_id" itemTextField="tongue" [canSearch]="true">
         </ionic-selectable>
-      </ion-item>
-      <ion-item>
-        <ion-label>Your Marital Status</ion-label>
-        <ion-select interface="popover" placeholder="Your Marital Status">
-          <ion-select-option value="brown">Brown</ion-select-option>
-          <ion-select-option value="blonde">Blonde</ion-select-option>
-          <ion-select-option value="black">Black</ion-select-option>
-          <ion-select-option value="red">Red</ion-select-option>
-        </ion-select>
-      </ion-item>
-      <ion-item>
-        <ion-label>Country</ion-label>
-        <ionic-selectable
-          [(ngModel)]="port"
-          [items]="ports"
-          headerColor="primary"
-          placeholder="Country"
-          itemValueField="id"
-          itemTextField="name"
-          [canSearch]="true"
-          (onChange)="portChange($event)">
-        </ionic-selectable>
-      </ion-item>
-      <ion-item>
-        <ion-label>State</ion-label>
-        <ionic-selectable
-          [(ngModel)]="port"
-          [items]="ports"
-          headerColor="primary"
-          placeholder="State"
-          itemValueField="id"
-          itemTextField="name"
-          [canSearch]="true"
-          (onChange)="portChange($event)">
-        </ionic-selectable>
-      </ion-item>
-      <ion-item>
-        <ion-label>City</ion-label>
-        <ionic-selectable
-          [(ngModel)]="port"
-          [items]="ports"
-          headerColor="primary"
-          placeholder="City"
-          itemValueField="id"
-          itemTextField="name"
-          [canSearch]="true"
-          (onChange)="portChange($event)">
-        </ionic-selectable>
-      </ion-item>
+    </ion-item>
+    <ion-item>
+      <ion-label>Marital Status</ion-label>
+      <ion-select interface="popover" formControlName="martialstatus">
+          <ion-select-option *ngFor="let data of dropDown.martialstatus" [value]="data.id">{{data.name}}</ion-select-option>
+      </ion-select>
+  </ion-item>
+  <ion-item>
+      <ion-label>Country</ion-label>
+      <ionic-selectable formControlName="country" [items]="dropDown.countries" [isMultiple]="false" [isConfirmButtonEnabled]="true" headerColor="primary" itemValueField="id" itemTextField="name" [canSearch]="true" (onChange)="countryChange($event)">
+      </ionic-selectable>
+  </ion-item>
+  <ion-item>
+      <ion-label>State</ion-label>
+      <ionic-selectable formControlName="state" [items]="dropDown.states" [isMultiple]="false" [isConfirmButtonEnabled]="true" headerColor="primary" itemValueField="id" itemTextField="name" [canSearch]="true" (onChange)="stateChange($event)">
+      </ionic-selectable>
+  </ion-item>
+  <ion-item>
+    <ion-label>City</ion-label>
+    <ionic-selectable formControlName="city" [items]="dropDown.cities" [isMultiple]="false" [isConfirmButtonEnabled]="true" headerColor="primary" itemValueField="id" itemTextField="name" [canSearch]="true">
+    </ionic-selectable>
+</ion-item>
       <ion-item>
         <ion-label>What's Your diet?</ion-label>
-        <ion-select interface="popover" placeholder="What's Your diet?">
-          <ion-select-option value="brown">Brown</ion-select-option>
-          <ion-select-option value="blonde">Blonde</ion-select-option>
-          <ion-select-option value="black">Black</ion-select-option>
-          <ion-select-option value="red">Red</ion-select-option>
-        </ion-select>
+        <ion-select interface="popover" formControlName="diet">
+          <ion-select-option *ngFor="let data of dropDown.diets" [value]="data.id">{{data.name}}</ion-select-option>
+      </ion-select>
       </ion-item>
       <ion-list>
         <ion-radio-group value="biff">
@@ -208,8 +176,9 @@
           charactor)</ion-label>
         <ion-textarea minlength=50 ></ion-textarea>
       </ion-item>
-      <ion-button expand="block" color="primary">Update Profile</ion-button>
+      <ion-button expand="block" color="primary" [disabled]="!rForm.valid" (click)="save()">Update Profile</ion-button>
     </ion-list>
+  </form>
   </ion-card>
  
 </ion-content>

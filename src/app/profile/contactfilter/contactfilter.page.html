@@ -17,8 +17,8 @@
         </ion-card-header>
         <ion-list class="ion-padding">
             <ion-item>
-                <ion-range min="21" max="45" dual-knobs pin [(ngModel)]="selectedData.age">
-                    <ion-label slot="start">Age 21</ion-label>
+                <ion-range min="18" max="45" dual-knobs pin [(ngModel)]="selectedData.age">
+                    <ion-label slot="start">Age 18</ion-label>
                     <ion-label slot="end">Age 45</ion-label>
                 </ion-range>
             </ion-item>
@@ -59,7 +59,7 @@
                 <ionic-selectable [(ngModel)]="selectedData.country" [items]="dropDown.countries" [isMultiple]="true" [isConfirmButtonEnabled]="true" headerColor="primary" itemValueField="id" itemTextField="name" [canSearch]="true" (onChange)="countryChange($event)">
                 </ionic-selectable>
             </ion-item>
-            <ion-button expand="block" color="primary">Save & Continue</ion-button>
+            <ion-button expand="block" color="primary" (click)="save()">Save & Continue</ion-button>
         </ion-list>
     </ion-card>
 </ion-content>

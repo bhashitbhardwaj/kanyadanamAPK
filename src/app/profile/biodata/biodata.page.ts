@@ -22,53 +22,6 @@ export class BiodataPage implements OnInit {
   
   //Save data Function
   save() {
-    // this.selectedData.diets = []
-    // this.dropDown.diets.forEach(obj => {
-    //   if (obj.isChecked) {
-    //     this.selectedData.diets.push(obj.name);
-    //   }
-    // });
-    // this.selectedData.owners = []
-    // this.owners.forEach(obj => {
-    //   if (obj.isChecked) {
-    //     this.selectedData.owners.push(obj.val);
-    //   }
-    // });
-    // var tongue =[];
-    // this.selectedData.tongue= this.selectedData.tongue || [];
-    // this.selectedData.tongue.forEach(obj => {
-    //   tongue.push(obj.tongue_id)
-    // });
-    // var community =[];
-    // this.selectedData.community= this.selectedData.community || [];
-    // this.selectedData.community.forEach(obj => {
-    //   community.push(obj.id)
-    // });
-    // var country =[];
-    // this.selectedData.country= this.selectedData.country || [];
-    // this.selectedData.country.forEach(obj => {
-    //   country.push(obj.id)
-    // });
-    // var state =[];
-    // this.selectedData.state= this.selectedData.state || [];
-    // this.selectedData.state.forEach(obj => {
-    //   state.push(obj.id)
-    // });
-    // var education =[];
-    // this.selectedData.education= this.selectedData.education || [];
-    // this.selectedData.education.forEach(obj => {
-    //   education.push(obj.id)
-    // });
-    // var profession_area =[];
-    // this.selectedData.profession_area= this.selectedData.profession_area || [];
-    // this.selectedData.profession_area.forEach(obj => {
-    //   profession_area.push(obj.id)
-    // });
-    // var annualincome =[];
-    // this.selectedData.annual_income = this.selectedData.annual_income || [];
-    // this.selectedData.annual_income.forEach(obj => {
-    //   annualincome.push(obj.id)
-    // });
     console.log('save:', this.selectedData);
     this.loader.Show('Loading...');
     this.api.postDataWithAuth('api/updateBiodata',
@@ -110,12 +63,8 @@ export class BiodataPage implements OnInit {
     })
   }
 
-
-
   ngOnInit() {
-
     //Get Data from Biodata API and Populate with the respactive fields
-
     this.api.postDataWithAuth('api/getBiodataByUniqueID', {}).subscribe(res => {
       if (res.status) {
         console.log(res);
@@ -139,8 +88,6 @@ export class BiodataPage implements OnInit {
               this.selectedData.mother_occupation = res.data.user_detail.biodata.mother_occupation;
               this.selectedData.siblings = res.data.user_detail.biodata.siblings;
             }
-
-          
         }
       }
       else {
@@ -151,12 +98,5 @@ export class BiodataPage implements OnInit {
         })
       }
     })
-    
-
-
   }
-
-
-  
-
 }
