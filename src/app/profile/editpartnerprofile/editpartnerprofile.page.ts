@@ -119,9 +119,15 @@ export class EditpartnerprofilePage implements OnInit {
     value: any
   }) {
     console.log('port:', event.value);
+    var country_id =[];
+    event.value.forEach(obj => {
+      country_id.push(obj.id)
+    });
     this.dropDown.states = [];
     this.selectedData.state = null;
-    this.api.getData('api/getStates/' + event.value.id).subscribe(res => {
+    this.api.postData('api/getStateArrayOrSingle',{
+      country_id:country_id
+    }).subscribe(res => {
       if (res.status) {
         console.log(res);
         this.dropDown.states = res.data;
