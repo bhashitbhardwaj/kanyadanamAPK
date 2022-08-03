@@ -41,7 +41,7 @@
                 <ionic-selectable [(ngModel)]="selectedData.annual_income" placeholder="Your Annual Income" [items]="dropDown.annualIncomes" [isMultiple]="false" [isConfirmButtonEnabled]="true" headerColor="primary" itemValueField="id" itemTextField="name" [canSearch]="true">
                 </ionic-selectable>
             </ion-item>
-            <ion-button expand="block" color="primary">Update Profile</ion-button>
+            <ion-button expand="block" color="primary" (click)="save()">Update Profile</ion-button>
         </ion-list>
     </ion-card>
 </ion-content>
