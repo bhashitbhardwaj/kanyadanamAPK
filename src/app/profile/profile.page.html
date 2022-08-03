@@ -325,7 +325,31 @@
                     <p class="lable_title">Marital Status</p>
                 </ion-col>
                 <ion-col size="7">
-                    <p *ngFor="let martialstatus of userData.partner_details.martialstatus">: {{martialstatus.name.toString()}}</p>
+                    <p *ngFor="let martialstatus of userData.partner_details.martialstatus">: {{martialstatus.name}}</p>
+                </ion-col>
+            </ion-row>
+            <ion-row class="button_list">
+                <ion-col size="5">
+                    <p class="lable_title">Religion</p>
+                </ion-col>
+                <ion-col size="7">
+                    <p *ngFor="let religion of userData.partner_details.religion">: {{religion.religion}}</p>
+                </ion-col>
+            </ion-row>
+            <ion-row class="button_list">
+                <ion-col size="5">
+                    <p class="lable_title">Mother Tongue</p>
+                </ion-col>
+                <ion-col size="7">
+                    <p *ngFor="let tongue of userData.partner_details.tongue">: {{tongue.tongue}}</p>
+                </ion-col>
+            </ion-row>
+            <ion-row class="button_list">
+                <ion-col size="5">
+                    <p class="lable_title">Community</p>
+                </ion-col>
+                <ion-col size="7">
+                    <p *ngFor="let community of userData.partner_details.community">: {{community.community}}</p>
                 </ion-col>
             </ion-row>
             <ion-row class="button_list">

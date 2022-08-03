@@ -1,33 +1,167 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { IonicSelectableComponent } from 'ionic-selectable';
-class Port {
-  public id: number;
-  public name: string;
-}
+import { ApiService } from 'src/app/provider/api.service';
+import { LoaderService } from 'src/app/provider/loader.service';
+import { ToastService } from 'src/app/provider/toast.service';
+
 @Component({
   selector: 'app-contactfilter',
   templateUrl: './contactfilter.page.html',
   styleUrls: ['./contactfilter.page.scss'],
 })
 export class ContactfilterPage implements OnInit {
-
-  ports: Port[];
-  port: Port;
-  constructor() { 
-    this.ports = [
-      { id: 1, name: 'Tokai' },
-      { id: 2, name: 'Vladivostok' },
-      { id: 3, name: 'Navlakhi' }
-    ];
+  dropDown: any = {};
+  selectedData: any = {};
+  
+  constructor(
+    private router: Router,
+    private loader: LoaderService,
+    private api: ApiService,
+    private toast: ToastService
+  ) {
+    this.selectedData.age = { lower: 21, upper: 36 };
   }
-  portChange(event: {
-    component: IonicSelectableComponent,
-    value: any
-  }) {
-    console.log('port:', event.value);
-  }
+  
 
   ngOnInit() {
+
+    this.api.getData('api/getHeights').subscribe(res => {
+      if (res.status) {
+        console.log(res);
+        this.dropDown.heightFrom = res.data;
+      }
+      else {
+        this.toast.Notify({
+          message: res.message,
+          duration: 3000,
+          position: 'top'
+        })
+      }
+    })
+    this.api.getData('api/getReligions').subscribe(res => {
+      if (res.status) {
+        console.log(res);
+        this.dropDown.religions = res.data;
+      }
+      else {
+        this.toast.Notify({
+          message: res.message,
+          duration: 3000,
+          position: 'top'
+        })
+      }
+    })
+    this.api.getData('api/getMartialStatus').subscribe(res => {
+      if (res.status) {
+        console.log(res);
+        this.dropDown.martialstatus = res.data;
+      }
+      else {
+        this.toast.Notify({
+          message: res.message,
+          duration: 3000,
+          position: 'top'
+        })
+      }
+    })
+    this.api.getData('api/getTongues').subscribe(res => {
+      if (res.status) {
+        console.log(res);
+        this.dropDown.tongues = res.data;
+      }
+      else {
+        this.toast.Notify({
+          message: res.message,
+          duration: 3000,
+          position: 'top'
+        })
+      }
+    })
+    this.api.getData('api/getCommunities').subscribe(res => {
+      if (res.status) {
+        console.log(res);
+        this.dropDown.communities = res.data;
+      }
+      else {
+        this.toast.Notify({
+          message: res.message,
+          duration: 3000,
+          position: 'top'
+        })
+      }
+    })
+
+    this.getContactFilters()
+
   }
+
+  getContactFilters()
+  {
+    this.loader.Show('Loading...');
+    this.api.postDataWithAuth('api/getContactFilters',{}).subscribe(res => {
+      this.loader.Hide();
+      if (res.status) {
+        console.log(res.data.user_detail.contact_filter);
+        if(res.data.user_detail.contact_filter && res.data.user_detail.contact_filter)
+        { console.log(res.data.user_detail.contact_filter.age_from);
+          this.selectedData.age = { lower: res.data.user_detail.contact_filter.age_from, upper: res.data.user_detail.contact_filter.age_to };
+          this.selectedData.heightFrom = {
+            //height_label_feet: res.data.user_detail.height_from[0].height_label_feet,
+            id: res.data.user_detail.height_from,
+          } 
+          // this.selectedData.heightTo = {
+          //   height_label_feet: res.data.user_detail.height_to[0].height_label_feet,
+          //   id: res.data.user_detail.height_to[0].id,
+          // } 
+          // this.selectedData.marital_status =[];
+          // res.data.user_detail.martialstatus.forEach(element => {
+          //   this.selectedData.marital_status.push(element.id)
+          // });
+          // this.selectedData.religion =[];
+          // res.data.user_detail.religion.forEach(element => {
+          //   this.selectedData.religion.push(element.id)
+          // });
+          // this.selectedData.workign_with =[];
+          // res.data.user_detail.workwith.forEach(element => {
+          //   this.selectedData.workign_with.push(element.id)
+          // });
+          this.selectedData.tongue = res.data.user_detail.tongue;
+          this.selectedData.community = res.data.user_detail.community;
+          this.selectedData.state = res.data.user_detail.state_id;
+          this.selectedData.education = res.data.user_detail.education_level;
+          this.selectedData.profession_area = res.data.user_detail.occupation;
+          this.selectedData.annual_income = res.data.user_detail.annualincome;
+        //   res.data.user_detail.diet.forEach(element => {
+        //      for (let index = 0; index < this.dropDown.diets.length; index++) {
+        //       const element1 = this.dropDown.diets[index];
+        //        if(element == element1.name)
+        //        {
+        //         this.dropDown.diets[index].isChecked = true;
+        //        }
+        //      }
+        //   });
+        //   res.data.user_detail.profile_created_by.forEach(element => {
+        //     for (let index = 0; index < this.owners.length; index++) {
+        //      const element1 = this.owners[index];
+        //       if(element == element1.val)
+        //       {
+        //        this.owners[index].isChecked = true;
+        //       }
+        //     }
+        //  });
+        }
+        
+      }
+      else {
+        this.toast.Notify({
+          message: res.message,
+          duration: 3000,
+          position: 'top'
+        })
+      }
+    })
+  }
+
 
 }
