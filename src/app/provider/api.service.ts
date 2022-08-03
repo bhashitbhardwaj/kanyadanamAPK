@@ -15,21 +15,11 @@ export class ApiService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
-  httpOptionsAuth:any;
-
   constructor(
     private httpClient: HttpClient,
     private storage: StorageService
     ) {
-    var userdata:any = this.storage.Get('userData');
-    this.httpOptionsAuth = {
-      headers: new HttpHeaders(
-        { 
-          'Content-Type': 'application/json',
-          usercode:(userdata)? userdata.uniq_id: ''
-        }
-      ),
-    };
+    
    }
 
   postData(url,user): Observable<any> {
@@ -40,7 +30,16 @@ export class ApiService {
   }
 
   postDataWithAuth(url,user): Observable<any> {
-    return this.httpClient.post(this.endpoint + url, JSON.stringify(user), this.httpOptionsAuth)
+    var userdata:any = this.storage.Get('userData');
+    var httpOptionsAuth = {
+      headers: new HttpHeaders(
+        { 
+          'Content-Type': 'application/json',
+          usercode:(userdata)? userdata.uniq_id: ''
+        }
+      ),
+    };
+    return this.httpClient.post(this.endpoint + url, JSON.stringify(user), httpOptionsAuth)
       .pipe(
         catchError(this.handleError('Error occured'))
       );
