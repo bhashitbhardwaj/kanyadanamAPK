@@ -183,12 +183,12 @@ export class EducationprofessiondetailsPage implements OnInit {
         { 
             console.log(res.data.user_detail);
               if(res.data.user_detail!=null){
-                // this.selectedData.workign_with =[];
-                // res.data.user_detail.workwith.forEach(element => {
-                //   this.selectedData.workign_with.push(element.id)
-                // });
+                this.selectedData.workign_with =[];
+                res.data.user_detail.workwith.forEach(element => {
+                  this.selectedData.workign_with.push(element.id)
+                });
                 
-                this.selectedData.workign_with = res.data.user_detail.workwith;
+                //this.selectedData.workign_with = res.data.user_detail.workwith;
                 this.selectedData.community = res.data.user_detail.community;
                 this.selectedData.country = res.data.user_detail.country_id;
                 this.selectedData.state = res.data.user_detail.state_id;
