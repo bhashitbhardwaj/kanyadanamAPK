@@ -91,6 +91,19 @@ export class ContactfilterPage implements OnInit {
         })
       }
     })
+    this.api.getData('api/getCountries').subscribe(res => {
+      if (res.status) {
+        console.log(res);
+        this.dropDown.countries = res.data;
+      }
+      else {
+        this.toast.Notify({
+          message: res.message,
+          duration: 3000,
+          position: 'top'
+        })
+      }
+    })
 
     this.getContactFilters()
 
@@ -106,50 +119,27 @@ export class ContactfilterPage implements OnInit {
         if(res.data.user_detail.contact_filter && res.data.user_detail.contact_filter)
         { console.log(res.data.user_detail.contact_filter.age_from);
           this.selectedData.age = { lower: res.data.user_detail.contact_filter.age_from, upper: res.data.user_detail.contact_filter.age_to };
+          //console.log(res.data.user_detail.contact_filter.height_from);
           this.selectedData.heightFrom = {
-            //height_label_feet: res.data.user_detail.height_from[0].height_label_feet,
-            id: res.data.user_detail.height_from,
+            height_label_feet: res.data.user_detail.contact_filter.height_from[0].height_label_feet,
+            id: res.data.user_detail.contact_filter.height_from[0].id,
           } 
-          // this.selectedData.heightTo = {
-          //   height_label_feet: res.data.user_detail.height_to[0].height_label_feet,
-          //   id: res.data.user_detail.height_to[0].id,
-          // } 
-          // this.selectedData.marital_status =[];
-          // res.data.user_detail.martialstatus.forEach(element => {
-          //   this.selectedData.marital_status.push(element.id)
-          // });
-          // this.selectedData.religion =[];
-          // res.data.user_detail.religion.forEach(element => {
-          //   this.selectedData.religion.push(element.id)
-          // });
-          // this.selectedData.workign_with =[];
-          // res.data.user_detail.workwith.forEach(element => {
-          //   this.selectedData.workign_with.push(element.id)
-          // });
-          this.selectedData.tongue = res.data.user_detail.tongue;
-          this.selectedData.community = res.data.user_detail.community;
-          this.selectedData.state = res.data.user_detail.state_id;
-          this.selectedData.education = res.data.user_detail.education_level;
-          this.selectedData.profession_area = res.data.user_detail.occupation;
-          this.selectedData.annual_income = res.data.user_detail.annualincome;
-        //   res.data.user_detail.diet.forEach(element => {
-        //      for (let index = 0; index < this.dropDown.diets.length; index++) {
-        //       const element1 = this.dropDown.diets[index];
-        //        if(element == element1.name)
-        //        {
-        //         this.dropDown.diets[index].isChecked = true;
-        //        }
-        //      }
-        //   });
-        //   res.data.user_detail.profile_created_by.forEach(element => {
-        //     for (let index = 0; index < this.owners.length; index++) {
-        //      const element1 = this.owners[index];
-        //       if(element == element1.val)
-        //       {
-        //        this.owners[index].isChecked = true;
-        //       }
-        //     }
-        //  });
+          this.selectedData.heightTo = {
+            height_label_feet: res.data.user_detail.contact_filter.height_to[0].height_label_feet,
+            id: res.data.user_detail.contact_filter.height_to[0].id,
+          } 
+          this.selectedData.marital_status =[];
+          res.data.user_detail.contact_filter.martialstatus.forEach(element => {
+            this.selectedData.marital_status.push(element.id)
+          });
+          this.selectedData.religion =[];
+          res.data.user_detail.contact_filter.religion_id.forEach(element => {
+            this.selectedData.religion.push(element.id)
+          });
+          
+          this.selectedData.tongue = res.data.user_detail.contact_filter.tongue;
+          this.selectedData.community = res.data.user_detail.contact_filter.community_id;
+          this.selectedData.country = res.data.user_detail.contact_filter.country_id;
         }
         
       }

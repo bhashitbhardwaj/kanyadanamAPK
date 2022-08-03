@@ -54,6 +54,11 @@
                 <ionic-selectable [(ngModel)]="selectedData.community" [items]="dropDown.communities" [isMultiple]="true" [isConfirmButtonEnabled]="true" headerColor="primary" itemValueField="id" itemTextField="community" [canSearch]="true">
                 </ionic-selectable>
             </ion-item>
+            <ion-item>
+                <ion-label>Country in Living</ion-label>
+                <ionic-selectable [(ngModel)]="selectedData.country" [items]="dropDown.countries" [isMultiple]="true" [isConfirmButtonEnabled]="true" headerColor="primary" itemValueField="id" itemTextField="name" [canSearch]="true" (onChange)="countryChange($event)">
+                </ionic-selectable>
+            </ion-item>
             <ion-button expand="block" color="primary">Save & Continue</ion-button>
         </ion-list>
     </ion-card>

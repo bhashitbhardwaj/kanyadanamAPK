@@ -1,80 +1,47 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button color="primary"></ion-back-button>
-    </ion-buttons>
-    <ion-title class="ion-text-center logo">
-      <img src="/assets/images/knnewlogo.png">
-    </ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button color="primary"></ion-back-button>
+        </ion-buttons>
+        <ion-title class="ion-text-center logo">
+            <img src="/assets/images/knnewlogo.png">
+        </ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>Qualification & Profession Details</ion-card-title>
-    </ion-card-header>
-    <ion-list class="ion-padding">
-      <ion-item>
-        <ion-label>Your education level</ion-label>
-        <ionic-selectable
-          [(ngModel)]="port"
-          [items]="ports"
-          [isMultiple]="true"
-          placeholder="Your Education level"
-          [isConfirmButtonEnabled]="true"
-          headerColor="primary"
-          itemValueField="id"
-          itemTextField="name"
-          [canSearch]="true"
-          (onChange)="portChange($event)">
-        </ionic-selectable>
-      </ion-item>
-      <ion-item>
-        <ion-label>Your education Field</ion-label>
-        <ionic-selectable
-          [(ngModel)]="port"
-          [items]="ports"
-          placeholder="Your Education Field"
-          headerColor="primary"
-          itemValueField="id"
-          itemTextField="name"
-          [canSearch]="true"
-          (onChange)="portChange($event)">
-        </ionic-selectable>
-      </ion-item>
-      <ion-item>
-        <ion-label>Your Occupation</ion-label>
-        <ionic-selectable
-          [(ngModel)]="port"
-          [items]="ports"
-          placeholder="Your Occupation"
-          headerColor="primary"
-          itemValueField="id"
-          itemTextField="name"
-          [canSearch]="true"
-          (onChange)="portChange($event)">
-        </ionic-selectable>
-      </ion-item>
-      <ion-item>
-        <ion-label>You work with</ion-label>
-        <ion-select interface="popover" placeholder="You work with">
-          <ion-select-option value="brown">Brown</ion-select-option>
-          <ion-select-option value="blonde">Blonde</ion-select-option>
-          <ion-select-option value="black">Black</ion-select-option>
-          <ion-select-option value="red">Red</ion-select-option>
-        </ion-select>
-      </ion-item>
-      <ion-item>
-        <ion-label>Annual Income</ion-label>
-        <ion-select interface="popover" placeholder="Annual Income">
-          <ion-select-option value="brown">Brown</ion-select-option>
-          <ion-select-option value="blonde">Blonde</ion-select-option>
-          <ion-select-option value="black">Black</ion-select-option>
-          <ion-select-option value="red">Red</ion-select-option>
-        </ion-select>
-      </ion-item>
-      <ion-button expand="block" color="primary">Update Profile</ion-button>
-    </ion-list>
+    <ion-card>
+        <ion-card-header>
+            <ion-card-title>Qualification & Profession Details</ion-card-title>
+        </ion-card-header>
+        <ion-list class="ion-padding">
+            <ion-item>
+                <ion-label>Education Level</ion-label>
+                <ionic-selectable [(ngModel)]="selectedData.education" placeholder="Your Education Level" [items]="dropDown.educationLevels" [isMultiple]="true" [isConfirmButtonEnabled]="true" headerColor="primary" itemValueField="id" itemTextField="name" [canSearch]="true">
+                </ionic-selectable>
+            </ion-item>
+            <ion-item>
+                <ion-label>Education Field</ion-label>
+                <ionic-selectable [(ngModel)]="selectedData.educationfield" placeholder="Your Education Field" [items]="dropDown.educationFields" [isMultiple]="false" [isConfirmButtonEnabled]="true" headerColor="primary" itemValueField="id" itemTextField="name" [canSearch]="true">
+                </ionic-selectable>
+            </ion-item>
+            <ion-item>
+                <ion-label>Profession Area</ion-label>
+                <ionic-selectable [(ngModel)]="selectedData.profession_area" placeholder="Your Occupation" [items]="dropDown.occupations" [isMultiple]="false" [isConfirmButtonEnabled]="true" headerColor="primary" itemValueField="id" itemTextField="name" [canSearch]="true">
+                </ionic-selectable>
+            </ion-item>
+            <ion-item>
+                <ion-label>You Work With</ion-label>
+                <ion-select multiple="false" interface="popover" placeholder="You Work with" [(ngModel)]="selectedData.workign_with">
+                    <ion-select-option *ngFor="let data of dropDown.workWiths" [value]="data.id">{{data.name}}</ion-select-option>
+                </ion-select>
+            </ion-item>
+            <ion-item>
+                <ion-label>Annual Income</ion-label>
+                <ionic-selectable [(ngModel)]="selectedData.annual_income" placeholder="Your Annual Income" [items]="dropDown.annualIncomes" [isMultiple]="false" [isConfirmButtonEnabled]="true" headerColor="primary" itemValueField="id" itemTextField="name" [canSearch]="true">
+                </ionic-selectable>
+            </ion-item>
+            <ion-button expand="block" color="primary">Update Profile</ion-button>
+        </ion-list>
     </ion-card>
 </ion-content>
