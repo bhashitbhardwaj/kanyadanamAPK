@@ -99,10 +99,10 @@ export class EditprofilePage implements OnInit {
   }
   save()
   {
-    this.rForm.value.community =this.rForm.value.community.id;
-    this.rForm.value.country =this.rForm.value.country.id;
-    this.rForm.value.state =this.rForm.value.state.id;
-    this.rForm.value.city =this.rForm.value.city.id;
+    this.rForm.value.community = (this.rForm.value.community)?this.rForm.value.community.id: null;
+    this.rForm.value.country = (this.rForm.value.country)?this.rForm.value.country.id:null;
+    this.rForm.value.state = (this.rForm.value.state)? this.rForm.value.state.id:null;
+    this.rForm.value.city = (this.rForm.value.city)?this.rForm.value.city.id:null;
     var tongue =[];
     this.rForm.value.tongue= this.rForm.value.tongue || [];
     this.rForm.value.tongue.forEach(obj => {
@@ -140,16 +140,16 @@ export class EditprofilePage implements OnInit {
           "familydetails": res.data.user_detail.user.familydetails,
           "aadhar_card": res.data.user_detail.user.aadhar_card,
           "diet": res.data.user_detail.user_details.diet,
-          "community": res.data.user_detail.user_details.community_id[0],
-          "country": res.data.user_detail.user_details.country_id[0],
-          "state": res.data.user_detail.user_details.state_id[0],
-          "city": res.data.user_detail.user_details.city_id[0],
-          "martialstatus": res.data.user_detail.user_details.martialstatus[0].id,
+          "community": (res.data.user_detail.user_details && res.data.user_detail.user_details.community_id)?res.data.user_detail.user_details.community_id[0]:null,
+          "country": (res.data.user_detail.user_details && res.data.user_detail.user_details.country_id)?res.data.user_detail.user_details.country_id[0]:null,
+          "state": (res.data.user_detail.user_details && res.data.user_detail.user_details.state_id)?res.data.user_detail.user_details.state_id[0]:null,
+          "city": (res.data.user_detail.user_details && res.data.user_detail.user_details.city_id)?res.data.user_detail.user_details.city_id[0]:null,
+          "martialstatus": (res.data.user_detail.user_details && res.data.user_detail.user_details.martialstatus)?res.data.user_detail.user_details.martialstatus[0].id:null,
           "sub_community": res.data.user_detail.user_details.sub_community,
           "does_drink": res.data.user_detail.user_details.does_drink,
           "does_smoke": res.data.user_detail.user_details.does_smoke,
           "tongue": res.data.user_detail.user_details.tongue,
-          "religion":(res.data.user_detail.user_details.religion_id.length)?res.data.user_detail.user_details.religion_id[0].id:null,
+          "religion":(res.data.user_detail.user_details && res.data.user_detail.user_details.religion_id && res.data.user_detail.user_details.religion_id.length)?res.data.user_detail.user_details.religion_id[0].id:null,
           "create_profile_for": res.data.user_detail.user.create_profile_for,
           "dob": res.data.user_detail.user.dobday + '/' + res.data.user_detail.user.dobmonth + '/' + res.data.user_detail.user.dobyear
       });
