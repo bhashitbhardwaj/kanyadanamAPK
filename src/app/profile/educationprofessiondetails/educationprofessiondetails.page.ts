@@ -24,20 +24,34 @@ export class EducationprofessiondetailsPage implements OnInit {
 
   //Save data Function
   save() {
+    
     var education =[];
     this.selectedData.education= this.selectedData.education || [];
     this.selectedData.education.forEach(obj => {
       education.push(obj.id)
     });
+    if(this.selectedData.educationfield!=null){
+      var educationfield = this.selectedData.educationfield.id
+    }
+    if(this.selectedData.profession_area!=null){
+      var profession_area = this.selectedData.profession_area.id
+    }
+    if(this.selectedData.annual_income!=null){
+      var annual_income = this.selectedData.annual_income.id
+    }
+    //var educationfield = (this.selectedData.educationfield)?this.selectedData.educationfield:null;
     console.log('save:', this.selectedData);
+    //console.log(this.selectedData.educationfield.name);
+    //console.log(this.selectedData.educationfield);
+   // return;
     this.loader.Show('Loading...');
     this.api.postDataWithAuth('api/updateEducationProfessionDetails',
     {
-      "education_level":education,
-      "education_field":this.selectedData.educationfield.id,
-      "workwith":this.selectedData.workign_with,
-      "occupation":this.selectedData.profession_area.id,
-      "annualincome":this.selectedData.annual_income.id
+      "education_level": education,
+      "education_field": educationfield,
+      "workwith": this.selectedData.workign_with,
+      "occupation": profession_area,
+      "annualincome": annual_income
     }).subscribe(res=>{
        this.loader.Hide();
        if(res.status)
@@ -137,18 +151,31 @@ export class EducationprofessiondetailsPage implements OnInit {
     this.api.postDataWithAuth('api/getEducationProfessionDetails',{}).subscribe(res => {
       this.loader.Hide();
       if (res.status) {
-        console.log(res.data.user_detail);
+        //console.log(res.data.user_detail);
         if(res.data.user_detail && res.data.user_detail)
         { 
               if(res.data.user_detail!=null){
-                this.selectedData.workign_with = res.data.user_detail.workwith[0].id;
+                //console.log(res.data.user_detail);
+                if(res.data.user_detail.workwith!=null){
+                  this.selectedData.workign_with = res.data.user_detail.workwith[0].id;
+                }
+                //this.selectedData.workign_with = res.data.user_detail.workwith[0].id;
                 this.selectedData.community = res.data.user_detail.community;
                 this.selectedData.country = res.data.user_detail.country_id;
                 this.selectedData.state = res.data.user_detail.state_id;
                 this.selectedData.education = res.data.user_detail.education_level;
-                this.selectedData.educationfield = res.data.user_detail.education_field[0];
-                this.selectedData.profession_area = res.data.user_detail.occupation[0];
-                this.selectedData.annual_income = res.data.user_detail.annualincome[0];
+                if(res.data.user_detail.education_field!=null){
+                  this.selectedData.educationfield = res.data.user_detail.education_field[0].id;
+                }
+                if(res.data.user_detail.occupation!=null){
+                  this.selectedData.profession_area = res.data.user_detail.occupation[0].id;
+                }
+                if(res.data.user_detail.annualincome!=null){
+                  this.selectedData.annual_income = res.data.user_detail.annualincome[0].id;
+                }
+                //this.selectedData.educationfield = res.data.user_detail.education_field[0];
+                //this.selectedData.profession_area = res.data.user_detail.occupation[0];
+                //this.selectedData.annual_income = res.data.user_detail.annualincome[0];
               }
         }
       }

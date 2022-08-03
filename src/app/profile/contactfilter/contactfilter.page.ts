@@ -108,6 +108,49 @@ export class ContactfilterPage implements OnInit {
 
   }
 
+  getContactFilters()
+  {
+    this.loader.Show('Loading...');
+    this.api.postDataWithAuth('api/getContactFilters',{}).subscribe(res => {
+      this.loader.Hide();
+      if (res.status) {
+        console.log(res.data.user_detail.contact_filter);
+        if(res.data.user_detail.contact_filter && res.data.user_detail.contact_filter.length)
+        { 
+          console.log(res.data.user_detail.contact_filter.age_from);
+          this.selectedData.age = { lower: res.data.user_detail.contact_filter.age_from, upper: res.data.user_detail.contact_filter.age_to };
+          this.selectedData.heightFrom = {
+            height_label_feet: res.data.user_detail.contact_filter.height_from[0].height_label_feet,
+            id: res.data.user_detail.contact_filter.height_from[0].id,
+          } 
+          this.selectedData.heightTo = {
+            height_label_feet: res.data.user_detail.contact_filter.height_to[0].height_label_feet,
+            id: res.data.user_detail.contact_filter.height_to[0].id,
+          } 
+          this.selectedData.marital_status =[];
+          res.data.user_detail.contact_filter.martialstatus.forEach(element => {
+            this.selectedData.marital_status.push(element.id)
+          });
+          this.selectedData.religion =[];
+          res.data.user_detail.contact_filter.religion_id.forEach(element => {
+            this.selectedData.religion.push(element.id)
+          });
+          
+          this.selectedData.tongue = res.data.user_detail.contact_filter.tongue;
+          this.selectedData.community = res.data.user_detail.contact_filter.community_id;
+          this.selectedData.country = res.data.user_detail.contact_filter.country_id;
+        }
+      }
+      else {
+        this.toast.Notify({
+          message: res.message,
+          duration: 3000,
+          position: 'top'
+        })
+      }
+    })
+  }
+
   save()
   {
     var tongue =[];
@@ -160,46 +203,5 @@ export class ContactfilterPage implements OnInit {
     })
   }
 
-  getContactFilters()
-  {
-    this.loader.Show('Loading...');
-    this.api.postDataWithAuth('api/getContactFilters',{}).subscribe(res => {
-      this.loader.Hide();
-      if (res.status) {
-        console.log(res.data.user_detail.contact_filter);
-        if(res.data.user_detail.contact_filter && res.data.user_detail.contact_filter.length)
-        { 
-          console.log(res.data.user_detail.contact_filter.age_from);
-          this.selectedData.age = { lower: res.data.user_detail.contact_filter.age_from, upper: res.data.user_detail.contact_filter.age_to };
-          this.selectedData.heightFrom = {
-            height_label_feet: res.data.user_detail.contact_filter.height_from[0].height_label_feet,
-            id: res.data.user_detail.contact_filter.height_from[0].id,
-          } 
-          this.selectedData.heightTo = {
-            height_label_feet: res.data.user_detail.contact_filter.height_to[0].height_label_feet,
-            id: res.data.user_detail.contact_filter.height_to[0].id,
-          } 
-          this.selectedData.marital_status =[];
-          res.data.user_detail.contact_filter.martialstatus.forEach(element => {
-            this.selectedData.marital_status.push(element.id)
-          });
-          this.selectedData.religion =[];
-          res.data.user_detail.contact_filter.religion_id.forEach(element => {
-            this.selectedData.religion.push(element.id)
-          });
-          
-          this.selectedData.tongue = res.data.user_detail.contact_filter.tongue;
-          this.selectedData.community = res.data.user_detail.contact_filter.community_id;
-          this.selectedData.country = res.data.user_detail.contact_filter.country_id;
-        }
-      }
-      else {
-        this.toast.Notify({
-          message: res.message,
-          duration: 3000,
-          position: 'top'
-        })
-      }
-    })
-  }
+  
 }
