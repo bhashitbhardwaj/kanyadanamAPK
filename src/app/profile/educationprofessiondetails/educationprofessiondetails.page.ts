@@ -103,34 +103,12 @@ export class EducationprofessiondetailsPage implements OnInit {
         if(res.data.user_detail && res.data.user_detail)
         { 
           console.log(res.data.user_detail);
-          // this.selectedData.age = { lower: res.data.user_detail.age_from, upper: res.data.user_detail.age_to };
-          // this.selectedData.heightFrom = {
-          //   height_label_feet: res.data.user_detail.height_from[0].height_label_feet,
-          //   id: res.data.user_detail.height_from[0].id,
-          // } 
-          // this.selectedData.heightTo = {
-          //   height_label_feet: res.data.user_detail.height_to[0].height_label_feet,
-          //   id: res.data.user_detail.height_to[0].id,
-          // } 
-          // this.selectedData.marital_status =[];
-          // res.data.user_detail.martialstatus.forEach(element => {
-          //   this.selectedData.marital_status.push(element.id)
-          // });
-          // this.selectedData.religion =[];
-          // res.data.user_detail.religion.forEach(element => {
-          //   this.selectedData.religion.push(element.id)
-          // });
+          
           this.selectedData.workign_with =[];
           res.data.user_detail.workwith.forEach(element => {
             this.selectedData.workign_with.push(element.id)
           });
-          // this.selectedData.educationfield =[];
-          // res.data.user_detail.education_field.forEach(element => {
-          //   this.selectedData.educationfield.push(element.id)
-          // });
-          //console.log(this.selectedData.educationfield);
-          //console.log(res.data.user_detail.educationfield);
-          //this.selectedData.workign_with = res.data.user_detail.workwith[0];
+          
           this.selectedData.community = res.data.user_detail.community;
           this.selectedData.country = res.data.user_detail.country_id;
           this.selectedData.state = res.data.user_detail.state_id;
@@ -138,24 +116,7 @@ export class EducationprofessiondetailsPage implements OnInit {
           this.selectedData.educationfield = res.data.user_detail.education_field[0];
           this.selectedData.profession_area = res.data.user_detail.occupation[0];
           this.selectedData.annual_income = res.data.user_detail.annualincome[0];
-        //   res.data.user_detail.diet.forEach(element => {
-        //      for (let index = 0; index < this.dropDown.diets.length; index++) {
-        //       const element1 = this.dropDown.diets[index];
-        //        if(element == element1.name)
-        //        {
-        //         this.dropDown.diets[index].isChecked = true;
-        //        }
-        //      }
-        //   });
-        //   res.data.user_detail.profile_created_by.forEach(element => {
-        //     for (let index = 0; index < this.owners.length; index++) {
-        //      const element1 = this.owners[index];
-        //       if(element == element1.val)
-        //       {
-        //        this.owners[index].isChecked = true;
-        //       }
-        //     }
-        //  });
+        
         }
         
       }
