@@ -52,6 +52,11 @@ export class EditpartnerprofilePage implements OnInit {
     this.selectedData.community.forEach(obj => {
       community.push(obj.id)
     });
+    var country =[];
+    this.selectedData.country= this.selectedData.country || [];
+    this.selectedData.country.forEach(obj => {
+      country.push(obj.id)
+    });
     var state =[];
     this.selectedData.state= this.selectedData.state || [];
     this.selectedData.state.forEach(obj => {
@@ -84,7 +89,7 @@ export class EditpartnerprofilePage implements OnInit {
       martialstatus:this.selectedData.marital_status,
       religion_id:this.selectedData.religion,
       community_id:community,
-      country_id:(this.selectedData.country)?[this.selectedData.country.id]:[],
+      country_id:country,
       state_id:state,
       education_level:education,
       workwith:this.selectedData.workign_with,
@@ -339,6 +344,7 @@ export class EditpartnerprofilePage implements OnInit {
           });
           this.selectedData.tongue = res.data.user_detail.tongue;
           this.selectedData.community = res.data.user_detail.community;
+          this.selectedData.country = res.data.user_detail.country_id;
           this.selectedData.state = res.data.user_detail.state_id;
           this.selectedData.education = res.data.user_detail.education_level;
           this.selectedData.profession_area = res.data.user_detail.occupation;
