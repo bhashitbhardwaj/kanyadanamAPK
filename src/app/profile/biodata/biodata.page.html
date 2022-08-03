@@ -10,83 +10,89 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-    <ion-card>
-        <ion-card-header>
-            <ion-card-title>My BioData Details</ion-card-title>
-        </ion-card-header>
-        <ion-list class="ion-padding">
-            <ion-text color="dark">
-                <h4 class="header">Personal Details</h4>
-            </ion-text>
-            <ion-item>
-                <ion-label position="floating">Your Name</ion-label>
-                <ion-input></ion-input>
-            </ion-item>
-            <ion-item>
-                <ion-label position="floating">Date Of Birth</ion-label>
-                <ion-input></ion-input>
-            </ion-item>
-            <ion-item>
-                <ion-label position="floating">Your Mobile Number</ion-label>
-                <ion-input value="8523882090" readonly></ion-input>
-            </ion-item>
-            <ion-item>
-                <ion-label position="floating">Your Email</ion-label>
-                <ion-input></ion-input>
-            </ion-item>
-            <ion-item>
-                <ion-label position="floating">Your Education</ion-label>
-                <ion-input></ion-input>
-            </ion-item>
-            <ion-item>
-                <ion-label position="floating">Your Height (Feet & Inch)</ion-label>
-                <ion-input></ion-input>
-            </ion-item>
-            <ion-item>
-                <ion-label position="floating">Self Gotra</ion-label>
-                <ion-input></ion-input>
-            </ion-item>
-            <ion-item>
-                <ion-label position="floating">Mother Gotra</ion-label>
-                <ion-input></ion-input>
-            </ion-item>
-            <ion-item>
-                <ion-label position="floating">Dadi Gotra</ion-label>
-                <ion-input></ion-input>
-            </ion-item>
-            <ion-item>
-                <ion-label position="floating">Nani Gotra</ion-label>
-                <ion-input></ion-input>
-            </ion-item>
-            <ion-text color="dark">
-                <h4 class="header">Family Background / Details</h4>
-            </ion-text>
-            <ion-item>
-                <ion-label position="floating">Father Name</ion-label>
-                <ion-input></ion-input>
-            </ion-item>
-            <ion-item>
-                <ion-label position="floating">Father Occupation</ion-label>
-                <ion-input></ion-input>
-            </ion-item>
-            <ion-item>
-                <ion-label position="floating">Mother Name</ion-label>
-                <ion-input></ion-input>
-            </ion-item>
-            <ion-item>
-                <ion-label position="floating">Mother Occupation</ion-label>
-                <ion-input></ion-input>
-            </ion-item>
-            <ion-item>
-                <ion-label position="floating">Siblings</ion-label>
-                <ion-input placeholder="like brother name, sister name"></ion-input>
-            </ion-item>
-            <ion-item>
-                <ion-label position="floating">Address</ion-label>
-                <ion-textarea placeholder="Your Address"></ion-textarea>
-            </ion-item>
+    <div *ngIf="biodata">
 
-            <ion-button expand="block" color="primary">Save & Continue</ion-button>
-        </ion-list>
-    </ion-card>
+        <ion-card>
+            <ion-card-header>
+                <ion-card-title>Your Bio-data</ion-card-title>
+            </ion-card-header>
+            <ion-list class="ion-padding">
+                <ion-text color="dark">
+                    <h4 class="header">Personal Details</h4>
+                </ion-text>
+                <ion-item>
+                    <ion-label position="floating">Your Name</ion-label>
+                    <ion-input readonly [(ngModel)]="selectedData.name"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label position="floating">Date Of Birth</ion-label>
+                    <ion-input readonly [(ngModel)]="selectedData.dob"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label position="floating">Your Email</ion-label>
+                    <ion-input readonly [(ngModel)]="selectedData.email"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label position="floating">Your Mobile Number</ion-label>
+                    <ion-input [(ngModel)]="selectedData.mobile" placeholder="Enter Your Mobile Number"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label position="floating">Your Height (Feet & Inch)</ion-label>
+                    <ion-input [(ngModel)]="selectedData.height" placeholder="Your Height"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label position="floating">Your Education</ion-label>
+                    <ion-input [(ngModel)]="selectedData.education" placeholder="Your Education"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label position="floating">Self Gotra</ion-label>
+                    <ion-input [(ngModel)]="selectedData.self_gotra" placeholder="Your Self Gotra"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label position="floating">Mother Gotra</ion-label>
+                    <ion-input [(ngModel)]="selectedData.mother_gotra" placeholder="Your Mother Gotra"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label position="floating">Dadi Gotra</ion-label>
+                    <ion-input [(ngModel)]="selectedData.dadi_gotra" placeholder="Your Dadi Gotra"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label position="floating">Nani Gotra</ion-label>
+                    <ion-input [(ngModel)]="selectedData.nani_gotra" placeholder="Your Nani Gotra"></ion-input>
+                </ion-item>
+                <ion-text color="dark">
+                    <h4 class="header">Family Background / Details</h4>
+                </ion-text>
+                <ion-item>
+                    <ion-label position="floating">Father Name</ion-label>
+                    <ion-input [(ngModel)]="selectedData.father_name" placeholder="Your Father Name"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label position="floating">Father Occupation</ion-label>
+                    <ion-input [(ngModel)]="selectedData.father_occupation" placeholder="Your Father Occupation"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label position="floating">Mother Name</ion-label>
+                    <ion-input [(ngModel)]="selectedData.mother_name" placeholder="Your Mother Name"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label position="floating">Mother Occupation</ion-label>
+                    <ion-input [(ngModel)]="selectedData.mother_occupation" placeholder="Your Mother Occupation"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label position="floating">Siblings</ion-label>
+                    <ion-input [(ngModel)]="selectedData.mobile" placeholder="like brother name, sister name"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label position="floating">Address</ion-label>
+                    <ion-textarea [(ngModel)]="selectedData.address" placeholder="Your Address"></ion-textarea>
+                </ion-item>
+
+                <ion-button expand="block" color="primary">Save & Continue</ion-button>
+            </ion-list>
+        </ion-card>
+
+    </div>
+
+
 </ion-content>
