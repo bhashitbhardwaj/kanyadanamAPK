@@ -13,24 +13,27 @@ import { ToastService } from 'src/app/provider/toast.service';
   styleUrls: ['./physicalappearance.page.scss'],
 })
 export class PhysicalappearancePage implements OnInit {
-
   dropDown: any = {};
-  selectedData: any = {};
+  selectedData: any = {
+    body_type:'Slim',
+    skin_tone: 'Very Fair',
+    disability: 'None'
+  };
   public body_type = [
-    { val: 'Slim', isChecked: false },
-    { val: 'Athletic', isChecked: false },
-    { val: 'Average', isChecked: false },
-    { val: 'Heavy', isChecked: false }
+    { val: 'Slim' },
+    { val: 'Athletic' },
+    { val: 'Average' },
+    { val: 'Heavy' }
   ];
   public skin_tone = [
-    { val: 'Very Fair', isChecked: false },
-    { val: 'Fair', isChecked: false },
-    { val: 'Wheatish', isChecked: false },
-    { val: 'Dark', isChecked: false }
+    { val: 'Very Fair'},
+    { val: 'Fair' },
+    { val: 'Wheatish' },
+    { val: 'Dark' }
   ];
   public disability = [
-    { val: 'None', isChecked: false },
-    { val: 'Physical Disability', isChecked: false }
+    { val: 'None' },
+    { val: 'Physical Disability' }
   ];
 
   constructor(
@@ -41,9 +44,7 @@ export class PhysicalappearancePage implements OnInit {
   ) {
   }
 
-
   ngOnInit() {
-    
     this.api.getData('api/getHeights').subscribe(res => {
       if (res.status) {
         console.log(res);
@@ -57,12 +58,32 @@ export class PhysicalappearancePage implements OnInit {
         })
       }
     })
-    
-
-
+    this.getPhysicalappearance();
   }
 
-  
-
+  getPhysicalappearance()
+  {
+    this.loader.Show('Loading...');
+    this.api.postDataWithAuth('api/getPhysicalAppearance',{}).subscribe(res => {
+      this.loader.Hide();
+      if (res.status) {
+        console.log(res.data.user_detail);
+        if(res.data.user_detail)
+        { 
+          this.selectedData.height = res.data.user_detail.height[0];
+          this.selectedData.body_type = res.data.user_detail.body_type;
+          this.selectedData.skin_tone = res.data.user_detail.skin_tone;
+          this.selectedData.disability = res.data.user_detail.disability;
+        }
+      }
+      else {
+        this.toast.Notify({
+          message: res.message,
+          duration: 3000,
+          position: 'top'
+        })
+      }
+    })
+  }
 
 }

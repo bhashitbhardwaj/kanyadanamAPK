@@ -20,18 +20,18 @@
             </ion-text>
             <ion-item>
                 <ion-label position="floating">Enter your mobile number</ion-label>
-                <ion-input value="8523882090" readonly></ion-input>
+                <ion-input [(ngModel)]="selectedData.mobile" value="8523882090" readonly></ion-input>
             </ion-item>
             <ion-text color="dark">
                 <h4 class="header">Contact details and display status</h4>
             </ion-text>
             <ion-item>
                 <ion-label position="floating">Name of contact person</ion-label>
-                <ion-input></ion-input>
+                <ion-input type="text" [(ngModel)]="selectedData.contact_person_name"></ion-input>
             </ion-item>
             <ion-item>
                 <ion-label>Relationship with the member</ion-label>
-                <ion-select interface="popover" placeholder="Marital Status">
+                <ion-select interface="popover" [(ngModel)]="selectedData.relationship">
                     <ion-select-option value="Self">Self</ion-select-option>
                     <ion-select-option value="Parent">Parent</ion-select-option>
                     <ion-select-option value="Guardian">Guardian</ion-select-option>
@@ -47,35 +47,34 @@
             </ion-text>
             <ion-item>
                 <ion-label>To</ion-label>
-                <ion-datetime displayFormat="h a" [(ngModel)]="myTimeTo"></ion-datetime>
+                <ion-datetime displayFormat="h a" [(ngModel)]="selectedData.myTimeTo"></ion-datetime>
             </ion-item>
             <ion-item>
                 <ion-label>From</ion-label>
-                <ion-datetime displayFormat="h a" [(ngModel)]="myTimeFrom"></ion-datetime>
+                <ion-datetime displayFormat="h a" [(ngModel)]="selectedData.myTimeFrom"></ion-datetime>
             </ion-item>
             <ion-list>
-                <ion-radio-group value="b">
+                <ion-radio-group [(ngModel)]="selectedData.contact_display_setting">
                     <ion-list-header>
                         <ion-label>Contact display setting</ion-label>
                     </ion-list-header>
-
                     <ion-item>
                         <ion-label>Visible to all Premium Members</ion-label>
-                        <ion-radio slot="start" value="a"></ion-radio>
+                        <ion-radio slot="start" value="1"></ion-radio>
                     </ion-item>
 
                     <ion-item>
                         <ion-label>Visible to Premium Members you wish to Connect with</ion-label>
-                        <ion-radio slot="start" value="b"></ion-radio>
+                        <ion-radio slot="start" value="2"></ion-radio>
                     </ion-item>
 
                     <ion-item>
                         <ion-label>Not visible to anyone (Hide Phonenumber)</ion-label>
-                        <ion-radio slot="start" value="c"></ion-radio>
+                        <ion-radio slot="start" value="3"></ion-radio>
                     </ion-item>
                 </ion-radio-group>
             </ion-list>
-            <ion-button expand="block" color="primary">Save & Continue</ion-button>
+            <ion-button expand="block" color="primary" (click)="save()">Save & Continue</ion-button>
         </ion-list>
     </ion-card>
 </ion-content>
