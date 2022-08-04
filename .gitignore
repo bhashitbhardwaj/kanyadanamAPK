@@ -32,3 +32,4 @@ npm-debug.log*
 node_modules
 www
 package-lock.json
+/package-lock.json
