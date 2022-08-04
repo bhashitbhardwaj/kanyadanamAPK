@@ -17,17 +17,17 @@
         <ion-list class="ion-padding">
             <ion-item>
                 <ion-label>Country of Birth</ion-label>
-                <ionic-selectable [(ngModel)]="port" [items]="ports" headerColor="primary" placeholder="Country" itemValueField="id" itemTextField="name" [canSearch]="true" (onChange)="portChange($event)">
+                <ionic-selectable  [(ngModel)]="selectedData.country" [items]="dropDown.countries" [isMultiple]="false" [isConfirmButtonEnabled]="true" headerColor="primary" itemValueField="id" itemTextField="name" [canSearch]="true" (onChange)="countryChange($event)">
                 </ionic-selectable>
             </ion-item>
             <ion-item>
                 <ion-label>State of Birth</ion-label>
-                <ionic-selectable [(ngModel)]="port" [items]="ports" headerColor="primary" placeholder="State" itemValueField="id" itemTextField="name" [canSearch]="true" (onChange)="portChange($event)">
+                <ionic-selectable  [(ngModel)]="selectedData.state" [items]="dropDown.states" [isMultiple]="false" [isConfirmButtonEnabled]="true" headerColor="primary" itemValueField="id" itemTextField="name" [canSearch]="true" (onChange)="stateChange($event)">
                 </ionic-selectable>
             </ion-item>
             <ion-item>
                 <ion-label>City of Birth</ion-label>
-                <ionic-selectable [(ngModel)]="port" [items]="ports" headerColor="primary" placeholder="City" itemValueField="id" itemTextField="name" [canSearch]="true" (onChange)="portChange($event)">
+                <ionic-selectable [(ngModel)]="selectedData.city" [items]="dropDown.cities" [isMultiple]="false" [isConfirmButtonEnabled]="true" headerColor="primary" itemValueField="id" itemTextField="name" [canSearch]="true">
                 </ionic-selectable>
             </ion-item>
             <ion-item>
