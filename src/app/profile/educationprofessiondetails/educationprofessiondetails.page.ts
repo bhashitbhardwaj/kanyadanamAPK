@@ -155,27 +155,21 @@ export class EducationprofessiondetailsPage implements OnInit {
         if(res.data.user_detail && res.data.user_detail)
         { 
               if(res.data.user_detail!=null){
-                //console.log(res.data.user_detail);
+                console.log(res.data.user_detail);
                 if(res.data.user_detail.workwith!=null){
                   this.selectedData.workign_with = res.data.user_detail.workwith[0].id;
                 }
-                //this.selectedData.workign_with = res.data.user_detail.workwith[0].id;
-                this.selectedData.community = res.data.user_detail.community;
-                this.selectedData.country = res.data.user_detail.country_id;
-                this.selectedData.state = res.data.user_detail.state_id;
+                
                 this.selectedData.education = res.data.user_detail.education_level;
-                if(res.data.user_detail.education_field!=null){
-                  this.selectedData.educationfield = res.data.user_detail.education_field[0].id;
-                }
                 if(res.data.user_detail.occupation!=null){
                   this.selectedData.profession_area = res.data.user_detail.occupation[0].id;
                 }
                 if(res.data.user_detail.annualincome!=null){
                   this.selectedData.annual_income = res.data.user_detail.annualincome[0].id;
                 }
-                //this.selectedData.educationfield = res.data.user_detail.education_field[0];
-                //this.selectedData.profession_area = res.data.user_detail.occupation[0];
-                //this.selectedData.annual_income = res.data.user_detail.annualincome[0];
+                
+                this.selectedData.educationfield = (res.data.user_detail.education_field)?res.data.user_detail.education_field[0].id:null;
+                
               }
         }
       }
