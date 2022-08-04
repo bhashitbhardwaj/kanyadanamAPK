@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { IonicSelectableComponent } from 'ionic-selectable';
 import { ApiService } from 'src/app/provider/api.service';
 import { LoaderService } from 'src/app/provider/loader.service';
 import { ToastService } from 'src/app/provider/toast.service';

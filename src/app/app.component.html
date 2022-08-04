@@ -8,38 +8,38 @@
                             <ion-icon slot="start" name="person-circle-outline" color="primary"></ion-icon>
                             <ion-label>Profile</ion-label>
                         </ion-item>
-                        <ion-item button [routerLink]="'/profile'">
+                        <ion-item button [routerLink]="'/profile/privacyoption'">
                             <ion-icon slot="start" name="options-outline" color="primary"></ion-icon>
                             <ion-label>Privacy Option</ion-label>
                         </ion-item>
-                        <ion-item button [routerLink]="'/profile'">
+                        <ion-item button [routerLink]="'/profile/emailandsmsalerts'">
                             <ion-icon slot="start" name="mail-outline" color="primary"></ion-icon>
                             <ion-label>Email & SMS Alerts</ion-label>
                         </ion-item>
-                        <ion-item button [routerLink]="'/profile'">
+                        <ion-item button [routerLink]="'/profile/horoscopesetting'">
                             <ion-icon slot="start" name="settings-outline" color="primary"></ion-icon>
                             <ion-label>Horoscope Settings </ion-label>
                         </ion-item>
-                        <ion-item button [routerLink]="'/profile'">
+                        <ion-item button [routerLink]="'/profile/contactfilter'">
                             <ion-icon slot="start" name="filter-circle-outline" color="primary"></ion-icon>
                             <ion-label>Contact Filters</ion-label>
                         </ion-item>
-                        <ion-item button [routerLink]="'/login'" *ngIf="!isLogin">
+                        <!-- <ion-item button [routerLink]="'/login'" *ngIf="!isLogin">
                             <ion-icon slot="start" name="log-in-outline" color="primary"></ion-icon>
                             <ion-label>Login</ion-label>
-                        </ion-item>
+                        </ion-item> -->
                         <ion-item button *ngIf="isLogin" (click)="logout()">
                             <ion-icon slot="start" name="log-out-outline" color="primary"></ion-icon>
                             <ion-label>Log out</ion-label>
                         </ion-item>
-                        <ion-item button [routerLink]="'/search'">
+                        <!-- <ion-item button [routerLink]="'/search'">
                             <ion-icon slot="start" name="search-outline" color="primary"></ion-icon>
                             <ion-label>Search</ion-label>
                         </ion-item>
                         <ion-item button [routerLink]="'/advancesearch'">
                             <ion-icon slot="start" name="search-outline" color="primary"></ion-icon>
                             <ion-label>Advance Search</ion-label>
-                        </ion-item>
+                        </ion-item> -->
                     </ion-menu-toggle>
                 </ion-list>
             </ion-content>

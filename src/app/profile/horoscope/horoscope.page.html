@@ -17,12 +17,17 @@
         <ion-list class="ion-padding">
             <ion-item>
                 <ion-label>Country of Birth</ion-label>
-                <ionic-selectable  [(ngModel)]="selectedData.country" [items]="dropDown.countries" [isMultiple]="false" [isConfirmButtonEnabled]="true" headerColor="primary" itemValueField="id" itemTextField="name" [canSearch]="true" (onChange)="countryChange($event)">
+                <ionic-selectable [(ngModel)]="selectedData.country" [items]="dropDown.countries" [isMultiple]="false" [isConfirmButtonEnabled]="true" headerColor="primary" itemValueField="id" itemTextField="name" [canSearch]="true" (onChange)="countryChange($event)">
                 </ionic-selectable>
             </ion-item>
+            <!-- <ion-item>
+                <ion-label>State of Birth</ion-label>
+                <ionic-selectable [(ngModel)]="selectedData.state" [items]="dropDown.states" [isMultiple]="false" [isConfirmButtonEnabled]="true" headerColor="primary" itemValueField="id" itemTextField="name" [canSearch]="true" (onChange)="stateChange($event)">
+                </ionic-selectable>
+            </ion-item> -->
             <ion-item>
                 <ion-label>State of Birth</ion-label>
-                <ionic-selectable  [(ngModel)]="selectedData.state" [items]="dropDown.states" [isMultiple]="false" [isConfirmButtonEnabled]="true" headerColor="primary" itemValueField="id" itemTextField="name" [canSearch]="true" (onChange)="stateChange($event)">
+                <ionic-selectable [(ngModel)]="selectedData.state" [items]="dropDown.states" [isMultiple]="false" [isConfirmButtonEnabled]="true" headerColor="primary" itemValueField="id" itemTextField="name" [canSearch]="true" (onChange)="stateChange($event)">
                 </ionic-selectable>
             </ion-item>
             <ion-item>
@@ -32,41 +37,33 @@
             </ion-item>
             <ion-item>
                 <ion-label position="floating">D.O.B with BirthTime</ion-label>
-                <ion-datetime displayFormat="D MMM YYYY h:mm a" min="1980" max="2010" value="2005-06-17T11:06Z"></ion-datetime>
+                <ion-datetime displayFormat="h:mm a" [(ngModel)]="selectedData.time_of_birth"></ion-datetime>
             </ion-item>
-            <ion-item>
-                <ion-label>Horoscope Format</ion-label>
-                <ion-select interface="popover" placeholder="">
-                    <ion-select-option value="South Indian">South Indian</ion-select-option>
-                    <ion-select-option value="North Indian">North Indian</ion-select-option>
-                    <ion-select-option value="East Indian">East Indian</ion-select-option>
-                    <ion-select-option value="Kerala">Kerala</ion-select-option>
-                </ion-select>
-            </ion-item>
+
             <ion-list>
-                <ion-radio-group value="biff">
+                <ion-radio-group [(ngModel)]="selectedData.format">
+                    <ion-list-header>
+                        <ion-label>Horoscope Format</ion-label>
+                    </ion-list-header>
+                    <ion-item *ngFor="let entry of format">
+                        <ion-label>{{entry.val}}</ion-label>
+                        <ion-radio slot="start" value="{{entry.val}}"></ion-radio>
+                    </ion-item>
+                </ion-radio-group>
+            </ion-list>
+            <ion-list>
+                <ion-radio-group [(ngModel)]="selectedData.setting">
                     <ion-list-header>
                         <ion-label>Setting</ion-label>
                     </ion-list-header>
-
-                    <ion-item>
-                        <ion-label>Visible to all members</ion-label>
-                        <ion-radio slot="start" value="Visible to all members"></ion-radio>
-                    </ion-item>
-
-                    <ion-item>
-                        <ion-label>Visible to contacted and accepted members</ion-label>
-                        <ion-radio slot="start" value="Visible to contacted and accepted members"></ion-radio>
-                    </ion-item>
-
-                    <ion-item>
-                        <ion-label>Hide from all</ion-label>
-                        <ion-radio slot="start" value="Hide from all"></ion-radio>
+                    <ion-item *ngFor="let entry of setting">
+                        <ion-label>{{entry.val}}</ion-label>
+                        <ion-radio slot="start" value="{{entry.val}}"></ion-radio>
                     </ion-item>
                 </ion-radio-group>
             </ion-list>
 
-            <ion-button expand="block" color="primary">Submit</ion-button>
+            <ion-button expand="block" color="primary" (click)="save()">Submit</ion-button>
         </ion-list>
     </ion-card>
 
