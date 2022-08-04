@@ -15,45 +15,40 @@ export class PrivacyoptionPage implements OnInit {
 
   dropDown: any = {};
   selectedData: any = {};
-  public match_mail_photo_match_mail = [
-    { val: 'daily', isChecked: false },
-    { val: 'triweekly', isChecked: false },
-    { val: 'weekly', isChecked: false },
-    { val: 'unsubscribe', isChecked: false }
+  public name_privacy = [
+    { val: 'visible', name: '', isChecked: false },
+    { val: 'hide', name:'Hide my full name (Displays only Profile ID)', isChecked: false }
   ];
-  public premium_match_mail = [
-    { val: 'weekly', isChecked: false },
-    { val: 'unsubscribe', isChecked: false }
+  public phone_privacy = [
+    { val: 'visible', name: 'Visible to all Members', isChecked: false },
+    { val: 'hide', name: 'Hide my Phone number', isChecked: false }
   ];
-  public recent_visitor_email = [
-    { val: 'daily', isChecked: false },
-    { val: 'weekly', isChecked: false }
+  public email_privacy = [
+    { val: 'visible', name: 'Visible to all Members', isChecked: false },
+    { val: 'hide', name: 'Hide my Email Address', isChecked: false }
   ];
-  public member_who_shortlist_you_email = [
-    { val: 'daily', isChecked: false },
-    { val: 'unsubscribe', isChecked: false }
+  public income_privacy = [
+    { val: 'visible', name: 'Visible to all Members', isChecked: false },
+    { val: 'hide', name: 'Keep this private', isChecked: false }
   ];
-  public viewed_profile_email = [
-    { val: 'weekly', isChecked: false },
-    { val: 'unsubscribe', isChecked: false }
+  public visitor_privacy = [
+    { val: 'yes', name: 'Let other Members know that I have visited their Profile', isChecked: false },
+    { val: 'no', name: 'Do not let other Members know that I have visited their Profile', isChecked: false }
   ];
-  public similar_profile = [
-    { val: 'biweekly', isChecked: false },
-    { val: 'unsubscribe', isChecked: false }
+  public shortlist_privacy = [
+    { val: 'yes', name: 'Let other Members know that I have shortlisted their Profile', isChecked: false },
+    { val: 'no', name: 'Do not let other Members know that I have shortlisted their Profile', isChecked: false }
   ];
-  public contact_alert = [
+  public do_not_disturb = [
     { val: 'instant', isChecked: false },
     { val: 'daily', isChecked: false },
     { val: 'unsubscribe', isChecked: false }
   ];
-  public message_recv_alert = [
-    { val: 'daily', isChecked: false },
-    { val: 'unsubscribe', isChecked: false }
+  public web_notification_privacy = [
+    { val: 'subscribe', name:'Subscribe', isChecked: false },
+    { val: 'unsubscribe', name: 'Unsubscribe', isChecked: false }
   ];
-  public kndnm_special = [
-    { val: 'occasionally', isChecked: false },
-    { val: 'unsubscribe', isChecked: false }
-  ];
+  
   
   constructor(
     private router: Router,
