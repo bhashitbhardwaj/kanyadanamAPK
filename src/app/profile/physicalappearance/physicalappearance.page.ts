@@ -41,6 +41,37 @@ export class PhysicalappearancePage implements OnInit {
   ) {
   }
 
+  save() {
+    
+    console.log('save:', this.selectedData);
+    this.loader.Show('Loading...');
+    this.api.postDataWithAuth('api/updatePhysicalAppearance',
+    {
+      height:(this.selectedData.height)?this.selectedData.height.id:null,
+      body_type:this.selectedData.body_type,
+      skin_tone:this.selectedData.skin_tone,
+      disability:this.selectedData.disability
+    }).subscribe(res=>{
+       this.loader.Hide();
+       if(res.status)
+       {
+         console.log(res);
+         this.toast.Notify({
+          message:res.msg,
+          duration:3000,
+          position:'top'
+        })
+        this.router.navigateByUrl('/profile');
+       }
+       else{
+          this.toast.Notify({
+            message:res.message,
+            duration:3000,
+            position:'top'
+          })
+       }
+    })
+  }
 
   ngOnInit() {
     
@@ -57,12 +88,47 @@ export class PhysicalappearancePage implements OnInit {
         })
       }
     })
-    
+    this.getPhysicalAppearance()
 
 
   }
 
   
+  getPhysicalAppearance(){
+
+    this.loader.Show('Loading...');
+    this.api.postDataWithAuth('api/getPhysicalAppearance',{}).subscribe(res => {
+      this.loader.Hide();
+      if (res.status) {
+        console.log(res.data.user_detail.body_type);
+        if(res.data.user_detail.height!=null){
+          this.selectedData.height = {
+            height_label_feet: res.data.user_detail.height[0].height_label_feet,
+            id: res.data.user_detail.height[0].id,
+          }
+        }
+        if(res.data.user_detail.body_type!=null){
+          this.selectedData.body_type = res.data.user_detail.body_type;
+        }
+        if(res.data.user_detail.skin_tone!=null){
+          this.selectedData.skin_tone = res.data.user_detail.skin_tone;
+        }
+        if(res.data.user_detail.disability!=null){
+          this.selectedData.disability = res.data.user_detail.disability;
+        }
+
+      }
+      else {
+        this.toast.Notify({
+          message: res.message,
+          duration: 3000,
+          position: 'top'
+        })
+      }
+    })
+
+  }
+
 
 
 }

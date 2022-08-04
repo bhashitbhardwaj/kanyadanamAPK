@@ -23,7 +23,7 @@
                 </ion-item>
 
                 <ion-list>
-                    <ion-radio-group value="body_type">
+                    <ion-radio-group [(ngModel)]="selectedData.body_type">
                         <ion-list-header>
                             <ion-label>Body Type?</ion-label>
                         </ion-list-header>
@@ -39,7 +39,7 @@
                     </ion-radio-group>
                 </ion-list>
                 <ion-list>
-                    <ion-radio-group value="skin_tone">
+                    <ion-radio-group [(ngModel)]="selectedData.skin_tone">
                         <ion-list-header>
                             <ion-label>Skin Tone?</ion-label>
                         </ion-list-header>
@@ -55,7 +55,7 @@
                     </ion-radio-group>
                 </ion-list>
                 <ion-list>
-                    <ion-radio-group value="disability">
+                    <ion-radio-group [(ngModel)]="selectedData.disability">
                         <ion-list-header>
                             <ion-label>Any Disability?</ion-label>
                         </ion-list-header>
@@ -69,7 +69,7 @@
                         </ion-row>
                     </ion-radio-group>
                 </ion-list>
-                <ion-button expand="block" color="primary">Update Profile</ion-button>
+                <ion-button expand="block" color="primary" (click)="save()">Update Profile</ion-button>
             </ion-list>
         </ion-card>
     </div>
