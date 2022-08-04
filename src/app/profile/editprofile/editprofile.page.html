@@ -106,6 +106,7 @@
                         <ion-select-option *ngFor="let data of dropDown.martialstatus" [value]="data.id">{{data.name}}</ion-select-option>
                     </ion-select>
                 </ion-item>
+                
                 <ion-item>
                     <ion-label>Country</ion-label>
                     <ionic-selectable formControlName="country" [items]="dropDown.countries" [isMultiple]="false" [isConfirmButtonEnabled]="true" headerColor="primary" itemValueField="id" itemTextField="name" [canSearch]="true" (onChange)="countryChange($event)">
