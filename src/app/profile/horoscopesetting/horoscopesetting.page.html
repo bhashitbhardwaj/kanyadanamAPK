@@ -17,90 +17,63 @@
         <ion-list class="ion-padding">
 
             <ion-list>
-                <ion-radio-group value="Dashakoota">
+                <ion-radio-group [(ngModel)]="selectedData.horoscope_match_format">
                     <ion-list-header>
                         <ion-label>Horoscope Match Format</ion-label>
                     </ion-list-header>
-                    <ion-item>
-                        <ion-label>Ashtakoota</ion-label>
-                        <ion-radio slot="start" value="Ashtakoota"></ion-radio>
-                    </ion-item>
-                    <ion-item>
-                        <ion-label>Dashakoota</ion-label>
-                        <ion-radio slot="start" value="Dashakoota"></ion-radio>
+                    <ion-item *ngFor="let entry of horoscope_match_format">
+                        <ion-label>{{entry.val}}</ion-label>
+                        <ion-radio slot="start" value="{{entry.val}}"></ion-radio>
                     </ion-item>
                 </ion-radio-group>
             </ion-list>
             <ion-list>
-                <ion-radio-group value="Required">
+                <ion-radio-group [(ngModel)]="selectedData.nakshtra_check">
                     <ion-list-header>
                         <ion-label>Nakshtra Check</ion-label>
                     </ion-list-header>
-                    <ion-item>
-                        <ion-label>Not Required</ion-label>
-                        <ion-radio slot="start" value="Not Required"></ion-radio>
-                    </ion-item>
-                    <ion-item>
-                        <ion-label>Required</ion-label>
-                        <ion-radio slot="start" value="Required"></ion-radio>
+                    <ion-item *ngFor="let entry of nakshtra_check">
+                        <ion-label>{{entry.val}}</ion-label>
+                        <ion-radio slot="start" value="{{entry.val}}"></ion-radio>
                     </ion-item>
                 </ion-radio-group>
             </ion-list>
             <ion-list>
-                <ion-radio-group value="Not Required">
+                <ion-radio-group [(ngModel)]="selectedData.papasamyam_check">
                     <ion-list-header>
                         <ion-label>Papasamyam Check</ion-label>
                     </ion-list-header>
-                    <ion-item>
-                        <ion-label>Not Required</ion-label>
-                        <ion-radio slot="start" value="Not Required"></ion-radio>
-                    </ion-item>
-                    <ion-item>
-                        <ion-label>Required</ion-label>
-                        <ion-radio slot="start" value="Required"></ion-radio>
+                    <ion-item *ngFor="let entry of papasamyam_check">
+                        <ion-label>{{entry.val}}</ion-label>
+                        <ion-radio slot="start" value="{{entry.val}}"></ion-radio>
                     </ion-item>
                 </ion-radio-group>
             </ion-list>
             <ion-list>
-                <ion-radio-group value="Not Required">
+                <ion-radio-group [(ngModel)]="selectedData.manglik">
                     <ion-list-header>
                         <ion-label>Manglik / Chevvai Dosha Check</ion-label>
                     </ion-list-header>
-                    <ion-item>
-                        <ion-label>Not Required</ion-label>
-                        <ion-radio slot="start" value="Not Required"></ion-radio>
-                    </ion-item>
-                    <ion-item>
-                        <ion-label>Ordinary Check Required</ion-label>
-                        <ion-radio slot="start" value="Ordinary Check Required"></ion-radio>
-                    </ion-item>
-                    <ion-item>
-                        <ion-label>Strict Check Required</ion-label>
-                        <ion-radio slot="start" value="Strict Check Required"></ion-radio>
+                    <ion-item *ngFor="let entry of manglik">
+                        <ion-label>{{entry.val}}</ion-label>
+                        <ion-radio slot="start" value="{{entry.val}}"></ion-radio>
                     </ion-item>
                 </ion-radio-group>
             </ion-list>
             <ion-list>
-                <ion-radio-group value="Strict Check Required">
+                <ion-radio-group [(ngModel)]="selectedData.dasa">
                     <ion-list-header>
                         <ion-label>Dasa Sandhi Check</ion-label>
                     </ion-list-header>
-                    <ion-item>
-                        <ion-label>Not Required</ion-label>
-                        <ion-radio slot="start" value="Not Required"></ion-radio>
-                    </ion-item>
-                    <ion-item>
-                        <ion-label>Ordinary Check Required</ion-label>
-                        <ion-radio slot="start" value="Ordinary Check Required"></ion-radio>
-                    </ion-item>
-                    <ion-item>
-                        <ion-label>Strict Check Required</ion-label>
-                        <ion-radio slot="start" value="Strict Check Required"></ion-radio>
+                    <ion-item *ngFor="let entry of dasa">
+                        <ion-label>{{entry.val}}</ion-label>
+                        <ion-radio slot="start" value="{{entry.val}}"></ion-radio>
                     </ion-item>
                 </ion-radio-group>
             </ion-list>
 
-            <ion-button expand="block" color="primary">Save</ion-button>
+
+            <ion-button expand="block" color="primary" (click)="save()">Save</ion-button>
         </ion-list>
     </ion-card>
 
