@@ -46,6 +46,14 @@ const routes: Routes = [
   {
     path: 'horoscopesetting',
     loadChildren: () => import('./horoscopesetting/horoscopesetting.module').then( m => m.HoroscopesettingPageModule)
+  },
+  {
+    path: 'privacyoption',
+    loadChildren: () => import('./privacyoption/privacyoption.module').then( m => m.PrivacyoptionPageModule)
+  },
+  {
+    path: 'emailandsmsalerts',
+    loadChildren: () => import('./emailandsmsalerts/emailandsmsalerts.module').then( m => m.EmailandsmsalertsPageModule)
   }
 
 ];
