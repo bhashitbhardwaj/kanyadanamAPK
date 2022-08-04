@@ -1,187 +1,187 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button color="primary"></ion-back-button>
-    </ion-buttons>
-    <ion-title class="ion-text-center logo">
-      <img src="/assets/images/knnewlogo.png">
-    </ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button color="primary"></ion-back-button>
+        </ion-buttons>
+        <ion-title class="ion-text-center logo">
+            <img src="/assets/images/knnewlogo.png">
+        </ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>Edit Profile</ion-card-title>
-    </ion-card-header>
-    <form [formGroup]="rForm">
-    <ion-list class="ion-padding">
-      <ion-item>
-        <ion-label position="floating">Please enter your full name</ion-label>
-        <ion-input type="text" formControlName="name" readonly></ion-input>
-      </ion-item>
-      <div>
-        <div class="alert" *ngIf="!rForm.controls['name'].valid && rForm.controls['name'].touched">Please Enter a valid Name.</div>
-    </div>
-    <ion-item>
-      <ion-label position="floating">Email Address</ion-label>
-      <ion-input type="email" formControlName="email" readonly></ion-input>
-    </ion-item>
-    <div>
-      <div class="alert" *ngIf="!rForm.controls['email'].valid && rForm.controls['email'].touched">Please Enter a valid Email.</div>
-  </div>
-      <ion-item>
-        <ion-label position="floating">Enter your mobile number</ion-label>
-        <ion-input type="tel" formControlName="mobile"></ion-input>
-      </ion-item>
-      <div>
-        <div class="alert" *ngIf="!rForm.controls['mobile'].valid && rForm.controls['mobile'].touched">Please Enter a valid Mobile Number.</div>
-    </div>
-  
-      <ion-list>
-        <ion-radio-group value="Male" formControlName="gender">
-          <ion-list-header>
-            <ion-label>Gender</ion-label>
-          </ion-list-header>
-          <ion-item>
-            <ion-label>Male</ion-label>
-            <ion-radio slot="start" value="Male"></ion-radio>
-          </ion-item>
-          <ion-item>
-            <ion-label>Female</ion-label>
-            <ion-radio slot="start" value="Female"></ion-radio>
-          </ion-item>
-        </ion-radio-group>
-      </ion-list>
-      <ion-item>
-        <ion-label>Create profile for</ion-label>
-        <ion-select interface="popover" formControlName="create_profile_for" disabled>
-          <ion-select-option value="Self">Self</ion-select-option>
-          <ion-select-option value="Son">Son</ion-select-option>
-          <ion-select-option value="Daughter">Daughter</ion-select-option>
-          <ion-select-option value="Brother">Brother</ion-select-option>
-          <ion-select-option value="Sister">Sister</ion-select-option>
-        </ion-select>
-      </ion-item>
-      <div>
-        <div class="alert" *ngIf="!rForm.controls['create_profile_for'].valid && rForm.controls['create_profile_for'].touched">Please Select a valid Create profile for.</div>
-    </div>
-      <ion-item>
-        <ion-label position="floating">Date of Birth (MM/DD/YYYY)</ion-label>
-        <ion-datetime presentation="date" formControlName="dob" displayFormat="MM/DD/YYYY" min="1950-01-01" disabled></ion-datetime>
-      </ion-item>
-      <div>
-        <div class="alert" *ngIf="!rForm.controls['dob'].valid && rForm.controls['dob'].touched">Please Enter a valid Date of Birth.</div>
-    </div>
-      <ion-item>
-        <ion-label>Religion</ion-label>
-        <ion-select interface="popover" formControlName="religion">
-            <ion-select-option *ngFor="let data of dropDown.religions" [value]="data.id">{{data.religion}}</ion-select-option>
-        </ion-select>
-    </ion-item>
-      <ion-item>
-        <ion-label position="floating">Aadhar Card Number</ion-label>
-        <ion-input type="text" formControlName="aadhar_card"></ion-input>
-      </ion-item>
-      <div>
-        <div class="alert" *ngIf="!rForm.controls['aadhar_card'].valid && rForm.controls['aadhar_card'].touched">Please Enter a valid aadhar card.</div>
-    </div>
-      <ion-item>
-        <ion-label>Community</ion-label>
-        <ionic-selectable formControlName="community" [items]="dropDown.communities" [isMultiple]="false" [isConfirmButtonEnabled]="true" headerColor="primary" itemValueField="id" itemTextField="community" [canSearch]="true">
-        </ionic-selectable>
-    </ion-item>
-      <ion-item>
-        <ion-label position="floating">Sub Community</ion-label>
-        <ion-input type="text" formControlName="sub_community"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label>Mother Tongue</ion-label>
-        <ionic-selectable formControlName="tongue" [items]="dropDown.tongues" [isMultiple]="true" [isConfirmButtonEnabled]="true" headerColor="primary" itemValueField="tongue_id" itemTextField="tongue" [canSearch]="true">
-        </ionic-selectable>
-    </ion-item>
-    <ion-item>
-      <ion-label>Marital Status</ion-label>
-      <ion-select interface="popover" formControlName="martialstatus">
-          <ion-select-option *ngFor="let data of dropDown.martialstatus" [value]="data.id">{{data.name}}</ion-select-option>
-      </ion-select>
-  </ion-item>
-  <ion-item>
-      <ion-label>Country</ion-label>
-      <ionic-selectable formControlName="country" [items]="dropDown.countries" [isMultiple]="false" [isConfirmButtonEnabled]="true" headerColor="primary" itemValueField="id" itemTextField="name" [canSearch]="true" (onChange)="countryChange($event)">
-      </ionic-selectable>
-  </ion-item>
-  <ion-item>
-      <ion-label>State</ion-label>
-      <ionic-selectable formControlName="state" [items]="dropDown.states" [isMultiple]="false" [isConfirmButtonEnabled]="true" headerColor="primary" itemValueField="id" itemTextField="name" [canSearch]="true" (onChange)="stateChange($event)">
-      </ionic-selectable>
-  </ion-item>
-  <ion-item>
-    <ion-label>City</ion-label>
-    <ionic-selectable formControlName="city" [items]="dropDown.cities" [isMultiple]="false" [isConfirmButtonEnabled]="true" headerColor="primary" itemValueField="id" itemTextField="name" [canSearch]="true">
-    </ionic-selectable>
-</ion-item>
-      <ion-item>
-        <ion-label>What's Your diet?</ion-label>
-        <ion-select interface="popover" formControlName="diet">
-          <ion-select-option *ngFor="let data of dropDown.diets" [value]="data.name">{{data.name}}</ion-select-option>
-      </ion-select>
-      </ion-item>
-      <ion-list>
-        <ion-radio-group formControlName="does_smoke">
-          <ion-list-header>
-            <ion-label>Smoking?</ion-label>
-          </ion-list-header>
-      
-          <ion-item>
-            <ion-label>No</ion-label>
-            <ion-radio slot="start" value="No"></ion-radio>
-          </ion-item>
-      
-          <ion-item>
-            <ion-label>Occasionally</ion-label>
-            <ion-radio slot="start" value="Occasionally"></ion-radio>
-          </ion-item>
-      
-          <ion-item>
-            <ion-label>Yes</ion-label>
-            <ion-radio slot="start" value="Yes"></ion-radio>
-          </ion-item>
-        </ion-radio-group>
-      </ion-list>
-      <ion-list>
-        <ion-radio-group formControlName="does_drink">
-          <ion-list-header>
-            <ion-label>Drinking?</ion-label>
-          </ion-list-header>
-          <ion-item>
-            <ion-label>No</ion-label>
-            <ion-radio slot="start" value="No"></ion-radio>
-          </ion-item>
-      
-          <ion-item>
-            <ion-label>Occasionally</ion-label>
-            <ion-radio slot="start" value="Occasionally"></ion-radio>
-          </ion-item>
-      
-          <ion-item>
-            <ion-label>Yes</ion-label>
-            <ion-radio slot="start" value="Yes"></ion-radio>
-          </ion-item>
-        </ion-radio-group>
-      </ion-list>
-      <ion-item>
-        <ion-label position="stacked">About/Description (min 50 character)</ion-label>
-        <ion-textarea minlength=50 rows="5" cols="20" type="text" formControlName="about" placeholder="I am glad you are interested in my profile. I have completed my Bachelors. I am a grounded person, who values family happiness and hard work.I am looking for a girl to marry who would understand me."></ion-textarea>
-      </ion-item>
-      <ion-item>
-        <ion-label position="stacked">Family Description (min 50
-          charactor)</ion-label>
-        <ion-textarea minlength=50 type="text" formControlName="familydetails" ></ion-textarea>
-      </ion-item>
-      <ion-button expand="block" color="primary" [disabled]="!rForm.valid" (click)="save()">Update Profile</ion-button>
-    </ion-list>
-  </form>
-  </ion-card>
- 
+    <ion-card>
+        <ion-card-header>
+            <ion-card-title>Edit Profile</ion-card-title>
+        </ion-card-header>
+        <form [formGroup]="rForm">
+            <ion-list class="ion-padding">
+                <ion-item>
+                    <ion-label position="floating">Please enter your full name</ion-label>
+                    <ion-input type="text" formControlName="name" readonly></ion-input>
+                </ion-item>
+                <div>
+                    <div class="alert" *ngIf="!rForm.controls['name'].valid && rForm.controls['name'].touched">Please Enter a valid Name.</div>
+                </div>
+                <ion-item>
+                    <ion-label position="floating">Email Address</ion-label>
+                    <ion-input type="email" formControlName="email" readonly></ion-input>
+                </ion-item>
+                <div>
+                    <div class="alert" *ngIf="!rForm.controls['email'].valid && rForm.controls['email'].touched">Please Enter a valid Email.</div>
+                </div>
+                <ion-item>
+                    <ion-label position="floating">Enter your mobile number</ion-label>
+                    <ion-input type="tel" formControlName="mobile"></ion-input>
+                </ion-item>
+                <div>
+                    <div class="alert" *ngIf="!rForm.controls['mobile'].valid && rForm.controls['mobile'].touched">Please Enter a valid Mobile Number.</div>
+                </div>
+
+                <ion-list>
+                    <ion-radio-group value="Male" formControlName="gender">
+                        <ion-list-header>
+                            <ion-label>Gender</ion-label>
+                        </ion-list-header>
+                        <ion-item>
+                            <ion-label>Male</ion-label>
+                            <ion-radio slot="start" value="Male"></ion-radio>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label>Female</ion-label>
+                            <ion-radio slot="start" value="Female"></ion-radio>
+                        </ion-item>
+                    </ion-radio-group>
+                </ion-list>
+                <ion-item>
+                    <ion-label>Create profile for</ion-label>
+                    <ion-select interface="popover" formControlName="create_profile_for" disabled>
+                        <ion-select-option value="Self">Self</ion-select-option>
+                        <ion-select-option value="Son">Son</ion-select-option>
+                        <ion-select-option value="Daughter">Daughter</ion-select-option>
+                        <ion-select-option value="Brother">Brother</ion-select-option>
+                        <ion-select-option value="Sister">Sister</ion-select-option>
+                    </ion-select>
+                </ion-item>
+                <div>
+                    <div class="alert" *ngIf="!rForm.controls['create_profile_for'].valid && rForm.controls['create_profile_for'].touched">Please Select a valid Create profile for.</div>
+                </div>
+                <ion-item>
+                    <ion-label position="floating">Date of Birth (MM/DD/YYYY)</ion-label>
+                    <ion-datetime presentation="date" formControlName="dob" displayFormat="MM/DD/YYYY" min="1950-01-01" disabled></ion-datetime>
+                </ion-item>
+                <div>
+                    <div class="alert" *ngIf="!rForm.controls['dob'].valid && rForm.controls['dob'].touched">Please Enter a valid Date of Birth.</div>
+                </div>
+                <ion-item>
+                    <ion-label>Religion</ion-label>
+                    <ion-select interface="popover" formControlName="religion">
+                        <ion-select-option *ngFor="let data of dropDown.religions" [value]="data.id">{{data.religion}}</ion-select-option>
+                    </ion-select>
+                </ion-item>
+                <ion-item>
+                    <ion-label position="floating">Aadhar Card Number</ion-label>
+                    <ion-input type="text" formControlName="aadhar_card"></ion-input>
+                </ion-item>
+                <div>
+                    <div class="alert" *ngIf="!rForm.controls['aadhar_card'].valid && rForm.controls['aadhar_card'].touched">Please Enter a valid aadhar card.</div>
+                </div>
+                <ion-item>
+                    <ion-label>Community</ion-label>
+                    <ionic-selectable formControlName="community" [items]="dropDown.communities" [isMultiple]="false" [isConfirmButtonEnabled]="true" headerColor="primary" itemValueField="id" itemTextField="community" [canSearch]="true">
+                    </ionic-selectable>
+                </ion-item>
+                <ion-item>
+                    <ion-label position="floating">Sub Community</ion-label>
+                    <ion-input type="text" formControlName="sub_community"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label>Mother Tongue</ion-label>
+                    <ionic-selectable formControlName="tongue" [items]="dropDown.tongues" [isMultiple]="true" [isConfirmButtonEnabled]="true" headerColor="primary" itemValueField="tongue_id" itemTextField="tongue" [canSearch]="true">
+                    </ionic-selectable>
+                </ion-item>
+                <ion-item>
+                    <ion-label>Marital Status</ion-label>
+                    <ion-select interface="popover" formControlName="martialstatus">
+                        <ion-select-option *ngFor="let data of dropDown.martialstatus" [value]="data.id">{{data.name}}</ion-select-option>
+                    </ion-select>
+                </ion-item>
+                <ion-item>
+                    <ion-label>Country</ion-label>
+                    <ionic-selectable formControlName="country" [items]="dropDown.countries" [isMultiple]="false" [isConfirmButtonEnabled]="true" headerColor="primary" itemValueField="id" itemTextField="name" [canSearch]="true" (onChange)="countryChange($event)">
+                    </ionic-selectable>
+                </ion-item>
+                <ion-item>
+                    <ion-label>State</ion-label>
+                    <ionic-selectable formControlName="state" [items]="dropDown.states" [isMultiple]="false" [isConfirmButtonEnabled]="true" headerColor="primary" itemValueField="id" itemTextField="name" [canSearch]="true" (onChange)="stateChange($event)">
+                    </ionic-selectable>
+                </ion-item>
+                <ion-item>
+                    <ion-label>City</ion-label>
+                    <ionic-selectable formControlName="city" [items]="dropDown.cities" [isMultiple]="false" [isConfirmButtonEnabled]="true" headerColor="primary" itemValueField="id" itemTextField="name" [canSearch]="true">
+                    </ionic-selectable>
+                </ion-item>
+                <ion-item>
+                    <ion-label>What's Your diet?</ion-label>
+                    <ion-select interface="popover" formControlName="diet">
+                        <ion-select-option *ngFor="let data of dropDown.diets" [value]="data.name">{{data.name}}</ion-select-option>
+                    </ion-select>
+                </ion-item>
+                <ion-list>
+                    <ion-radio-group formControlName="does_smoke">
+                        <ion-list-header>
+                            <ion-label>Smoking?</ion-label>
+                        </ion-list-header>
+
+                        <ion-item>
+                            <ion-label>No</ion-label>
+                            <ion-radio slot="start" value="No"></ion-radio>
+                        </ion-item>
+
+                        <ion-item>
+                            <ion-label>Occasionally</ion-label>
+                            <ion-radio slot="start" value="Occasionally"></ion-radio>
+                        </ion-item>
+
+                        <ion-item>
+                            <ion-label>Yes</ion-label>
+                            <ion-radio slot="start" value="Yes"></ion-radio>
+                        </ion-item>
+                    </ion-radio-group>
+                </ion-list>
+                <ion-list>
+                    <ion-radio-group formControlName="does_drink">
+                        <ion-list-header>
+                            <ion-label>Drinking?</ion-label>
+                        </ion-list-header>
+                        <ion-item>
+                            <ion-label>No</ion-label>
+                            <ion-radio slot="start" value="No"></ion-radio>
+                        </ion-item>
+
+                        <ion-item>
+                            <ion-label>Occasionally</ion-label>
+                            <ion-radio slot="start" value="Occasionally"></ion-radio>
+                        </ion-item>
+
+                        <ion-item>
+                            <ion-label>Yes</ion-label>
+                            <ion-radio slot="start" value="Yes"></ion-radio>
+                        </ion-item>
+                    </ion-radio-group>
+                </ion-list>
+                <ion-item>
+                    <ion-label position="stacked">About/Description (min 50 character)</ion-label>
+                    <ion-textarea minlength=50 rows="5" cols="20" type="text" formControlName="about" placeholder="I am glad you are interested in my profile. I have completed my Bachelors. I am a grounded person, who values family happiness and hard work.I am looking for a girl to marry who would understand me."></ion-textarea>
+                </ion-item>
+                <ion-item>
+                    <ion-label position="stacked">Family Description (min 50 charactor)
+                    </ion-label>
+                    <ion-textarea minlength=50 type="text" formControlName="familydetails"></ion-textarea>
+                </ion-item>
+                <ion-button expand="block" color="primary" [disabled]="!rForm.valid" (click)="save()">Update Profile</ion-button>
+            </ion-list>
+        </form>
+    </ion-card>
+
 </ion-content>

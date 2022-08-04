@@ -21,81 +21,49 @@
                     <ionic-selectable [(ngModel)]="selectedData.height" placeholder="Your Height" [items]="dropDown.height" [isMultiple]="false" [isConfirmButtonEnabled]="true" headerColor="primary" itemValueField="id" itemTextField="height_label_feet" [canSearch]="true">
                     </ionic-selectable>
                 </ion-item>
+
                 <ion-list>
-                    <ion-radio-group>
+                    <ion-radio-group value="body_type">
                         <ion-list-header>
                             <ion-label>Body Type?</ion-label>
                         </ion-list-header>
-                        <ion-row>
-                            <ion-col>
-                                <ion-item>
-                                    <ion-label>Slim</ion-label>
-                                    <ion-radio slot="start" value="Slim" *ngIf="selectedData.body_type == Slim" [(ngModel)]="selectedData.body_type"></ion-radio>
-                                </ion-item>
 
+                        <ion-row>
+                            <ion-col *ngFor="let entry of body_type">
                                 <ion-item>
-                                    <ion-label>Athletic</ion-label>
-                                    <ion-radio slot="start" value="Athletic" [(ngModel)]="selectedData.body_type"></ion-radio>
-                                </ion-item>
-                            </ion-col>
-                            <ion-col>
-                                <ion-item>
-                                    <ion-label>Average</ion-label>
-                                    <ion-radio slot="start" value="Average" [(ngModel)]="selectedData.body_type"></ion-radio>
-                                </ion-item>
-                                <ion-item>
-                                    <ion-label>Heavy</ion-label>
-                                    <ion-radio slot="start" value="Heavy" [(ngModel)]="selectedData.body_type"></ion-radio>
+                                    <ion-label>{{entry.val}}</ion-label>
+                                    <ion-radio slot="start" value="{{entry.val}}"></ion-radio>
                                 </ion-item>
                             </ion-col>
                         </ion-row>
                     </ion-radio-group>
                 </ion-list>
                 <ion-list>
-                    <ion-radio-group value="Very Fair">
+                    <ion-radio-group value="skin_tone">
                         <ion-list-header>
                             <ion-label>Skin Tone?</ion-label>
                         </ion-list-header>
                         <ion-row>
-                            <ion-col>
+                            <ion-col *ngFor="let entry of skin_tone">
                                 <ion-item>
-                                    <ion-label>Very Fair</ion-label>
-                                    <ion-radio slot="start" value="Very Fair"></ion-radio>
+                                    <ion-label>{{entry.val}}</ion-label>
+                                    <ion-radio slot="start" value="{{entry.val}}"></ion-radio>
                                 </ion-item>
+                            </ion-col>
 
-                                <ion-item>
-                                    <ion-label>Fair</ion-label>
-                                    <ion-radio slot="start" value="Fair"></ion-radio>
-                                </ion-item>
-                            </ion-col>
-                            <ion-col>
-                                <ion-item>
-                                    <ion-label>Wheatish</ion-label>
-                                    <ion-radio slot="start" value="Wheatish"></ion-radio>
-                                </ion-item>
-                                <ion-item>
-                                    <ion-label>Dark</ion-label>
-                                    <ion-radio slot="start" value="Dark"></ion-radio>
-                                </ion-item>
-                            </ion-col>
                         </ion-row>
                     </ion-radio-group>
                 </ion-list>
                 <ion-list>
-                    <ion-radio-group value="None">
+                    <ion-radio-group value="disability">
                         <ion-list-header>
                             <ion-label>Any Disability?</ion-label>
                         </ion-list-header>
                         <ion-row>
-                            <ion-col>
+                            <ion-col *ngFor="let entry of disability">
                                 <ion-item>
-                                    <ion-label>None</ion-label>
-                                    <ion-radio slot="start" value="None"></ion-radio>
-                                </ion-item>
-
-                                <ion-item>
-                                    <ion-label>Physical Disability</ion-label>
-                                    <ion-radio slot="start" value="Physical Disability"></ion-radio>
+                                    <ion-label>{{entry.val}}</ion-label>
+                                    <ion-radio slot="start" value="{{entry.val}}"></ion-radio>
                                 </ion-item>
                             </ion-col>
                         </ion-row>

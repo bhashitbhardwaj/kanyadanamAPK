@@ -56,7 +56,7 @@
             </ion-item>
             <ion-item>
                 <ion-label>Country in Living</ion-label>
-                <ionic-selectable [(ngModel)]="selectedData.country" [items]="dropDown.countries" [isMultiple]="true" [isConfirmButtonEnabled]="true" headerColor="primary" itemValueField="id" itemTextField="name" [canSearch]="true" (onChange)="countryChange($event)">
+                <ionic-selectable [(ngModel)]="selectedData.country" [items]="dropDown.countries" [isMultiple]="true" [isConfirmButtonEnabled]="true" headerColor="primary" itemValueField="id" itemTextField="name" [canSearch]="true">
                 </ionic-selectable>
             </ion-item>
             <ion-button expand="block" color="primary" (click)="save()">Save & Continue</ion-button>

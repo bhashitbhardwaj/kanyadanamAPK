@@ -113,20 +113,27 @@ export class ContactfilterPage implements OnInit {
     this.loader.Show('Loading...');
     this.api.postDataWithAuth('api/getContactFilters',{}).subscribe(res => {
       this.loader.Hide();
+      //console.log(res);
       if (res.status) {
-        console.log(res.data.user_detail.contact_filter);
-        if(res.data.user_detail.contact_filter && res.data.user_detail.contact_filter.length)
+        console.log(Object.keys(res.data.user_detail.contact_filter).length);
+        console.log(res.data.user_detail);
+        if(res.data.user_detail.contact_filter && Object.keys(res.data.user_detail.contact_filter).length)
         { 
-          console.log(res.data.user_detail.contact_filter.age_from);
+          
           this.selectedData.age = { lower: res.data.user_detail.contact_filter.age_from, upper: res.data.user_detail.contact_filter.age_to };
-          this.selectedData.heightFrom = {
-            height_label_feet: res.data.user_detail.contact_filter.height_from[0].height_label_feet,
-            id: res.data.user_detail.contact_filter.height_from[0].id,
-          } 
-          this.selectedData.heightTo = {
-            height_label_feet: res.data.user_detail.contact_filter.height_to[0].height_label_feet,
-            id: res.data.user_detail.contact_filter.height_to[0].id,
-          } 
+          if(res.data.user_detail.contact_filter.height_from!=null){
+            this.selectedData.heightFrom = {
+              height_label_feet: res.data.user_detail.contact_filter.height_from[0].height_label_feet,
+              id: res.data.user_detail.contact_filter.height_from[0].id,
+            }
+          }
+          if(res.data.user_detail.contact_filter.height_to!=null){
+            this.selectedData.heightTo = {
+              height_label_feet: res.data.user_detail.contact_filter.height_to[0].height_label_feet,
+              id: res.data.user_detail.contact_filter.height_to[0].id,
+            }
+          }
+          
           this.selectedData.marital_status =[];
           res.data.user_detail.contact_filter.martialstatus.forEach(element => {
             this.selectedData.marital_status.push(element.id)
