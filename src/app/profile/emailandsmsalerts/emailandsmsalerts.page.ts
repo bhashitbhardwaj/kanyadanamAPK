@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { IonicSelectableComponent } from 'ionic-selectable';
 import { ApiService } from 'src/app/provider/api.service';
 import { LoaderService } from 'src/app/provider/loader.service';
 import { ToastService } from 'src/app/provider/toast.service';
@@ -114,8 +112,8 @@ export class EmailandsmsalertsPage implements OnInit {
     this.api.postDataWithAuth('api/getEmailAndSmsAlertDetails',{}).subscribe(res => {
       this.loader.Hide();
       if (res.status) {
-        console.log(res.data.user_detail);
-        console.log(Object.keys(res.data.user_detail.alertsArray).length);
+        //console.log(res.data.user_detail);
+        //console.log(Object.keys(res.data.user_detail.alertsArray).length);
         if(res.data.user_detail.alertsArray && Object.keys(res.data.user_detail.alertsArray).length){
 
           if(res.data.user_detail.alertsArray.match_mail_photo_match_mail!=null){
