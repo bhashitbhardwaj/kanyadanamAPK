@@ -1,31 +1,141 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { IonicSelectableComponent } from 'ionic-selectable';
-class Port {
-  public id: number;
-  public name: string;
-}
+import { ApiService } from '../provider/api.service';
+import { LoaderService } from '../provider/loader.service';
+import { ToastService } from '../provider/toast.service';
+
 @Component({
   selector: 'app-search',
   templateUrl: './search.page.html',
   styleUrls: ['./search.page.scss'],
 })
 export class SearchPage implements OnInit {
-  ports: Port[];
-  port: Port;
-  constructor() {
-    this.ports = [
-      { id: 1, name: '4 Feet 1 Inch' },
-      { id: 2, name: '4 Feet 2 Inch' },
-      { id: 3, name: '4 Feet 3 Inch' }
-    ];
+  selectSegment:any = 1;
+  dropDown: any = {};
+  selectedData: any = {};
+  constructor(
+    private router: Router,
+    private loader: LoaderService,
+    private api: ApiService,
+    private toast: ToastService
+  ) {
+    this.selectedData.age = { lower: 21, upper: 36 };
    }
-   portChange(event: {
-    component: IonicSelectableComponent,
-    value: any
-  }) {
-    console.log('port:', event.value);
-  }
+   search()
+   {
+    var tongue =[];
+    this.selectedData.tongue= this.selectedData.tongue || [];
+    this.selectedData.tongue.forEach(obj => {
+      tongue.push(obj.tongue_id)
+    });
+    var country =[];
+    this.selectedData.country= this.selectedData.country || [];
+    this.selectedData.country.forEach(obj => {
+      country.push(obj.id)
+    });
+    this.loader.Show('Loading...');
+    this.api.postDataWithAuth('api/search',
+    {
+      age_from:this.selectedData.age.lower,
+      age_to:this.selectedData.age.upper,
+      height_from:(this.selectedData.heightFrom)?this.selectedData.heightFrom.id:'',
+      height_to:(this.selectedData.heightTo)?this.selectedData.heightTo.id:'',
+      tongue:tongue,
+      martialstatus:this.selectedData.marital_status,
+      religion_id:this.selectedData.religion,
+      country_id:country
+    }).subscribe(res=>{
+       this.loader.Hide();
+       if(res.status)
+       {
+         console.log(res);
+         this.toast.Notify({
+          message:res.msg,
+          duration:3000,
+          position:'top'
+        })
+        this.router.navigateByUrl('/tabs');
+       }
+       else{
+          this.toast.Notify({
+            message:res.message,
+            duration:3000,
+            position:'top'
+          })
+       }
+    })
+   }
   ngOnInit() {
-  }
+    this.api.getData('api/getHeights').subscribe(res => {
+      if (res.status) {
+        console.log(res);
+        this.dropDown.heightFrom = res.data;
+      }
+      else {
+        this.toast.Notify({
+          message: res.message,
+          duration: 3000,
+          position: 'top'
+        })
+      }
+    })
+    this.api.getData('api/getReligions').subscribe(res => {
+      if (res.status) {
+        console.log(res);
+        this.dropDown.religions = res.data;
+      }
+      else {
+        this.toast.Notify({
+          message: res.message,
+          duration: 3000,
+          position: 'top'
+        })
+      }
+    })
+    this.api.getData('api/getTongues').subscribe(res => {
+      if (res.status) {
+        console.log(res);
+        this.dropDown.tongues = res.data;
+      }
+      else {
+        this.toast.Notify({
+          message: res.message,
+          duration: 3000,
+          position: 'top'
+        })
+      }
+    })
 
+    this.api.getData('api/getMartialStatus').subscribe(res => {
+      if (res.status) {
+        console.log(res);
+        this.dropDown.martialstatus = res.data;
+      }
+      else {
+        this.toast.Notify({
+          message: res.message,
+          duration: 3000,
+          position: 'top'
+        })
+      }
+    })
+    this.api.getData('api/getCountries').subscribe(res => {
+      if (res.status) {
+        console.log(res);
+        this.dropDown.countries = res.data;
+      }
+      else {
+        this.toast.Notify({
+          message: res.message,
+          duration: 3000,
+          position: 'top'
+        })
+      }
+    })
+  }
+  segmentChanged(ev: any) {
+    console.log('Segment changed', ev.detail.value);
+    this.selectSegment = ev.detail.value;
+  }
 }

@@ -1,0 +1,92 @@
+<ion-card>
+    <ion-card-header>
+        <ion-card-title>Advance Search</ion-card-title>
+        <ion-card-subtitle>Search Your Partner</ion-card-subtitle>
+    </ion-card-header>
+    <ion-list class="ion-padding">
+        <ion-text color="primary">
+            <h4 class="header">Basic Details</h4>
+        </ion-text>
+        <ion-item>
+            <ion-range min="18" max="45" dual-knobs pin [(ngModel)]="selectedData.age">
+                <ion-label slot="start">Age 18</ion-label>
+                <ion-label slot="end">Age 45</ion-label>
+            </ion-range>
+        </ion-item>
+        <ion-item>
+            <ion-label>Height From</ion-label>
+            <ionic-selectable [(ngModel)]="selectedData.heightFrom" [items]="dropDown.heightFrom" [isMultiple]="false" [isConfirmButtonEnabled]="true" headerColor="primary" itemValueField="id" itemTextField="height_label_feet" [canSearch]="true">
+            </ionic-selectable>
+        </ion-item>
+        <ion-item>
+            <ion-label>Height To</ion-label>
+            <ionic-selectable [(ngModel)]="selectedData.heightTo" [items]="dropDown.heightFrom" [isMultiple]="false" [isConfirmButtonEnabled]="true" headerColor="primary" itemValueField="id" itemTextField="height_label_feet" [canSearch]="true">
+            </ionic-selectable>
+        </ion-item>
+        <ion-item>
+            <ion-label>Marital Status</ion-label>
+            <ion-select multiple="true" interface="popover" [(ngModel)]="selectedData.marital_status">
+                <ion-select-option *ngFor="let data of dropDown.martialstatus" [value]="data.id">{{data.name}}</ion-select-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label>Religion</ion-label>
+            <ion-select multiple="true" interface="popover" [(ngModel)]="selectedData.religion">
+                <ion-select-option *ngFor="let data of dropDown.religions" [value]="data.id">{{data.religion}}</ion-select-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label>Mother Tongue</ion-label>
+            <ionic-selectable [(ngModel)]="selectedData.tongue" [items]="dropDown.tongues" [isMultiple]="true" [isConfirmButtonEnabled]="true" headerColor="primary" itemValueField="tongue_id" itemTextField="tongue" [canSearch]="true">
+            </ionic-selectable>
+        </ion-item>
+        <ion-item>
+            <ion-label>Community</ion-label>
+            <ionic-selectable [(ngModel)]="selectedData.community" [items]="dropDown.communities" [isMultiple]="true" [isConfirmButtonEnabled]="true" headerColor="primary" itemValueField="id" itemTextField="community" [canSearch]="true">
+            </ionic-selectable>
+        </ion-item>
+        <ion-text color="primary">
+            <h4 class="header">Location & Grew up in Details</h4>
+        </ion-text>
+        <ion-item>
+            <ion-label>Country in Living</ion-label>
+            <ionic-selectable [(ngModel)]="selectedData.country" [items]="dropDown.countries" [isMultiple]="true" [isConfirmButtonEnabled]="true" headerColor="primary" itemValueField="id" itemTextField="name" [canSearch]="true" (onChange)="countryChange($event)">
+            </ionic-selectable>
+        </ion-item>
+        <ion-item>
+            <ion-label>State in Living</ion-label>
+            <ionic-selectable [(ngModel)]="selectedData.state" [items]="dropDown.states" [isMultiple]="true" [isConfirmButtonEnabled]="true" headerColor="primary" itemValueField="id" itemTextField="name" [canSearch]="true">
+            </ionic-selectable>
+        </ion-item>
+        <ion-text color="primary">
+            <h4 class="header">Education & Profession Details</h4>
+        </ion-text>
+        <ion-item>
+            <ion-label>Education</ion-label>
+            <ionic-selectable [(ngModel)]="selectedData.education"  [items]="dropDown.educationLevels" [isMultiple]="true" [isConfirmButtonEnabled]="true" headerColor="primary" itemValueField="id" itemTextField="name" [canSearch]="true">
+            </ionic-selectable>
+        </ion-item>
+        <ion-item>
+            <ion-label>Education Area</ion-label>
+            <ionic-selectable [(ngModel)]="selectedData.educationField"  [items]="dropDown.educationFields" [isMultiple]="true" [isConfirmButtonEnabled]="true" headerColor="primary" itemValueField="id" itemTextField="name" [canSearch]="true">
+            </ionic-selectable>
+        </ion-item>
+        <ion-item>
+            <ion-label>Workign With</ion-label>
+            <ion-select multiple="true" interface="popover" [(ngModel)]="selectedData.workign_with">
+                <ion-select-option *ngFor="let data of dropDown.workWiths" [value]="data.id">{{data.name}}</ion-select-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label>Profession Area</ion-label>
+            <ionic-selectable [(ngModel)]="selectedData.profession_area" [items]="dropDown.occupations" [isMultiple]="true" [isConfirmButtonEnabled]="true" headerColor="primary" itemValueField="id" itemTextField="name" [canSearch]="true">
+            </ionic-selectable>
+        </ion-item>
+        <ion-item>
+            <ion-label>Annual Income</ion-label>
+            <ionic-selectable [(ngModel)]="selectedData.annual_income" [items]="dropDown.annualIncomes" [isMultiple]="true" [isConfirmButtonEnabled]="true" headerColor="primary" itemValueField="id" itemTextField="name" [canSearch]="true">
+            </ionic-selectable>
+        </ion-item>
+        <ion-button expand="block" color="primary" (click)="search()">Search</ion-button>
+    </ion-list>
+</ion-card>

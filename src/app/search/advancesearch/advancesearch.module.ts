@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { AdvancesearchPageRoutingModule } from './advancesearch-routing.module';
 import { IonicSelectableModule } from 'ionic-selectable';
 import { AdvancesearchPage } from './advancesearch.page';
 
@@ -13,8 +12,7 @@ import { AdvancesearchPage } from './advancesearch.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    IonicSelectableModule,
-    AdvancesearchPageRoutingModule
+    IonicSelectableModule
   ],
   declarations: [AdvancesearchPage]
 })

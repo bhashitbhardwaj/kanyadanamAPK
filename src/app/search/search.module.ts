@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { SearchPageRoutingModule } from './search-routing.module';
 import { IonicSelectableModule } from 'ionic-selectable';
 import { SearchPage } from './search.page';
+import { AdvancesearchPage } from './advancesearch/advancesearch.page';
 
 @NgModule({
   imports: [
@@ -14,8 +15,9 @@ import { SearchPage } from './search.page';
     FormsModule,
     IonicModule,
     IonicSelectableModule,
-    SearchPageRoutingModule
+    SearchPageRoutingModule,
+    
   ],
-  declarations: [SearchPage]
+  declarations: [SearchPage,AdvancesearchPage]
 })
 export class SearchPageModule {}
