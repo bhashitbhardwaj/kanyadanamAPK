@@ -62,7 +62,7 @@ export class HoroscopesettingPage implements OnInit {
        {
          console.log(res);
          this.toast.Notify({
-          message:res.msg,
+          message:res.message,
           duration:3000,
           position:'top'
         })

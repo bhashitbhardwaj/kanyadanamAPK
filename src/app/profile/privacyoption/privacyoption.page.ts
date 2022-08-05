@@ -53,7 +53,6 @@ export class PrivacyoptionPage implements OnInit {
   }
 
   save() {
-    
     console.log('save:', this.selectedData);
     this.loader.Show('Loading...');
     this.api.postDataWithAuth('api/updatePrivacyOptions',
@@ -71,7 +70,7 @@ export class PrivacyoptionPage implements OnInit {
        {
          console.log(res);
          this.toast.Notify({
-          message:res.msg,
+          message:res.message,
           duration:3000,
           position:'top'
         })

@@ -68,34 +68,11 @@
                         <p>Add / Edit Your Biodata</p>
                     </ion-text>
                 </ion-col>
-                <ion-col size="6" [routerLink]="'horoscope'">
-                    <ion-text color="danger">
-                        <p>Add Your Horoscope</p>
-                    </ion-text>
-                </ion-col>
-            </ion-row>
-            <ion-row class="button_list">
                 <ion-col size="6" [routerLink]="'hideanddeleteaccount'">
                     <ion-text color="danger">
                         <p>Hide & Delete Account</p>
                     </ion-text>
                 </ion-col>
-                <ion-col size="6" [routerLink]="'horoscopesetting'">
-                    <ion-text color="danger">
-                        <p>Horoscope Settings</p>
-                    </ion-text>
-                </ion-col>
-                <ion-col size="6" [routerLink]="'privacyoption'">
-                    <ion-text color="danger">
-                        <p>Privacy Options</p>
-                    </ion-text>
-                </ion-col>
-                <ion-col size="6" [routerLink]="'emailandsmsalerts'">
-                    <ion-text color="danger">
-                        <p>Email & SMS Alerts</p>
-                    </ion-text>
-                </ion-col>
-
             </ion-row>
         </ion-card>
         <ion-card>
@@ -229,7 +206,7 @@
                     <p class="lable_title ">Mother Tongue</p>
                 </ion-col>
                 <ion-col size="7 ">
-                    <p *ngFor="let tongue of userData.user_details.tongue ">: {{tongue.tongue}}</p>
+                    <p>: {{userData.user_details.tongue}}</p>
                 </ion-col>
             </ion-row>
         </ion-card>
@@ -267,7 +244,7 @@
                     <p class="lable_title ">Education Level</p>
                 </ion-col>
                 <ion-col size="7 ">
-                    <p *ngFor="let education_level of userData.user_details.education_level ">: {{education_level.name}}</p>
+                    <p >: {{userData.user_details.education_level}}</p>
                 </ion-col>
             </ion-row>
             <ion-row class="button_list ">
@@ -337,7 +314,7 @@
                     <p class="lable_title ">Marital Status</p>
                 </ion-col>
                 <ion-col size="7 ">
-                    <p *ngFor="let martialstatus of userData.partner_details.martialstatus ">: {{martialstatus.name}}</p>
+                    <p>: {{userData.partner_details.martialstatus}}</p>
                 </ion-col>
             </ion-row>
             <ion-row class="button_list ">
@@ -345,7 +322,7 @@
                     <p class="lable_title ">Religion</p>
                 </ion-col>
                 <ion-col size="7 ">
-                    <p *ngFor="let religion of userData.partner_details.religion ">: {{religion.religion}}</p>
+                    <p>: {{userData.partner_details.religion}}</p>
                 </ion-col>
             </ion-row>
             <ion-row class="button_list ">
@@ -353,7 +330,7 @@
                     <p class="lable_title ">Mother Tongue</p>
                 </ion-col>
                 <ion-col size="7 ">
-                    <p *ngFor="let tongue of userData.partner_details.tongue ">: {{tongue.tongue}}</p>
+                    <p >: {{userData.partner_details.tongue}}</p>
                 </ion-col>
             </ion-row>
             <ion-row class="button_list ">
@@ -361,7 +338,7 @@
                     <p class="lable_title ">Community</p>
                 </ion-col>
                 <ion-col size="7 ">
-                    <p *ngFor="let community of userData.partner_details.community ">: {{community.community}}</p>
+                    <p >: {{userData.partner_details.community}}</p>
                 </ion-col>
             </ion-row>
             <ion-row class="button_list ">
@@ -369,7 +346,7 @@
                     <p class="lable_title ">Country Living in</p>
                 </ion-col>
                 <ion-col size="7 ">
-                    <p *ngFor="let country_id of userData.partner_details.country_id ">: {{country_id.name}}</p>
+                    <p>: {{userData.partner_details.country_id}}</p>
                 </ion-col>
             </ion-row>
             <ion-row class="button_list " text-wrap>
@@ -377,7 +354,7 @@
                     <p class="lable_title ">State Living in</p>
                 </ion-col>
                 <ion-col size="7 ">
-                    <p style="padding-left:0px; " *ngFor="let state_id of userData.partner_details.state_id ">: {{state_id.name}}</p>
+                    <p style="padding-left:0px; ">: {{userData.partner_details.state_id}}</p>
                 </ion-col>
             </ion-row>
 
@@ -386,7 +363,7 @@
                     <p class="lable_title ">Highest Qualification</p>
                 </ion-col>
                 <ion-col size="7 ">
-                    <p *ngFor="let education_level of userData.partner_details.education_level ">: {{education_level.name}}</p>
+                    <p >: {{userData.partner_details.education_level}}</p>
                 </ion-col>
             </ion-row>
 
@@ -395,7 +372,7 @@
                     <p class="lable_title ">Working with</p>
                 </ion-col>
                 <ion-col size="7 ">
-                    <p *ngFor="let workwith of userData.partner_details.workwith ">: {{workwith.name}}</p>
+                    <p >: {{userData.partner_details.workwith}}</p>
                 </ion-col>
             </ion-row>
             <ion-row class="button_list ">
@@ -403,7 +380,7 @@
                     <p class="lable_title ">Working as</p>
                 </ion-col>
                 <ion-col size="7 ">
-                    <p *ngFor="let occupation of userData.partner_details.occupation ">: {{occupation.name}}</p>
+                    <p >: {{userData.partner_details.occupation}}</p>
                 </ion-col>
             </ion-row>
             <ion-row class="button_list ">
@@ -411,7 +388,7 @@
                     <p class="lable_title ">Annual Income</p>
                 </ion-col>
                 <ion-col size="7 ">
-                    <p *ngFor="let annualincome of userData.partner_details.annualincome ">: {{annualincome.name}}</p>
+                    <p >: {{userData.partner_details.annualincome}}</p>
                 </ion-col>
             </ion-row>
             <ion-row class="button_list ">

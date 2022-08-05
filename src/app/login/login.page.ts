@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MenuController } from '@ionic/angular';
 import { ApiService } from '../provider/api.service';
+import { AuthGuardService } from '../provider/auth-guard.service';
 import { LoaderService } from '../provider/loader.service';
 import { StorageService } from '../provider/storage.service';
 import { ToastService } from '../provider/toast.service';
@@ -14,6 +16,8 @@ import { ToastService } from '../provider/toast.service';
 export class LoginPage implements OnInit {
   rForm: FormGroup;
   constructor(
+    private menu: MenuController,
+    private AuthGuardService:AuthGuardService,
     private router: Router,
     private loginForm: FormBuilder,
     private loader: LoaderService,
@@ -32,7 +36,7 @@ export class LoginPage implements OnInit {
    }
 
   ngOnInit() {
-
+    this.menu.enable(false)
   }
   
   login()
@@ -44,6 +48,8 @@ export class LoginPage implements OnInit {
        {
          console.log(res);
          this.storage.Set('userData',res.data);
+         this.AuthGuardService.isLogin();
+         this.menu.enable(true)
          this.router.navigateByUrl('/tabs');
        }
        else{
