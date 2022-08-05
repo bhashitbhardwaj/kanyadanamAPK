@@ -55,7 +55,7 @@
                 </ion-list>
                 <ion-item>
                     <ion-label>Create profile for</ion-label>
-                    <ion-select interface="popover" formControlName="create_profile_for" disabled>
+                    <ion-select interface="popover" formControlName="create_profile_for">
                         <ion-select-option value="Self">Self</ion-select-option>
                         <ion-select-option value="Son">Son</ion-select-option>
                         <ion-select-option value="Daughter">Daughter</ion-select-option>
@@ -68,7 +68,7 @@
                 </div>
                 <ion-item>
                     <ion-label position="floating">Date of Birth (MM/DD/YYYY)</ion-label>
-                    <ion-datetime presentation="date" formControlName="dob" displayFormat="MM/DD/YYYY" min="1950-01-01" disabled></ion-datetime>
+                    <ion-datetime presentation="date" formControlName="dob" displayFormat="MM/DD/YYYY" min="1950-01-01"></ion-datetime>
                 </ion-item>
                 <div>
                     <div class="alert" *ngIf="!rForm.controls['dob'].valid && rForm.controls['dob'].touched">Please Enter a valid Date of Birth.</div>

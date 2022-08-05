@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthGuardService } from './provider/auth-guard.service';
 import { StorageService } from './provider/storage.service';
 
 @Component({
@@ -8,18 +9,28 @@ import { StorageService } from './provider/storage.service';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  isLogin:boolean = false;
   constructor(
     private storage: StorageService,
+    private AuthGuardService:AuthGuardService,
     private router: Router
   ) {
-     var data:any = this.storage.Get('userData');
-     this.isLogin = (data && data.uniq_id)? true : false;
+     
   }
-
+  ionViewWillEnter()
+  {
+     console.log('ionViewWillEnter');
+  }
+  ngOnInit()
+  {
+     console.log('ngOnInitapp');
+  }
+  ionViewDidEnter()
+  {
+     console.log('ionViewDidEnter');
+  }
   logout()
   {
-    this.storage.ClearAll();
+    this.storage.Clear('userData');
     this.router.navigate(['login']);
   }
 }

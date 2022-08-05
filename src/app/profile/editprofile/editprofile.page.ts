@@ -25,9 +25,9 @@ export class EditprofilePage implements OnInit {
     this.rForm = this.profileForm.group({
       name: [null],
       aadhar_card: [null],
-      dob:[null],
+      dob:[{value:null,disabled: true}],
       gender:["Male"],
-      create_profile_for:[null],
+      create_profile_for:[{value:null,disabled: true}],
       religion:[null],
       martialstatus:[null],
       diet:[null],
