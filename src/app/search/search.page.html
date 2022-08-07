@@ -42,13 +42,13 @@
             </ion-item>
             <ion-item>
                 <ion-label>Marital Status</ion-label>
-                <ion-select multiple="true" interface="popover" [(ngModel)]="selectedData.marital_status">
+                <ion-select multiple="true" interface="alert" [(ngModel)]="selectedData.marital_status">
                     <ion-select-option *ngFor="let data of dropDown.martialstatus" [value]="data.id">{{data.name}}</ion-select-option>
                 </ion-select>
             </ion-item>
             <ion-item>
                 <ion-label>Religion</ion-label>
-                <ion-select multiple="true" interface="popover" [(ngModel)]="selectedData.religion">
+                <ion-select multiple="true" interface="alert" [(ngModel)]="selectedData.religion">
                     <ion-select-option *ngFor="let data of dropDown.religions" [value]="data.id">{{data.religion}}</ion-select-option>
                 </ion-select>
             </ion-item>

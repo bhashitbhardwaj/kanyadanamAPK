@@ -65,32 +65,33 @@ export class AdvancesearchPage implements OnInit {
     this.loader.Show('Loading...');
     this.api.postDataWithAuth('api/search',
     {
-      age_from:this.selectedData.age.lower,
-      age_to:this.selectedData.age.upper,
-      height_from:(this.selectedData.heightFrom)?this.selectedData.heightFrom.id:'',
-      height_to:(this.selectedData.heightTo)?this.selectedData.heightTo.id:'',
-      tongue:tongue,
-      martialstatus:this.selectedData.marital_status,
-      religion_id:this.selectedData.religion,
-      country_id:country,
-      community_id:community,
-      education_field: educationField,
-      state_id:state,
-      education_level:education,
-      workwith:this.selectedData.workign_with,
-      occupation:profession_area,
-      annualincome:annualincome,
+          height_from:(this.selectedData.heightFrom)?this.selectedData.heightFrom.id:'',
+          height_to:(this.selectedData.heightTo)?this.selectedData.heightTo.id:'',
+          tongue:tongue,
+          martialstatus:this.selectedData.marital_status,
+          religion:this.selectedData.religion,
+          education_field: educationField,
+          workwith:this.selectedData.workign_with,
+          occupation:profession_area,
+          annualincome:annualincome,
+          search_type:"advance_search" ,
+          age_range:this.selectedData.age.lower+":"+this.selectedData.age.upper,
+          country:country,
+          community:community,
+          state:state,
+          education:education,
+          res_start: 0
     }).subscribe(res=>{
        this.loader.Hide();
        if(res.status)
        {
          console.log(res);
          this.toast.Notify({
-          message:res.msg,
+          message:res.message,
           duration:3000,
           position:'top'
         })
-        this.router.navigateByUrl('/tabs');
+        this.router.navigateByUrl('/tabs/tab2');
        }
        else{
           this.toast.Notify({

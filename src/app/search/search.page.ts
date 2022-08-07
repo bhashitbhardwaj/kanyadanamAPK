@@ -37,21 +37,22 @@ export class SearchPage implements OnInit {
     this.loader.Show('Loading...');
     this.api.postDataWithAuth('api/search',
     {
-      age_from:this.selectedData.age.lower,
-      age_to:this.selectedData.age.upper,
-      height_from:(this.selectedData.heightFrom)?this.selectedData.heightFrom.id:'',
-      height_to:(this.selectedData.heightTo)?this.selectedData.heightTo.id:'',
-      tongue:tongue,
-      martialstatus:this.selectedData.marital_status,
-      religion_id:this.selectedData.religion,
-      country_id:country
+          search_type:"basic_search" ,
+          age_range:this.selectedData.age.lower+":"+this.selectedData.age.upper,
+          height_from:(this.selectedData.heightFrom)?this.selectedData.heightFrom.id:'',
+          height_to:(this.selectedData.heightTo)?this.selectedData.heightTo.id:'',
+          tongue:tongue,
+          martialstatus:this.selectedData.marital_status,
+          religion:this.selectedData.religion,
+          country:country,
+          res_start: 0
     }).subscribe(res=>{
        this.loader.Hide();
        if(res.status)
        {
          console.log(res);
          this.toast.Notify({
-          message:res.msg,
+          message:res.message,
           duration:3000,
           position:'top'
         })
