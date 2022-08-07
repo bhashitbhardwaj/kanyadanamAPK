@@ -12,44 +12,68 @@
       </ion-button>
   </ion-buttons>
   </ion-toolbar>
+  <!-- <ion-toolbar>
+    <div scrollX="true" direction="x" overflow-scroll="false" class="scroll_button_matches">
+      <ion-button fill="outline" class="btn" (click)="inbox('invitation')">Invitation <ion-text *ngIf="count">({{count}})</ion-text></ion-button>
+      <ion-button fill="outline" class="btn" (click)="inbox('accepted')">Accepted</ion-button>
+      <ion-button fill="outline" class="btn" (click)="inbox('sent')">Sent</ion-button>
+      <ion-button fill="outline" class="btn" (click)="inbox('wishlist')">Shortlist</ion-button>
+      <ion-button fill="outline" class="btn" (click)="inbox('decline')">Decline</ion-button>
+  </div>
+  </ion-toolbar> -->
+  <ion-toolbar>
+    <ion-segment scrollable value="invitation" (ionChange)="segmentChanged($event)">
+      <ion-segment-button value="invitation">
+        <ion-label>Invitation <ion-text *ngIf="count.invitation">({{count.invitation}})</ion-text></ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="accepted">
+        <ion-label>Accepted <ion-text *ngIf="count.accepted">({{count.accepted}})</ion-text></ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="sent">
+        <ion-label>Sent <ion-text *ngIf="count.sent">({{count.sent}})</ion-text></ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="wishlist">
+        <ion-label>Shortlist <ion-text *ngIf="count.wishlist">({{count.wishlist}})</ion-text></ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="decline">
+        <ion-label>Decline <ion-text *ngIf="count.decline">({{count.decline}})</ion-text></ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <div scrollX="true" direction="x" overflow-scroll="false" class="scroll_button_matches">
-    <ion-button fill="outline" class="btn">received (10)</ion-button>
-    <ion-button fill="outline" class="btn">accepted (9)</ion-button>
-    <ion-button fill="outline" class="btn">sent items (50+)</ion-button>
-    <ion-button fill="outline" class="btn">requests</ion-button>
-    <ion-button fill="outline" class="btn">expired</ion-button>
-    <ion-button fill="outline" class="btn">deleted</ion-button>
-</div>
-  <ion-card class="scroll_card">
-    <img src="/assets/images/dummy.jpeg">
+  <ion-card class="scroll_card" *ngFor="let item of data">
+    <img [src]="item.first_image">
     <div class="data">
       <p class="name">
-        Ajay kumar
+        {{item.name}}
       </p>
       <p>
-          25yrs, 5'5" * Banking Professional
+          25yrs, {{item.user_detail.height_detail_api.height_label_feet}} * {{item.user_detail.occupation_detail_api.name}}
       </p>
       <p>
-          Hindi, Saini
+          Hindi, {{item.user_detail.community_detail_api.community}}
       </p>
       <p>
-          Meerut, Utter Pradesh
+          {{item.user_detail.city_detail_api.name}}, {{item.user_detail.state_detail_api.name}} {{item.user_detail.country_detail_api.name}}
       </p>
       <hr>
     </div>
    
     <ion-row>
       <ion-col>
-        <ion-button size="small" expand="block" color="light">
+        <ion-button size="small" expand="block" color="light" *ngIf="item.is_decline_button" (click)="decline()">
           <ion-icon slot="start" name="close-circle-outline"></ion-icon>
           Decline
         </ion-button>
+        <ion-button size="small" expand="block" color="light" *ngIf="item.is_request_sent">
+          <ion-icon slot="start" name="close-circle-outline"></ion-icon>
+          Request Sent
+        </ion-button>
       </ion-col>
       <ion-col>
-        <ion-button size="small" expand="block">
+        <ion-button size="small" expand="block" *ngIf="item.is_accept_button" (click)="accept()">
           <ion-icon slot="start" name="checkmark-circle-outline"></ion-icon>
           Accept
         </ion-button>
