@@ -7,7 +7,6 @@ import { Tab2Page } from './tab2.page';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 
 import { Tab2PageRoutingModule } from './tab2-routing.module';
-import { DobPipe } from '../pipes/dob.pipe';
 
 @NgModule({
   imports: [
@@ -17,6 +16,6 @@ import { DobPipe } from '../pipes/dob.pipe';
     ExploreContainerComponentModule,
     Tab2PageRoutingModule
   ],
-  declarations: [Tab2Page,DobPipe]
+  declarations: [Tab2Page]
 })
 export class Tab2PageModule {}

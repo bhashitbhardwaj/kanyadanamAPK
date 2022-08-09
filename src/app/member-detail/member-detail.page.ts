@@ -44,6 +44,7 @@ export class MemberDetailPage implements OnInit {
       }
     })
   }
+  
   async openModal() {
     const modal = await this.modalCtrl.create({
       component: ImagesliderComponent,
@@ -60,6 +61,5 @@ export class MemberDetailPage implements OnInit {
     }).catch((err) => {
       console.log('err :>> ', err);
     });
-  
   }
 }

@@ -50,7 +50,7 @@
         {{item.name}}
       </p>
       <p>
-        {{item.dob | dob }}yrs, {{item.user_detail.height_detail_api.height_label_feet}}
+        {{item.age }}yrs, {{item.user_detail.height_detail_api.height_label_feet}}
     </p>
     <p>
         {{item.user_detail.religion_detail_api.religion}}, {{item.user_detail.community_detail_api.community}}
@@ -62,20 +62,28 @@
     </div>
    
     <ion-row>
-      <ion-col>
-        <ion-button size="small" expand="block" color="light" *ngIf="item.is_decline_button" (click)="decline()">
-          <ion-icon slot="start" name="close-circle-outline"></ion-icon>
-          Decline
-        </ion-button>
-        <ion-button size="small" expand="block" color="light" *ngIf="item.is_request_sent">
+      <ion-col *ngIf="item.is_request_sent">
+        <ion-button size="small" expand="block" color="light" >
           <ion-icon slot="start" name="close-circle-outline"></ion-icon>
           Request Sent
         </ion-button>
       </ion-col>
-      <ion-col>
-        <ion-button size="small" expand="block" *ngIf="item.is_accept_button" (click)="accept()">
+      <ion-col *ngIf="item.is_decline_button" >
+        <ion-button size="small" expand="block" color="light" (click)="decline()">
+          <ion-icon slot="start" name="close-circle-outline"></ion-icon>
+          Decline
+        </ion-button>
+      </ion-col>
+      <ion-col *ngIf="item.is_accept_button">
+        <ion-button size="small" expand="block"  (click)="accept()">
           <ion-icon slot="start" name="checkmark-circle-outline"></ion-icon>
           Accept
+        </ion-button>
+      </ion-col>
+      <ion-col *ngIf="item.is_connect_button">
+        <ion-button size="small" expand="block"  (click)="accept()">
+          <ion-icon slot="start" name="checkmark-circle-outline"></ion-icon>
+          Connect Now
         </ion-button>
       </ion-col>
     </ion-row>

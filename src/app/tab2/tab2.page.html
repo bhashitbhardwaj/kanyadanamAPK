@@ -38,13 +38,13 @@
         <ion-button class="wishlist" size="large" fill="clear">
             <ion-icon slot="start" name="heart-outline"></ion-icon>
         </ion-button>
-        <img src="/assets/images/dummy.jpeg" />
+        <img [src]="item.first_image" />
         <div class="data">
             <p class="name">
                 {{item.name}}
             </p>
             <p>
-                {{item.dob | dob }}yrs, {{item.user_detail.height_detail_api.height_label_feet}}
+                {{item.age }}yrs, {{item.user_detail.height_detail_api.height_label_feet}}
             </p>
             <p>
                 {{item.user_detail.religion_detail_api.religion}}, {{item.user_detail.community_detail_api.community}}
