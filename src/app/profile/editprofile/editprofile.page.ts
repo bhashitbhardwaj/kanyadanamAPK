@@ -104,6 +104,7 @@ export class EditprofilePage implements OnInit {
     this.rForm.value.country = (this.rForm.value.country)?this.rForm.value.country.id:null;
     this.rForm.value.state = (this.rForm.value.state)? this.rForm.value.state.id:null;
     this.rForm.value.city = (this.rForm.value.city)?this.rForm.value.city.id:null;
+    this.rForm.value.height = (this.rForm.value.height)?this.rForm.value.height.id:null;
     var tongue =[];
     this.rForm.value.tongue= this.rForm.value.tongue || [];
     this.rForm.value.tongue.forEach(obj => {
