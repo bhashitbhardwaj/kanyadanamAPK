@@ -89,7 +89,7 @@ export class Tab2Page {
         this.loader.Show('Loading...');
         this.api.postDataWithAuth('api/search',
         {
-          search_type:"basic_search" ,
+          search_type:"advance_search",
           age_range:result.data.age.lower+":"+result.data.age.upper,
           height:heightFrom,
           tongue:tongue,

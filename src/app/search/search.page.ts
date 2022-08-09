@@ -39,8 +39,7 @@ export class SearchPage implements OnInit {
     {
           search_type:"basic_search" ,
           age_range:this.selectedData.age.lower+":"+this.selectedData.age.upper,
-          height_from:(this.selectedData.heightFrom)?this.selectedData.heightFrom.id:'',
-          height_to:(this.selectedData.heightTo)?this.selectedData.heightTo.id:'',
+          height:(this.selectedData.heightFrom)?[this.selectedData.heightFrom.id]:[],
           tongue:tongue,
           martialstatus:this.selectedData.marital_status,
           religion:this.selectedData.religion,

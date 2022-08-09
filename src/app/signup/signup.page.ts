@@ -53,7 +53,7 @@ export class SignupPage implements OnInit {
        if(res.status)
        {
          console.log(res)
-         this.router.navigateByUrl('/tabs');
+         this.router.navigateByUrl('/profile/editprofile');
        }
        else{
           this.toast.Notify({

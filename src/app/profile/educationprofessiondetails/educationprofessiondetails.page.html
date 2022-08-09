@@ -16,28 +16,28 @@
         </ion-card-header>
         <ion-list class="ion-padding">
             <ion-item>
-                <ion-label>Education Level</ion-label>
+                <ion-label color="primary">Education Level</ion-label>
                 <ionic-selectable [(ngModel)]="selectedData.education" placeholder="Your Education Level" [items]="dropDown.educationLevels" [isMultiple]="true" [isConfirmButtonEnabled]="true" headerColor="primary" itemValueField="id" itemTextField="name" [canSearch]="true">
                 </ionic-selectable>
             </ion-item>
             <ion-item>
-                <ion-label>Education Field</ion-label>
+                <ion-label color="primary">Education Field</ion-label>
                 <ionic-selectable [(ngModel)]="selectedData.educationfield" placeholder="Your Education Field" [items]="dropDown.educationFields" [isMultiple]="false" [isConfirmButtonEnabled]="true" headerColor="primary" itemValueField="id" itemTextField="name" [canSearch]="true">
                 </ionic-selectable>
             </ion-item>
             <ion-item>
-                <ion-label>Profession Area</ion-label>
+                <ion-label color="primary">Profession Area</ion-label>
                 <ionic-selectable [(ngModel)]="selectedData.profession_area" placeholder="Your Occupation" [items]="dropDown.occupations" [isMultiple]="false" [isConfirmButtonEnabled]="true" headerColor="primary" itemValueField="id" itemTextField="name" [canSearch]="true">
                 </ionic-selectable>
             </ion-item>
             <ion-item>
-                <ion-label>You Work With</ion-label>
+                <ion-label color="primary">You Work With</ion-label>
                 <ion-select interface="popover" placeholder="You Work with" [(ngModel)]="selectedData.workign_with">
                     <ion-select-option *ngFor="let data of dropDown.workWiths" [value]="data.id">{{data.name}}</ion-select-option>
                 </ion-select>
             </ion-item>
             <ion-item>
-                <ion-label>Annual Income</ion-label>
+                <ion-label color="primary">Annual Income</ion-label>
                 <ionic-selectable [(ngModel)]="selectedData.annual_income" placeholder="Your Annual Income" [items]="dropDown.annualIncomes" [isMultiple]="false" [isConfirmButtonEnabled]="true" headerColor="primary" itemValueField="id" itemTextField="name" [canSearch]="true">
                 </ionic-selectable>
             </ion-item>

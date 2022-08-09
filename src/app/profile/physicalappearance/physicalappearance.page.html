@@ -16,16 +16,10 @@
                 <ion-card-title>Edit Physical Details</ion-card-title>
             </ion-card-header>
             <ion-list class="ion-padding">
-                <ion-item>
-                    <ion-label>Height</ion-label>
-                    <ionic-selectable [(ngModel)]="selectedData.height" placeholder="Your Height" [items]="dropDown.height" [isMultiple]="false" [isConfirmButtonEnabled]="true" headerColor="primary" itemValueField="id" itemTextField="height_label_feet" [canSearch]="true">
-                    </ionic-selectable>
-                </ion-item>
-
                 <ion-list>
                     <ion-radio-group [(ngModel)]="selectedData.body_type">
                         <ion-list-header>
-                            <ion-label>Body Type?</ion-label>
+                            <ion-label color="primary">Body Type?</ion-label>
                         </ion-list-header>
 
                         <ion-row>
@@ -41,7 +35,7 @@
                 <ion-list>
                     <ion-radio-group [(ngModel)]="selectedData.skin_tone">
                         <ion-list-header>
-                            <ion-label>Skin Tone?</ion-label>
+                            <ion-label color="primary">Skin Tone?</ion-label>
                         </ion-list-header>
                         <ion-row>
                             <ion-col *ngFor="let entry of skin_tone">
@@ -57,7 +51,7 @@
                 <ion-list>
                     <ion-radio-group [(ngModel)]="selectedData.disability">
                         <ion-list-header>
-                            <ion-label>Any Disability?</ion-label>
+                            <ion-label color="primary">Any Disability?</ion-label>
                         </ion-list-header>
                         <ion-row>
                             <ion-col *ngFor="let entry of disability">

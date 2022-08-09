@@ -19,18 +19,18 @@
                 <h4 class="header">Contact Number</h4>
             </ion-text>
             <ion-item>
-                <ion-label position="floating">Enter your mobile number</ion-label>
+                <ion-label position="floating" color="primary">Enter your mobile number</ion-label>
                 <ion-input [(ngModel)]="selectedData.mobile" value="8523882090" readonly></ion-input>
             </ion-item>
             <ion-text color="dark">
                 <h4 class="header">Contact details and display status</h4>
             </ion-text>
             <ion-item>
-                <ion-label position="floating">Name of contact person</ion-label>
+                <ion-label position="floating" color="primary">Name of contact person</ion-label>
                 <ion-input type="text" [(ngModel)]="selectedData.contact_person_name"></ion-input>
             </ion-item>
             <ion-item>
-                <ion-label>Relationship with the member</ion-label>
+                <ion-label color="primary">Relationship with the member</ion-label>
                 <ion-select interface="popover" [(ngModel)]="selectedData.relationship">
                     <ion-select-option value="Self">Self</ion-select-option>
                     <ion-select-option value="Parent">Parent</ion-select-option>
@@ -46,17 +46,17 @@
                 <h5>Convenient time to call</h5>
             </ion-text>
             <ion-item>
-                <ion-label>To</ion-label>
+                <ion-label color="primary">To</ion-label>
                 <ion-datetime displayFormat="h a" [(ngModel)]="selectedData.myTimeTo"></ion-datetime>
             </ion-item>
             <ion-item>
-                <ion-label>From</ion-label>
+                <ion-label color="primary">From</ion-label>
                 <ion-datetime displayFormat="h a" [(ngModel)]="selectedData.myTimeFrom"></ion-datetime>
             </ion-item>
             <ion-list>
                 <ion-radio-group [(ngModel)]="selectedData.contact_display_setting">
                     <ion-list-header>
-                        <ion-label>Contact display setting</ion-label>
+                        <ion-label color="primary">Contact display setting</ion-label>
                     </ion-list-header>
                     <ion-item>
                         <ion-label>Visible to all Premium Members</ion-label>

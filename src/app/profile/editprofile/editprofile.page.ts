@@ -23,20 +23,21 @@ export class EditprofilePage implements OnInit {
     private toast: ToastService
   ) { 
     this.rForm = this.profileForm.group({
-      name: [null],
+      name: [null,Validators.required],
       aadhar_card: [null],
       dob:[{value:null,disabled: true}],
       gender:["Male"],
+      height:[null,Validators.required],
       create_profile_for:[{value:null,disabled: true}],
-      religion:[null],
-      martialstatus:[null],
+      religion:[null,Validators.required],
+      martialstatus:[null,Validators.required],
       diet:[null],
       sub_community:[null],
-      country:[null],
-      state:[null],
-      city:[null],
-      community:[null],
-      tongue:[null],
+      country:[null,Validators.required],
+      state:[null,Validators.required],
+      city:[null,Validators.required],
+      community:[null,Validators.required],
+      tongue:[null,Validators.required],
       about: [null],
       does_smoke: ["No",null],
       familydetails: [null],
@@ -109,6 +110,10 @@ export class EditprofilePage implements OnInit {
       tongue.push(obj.tongue_id)
     });
     this.rForm.value.tongue = tongue;
+    delete this.rForm.value.name;
+    delete this.rForm.value.email;
+    delete this.rForm.value.create_profile_for;
+    delete this.rForm.value.dob;
     this.loader.Show('Loading...');
     this.api.postDataWithAuth('api/updateProfile',this.rForm.value).subscribe(res=>{
        this.loader.Hide();
@@ -141,6 +146,7 @@ export class EditprofilePage implements OnInit {
           "aadhar_card": res.data.user_detail.user.aadhar_card,
           "diet": res.data.user_detail.user_details.diet,
           "community": (res.data.user_detail.user_details && res.data.user_detail.user_details.community_id)?res.data.user_detail.user_details.community_id[0]:null,
+          "height": (res.data.user_detail.user_details && res.data.user_detail.user_details.height)?res.data.user_detail.user_details.height[0]:null,
           "country": (res.data.user_detail.user_details && res.data.user_detail.user_details.country_id)?res.data.user_detail.user_details.country_id[0]:null,
           "state": (res.data.user_detail.user_details && res.data.user_detail.user_details.state_id)?res.data.user_detail.user_details.state_id[0]:null,
           "city": (res.data.user_detail.user_details && res.data.user_detail.user_details.city_id)?res.data.user_detail.user_details.city_id[0]:null,
@@ -235,6 +241,19 @@ export class EditprofilePage implements OnInit {
         });
         console.log(res.data);
         this.dropDown.diets = res.data;
+      }
+      else {
+        this.toast.Notify({
+          message: res.message,
+          duration: 3000,
+          position: 'top'
+        })
+      }
+    })
+    this.api.getData('api/getHeights').subscribe(res => {
+      if (res.status) {
+        console.log(res);
+        this.dropDown.height = res.data;
       }
       else {
         this.toast.Notify({

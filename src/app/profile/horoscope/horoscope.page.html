@@ -16,34 +16,29 @@
         </ion-card-header>
         <ion-list class="ion-padding">
             <ion-item>
-                <ion-label>Country of Birth</ion-label>
+                <ion-label color="primary">Country of Birth</ion-label>
                 <ionic-selectable [(ngModel)]="selectedData.country" [items]="dropDown.countries" [isMultiple]="false" [isConfirmButtonEnabled]="true" headerColor="primary" itemValueField="id" itemTextField="name" [canSearch]="true" (onChange)="countryChange($event)">
                 </ionic-selectable>
             </ion-item>
-            <!-- <ion-item>
-                <ion-label>State of Birth</ion-label>
-                <ionic-selectable [(ngModel)]="selectedData.state" [items]="dropDown.states" [isMultiple]="false" [isConfirmButtonEnabled]="true" headerColor="primary" itemValueField="id" itemTextField="name" [canSearch]="true" (onChange)="stateChange($event)">
-                </ionic-selectable>
-            </ion-item> -->
             <ion-item>
-                <ion-label>State of Birth</ion-label>
+                <ion-label color="primary">State of Birth</ion-label>
                 <ionic-selectable [(ngModel)]="selectedData.state" [items]="dropDown.states" [isMultiple]="false" [isConfirmButtonEnabled]="true" headerColor="primary" itemValueField="id" itemTextField="name" [canSearch]="true" (onChange)="stateChange($event)">
                 </ionic-selectable>
             </ion-item>
             <ion-item>
-                <ion-label>City of Birth</ion-label>
+                <ion-label color="primary">City of Birth</ion-label>
                 <ionic-selectable [(ngModel)]="selectedData.city" [items]="dropDown.cities" [isMultiple]="false" [isConfirmButtonEnabled]="true" headerColor="primary" itemValueField="id" itemTextField="name" [canSearch]="true">
                 </ionic-selectable>
             </ion-item>
             <ion-item>
-                <ion-label position="floating">D.O.B with BirthTime</ion-label>
+                <ion-label position="floating" color="primary">D.O.B with BirthTime</ion-label>
                 <ion-datetime displayFormat="h:mm a" [(ngModel)]="selectedData.time_of_birth"></ion-datetime>
             </ion-item>
 
             <ion-list>
                 <ion-radio-group [(ngModel)]="selectedData.format">
                     <ion-list-header>
-                        <ion-label>Horoscope Format</ion-label>
+                        <ion-label color="primary">Horoscope Format</ion-label>
                     </ion-list-header>
                     <ion-item *ngFor="let entry of format">
                         <ion-label>{{entry.val}}</ion-label>
@@ -54,7 +49,7 @@
             <ion-list>
                 <ion-radio-group [(ngModel)]="selectedData.setting">
                     <ion-list-header>
-                        <ion-label>Setting</ion-label>
+                        <ion-label color="primary">Setting</ion-label>
                     </ion-list-header>
                     <ion-item *ngFor="let entry of setting">
                         <ion-label>{{entry.val}}</ion-label>
@@ -62,7 +57,6 @@
                     </ion-item>
                 </ion-radio-group>
             </ion-list>
-
             <ion-button expand="block" color="primary" (click)="save()">Submit</ion-button>
         </ion-list>
     </ion-card>

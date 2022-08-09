@@ -45,12 +45,10 @@ export class PhysicalappearancePage implements OnInit {
   }
 
   save() {
-    
     console.log('save:', this.selectedData);
     this.loader.Show('Loading...');
     this.api.postDataWithAuth('api/updatePhysicalAppearance',
     {
-      height:(this.selectedData.height)?this.selectedData.height.id:null,
       body_type:this.selectedData.body_type,
       skin_tone:this.selectedData.skin_tone,
       disability:this.selectedData.disability
@@ -91,13 +89,9 @@ export class PhysicalappearancePage implements OnInit {
       }
     })
     this.getPhysicalAppearance()
-
-
   }
 
-  
   getPhysicalAppearance(){
-
     this.loader.Show('Loading...');
     this.api.postDataWithAuth('api/getPhysicalAppearance',{}).subscribe(res => {
       this.loader.Hide();

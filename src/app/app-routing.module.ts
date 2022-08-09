@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AuthGuardService } from './provider/auth-guard.service';
+import { NotLoggedAuthGuardService } from './provider/not-logged-auth-guard.service';
 
 const routes: Routes = [
   {
@@ -15,15 +16,18 @@ const routes: Routes = [
   },
   {
     path: 'signup',
-    loadChildren: () => import('./signup/signup.module').then( m => m.SignupPageModule)
+    loadChildren: () => import('./signup/signup.module').then( m => m.SignupPageModule),
+    canActivate: [NotLoggedAuthGuardService],
   },
   {
     path: 'login',
-    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule),
+    canActivate: [NotLoggedAuthGuardService],
   },
   {
     path: 'forgotpassword',
-    loadChildren: () => import('./forgotpassword/forgotpassword.module').then( m => m.ForgotpasswordPageModule)
+    loadChildren: () => import('./forgotpassword/forgotpassword.module').then( m => m.ForgotpasswordPageModule),
+    canActivate: [NotLoggedAuthGuardService],
   },
   {
     path: 'profile',

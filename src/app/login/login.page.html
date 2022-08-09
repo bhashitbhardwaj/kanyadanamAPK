@@ -17,14 +17,14 @@
     <form [formGroup]="rForm">
     <ion-list class="ion-padding">
       <ion-item>
-        <ion-label position="floating">Email Address</ion-label>
+        <ion-label position="floating" color="primary">Email Address</ion-label>
         <ion-input type="email" formControlName="email" required ></ion-input>
       </ion-item>
       <div>
         <div class="alert" *ngIf="!rForm.controls['email'].valid && rForm.controls['email'].touched">Please Enter a valid email id.</div>
     </div>
       <ion-item>
-        <ion-label position="floating">Password</ion-label>
+        <ion-label position="floating" color="primary">Password</ion-label>
         <ion-input type="password" formControlName="password" required></ion-input>
       </ion-item>
       <div>

@@ -17,14 +17,14 @@
     <form [formGroup]="rForm">
     <ion-list class="ion-padding">
       <ion-item>
-        <ion-label position="floating">Please enter your full name</ion-label>
+        <ion-label position="floating" color="primary">Please enter your full name</ion-label>
         <ion-input type="text" formControlName="name"></ion-input>
       </ion-item>
       <div>
         <div class="alert" *ngIf="!rForm.controls['name'].valid && rForm.controls['name'].touched">Please Enter a valid Name.</div>
     </div>
       <ion-item>
-        <ion-label position="floating">Date of Birth (MM/DD/YYYY)</ion-label>
+        <ion-label position="floating" color="primary">Date of Birth (MM/DD/YYYY)</ion-label>
         <ion-datetime presentation="date" formControlName="dob" displayFormat="MM/DD/YYYY" min="1950-01-01"></ion-datetime>
       </ion-item>
       <div>
@@ -33,7 +33,7 @@
       <ion-list>
         <ion-radio-group value="Male" formControlName="gender">
           <ion-list-header>
-            <ion-label>Gender</ion-label>
+            <ion-label color="primary">Gender</ion-label>
           </ion-list-header>
           <ion-item>
             <ion-label>Male</ion-label>
@@ -47,7 +47,7 @@
         </ion-radio-group>
       </ion-list>
       <ion-item>
-        <ion-label>Create profile for</ion-label>
+        <ion-label color="primary">Create profile for</ion-label>
         <ion-select interface="popover" formControlName="create_profile_for">
           <ion-select-option value="Self">Self</ion-select-option>
           <ion-select-option value="Son">Son</ion-select-option>
@@ -60,21 +60,21 @@
         <div class="alert" *ngIf="!rForm.controls['create_profile_for'].valid && rForm.controls['create_profile_for'].touched">Please Select a valid Create profile for.</div>
     </div>
       <ion-item>
-        <ion-label position="floating">Enter your mobile number</ion-label>
+        <ion-label position="floating" color="primary">Enter your mobile number</ion-label>
         <ion-input type="tel" formControlName="mobile"></ion-input>
       </ion-item>
       <div>
         <div class="alert" *ngIf="!rForm.controls['mobile'].valid && rForm.controls['mobile'].touched">Please Enter a valid Mobile Number.</div>
     </div>
       <ion-item>
-        <ion-label position="floating">Email Address</ion-label>
+        <ion-label position="floating" color="primary">Email Address</ion-label>
         <ion-input type="email" formControlName="email"></ion-input>
       </ion-item>
       <div>
         <div class="alert" *ngIf="!rForm.controls['email'].valid && rForm.controls['email'].touched">Please Enter a valid Email.</div>
     </div>
       <ion-item>
-        <ion-label position="floating">Password</ion-label>
+        <ion-label position="floating" color="primary">Password</ion-label>
         <ion-input type="password" formControlName="password"></ion-input>
       </ion-item>
       <div>

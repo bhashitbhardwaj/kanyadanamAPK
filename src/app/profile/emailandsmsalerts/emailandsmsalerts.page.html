@@ -20,17 +20,14 @@
                     <p>Manage your subscriptions to Kanyadanam.com Alerts on email listed below. You can also subscribe to Kanyadanam.com Newsletters.</p>
                     <h4 class="header">My Alerts</h4>
                 </ion-text>
-
                 <ion-list>
                     <ion-radio-group [(ngModel)]="selectedData.match_mail_photo_match_mail">
                         <ion-list-header>
-                            <ion-label class="radiolabel">
+                            <ion-label class="radiolabel" color="primary">
                                 Match Mail & Photo Match Mail
                                 <p>Personalized matches for you delivered via email as often as you like. A very effective match-making tool.</p>
                             </ion-label>
-
                         </ion-list-header>
-
                         <ion-item *ngFor="let entry of match_mail_photo_match_mail">
                             <ion-label class="radiolabelOption">{{entry.val}}</ion-label>
                             <ion-radio slot="start" value="{{entry.val}}"></ion-radio>
@@ -40,151 +37,115 @@
                 <ion-list>
                     <ion-radio-group [(ngModel)]="selectedData.premium_match_mail">
                         <ion-list-header>
-                            <ion-label class="radiolabel">
+                            <ion-label class="radiolabel" color="primary">
                                 Premium Match Mail
                                 <p>An email notification containing your Matches who have upgraded to a Premium Membership.</p>
                             </ion-label>
-
                         </ion-list-header>
-
                         <ion-item *ngFor="let entry of premium_match_mail">
                             <ion-label class="radiolabelOption">{{entry.val}}</ion-label>
                             <ion-radio slot="start" value="{{entry.val}}"></ion-radio>
                         </ion-item>
-
-
                     </ion-radio-group>
                 </ion-list>
                 <ion-list>
                     <ion-radio-group [(ngModel)]="selectedData.recent_visitor_email">
                         <ion-list-header>
-                            <ion-label class="radiolabel">
+                            <ion-label class="radiolabel" color="primary">
                                 Recent Visitors Email
                                 <p>An email notification of Members who have recently Viewed your Profile.</p>
                             </ion-label>
-
                         </ion-list-header>
-
                         <ion-item *ngFor="let entry of recent_visitor_email">
                             <ion-label class="radiolabelOption">{{entry.val}}</ion-label>
                             <ion-radio slot="start" value="{{entry.val}}"></ion-radio>
                         </ion-item>
-
-
                     </ion-radio-group>
                 </ion-list>
                 <ion-list>
                     <ion-radio-group [(ngModel)]="selectedData.member_who_shortlist_you_email">
                         <ion-list-header>
-                            <ion-label class="radiolabel">
+                            <ion-label class="radiolabel" color="primary">
                                 Members who Shortlisted you Email
                                 <p>An email notification of Members who have recently Shortlisted your Profile.</p>
                             </ion-label>
-
                         </ion-list-header>
-
                         <ion-item *ngFor="let entry of member_who_shortlist_you_email">
                             <ion-label class="radiolabelOption">{{entry.val}}</ion-label>
                             <ion-radio slot="start" value="{{entry.val}}"></ion-radio>
                         </ion-item>
-
-
                     </ion-radio-group>
                 </ion-list>
                 <ion-list>
                     <ion-radio-group [(ngModel)]="selectedData.viewed_profile_email">
                         <ion-list-header>
-                            <ion-label class="radiolabel">
+                            <ion-label class="radiolabel" color="primary">
                                 Viewed Profiles Email
                                 <p>An email reminder containing Profiles you have Viewed recently but have not yet invited to Connect.</p>
                             </ion-label>
-
                         </ion-list-header>
-
                         <ion-item *ngFor="let entry of viewed_profile_email">
                             <ion-label class="radiolabelOption">{{entry.val}}</ion-label>
                             <ion-radio slot="start" value="{{entry.val}}"></ion-radio>
                         </ion-item>
-
-
                     </ion-radio-group>
                 </ion-list>
                 <ion-list>
                     <ion-radio-group [(ngModel)]="selectedData.similar_profile">
                         <ion-list-header>
-                            <ion-label class="radiolabel">
+                            <ion-label class="radiolabel" color="primary">
                                 Similar Profiles Email
                                 <p>An email containing Profiles that are similar to the ones you have liked recently..</p>
                             </ion-label>
-
                         </ion-list-header>
-
                         <ion-item *ngFor="let entry of similar_profile">
                             <ion-label class="radiolabelOption">{{entry.val}}</ion-label>
                             <ion-radio slot="start" value="{{entry.val}}"></ion-radio>
                         </ion-item>
-
-
                     </ion-radio-group>
                 </ion-list>
                 <ion-list>
                     <ion-radio-group [(ngModel)]="selectedData.contact_alert">
                         <ion-list-header>
-                            <ion-label class="radiolabel">
+                            <ion-label class="radiolabel" color="primary">
                                 Contact Alert
                                 <p>Alerts you receive every time someone contacts you or you receive a response to a contact initiated by you. Get them in your mailbox at a frequency of your choice. Essential to keep you informed of all responses received.</p>
                             </ion-label>
-
                         </ion-list-header>
-
                         <ion-item *ngFor="let entry of contact_alert">
                             <ion-label class="radiolabelOption">{{entry.val}}</ion-label>
                             <ion-radio slot="start" value="{{entry.val}}"></ion-radio>
                         </ion-item>
-
-
                     </ion-radio-group>
                 </ion-list>
                 <ion-list>
                     <ion-radio-group [(ngModel)]="selectedData.message_recv_alert">
                         <ion-list-header>
-                            <ion-label class="radiolabel">
+                            <ion-label class="radiolabel" color="primary">
                                 Message Received Alert
                                 <p>An email notification of new messages received recently.</p>
                             </ion-label>
-
                         </ion-list-header>
-
                         <ion-item *ngFor="let entry of message_recv_alert">
                             <ion-label class="radiolabelOption">{{entry.val}}</ion-label>
                             <ion-radio slot="start" value="{{entry.val}}"></ion-radio>
                         </ion-item>
-
-
                     </ion-radio-group>
                 </ion-list>
                 <ion-list>
                     <ion-radio-group [(ngModel)]="selectedData.kndnm_special">
                         <ion-list-header>
-                            <ion-label class="radiolabel">
+                            <ion-label class="radiolabel" color="primary">
                                 Kanyadanam Specials
                                 <p>Invitations, Discounts, and Offers just for Kanyadanam.com members.</p>
                             </ion-label>
-
                         </ion-list-header>
-
                         <ion-item *ngFor="let entry of kndnm_special">
                             <ion-label class="radiolabelOption">{{entry.val}}</ion-label>
                             <ion-radio slot="start" value="{{entry.val}}"></ion-radio>
                         </ion-item>
-
-
                     </ion-radio-group>
                 </ion-list>
-
-
-
-
                 <ion-button expand="block" color="primary" (click)="save()">Update Profile</ion-button>
             </ion-list>
         </ion-card>

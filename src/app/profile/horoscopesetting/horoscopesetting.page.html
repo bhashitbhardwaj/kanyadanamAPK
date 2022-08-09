@@ -15,11 +15,10 @@
             <ion-card-title>My Horoscope Settings</ion-card-title>
         </ion-card-header>
         <ion-list class="ion-padding">
-
             <ion-list>
                 <ion-radio-group [(ngModel)]="selectedData.horoscope_match_format">
                     <ion-list-header>
-                        <ion-label>Horoscope Match Format</ion-label>
+                        <ion-label color="primary">Horoscope Match Format</ion-label>
                     </ion-list-header>
                     <ion-item *ngFor="let entry of horoscope_match_format">
                         <ion-label>{{entry.val}}</ion-label>
@@ -30,7 +29,7 @@
             <ion-list>
                 <ion-radio-group [(ngModel)]="selectedData.nakshtra_check">
                     <ion-list-header>
-                        <ion-label>Nakshtra Check</ion-label>
+                        <ion-label color="primary">Nakshtra Check</ion-label>
                     </ion-list-header>
                     <ion-item *ngFor="let entry of nakshtra_check">
                         <ion-label>{{entry.val}}</ion-label>
@@ -41,7 +40,7 @@
             <ion-list>
                 <ion-radio-group [(ngModel)]="selectedData.papasamyam_check">
                     <ion-list-header>
-                        <ion-label>Papasamyam Check</ion-label>
+                        <ion-label color="primary">Papasamyam Check</ion-label>
                     </ion-list-header>
                     <ion-item *ngFor="let entry of papasamyam_check">
                         <ion-label>{{entry.val}}</ion-label>
@@ -52,7 +51,7 @@
             <ion-list>
                 <ion-radio-group [(ngModel)]="selectedData.manglik">
                     <ion-list-header>
-                        <ion-label>Manglik / Chevvai Dosha Check</ion-label>
+                        <ion-label color="primary">Manglik / Chevvai Dosha Check</ion-label>
                     </ion-list-header>
                     <ion-item *ngFor="let entry of manglik">
                         <ion-label>{{entry.val}}</ion-label>
@@ -63,7 +62,7 @@
             <ion-list>
                 <ion-radio-group [(ngModel)]="selectedData.dasa">
                     <ion-list-header>
-                        <ion-label>Dasa Sandhi Check</ion-label>
+                        <ion-label color="primary">Dasa Sandhi Check</ion-label>
                     </ion-list-header>
                     <ion-item *ngFor="let entry of dasa">
                         <ion-label>{{entry.val}}</ion-label>
@@ -71,8 +70,6 @@
                     </ion-item>
                 </ion-radio-group>
             </ion-list>
-
-
             <ion-button expand="block" color="primary" (click)="save()">Save</ion-button>
         </ion-list>
     </ion-card>

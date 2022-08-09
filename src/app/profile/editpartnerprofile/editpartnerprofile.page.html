@@ -23,34 +23,34 @@
                 </ion-range>
             </ion-item>
             <ion-item>
-                <ion-label>Height From</ion-label>
+                <ion-label color="primary">Height From</ion-label>
                 <ionic-selectable [(ngModel)]="selectedData.heightFrom" [items]="dropDown.heightFrom" [isMultiple]="false" [isConfirmButtonEnabled]="true" headerColor="primary" itemValueField="id" itemTextField="height_label_feet" [canSearch]="true">
                 </ionic-selectable>
             </ion-item>
             <ion-item>
-                <ion-label>Height To</ion-label>
+                <ion-label color="primary">Height To</ion-label>
                 <ionic-selectable [(ngModel)]="selectedData.heightTo" [items]="dropDown.heightFrom" [isMultiple]="false" [isConfirmButtonEnabled]="true" headerColor="primary" itemValueField="id" itemTextField="height_label_feet" [canSearch]="true">
                 </ionic-selectable>
             </ion-item>
             <ion-item>
-                <ion-label>Marital Status</ion-label>
+                <ion-label color="primary">Marital Status</ion-label>
                 <ion-select multiple="true" interface="alert" [(ngModel)]="selectedData.marital_status">
                     <ion-select-option *ngFor="let data of dropDown.martialstatus" [value]="data.id">{{data.name}}</ion-select-option>
                 </ion-select>
             </ion-item>
             <ion-item>
-                <ion-label>Religion</ion-label>
+                <ion-label color="primary">Religion</ion-label>
                 <ion-select multiple="true" interface="alert" [(ngModel)]="selectedData.religion">
                     <ion-select-option *ngFor="let data of dropDown.religions" [value]="data.id">{{data.religion}}</ion-select-option>
                 </ion-select>
             </ion-item>
             <ion-item>
-                <ion-label>Mother Tongue</ion-label>
+                <ion-label color="primary">Mother Tongue</ion-label>
                 <ionic-selectable [(ngModel)]="selectedData.tongue" [items]="dropDown.tongues" [isMultiple]="true" [isConfirmButtonEnabled]="true" headerColor="primary" itemValueField="tongue_id" itemTextField="tongue" [canSearch]="true">
                 </ionic-selectable>
             </ion-item>
             <ion-item>
-                <ion-label>Community</ion-label>
+                <ion-label color="primary">Community</ion-label>
                 <ionic-selectable [(ngModel)]="selectedData.community" [items]="dropDown.communities" [isMultiple]="true" [isConfirmButtonEnabled]="true" headerColor="primary" itemValueField="id" itemTextField="community" [canSearch]="true">
                 </ionic-selectable>
             </ion-item>
@@ -58,12 +58,12 @@
                 <h4 class="header"> Location Details</h4>
             </ion-text>
             <ion-item>
-                <ion-label>Country in Living</ion-label>
+                <ion-label color="primary">Country in Living</ion-label>
                 <ionic-selectable [(ngModel)]="selectedData.country" [items]="dropDown.countries" [isMultiple]="true" [isConfirmButtonEnabled]="true" headerColor="primary" itemValueField="id" itemTextField="name" [canSearch]="true" (onChange)="countryChange($event)">
                 </ionic-selectable>
             </ion-item>
             <ion-item>
-                <ion-label>State in Living</ion-label>
+                <ion-label color="primary">State in Living</ion-label>
                 <ionic-selectable [(ngModel)]="selectedData.state" [items]="dropDown.states" [isMultiple]="true" [isConfirmButtonEnabled]="true" headerColor="primary" itemValueField="id" itemTextField="name" [canSearch]="true">
                 </ionic-selectable>
             </ion-item>
@@ -71,37 +71,37 @@
                 <h4 class="header">Education & Profession Details</h4>
             </ion-text>
             <ion-item>
-                <ion-label>Education Level</ion-label>
+                <ion-label color="primary">Education Level</ion-label>
                 <ionic-selectable [(ngModel)]="selectedData.education" placeholder="Your Education Level" [items]="dropDown.educationLevels" [isMultiple]="true" [isConfirmButtonEnabled]="true" headerColor="primary" itemValueField="id" itemTextField="name" [canSearch]="true">
                 </ionic-selectable>
             </ion-item>
             <ion-item>
-                <ion-label>Workign With</ion-label>
+                <ion-label color="primary">Workign With</ion-label>
                 <ion-select multiple="true" interface="alert" [(ngModel)]="selectedData.workign_with">
                     <ion-select-option *ngFor="let data of dropDown.workWiths" [value]="data.id">{{data.name}}</ion-select-option>
                 </ion-select>
             </ion-item>
             <ion-item>
-                <ion-label>Profession Area</ion-label>
+                <ion-label color="primary">Profession Area</ion-label>
                 <ionic-selectable [(ngModel)]="selectedData.profession_area" [items]="dropDown.occupations" [isMultiple]="true" [isConfirmButtonEnabled]="true" headerColor="primary" itemValueField="id" itemTextField="name" [canSearch]="true">
                 </ionic-selectable>
             </ion-item>
             <ion-item>
-                <ion-label>Annual Income</ion-label>
+                <ion-label color="primary">Annual Income</ion-label>
                 <ionic-selectable [(ngModel)]="selectedData.annual_income" [items]="dropDown.annualIncomes" [isMultiple]="true" [isConfirmButtonEnabled]="true" headerColor="primary" itemValueField="id" itemTextField="name" [canSearch]="true">
                 </ionic-selectable>
             </ion-item>
             <ion-text color="dark">
                 <h4 class="header">Other Details</h4>
             </ion-text>
-            <ion-text color="dark">
+            <ion-text color="primary">
                 <h5>Profile created by</h5>
             </ion-text>
             <ion-item *ngFor="let entry of owners">
                 <ion-label>{{entry.val}}</ion-label>
                 <ion-checkbox slot="start" [(ngModel)]="entry.isChecked"></ion-checkbox>
             </ion-item>
-            <ion-text color="dark">
+            <ion-text color="primary">
                 <h5>Diet</h5>
             </ion-text>
             <ion-item *ngFor="let entry of dropDown.diets">

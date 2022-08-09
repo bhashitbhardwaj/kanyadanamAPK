@@ -62,11 +62,15 @@ export class AdvancesearchPage implements OnInit {
     this.selectedData.annual_income.forEach(obj => {
       annualincome.push(obj.id)
     });
+    var annualincome =[];
+    this.selectedData.annual_income = this.selectedData.annual_income || [];
+    this.selectedData.annual_income.forEach(obj => {
+      annualincome.push(obj.id)
+    });
     this.loader.Show('Loading...');
     this.api.postDataWithAuth('api/search',
     {
-          height_from:(this.selectedData.heightFrom)?this.selectedData.heightFrom.id:'',
-          height_to:(this.selectedData.heightTo)?this.selectedData.heightTo.id:'',
+          height:(this.selectedData.heightFrom)?[this.selectedData.heightFrom.id]:[],
           tongue:tongue,
           martialstatus:this.selectedData.marital_status,
           religion:this.selectedData.religion,
@@ -250,19 +254,7 @@ export class AdvancesearchPage implements OnInit {
         })
       }
     })
-    this.api.getData('api/getEducationFields').subscribe(res => {
-      if (res.status) {
-        console.log(res);
-        this.dropDown.educationFields = res.data;
-      }
-      else {
-        this.toast.Notify({
-          message: res.message,
-          duration: 3000,
-          position: 'top'
-        })
-      }
-    })
+
     this.api.getData('api/getAnnualIncomes').subscribe(res => {
       if (res.status) {
         console.log(res);

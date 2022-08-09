@@ -15,11 +15,10 @@
             <ion-card-title>Hide & Delete Account</ion-card-title>
         </ion-card-header>
         <ion-list class="ion-padding">
-
             <ion-list>
                 <ion-radio-group [(ngModel)]="selectedData.is_hide">
                     <ion-list-header>
-                        <ion-label>Hide Account</ion-label>
+                        <ion-label color="primary">Hide Account</ion-label>
                     </ion-list-header>
                     <ion-item *ngFor="let entry of is_hide">
                         <ion-label>{{entry.name}}</ion-label>
@@ -30,19 +29,15 @@
             <ion-list>
                 <ion-radio-group [(ngModel)]="selectedData.status">
                     <ion-list-header>
-                        <ion-label>Delete Account</ion-label>
+                        <ion-label color="primary">Delete Account</ion-label>
                     </ion-list-header>
-
                     <ion-item *ngFor="let entry of status">
                         <ion-label>{{entry.name}}</ion-label>
                         <ion-radio slot="start" value="{{entry.val}}"></ion-radio>
                     </ion-item>
-
-
                 </ion-radio-group>
             </ion-list>
             <ion-button expand="block" color="primary" (click)="save()">Save</ion-button>
         </ion-list>
     </ion-card>
-
 </ion-content>

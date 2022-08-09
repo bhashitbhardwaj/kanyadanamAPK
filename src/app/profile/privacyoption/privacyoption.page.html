@@ -17,20 +17,16 @@
             </ion-card-header>
             <ion-list class="ion-padding">
                 <ion-text color="dark">
-
                     <h4 class="header">My Privacy Options</h4>
                 </ion-text>
-
                 <ion-list>
                     <ion-radio-group [(ngModel)]="selectedData.name_privacy">
                         <ion-list-header>
-                            <ion-label class="radiolabel">
+                            <ion-label class="radiolabel" color="primary">
                                 Display Name as
                                 <p><span>Note:</span> All Premium Members will be able to see your full name.</p>
                             </ion-label>
-
                         </ion-list-header>
-
                         <ion-item *ngFor="let entry of name_privacy">
                             <ion-label class="radiolabelOption">{{entry.name}}</ion-label>
                             <ion-radio slot="start" value="{{entry.val}}"></ion-radio>
@@ -40,109 +36,83 @@
                 <ion-list>
                     <ion-radio-group [(ngModel)]="selectedData.phone_privacy">
                         <ion-list-header>
-                            <ion-label class="radiolabel">
+                            <ion-label class="radiolabel" color="primary">
                                 Phone
                                 <p>Manage Your Phone Privacy Here.</p>
                             </ion-label>
-
                         </ion-list-header>
-
                         <ion-item *ngFor="let entry of phone_privacy">
                             <ion-label class="radiolabelOption">{{entry.name}}</ion-label>
                             <ion-radio slot="start" value="{{entry.val}}"></ion-radio>
                         </ion-item>
-
-
                     </ion-radio-group>
                 </ion-list>
                 <ion-list>
                     <ion-radio-group [(ngModel)]="selectedData.email_privacy">
                         <ion-list-header>
-                            <ion-label class="radiolabel">
+                            <ion-label class="radiolabel" color="primary">
                                 Email
                                 <p>An email privacy.</p>
                             </ion-label>
-
                         </ion-list-header>
-
                         <ion-item *ngFor="let entry of email_privacy">
                             <ion-label class="radiolabelOption">{{entry.name}}</ion-label>
                             <ion-radio slot="start" value="{{entry.val}}"></ion-radio>
                         </ion-item>
-
-
                     </ion-radio-group>
                 </ion-list>
                 <ion-list>
                     <ion-radio-group [(ngModel)]="selectedData.income_privacy">
                         <ion-list-header>
-                            <ion-label class="radiolabel">
+                            <ion-label class="radiolabel" color="primary">
                                 Annual Income
                             </ion-label>
-
                         </ion-list-header>
-
                         <ion-item *ngFor="let entry of income_privacy">
                             <ion-label class="radiolabelOption">{{entry.name}}</ion-label>
                             <ion-radio slot="start" value="{{entry.val}}"></ion-radio>
                         </ion-item>
-
-
                     </ion-radio-group>
                 </ion-list>
                 <ion-list>
                     <ion-radio-group [(ngModel)]="selectedData.visitor_privacy">
                         <ion-list-header>
-                            <ion-label class="radiolabel">
+                            <ion-label class="radiolabel" color="primary">
                                 Visitors Setting
                             </ion-label>
-
                         </ion-list-header>
-
                         <ion-item *ngFor="let entry of visitor_privacy">
                             <ion-label class="radiolabelOption">{{entry.name}}</ion-label>
                             <ion-radio slot="start" value="{{entry.val}}"></ion-radio>
                         </ion-item>
-
-
                     </ion-radio-group>
                 </ion-list>
                 <ion-list>
                     <ion-radio-group [(ngModel)]="selectedData.shortlist_privacy">
                         <ion-list-header>
-                            <ion-label class="radiolabel">
+                            <ion-label class="radiolabel" color="primary">
                                 Shortlist Setting
                             </ion-label>
-
                         </ion-list-header>
-
                         <ion-item *ngFor="let entry of shortlist_privacy">
                             <ion-label class="radiolabelOption">{{entry.name}}</ion-label>
                             <ion-radio slot="start" value="{{entry.val}}"></ion-radio>
                         </ion-item>
-
-
                     </ion-radio-group>
                 </ion-list>
                 <ion-list>
                     <ion-radio-group [(ngModel)]="selectedData.web_notification_privacy">
                         <ion-list-header>
-                            <ion-label class="radiolabel">
+                            <ion-label class="radiolabel" color="primary">
                                 Web Notifications
-
                             </ion-label>
-
                         </ion-list-header>
-
                         <ion-item *ngFor="let entry of web_notification_privacy">
                             <ion-label class="radiolabelOption">{{entry.name}}</ion-label>
                             <ion-radio slot="start" value="{{entry.val}}"></ion-radio>
                         </ion-item>
-
-
                     </ion-radio-group>
                 </ion-list>
-
                 <ion-button expand="block" color="primary" (click)="save()">Update Profile</ion-button>
             </ion-list>
         </ion-card>
