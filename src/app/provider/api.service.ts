@@ -45,6 +45,21 @@ export class ApiService {
       );
   }
 
+  getProfileByID(url,user,uniq_id): Observable<any> {
+    var httpOptionsAuth = {
+      headers: new HttpHeaders(
+        { 
+          'Content-Type': 'application/json',
+          usercode:(uniq_id)? uniq_id: ''
+        }
+      ),
+    };
+    return this.httpClient.post(this.endpoint + url, JSON.stringify(user), httpOptionsAuth)
+      .pipe(
+        catchError(this.handleError('Error occured'))
+      );
+  }
+
   getData(id): Observable<any> {
     return this.httpClient.get(this.endpoint + '/' + id)
       .pipe(

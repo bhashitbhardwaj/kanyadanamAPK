@@ -34,9 +34,7 @@ export class SearchPage implements OnInit {
     this.selectedData.country.forEach(obj => {
       country.push(obj.id)
     });
-    this.loader.Show('Loading...');
-    this.api.postDataWithAuth('api/search',
-    {
+    this.router.navigateByUrl('/tabs/tab2',{ state: {
           search_type:"basic_search" ,
           age_range:this.selectedData.age.lower+":"+this.selectedData.age.upper,
           height:(this.selectedData.heightFrom)?[this.selectedData.heightFrom.id]:[],
@@ -45,27 +43,9 @@ export class SearchPage implements OnInit {
           religion:this.selectedData.religion,
           country:country,
           res_start: 0
-    }).subscribe(res=>{
-       this.loader.Hide();
-       if(res.status)
-       {
-         console.log(res);
-         this.toast.Notify({
-          message:res.message,
-          duration:3000,
-          position:'top'
-        })
-        this.router.navigateByUrl('/tabs');
-       }
-       else{
-          this.toast.Notify({
-            message:res.message,
-            duration:3000,
-            position:'top'
-          })
-       }
-    })
+      } });
    }
+   
   ngOnInit() {
     this.api.getData('api/getHeights').subscribe(res => {
       if (res.status) {

@@ -12,44 +12,49 @@
             </ion-button>
         </ion-buttons>
     </ion-toolbar>
+    <ion-toolbar>
+        <ion-segment scrollable [(ngModel)]="selectedTab" (ionChange)="segmentChanged($event)">
+          <ion-segment-button value="new_matches">
+            <ion-label>New Matches <ion-text *ngIf="count.new_matches">({{count.new_matches}})</ion-text></ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="today_matches">
+            <ion-label>Today's Matches <ion-text *ngIf="count.today_matches">({{count.today_matches}})</ion-text></ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="my_matches">
+            <ion-label>My Matches <ion-text *ngIf="count.my_matches">({{count.my_matches}})</ion-text></ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="more_matches">
+            <ion-label>More Matches <ion-text *ngIf="count.more_matches">({{count.more_matches}})</ion-text></ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="recent_view">
+            <ion-label>Recently Viewed <ion-text *ngIf="count.recent_view">({{count.recent_view}})</ion-text></ion-label>
+          </ion-segment-button>
+        </ion-segment>
+      </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true" class="card-background-page">
-    <div scrollX="true" direction="x" overflow-scroll="false" class="scroll_button_matches">
-        <ion-button fill="outline" class="btn">New Matches (10)</ion-button>
-        <ion-button fill="outline" class="btn">Today's Matches (9)</ion-button>
-        <ion-button fill="outline" class="btn">My Matches (50+)</ion-button>
-        <ion-button fill="outline" class="btn">More Matches</ion-button>
-        <ion-button fill="outline" class="btn">Recently Viewed</ion-button>
-    </div>
-
-    <ion-card class="scroll_card"  (click) = "openDetailpage()">
+    <ion-card class="scroll_card" *ngFor="let item of data" (click) = "openDetailpage(item.uniq_id)" >
         <ion-button class="wishlist" size="large" fill="clear">
             <ion-icon slot="start" name="heart-outline"></ion-icon>
         </ion-button>
         <img src="/assets/images/dummy.jpeg" />
         <div class="data">
             <p class="name">
-                Ajay kumar
+                {{item.name}}
             </p>
             <p>
-                25yrs, 5'5" * Banking Professional
+                {{item.dob | dob }}yrs, {{item.user_detail.height_detail_api.height_label_feet}}
             </p>
             <p>
-                Hindi, Saini
-            </p>
+                {{item.user_detail.religion_detail_api.religion}}, {{item.user_detail.community_detail_api.community}}
+             </p>
             <p>
-                Meerut, Utter Pradesh
+                {{item.user_detail.city_detail_api.name}}, {{item.user_detail.state_detail_api.name}} {{item.user_detail.country_detail_api.name}}
             </p>
             <ion-row class="button_list">
                 <ion-col>
-                    <ion-button size="small" expand="block" color="light" (click) = "showAlert();$event.stopPropagation();">
-                        <ion-icon slot="start" name="close-circle-outline"></ion-icon>
-                        Decline
-                    </ion-button>
-                </ion-col>
-                <ion-col>
-                    <ion-button size="small" expand="block" (click) = "showAlert();$event.stopPropagation();">
+                    <ion-button size="small" expand="block" (click) = "connect();$event.stopPropagation();">
                         <ion-icon slot="start" name="checkmark-circle-outline"></ion-icon>
                         Connect Now
                     </ion-button>
@@ -57,40 +62,7 @@
             </ion-row>
         </div>
     </ion-card>
-    <ion-card class="scroll_card" (click) = "openDetailpage()">
-        <ion-button class="wishlist" size="large" fill="clear">
-            <ion-icon slot="start" name="heart-outline"></ion-icon>
-        </ion-button>
-        <img src="/assets/images/card-amsterdam.png" />
-        <div class="data">
-            <p class="name">
-                Ajay kumar
-            </p>
-            <p>
-                25yrs, 5'5" Banking Professional
-            </p>
-            <p>
-                Hindi, Saini
-            </p>
-            <p>
-                Meerut, Utter Pradesh
-            </p>
-            <ion-row class="button_list">
-                <ion-col>
-                    <ion-button size="small" expand="block" color="light" (click) = "showAlert();$event.stopPropagation();">
-                        <ion-icon slot="start" name="close-circle-outline"></ion-icon>
-                        Decline
-                    </ion-button>
-                </ion-col>
-                <ion-col>
-                    <ion-button size="small" expand="block" (click) = "showAlert();$event.stopPropagation();">
-                        <ion-icon slot="start" name="checkmark-circle-outline"></ion-icon>
-                        Connect Now
-                    </ion-button>
-                </ion-col>
-            </ion-row>
-        </div>
-    </ion-card>
+
 <!-- fab placed to the top end -->
 <ion-fab vertical="top" horizontal="end" slot="fixed">
     <ion-fab-button size="small" (click)="openModal()">

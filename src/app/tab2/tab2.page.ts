@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { MatchfilterPage } from '../matchfilter/matchfilter.page';
 import { ApiService } from '../provider/api.service';
@@ -13,24 +13,145 @@ import { ToastService } from '../provider/toast.service';
 })
 export class Tab2Page {
   selectedRefine:any;
+  search_type:any;
+  count:any = {
+    new_matches:0,
+    today_matches:0,
+    my_matches:0,
+    more_matches:0,
+    recent_view:0
+  };
+  selectedTab:any;
+  data:any = [];
+  item: any;
   constructor(
     private router: Router,
     public modalCtrl: ModalController,
     private loader: LoaderService,
     private api: ApiService,
-    private toast: ToastService
-    ) {}
+    private toast: ToastService,
+    private route: ActivatedRoute,
+    ) {
+    }
 
-  openDetailpage()
+  openDetailpage(uniq_id)
   {
-    this.router.navigateByUrl('/member-detail');
+    this.router.navigateByUrl('/member-detail',{ state:uniq_id});
   }
 
-  showAlert()
+  connect()
   {
     
   }
 
+  segmentChanged(ev: any) {
+    if(ev.detail.value)
+    {
+      this.inbox({
+        "search_type":ev.detail.value ,
+        "res_start": 0
+    })
+    }
+
+  }
+  ngOnInit()
+  {
+    this.route.queryParams.subscribe(_p => {
+      const navParams = this.router.getCurrentNavigation().extras.state;
+      if(navParams)
+      {
+        console.log('Segment changed', navParams);
+        this.selectedTab = '';
+        this.count = {
+          new_matches:0,
+          today_matches:0,
+          my_matches:0,
+          more_matches:0,
+          recent_view:0
+        };
+        this.inbox(navParams);
+      }
+      else{
+        this.selectedTab = 'new_matches';
+        this.inbox({
+          "search_type":'new_matches' ,
+          "res_start": 0
+      })
+      }
+    })
+  }
+
+  inbox(id:any)
+  {
+    this.loader.Show('Loading...');
+    this.search_type = id.search_type;
+    this.api.postDataWithAuth('api/search',id
+    ).subscribe(res=>{
+      this.loader.Hide();
+      if(res.status && res.data.total_count)
+      {
+        console.log(res);
+        this.data = res.data.user_detail;
+        switch (id.search_type) {
+            case "new_matches":
+              this.count = {
+                new_matches:res.data.total_count,
+                today_matches:0,
+                my_matches:0,
+                more_matches:0,
+                recent_view:0
+              };
+            break;
+            case "today_matches":
+              this.count = {
+                new_matches:0,
+                today_matches:res.data.total_count,
+                my_matches:0,
+                more_matches:0,
+                recent_view:0
+              };
+            break;
+            case "my_matches":
+              this.count = {
+                new_matches:0,
+                today_matches:0,
+                my_matches:res.data.total_count,
+                more_matches:0,
+                recent_view:0
+              };
+            break;
+            case "more_matches":
+              this.count = {
+                new_matches:0,
+                today_matches:0,
+                my_matches:0,
+                more_matches:res.data.total_count,
+                recent_view:0
+              };
+            break;
+            case "recent_view":
+              this.count = {
+                new_matches:0,
+                today_matches:0,
+                my_matches:0,
+                more_matches:0,
+                recent_view:res.data.total_count
+              };
+            break;
+          default:
+            break;
+        }
+      }
+      else{
+        this.data = [];
+          this.toast.Notify({
+            message:res.message,
+            duration:3000,
+            position:'top'
+          })
+      }
+    })
+  }
   async openModal() {
     const modal = await this.modalCtrl.create({
       component: MatchfilterPage,
@@ -71,6 +192,11 @@ export class Tab2Page {
         result.data.state.forEach(obj => {
           state.push(obj.id)
         });
+        var city =[];
+        result.data.city= result.data.city || [];
+        result.data.city.forEach(obj => {
+          city.push(obj.id)
+        });
         var education =[];
         result.data.education= result.data.education || [];
         result.data.education.forEach(obj => {
@@ -89,7 +215,7 @@ export class Tab2Page {
         this.loader.Show('Loading...');
         this.api.postDataWithAuth('api/search',
         {
-          search_type:"advance_search",
+          search_type: (this.search_type == 'basic_search' || this.search_type == 'advance_search')? 'advance_search':this.search_type,
           age_range:result.data.age.lower+":"+result.data.age.upper,
           height:heightFrom,
           tongue:tongue,
@@ -98,6 +224,7 @@ export class Tab2Page {
           country:country,
           community:community,
           state:state,
+          city:city,
           education:education,
           workwith:result.data.workign_with,
           occupation:profession_area,

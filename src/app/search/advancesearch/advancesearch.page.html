@@ -50,7 +50,12 @@
         </ion-item>
         <ion-item>
             <ion-label color="primary">State in Living</ion-label>
-            <ionic-selectable [(ngModel)]="selectedData.state" [items]="dropDown.states" [isMultiple]="true" [isConfirmButtonEnabled]="true" headerColor="primary" itemValueField="id" itemTextField="name" [canSearch]="true">
+            <ionic-selectable [(ngModel)]="selectedData.state" [items]="dropDown.states" [isMultiple]="true" [isConfirmButtonEnabled]="true" headerColor="primary" itemValueField="id" itemTextField="name" [canSearch]="true" (onChange)="stateChange($event)">
+            </ionic-selectable>
+        </ion-item>
+        <ion-item>
+            <ion-label color="primary">City</ion-label>
+            <ionic-selectable [(ngModel)]="selectedData.city"[items]="dropDown.cities" [isMultiple]="true" [isConfirmButtonEnabled]="true" headerColor="primary" itemValueField="id" itemTextField="name" [canSearch]="true">
             </ionic-selectable>
         </ion-item>
         <ion-text color="dark">

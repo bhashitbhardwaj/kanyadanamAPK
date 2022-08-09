@@ -42,6 +42,11 @@ export class AdvancesearchPage implements OnInit {
     this.selectedData.state.forEach(obj => {
       state.push(obj.id)
     });
+    var city =[];
+    this.selectedData.city= this.selectedData.city || [];
+    this.selectedData.city.forEach(obj => {
+          city.push(obj.id)
+        });
     var education =[];
     this.selectedData.education= this.selectedData.education || [];
     this.selectedData.education.forEach(obj => {
@@ -67,9 +72,7 @@ export class AdvancesearchPage implements OnInit {
     this.selectedData.annual_income.forEach(obj => {
       annualincome.push(obj.id)
     });
-    this.loader.Show('Loading...');
-    this.api.postDataWithAuth('api/search',
-    {
+    this.router.navigateByUrl('/tabs/tab2',{ state: {
           height:(this.selectedData.heightFrom)?[this.selectedData.heightFrom.id]:[],
           tongue:tongue,
           martialstatus:this.selectedData.marital_status,
@@ -83,27 +86,37 @@ export class AdvancesearchPage implements OnInit {
           country:country,
           community:community,
           state:state,
+          city:city,
           education:education,
           res_start: 0
-    }).subscribe(res=>{
-       this.loader.Hide();
-       if(res.status)
-       {
-         console.log(res);
-         this.toast.Notify({
-          message:res.message,
-          duration:3000,
-          position:'top'
+    } });
+  }
+
+  stateChange(event: {
+    component: IonicSelectableComponent,
+    value: any
+  }) {
+    console.log('port:', event.value);
+    var state_id =[];
+    event.value.forEach(obj => {
+      state_id.push(obj.id)
+    });
+    this.dropDown.cities = [];
+    this.selectedData.city = null;
+    this.api.postData('api/getCityArrayOrSingle',{
+      state_id:state_id
+    }).subscribe(res => {
+      if (res.status) {
+        console.log(res);
+        this.dropDown.cities = res.data;
+      }
+      else {
+        this.toast.Notify({
+          message: res.message,
+          duration: 3000,
+          position: 'top'
         })
-        this.router.navigateByUrl('/tabs/tab2');
-       }
-       else{
-          this.toast.Notify({
-            message:res.message,
-            duration:3000,
-            position:'top'
-          })
-       }
+      }
     })
   }
 

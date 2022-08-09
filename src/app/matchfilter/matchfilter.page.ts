@@ -29,6 +29,33 @@ export class MatchfilterPage implements OnInit {
     this.modalCtrl.dismiss(this.selectedData);
   }
 
+  stateChange(event: {
+    component: IonicSelectableComponent,
+    value: any
+  }) {
+    console.log('port:', event.value);
+    var state_id =[];
+    event.value.forEach(obj => {
+      state_id.push(obj.id)
+    });
+    this.dropDown.cities = [];
+    this.selectedData.city = null;
+    this.api.postData('api/getCityArrayOrSingle',{
+      state_id:state_id
+    }).subscribe(res => {
+      if (res.status) {
+        console.log(res);
+        this.dropDown.cities = res.data;
+      }
+      else {
+        this.toast.Notify({
+          message: res.message,
+          duration: 3000,
+          position: 'top'
+        })
+      }
+    })
+  }
   countryChange(event: {
     component: IonicSelectableComponent,
     value: any

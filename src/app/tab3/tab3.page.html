@@ -50,14 +50,14 @@
         {{item.name}}
       </p>
       <p>
-          25yrs, {{item.user_detail.height_detail_api.height_label_feet}} * {{item.user_detail.occupation_detail_api.name}}
-      </p>
-      <p>
-          Hindi, {{item.user_detail.community_detail_api.community}}
-      </p>
-      <p>
-          {{item.user_detail.city_detail_api.name}}, {{item.user_detail.state_detail_api.name}} {{item.user_detail.country_detail_api.name}}
-      </p>
+        {{item.dob | dob }}yrs, {{item.user_detail.height_detail_api.height_label_feet}}
+    </p>
+    <p>
+        {{item.user_detail.religion_detail_api.religion}}, {{item.user_detail.community_detail_api.community}}
+     </p>
+    <p>
+        {{item.user_detail.city_detail_api.name}}, {{item.user_detail.state_detail_api.name}} {{item.user_detail.country_detail_api.name}}
+    </p>
       <hr>
     </div>
    
