@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { IonicSelectableComponent } from 'ionic-selectable';
 import { ApiService } from 'src/app/provider/api.service';
 import { LoaderService } from 'src/app/provider/loader.service';
+import { StorageService } from 'src/app/provider/storage.service';
 import { ToastService } from 'src/app/provider/toast.service';
 
 @Component({
@@ -20,7 +21,8 @@ export class EditprofilePage implements OnInit {
     private router: Router,
     private loader: LoaderService,
     private api: ApiService,
-    private toast: ToastService
+    private toast: ToastService,
+    private storage: StorageService
   ) { 
     this.rForm = this.profileForm.group({
       name: [null,Validators.required],
@@ -121,6 +123,11 @@ export class EditprofilePage implements OnInit {
        if(res.status)
        {
          console.log(res);
+         var userdata:any = this.storage.Get('userData');
+         if ( userdata && userdata.uniq_id) {
+          userdata.is_profile_complete = true;
+          this.storage.Set('userData',userdata);
+        }
          this.router.navigateByUrl('/profile');
        }
        else{

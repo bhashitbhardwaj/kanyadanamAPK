@@ -322,14 +322,21 @@ export class EditpartnerprofilePage implements OnInit {
         if(res.data.user_detail && res.data.user_detail)
         {
           this.selectedData.age = { lower: res.data.user_detail.age_from, upper: res.data.user_detail.age_to };
-          this.selectedData.heightFrom = {
-            height_label_feet: res.data.user_detail.height_from[0].height_label_feet,
-            id: res.data.user_detail.height_from[0].id,
-          } 
-          this.selectedData.heightTo = {
-            height_label_feet: res.data.user_detail.height_to[0].height_label_feet,
-            id: res.data.user_detail.height_to[0].id,
-          } 
+          if(res.data.user_detail.height_from)
+          {
+            this.selectedData.heightFrom = {
+              height_label_feet: res.data.user_detail.height_from[0].height_label_feet,
+              id: res.data.user_detail.height_from[0].id,
+            } 
+          }
+          if(res.data.user_detail.height_to)
+          {
+            this.selectedData.heightTo = {
+              height_label_feet: res.data.user_detail.height_to[0].height_label_feet,
+              id: res.data.user_detail.height_to[0].id,
+            } 
+          }
+         
           this.selectedData.marital_status =[];
           res.data.user_detail.martialstatus.forEach(element => {
             this.selectedData.marital_status.push(element.id)

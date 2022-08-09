@@ -25,10 +25,10 @@
         {{userData.user.age}}yrs, <ion-text *ngIf="userData.user_details.height">{{userData.user_details.height[0].height_label_feet}}</ion-text> <ion-text *ngIf="userData.user_details.occupation"> *{{userData.user_details.occupation[0].name}}</ion-text> 
       </p>
       <p >
-        <ion-text *ngIf="userData.user_details.religion_id">{{userData.user_details.religion_id[0].religion}}</ion-text>, <ion-text *ngIf="userData.user_details.community_id">{{userData.user_details.community_id[0].community}}</ion-text>
+        <ion-text *ngIf="userData.user_details.religion_id && userData.user_details.religion_id[0]">{{userData.user_details.religion_id[0].religion}}</ion-text>, <ion-text *ngIf="userData.user_details.community_id">{{userData.user_details.community_id[0].community}}</ion-text>
      </p>
      <p>
-      {{userData.user_details.city_id[0].name}}, {{userData.user_details.state_id[0].name}} {{userData.user_details.country_id[0].name}}
+      <ion-text *ngIf="userData.user_details.city_id">{{userData.user_details.city_id[0].name}}</ion-text><ion-text *ngIf="userData.user_details.state_id">, {{userData.user_details.state_id[0].name}}</ion-text> <ion-text *ngIf="userData.user_details.country_id">{{userData.user_details.country_id[0].name}}</ion-text>
   </p>
     </div>
   </ion-card>
@@ -51,7 +51,7 @@
     <ion-chip outline="true" color="danger">
       <ion-label color="dark">{{userData.user.age}} Yrs Old</ion-label>
     </ion-chip>
-    <ion-chip outline="true" color="danger">
+    <ion-chip outline="true" color="danger" *ngIf="userData.user_details.height">
       <ion-label color="dark">Height- {{userData.user_details.height[0].height_label_feet}} </ion-label>
     </ion-chip>
     <ion-list>
@@ -76,7 +76,7 @@
           <p>{{userData.user_details.city_id[0].name}}</p>
         </ion-label>
       </ion-item>
-      <ion-item *ngIf="userData.user_details.religion_id"> 
+      <ion-item *ngIf="userData.user_details.religion_id && userData.user_details.religion_id[0]"> 
         <ion-icon name="document-text-outline" slot="start" color="primary"></ion-icon>
         <ion-label>
           <h3>Religion & Mother Tongue</h3>

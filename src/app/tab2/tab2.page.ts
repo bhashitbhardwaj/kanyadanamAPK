@@ -73,10 +73,6 @@ export class Tab2Page {
       }
       else{
         this.selectedTab = 'new_matches';
-        this.inbox({
-          "search_type":'new_matches' ,
-          "res_start": 0
-      })
       }
     })
   }
