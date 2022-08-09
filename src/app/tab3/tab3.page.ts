@@ -32,6 +32,11 @@ export class Tab3Page {
     this.inbox('invitation')
   }
 
+  openDetailpage(uniq_id)
+  {
+    this.router.navigateByUrl('/member-detail',{ state:uniq_id});
+  }
+  
   segmentChanged(ev: any) {
     console.log('Segment changed', ev);
     this.inbox(ev.detail.value)

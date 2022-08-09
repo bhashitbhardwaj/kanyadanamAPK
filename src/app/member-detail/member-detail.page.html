@@ -13,104 +13,101 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-
 <ion-content>
 
-  <ion-card class="scroll_card">
-    <img (click)="openModal()" src="/assets/images/dummy.jpeg" />
+  <ion-card class="scroll_card" *ngIf="userData">
+    <img (click)="openModal()" [src]="userData.user.first_image" />
     <div class="data">
       <p class="name">
-        Ajay kumar
+        {{userData.user.name}}
       </p>
       <p>
-        25yrs, 5'5" * Banking Professional
+        {{userData.user.age}}yrs, <ion-text *ngIf="userData.user_details.height">{{userData.user_details.height[0].height_label_feet}}</ion-text> <ion-text *ngIf="userData.user_details.occupation"> *{{userData.user_details.occupation[0].name}}</ion-text> 
       </p>
-      <p>
-        Hindi, Saini
-      </p>
-      <p>
-        Meerut, Utter Pradesh
-      </p>
+      <p >
+        <ion-text *ngIf="userData.user_details.religion_id">{{userData.user_details.religion_id[0].religion}}</ion-text>, <ion-text *ngIf="userData.user_details.community_id">{{userData.user_details.community_id[0].community}}</ion-text>
+     </p>
+     <p>
+      {{userData.user_details.city_id[0].name}}, {{userData.user_details.state_id[0].name}} {{userData.user_details.country_id[0].name}}
+  </p>
     </div>
   </ion-card>
-  <ion-card>
+  <ion-card *ngIf="userData">
     <div class="about">
-      <h6>About Ajay Saini</h6>
-      <p>Hello, here is a quick introduction about my daughter.
-        She has completed her  B.Tech. We are looking for Jaat working in MNC, or Government job.Her optimistic personality is adored by one and all. 
-        Please drop in a message if you would like to know more.</p>
+      <h6>About {{userData.user.name}}</h6>
+      <p>{{userData.user.about}}</p>
     </div>
   </ion-card>
 
-<ion-card>
+<ion-card *ngIf="userData">
   <div class="about">
     <h6>Basic Detials</h6>
     <ion-chip outline="true" color="danger">
-      <ion-label color="dark">Created By Self</ion-label>
+      <ion-label color="dark">Created By {{userData.user.create_profile_for}}</ion-label>
     </ion-chip>
     <ion-chip outline="true" color="danger">
-      <ion-label color="dark">Profile id - FSRE7864HDBG</ion-label>
+      <ion-label color="dark">Profile id - {{userData.user.uniq_id}}</ion-label>
     </ion-chip>
     <ion-chip outline="true" color="danger">
-      <ion-label color="dark">25 Yrs Old</ion-label>
+      <ion-label color="dark">{{userData.user.age}} Yrs Old</ion-label>
     </ion-chip>
     <ion-chip outline="true" color="danger">
-      <ion-label color="dark">Height- 5'5" </ion-label>
+      <ion-label color="dark">Height- {{userData.user_details.height[0].height_label_feet}} </ion-label>
     </ion-chip>
     <ion-list>
       <ion-item>
         <ion-icon name="calendar-outline" slot="start" color="primary"></ion-icon>
         <ion-label>
           <h3>Birth Date</h3>
-          <p>12-02-2002</p>
+          <p>{{userData.user.dobday}} - {{userData.user.dobmonth}} - {{userData.user.dobyear}}</p>
         </ion-label>
       </ion-item>
-      <ion-item>
+      <ion-item *ngIf="userData.user_details.martialstatus">
         <ion-icon name="person-outline" slot="start" color="primary"></ion-icon>
         <ion-label>
           <h3>Marital Status</h3>
-          <p>Never Married</p>
+          <p>{{userData.user_details.martialstatus[0].name}}</p>
         </ion-label>
       </ion-item>
-      <ion-item>
+      <ion-item *ngIf="userData.user_details.city_id">
         <ion-icon name="location-outline" slot="start" color="primary"></ion-icon>
         <ion-label>
           <h3>Lives In</h3>
-          <p>Delhi</p>
+          <p>{{userData.user_details.city_id[0].name}}</p>
         </ion-label>
       </ion-item>
-      <ion-item>
+      <ion-item *ngIf="userData.user_details.religion_id"> 
         <ion-icon name="document-text-outline" slot="start" color="primary"></ion-icon>
         <ion-label>
           <h3>Religion & Mother Tongue</h3>
-          <p>Hindu, Hindi</p>
+          <p>{{userData.user_details.religion_id[0].religion}} & {{userData.user_details.tongue}}</p>
         </ion-label>
       </ion-item>
-      <ion-item>
+      <ion-item *ngIf="userData.user_details.community_id">
         <ion-icon name="people-circle-outline" slot="start" color="primary"></ion-icon>
         <ion-label>
           <h3>Community</h3>
-          <p>Saini</p>
+          <p>{{userData.user_details.community_id[0].community}}</p>
         </ion-label>
       </ion-item>
-      <ion-item>
+      <ion-item *ngIf="userData.user_details.self_gotra">
         <ion-icon name="people-outline" slot="start" color="primary"></ion-icon>
         <ion-label>
           <h3>Gothra</h3>
-          <p>Bharadwaj</p>
+          <p>{{userData.user_details.self_gotra}}</p>
         </ion-label>
       </ion-item>
-      <ion-item>
+      <ion-item *ngIf="userData.user_details.diet">
         <ion-icon name="restaurant-outline" slot="start" color="primary"></ion-icon>
         <ion-label>
           <h3>Diet Preference</h3>
-          <p>Vegetarian</p>
+          <p>{{userData.user_details.diet}}</p>
         </ion-label>
       </ion-item>
     </ion-list>
   </div>
 </ion-card>
-<ion-card>
+<ion-card *ngIf="userData">
   <div class="about">
     <h6>Contact Detials</h6>
     <ion-list>
@@ -118,71 +115,71 @@
         <ion-icon name="call-outline" slot="start" color="primary"></ion-icon>
         <ion-label>
           <h3>Contact No.</h3>
-          <p>8523882090</p>
+          <p>{{userData.user.mobile}}</p>
         </ion-label>
       </ion-item>
       <ion-item>
         <ion-icon name="mail-outline" slot="start" color="primary"></ion-icon>
         <ion-label>
           <h3>Email ID</h3>
-          <p>ajaysaini@gmail.com</p>
+          <p>{{userData.user.email}}</p>
         </ion-label>
       </ion-item>
     </ion-list>
   </div>
 </ion-card>
-<ion-card>
+<ion-card *ngIf="userData">
   <div class="about">
     <h6>Faimly Details</h6>
-    <p>Our family is originally from Meerut. Her father is employed and her mother is a homemaker. She has 1 brother (unmarried) and 1 sister (unmarried).</p>
+    <p>{{userData.user.familydetails}}</p>
   </div>
 </ion-card>
-<ion-card>
+<ion-card *ngIf="userData">
   <div class="about">
     <h6>Career & Education</h6>
     <ion-list>
-      <ion-item>
+      <ion-item *ngIf="userData.user_details.occupation">
         <ion-icon name="briefcase-outline" slot="start" color="primary"></ion-icon>
         <ion-label>
           <h3>Profession</h3>
-          <p>Software Developer</p>
+          <p>{{userData.user_details.occupation[0].name}}</p>
         </ion-label>
       </ion-item>
-      <ion-item>
+      <ion-item *ngIf="userData.user_details.workwith">
         <ion-icon name="business-outline" slot="start" color="primary"></ion-icon>
         <ion-label>
-          <h3>Company Name</h3>
-          <p>TCS</p>
+          <h3>Working With</h3>
+          <p>{{userData.user_details.workwith[0].name}}</p>
         </ion-label>
       </ion-item>
-      <ion-item>
+      <ion-item *ngIf="userData.user_details.annualincome">
         <ion-icon name="wallet-outline" slot="start" color="primary"></ion-icon>
         <ion-label>
           <h3>Annual Income</h3>
-          <p>10-15Lakh annually</p>
+          <p>{{userData.user_details.annualincome[0].name}} annually</p>
         </ion-label>
       </ion-item>
-      <ion-item>
+      <ion-item *ngIf="userData.user_details.education_level && userData.user_details.education_level[0]">
         <ion-icon name="school-outline" slot="start" color="primary"></ion-icon>
         <ion-label>
-          <h3>Education Field</h3>
-          <p>Engineering</p>
+          <h3>Education</h3>
+          <p>{{userData.user_details.education_level[0].name}}</p>
         </ion-label>
       </ion-item>
-      <ion-item>
+      <ion-item *ngIf="userData.user_details.education_field">
         <ion-icon name="book-outline" slot="start" color="primary"></ion-icon>
         <ion-label>
           <h3>Education Field</h3>
-          <p>Engineering</p>
+          <p>{{userData.user_details.education_field[0].name}}</p>
         </ion-label>
       </ion-item>
-      <ion-item>
+      <!-- <ion-item>
         <ion-icon name="home-outline" slot="start" color="primary"></ion-icon>
         <ion-label>
           <h3>College Name</h3>
           <p>NIT Jamshedpur</p>
         </ion-label>
-      </ion-item>
+      </ion-item> -->
     </ion-list>
   </div>
 </ion-card>

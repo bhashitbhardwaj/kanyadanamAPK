@@ -43,7 +43,7 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-card class="scroll_card" *ngFor="let item of data">
+  <ion-card class="scroll_card" *ngFor="let item of data" (click) = "openDetailpage(item.uniq_id)">
     <img [src]="item.first_image">
     <div class="data">
       <p class="name">

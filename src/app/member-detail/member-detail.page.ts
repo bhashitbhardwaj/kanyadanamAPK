@@ -12,7 +12,7 @@ import { ToastService } from '../provider/toast.service';
   styleUrls: ['./member-detail.page.scss'],
 })
 export class MemberDetailPage implements OnInit {
- 
+  userData: any;
   constructor(private modalCtrl: ModalController,
     private router: Router,
     private loader: LoaderService,
@@ -32,6 +32,8 @@ export class MemberDetailPage implements OnInit {
           this.loader.Hide();
           if (res.status) {
             console.log(res.data.user_detail);
+            this.userData = res.data.user_detail;
+            this.userData.user_details.tongue = this.userData.user_details.tongue && this.userData.user_details.tongue.map(user => user.tongue).join(', ');
           }
           else {
             this.toast.Notify({
