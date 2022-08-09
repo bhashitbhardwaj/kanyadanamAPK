@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MenuController } from '@ionic/angular';
 import { ApiService } from '../provider/api.service';
+import { AuthGuardService } from '../provider/auth-guard.service';
 import { LoaderService } from '../provider/loader.service';
+import { StorageService } from '../provider/storage.service';
 import { ToastService } from '../provider/toast.service';
 
 @Component({
@@ -17,7 +20,10 @@ export class SignupPage implements OnInit {
     private signupForm: FormBuilder,
     private loader: LoaderService,
     private api: ApiService,
-    private toast: ToastService
+    private toast: ToastService,
+    private storage: StorageService,
+    private AuthGuardService:AuthGuardService,
+    private menu: MenuController
   ) {
     this.rForm = this.signupForm.group({
       name: [null,Validators.required],
@@ -52,7 +58,9 @@ export class SignupPage implements OnInit {
        this.loader.Hide();
        if(res.status)
        {
-         console.log(res)
+         console.log(res);
+         this.storage.Set('userData',res.data);
+         this.AuthGuardService.isLogin();
          this.router.navigateByUrl('/profile/editprofile');
        }
        else{

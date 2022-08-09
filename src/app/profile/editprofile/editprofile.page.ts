@@ -133,42 +133,6 @@ export class EditprofilePage implements OnInit {
     })
   }
   ngOnInit() {
-    this.api.postDataWithAuth('api/getProfileByUniqueID',  {})
-    .subscribe(res => {
-      if (res.status) {
-        console.log(res.data.user_detail);
-        this.rForm.patchValue({
-          "name": res.data.user_detail.user.name,
-          "email": res.data.user_detail.user.email,
-          "mobile": res.data.user_detail.user.mobile,
-          "gender": res.data.user_detail.user.gender,
-          "about": res.data.user_detail.user.about,
-          "familydetails": res.data.user_detail.user.familydetails,
-          "aadhar_card": res.data.user_detail.user.aadhar_card,
-          "diet": res.data.user_detail.user_details.diet,
-          "community": (res.data.user_detail.user_details && res.data.user_detail.user_details.community_id)?res.data.user_detail.user_details.community_id[0]:null,
-          "height": (res.data.user_detail.user_details && res.data.user_detail.user_details.height)?res.data.user_detail.user_details.height[0]:null,
-          "country": (res.data.user_detail.user_details && res.data.user_detail.user_details.country_id)?res.data.user_detail.user_details.country_id[0]:null,
-          "state": (res.data.user_detail.user_details && res.data.user_detail.user_details.state_id)?res.data.user_detail.user_details.state_id[0]:null,
-          "city": (res.data.user_detail.user_details && res.data.user_detail.user_details.city_id)?res.data.user_detail.user_details.city_id[0]:null,
-          "martialstatus": (res.data.user_detail.user_details && res.data.user_detail.user_details.martialstatus)?res.data.user_detail.user_details.martialstatus[0].id:null,
-          "sub_community": res.data.user_detail.user_details.sub_community,
-          "does_drink": res.data.user_detail.user_details.does_drink,
-          "does_smoke": res.data.user_detail.user_details.does_smoke,
-          "tongue": res.data.user_detail.user_details.tongue,
-          "religion":(res.data.user_detail.user_details && res.data.user_detail.user_details.religion_id && res.data.user_detail.user_details.religion_id.length)?res.data.user_detail.user_details.religion_id[0].id:null,
-          "create_profile_for": res.data.user_detail.user.create_profile_for,
-          "dob": res.data.user_detail.user.dobday + '/' + res.data.user_detail.user.dobmonth + '/' + res.data.user_detail.user.dobyear
-      });
-      }
-      else {
-        this.toast.Notify({
-          message: res.message,
-          duration: 3000,
-          position: 'top'
-        })
-      }
-    });
     this.api.getData('api/getReligions').subscribe(res => {
       if (res.status) {
         console.log(res);
@@ -264,5 +228,42 @@ export class EditprofilePage implements OnInit {
         })
       }
     })
+    this.api.postDataWithAuth('api/getProfileByUniqueID',  {})
+    .subscribe(res => {
+      if (res.status) {
+        console.log(res.data.user_detail);
+        this.rForm.patchValue({
+          "name": res.data.user_detail.user.name,
+          "email": res.data.user_detail.user.email,
+          "mobile": res.data.user_detail.user.mobile,
+          "gender": res.data.user_detail.user.gender,
+          "about": res.data.user_detail.user.about,
+          "familydetails": res.data.user_detail.user.familydetails,
+          "aadhar_card": res.data.user_detail.user.aadhar_card,
+          "diet": res.data.user_detail.user_details.diet,
+          "community": (res.data.user_detail.user_details && res.data.user_detail.user_details.community_id)?res.data.user_detail.user_details.community_id[0]:null,
+          "height": (res.data.user_detail.user_details && res.data.user_detail.user_details.height)?res.data.user_detail.user_details.height[0]:null,
+          "country": (res.data.user_detail.user_details && res.data.user_detail.user_details.country_id)?res.data.user_detail.user_details.country_id[0]:null,
+          "state": (res.data.user_detail.user_details && res.data.user_detail.user_details.state_id)?res.data.user_detail.user_details.state_id[0]:null,
+          "city": (res.data.user_detail.user_details && res.data.user_detail.user_details.city_id)?res.data.user_detail.user_details.city_id[0]:null,
+          "martialstatus": (res.data.user_detail.user_details && res.data.user_detail.user_details.martialstatus)?res.data.user_detail.user_details.martialstatus[0].id:null,
+          "sub_community": res.data.user_detail.user_details.sub_community,
+          "does_drink": res.data.user_detail.user_details.does_drink,
+          "does_smoke": res.data.user_detail.user_details.does_smoke,
+          "tongue": res.data.user_detail.user_details.tongue,
+          "religion":(res.data.user_detail.user_details && res.data.user_detail.user_details.religion_id && res.data.user_detail.user_details.religion_id.length)?res.data.user_detail.user_details.religion_id[0].id:null,
+          "create_profile_for": res.data.user_detail.user.create_profile_for,
+          "dob": res.data.user_detail.user.dobday + '/' + res.data.user_detail.user.dobmonth + '/' + res.data.user_detail.user.dobyear
+      });
+      }
+      else {
+        this.toast.Notify({
+          message: res.message,
+          duration: 3000,
+          position: 'top'
+        })
+      }
+    });
   }
+  
 }
