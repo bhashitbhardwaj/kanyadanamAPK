@@ -34,7 +34,8 @@ export class SearchPage implements OnInit {
     this.selectedData.country.forEach(obj => {
       country.push(obj.id)
     });
-    this.router.navigateByUrl('/tabs/tab2',{ state: {
+  
+    this.router.navigate(['/tabs/tab2'],{ state: {
           search_type:"basic_search" ,
           age_range:this.selectedData.age.lower+":"+this.selectedData.age.upper,
           height:(this.selectedData.heightFrom)?[this.selectedData.heightFrom.id]:[],

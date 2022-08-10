@@ -32,8 +32,9 @@ export class Tab2Page {
     private toast: ToastService,
     private route: ActivatedRoute,
     ) {
+     
     }
-
+    
   openDetailpage(uniq_id)
   {
     this.router.navigateByUrl('/member-detail',{ state:uniq_id});
@@ -52,8 +53,8 @@ export class Tab2Page {
         "res_start": 0
     })
     }
-
   }
+
   ngOnInit()
   {
     this.route.queryParams.subscribe(_p => {
@@ -61,29 +62,47 @@ export class Tab2Page {
       if(navParams)
       {
         console.log('Segment changed', navParams);
-        this.selectedTab = '';
-        this.count = {
-          new_matches:0,
-          today_matches:0,
-          my_matches:0,
-          more_matches:0,
-          recent_view:0
-        };
-        this.inbox(navParams);
+        switch (navParams.search_type) {
+          case "new_matches":
+            this.selectedTab = 'new_matches';
+          break;
+          case "my_matches":
+            this.selectedTab = 'my_matches';
+          break;
+          case "recent_view":
+            this.selectedTab = 'recent_view';
+          break;
+          default:
+            this.selectedTab = '';
+            
+          break;
+       }
+       this.count = {
+        new_matches:0,
+        today_matches:0,
+        my_matches:0,
+        more_matches:0,
+        recent_view:0
+      };
+      this.inbox(navParams);
       }
       else{
         this.selectedTab = 'new_matches';
+          this.inbox({
+            "search_type":'new_matches',
+            "res_start": 0
+        })
       }
     })
   }
 
   inbox(id:any)
   {
-    this.loader.Show('Loading...');
+    //this.loader.Show('Loading...');
     this.search_type = id.search_type;
     this.api.postDataWithAuth('api/search',id
     ).subscribe(res=>{
-      this.loader.Hide();
+      //this.loader.Hide();
       if(res.status && res.data.total_count)
       {
         console.log(res);

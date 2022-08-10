@@ -16,237 +16,75 @@
 
 <ion-content [fullscreen]="true">
     <div class="title">
-        <p class="title1">New Matches (12)</p>
-        <p class="title2">See All</p>
+        <p class="title1">New Matches <ion-text *ngIf="count.new_matches">({{count.new_matches}})</ion-text></p>
+        <p class="title2" (click)="segmentChanged('new_matches')">See All</p>
     </div>
-    <ion-slides [options]="slideOpts">
-        <ion-slide>
-            <ion-card class="scroll_card">
-                <img src="/assets/images/dummy.jpeg" />
+    <ion-slides [options]="slideOpts" *ngIf="data.new_matches">
+        <ion-slide *ngFor="let item of data.new_matches">
+            <ion-card class="scroll_card" >
+                <img [src]="item.first_image" />
                 <p class="name">
-                    Ajay kumar
+                    {{item.name}}
                 </p>
                 <p>
-                    25yrs, 5'5"
+                    {{item.age}}yrs, <ion-text *ngIf="item.user_detail.height_detail_api">, {{item.user_detail.height_detail_api.height_label_feet}}</ion-text>
                 </p>
                 <p>
-                    Hindi, Saini
-                </p>
-                <p>
-                    Meerut, Utter Pradesh
-                </p>
-                <ion-button expand="block" fill="outline">Connect Now</ion-button>
-            </ion-card>
-        </ion-slide>
-        <ion-slide>
-            <ion-card class="scroll_card">
-                <img src="/assets/images/card-amsterdam.png" />
-                <p class="name">
-                    Ajay kumar
-                </p>
-                <p>
-                    25yrs, 5'5"
-                </p>
-                <p>
-                    Hindi, Saini
-                </p>
-                <p>
-                    Meerut, Utter Pradesh
-                </p>
-                <ion-button expand="block" fill="outline">Connect Now</ion-button>
-            </ion-card>
-        </ion-slide>
-        <ion-slide>
-            <ion-card class="scroll_card">
-                <img src="/assets/images/dummy.jpeg" />
-                <p class="name">
-                    Ajay kumar
-                </p>
-                <p>
-                    25yrs, 5'5"
-                </p>
-                <p>
-                    Hindi, Saini
-                </p>
-                <p>
-                    Meerut, Utter Pradesh
-                </p>
-                <ion-button expand="block" fill="outline">Connect Now</ion-button>
-            </ion-card>
-        </ion-slide>
-        <ion-slide>
-            <ion-card class="scroll_card">
-                <img src="/assets/images/card-amsterdam.png" />
-                <p class="name">
-                    Ajay kumar
-                </p>
-                <p>
-                    25yrs, 5'5"
-                </p>
-                <p>
-                    Hindi, Saini
-                </p>
-                <p>
-                    Meerut, Utter Pradesh
-                </p>
+                    <ion-text *ngIf="item.user_detail.religion_detail_api">{{item.user_detail.religion_detail_api.religion}}</ion-text><ion-text *ngIf="item.user_detail.community_detail_api">, {{item.user_detail.community_detail_api.community}}</ion-text>
+                   </p>
+                  <p>
+                    <ion-text *ngIf="item.user_detail.city_detail_api">{{item.user_detail.city_detail_api.name}}</ion-text><ion-text *ngIf="item.user_detail.state_detail_api">, {{item.user_detail.state_detail_api.name}}</ion-text> <ion-text *ngIf="item.user_detail.country_detail_api">{{item.user_detail.country_detail_api.name}}</ion-text>
+                  </p>
                 <ion-button expand="block" fill="outline">Connect Now</ion-button>
             </ion-card>
         </ion-slide>
     </ion-slides>
     <div class="title" id="my_match">
-        <p class="title1">My Matches (12)</p>
-        <p class="title2">See All</p>
+        <p class="title1">My Matches <ion-text *ngIf="count.my_matches">({{count.my_matches}})</ion-text></p>
+        <p class="title2" (click)="segmentChanged('my_matches')">See All</p>
     </div>
 
-    <ion-slides [options]="slideOpts">
-        <ion-slide>
+    <ion-slides [options]="slideOpts" *ngIf="data.my_matches">
+        <ion-slide *ngFor="let item of data.my_matches">
             <ion-card class="scroll_card">
-                <img src="/assets/images/card-amsterdam.png" />
+                <img [src]="item.first_image" />
                 <p class="name">
-                    Ajay kumar
+                    {{item.name}}
                 </p>
                 <p>
-                    25yrs, 5'5"
+                    {{item.age}}yrs, <ion-text *ngIf="item.user_detail.height_detail_api">, {{item.user_detail.height_detail_api.height_label_feet}}</ion-text>
                 </p>
                 <p>
-                    Hindi, Saini
-                </p>
-                <p>
-                    Meerut, Utter Pradesh
-                </p>
-                <ion-button expand="block" fill="outline">Connect Now</ion-button>
-            </ion-card>
-        </ion-slide>
-        <ion-slide>
-            <ion-card class="scroll_card">
-                <img src="/assets/images/dummy.jpeg" />
-                <p class="name">
-                    Ajay kumar
-                </p>
-                <p>
-                    25yrs, 5'5"
-                </p>
-                <p>
-                    Hindi, Saini
-                </p>
-                <p>
-                    Meerut, Utter Pradesh
-                </p>
-                <ion-button expand="block" fill="outline">Connect Now</ion-button>
-            </ion-card>
-        </ion-slide>
-        <ion-slide>
-            <ion-card class="scroll_card">
-                <img src="/assets/images/dummy.jpeg" />
-                <p class="name">
-                    Ajay kumar
-                </p>
-                <p>
-                    25yrs, 5'5"
-                </p>
-                <p>
-                    Hindi, Saini
-                </p>
-                <p>
-                    Meerut, Utter Pradesh
-                </p>
-                <ion-button expand="block" fill="outline">Connect Now</ion-button>
-            </ion-card>
-        </ion-slide>
-        <ion-slide>
-            <ion-card class="scroll_card">
-                <img src="/assets/images/dummy.jpeg" />
-                <p class="name">
-                    Ajay kumar
-                </p>
-                <p>
-                    25yrs, 5'5"
-                </p>
-                <p>
-                    Hindi, Saini
-                </p>
-                <p>
-                    Meerut, Utter Pradesh
-                </p>
+                    <ion-text *ngIf="item.user_detail.religion_detail_api">{{item.user_detail.religion_detail_api.religion}}</ion-text><ion-text *ngIf="item.user_detail.community_detail_api">, {{item.user_detail.community_detail_api.community}}</ion-text>
+                   </p>
+                  <p>
+                    <ion-text *ngIf="item.user_detail.city_detail_api">{{item.user_detail.city_detail_api.name}}</ion-text><ion-text *ngIf="item.user_detail.state_detail_api">, {{item.user_detail.state_detail_api.name}}</ion-text> <ion-text *ngIf="item.user_detail.country_detail_api">{{item.user_detail.country_detail_api.name}}</ion-text>
+                  </p>
                 <ion-button expand="block" fill="outline">Connect Now</ion-button>
             </ion-card>
         </ion-slide>
     </ion-slides>
     <div class="title" id="Recent_Profile_Visitors">
-        <p class="title1">Recent Profile Visitors (12)</p>
-        <p class="title2">See All</p>
+        <p class="title1">Recent Profile Visitors <ion-text *ngIf="count.recent_view">({{count.recent_view}})</ion-text></p>
+        <p class="title2" (click)="segmentChanged('recent_view')">See All</p>
     </div>
 
-    <ion-slides [options]="slideOpts">
-        <ion-slide>
+    <ion-slides [options]="slideOpts" *ngIf="data.recent_view">
+        <ion-slide *ngFor="let item of data.recent_view">
             <ion-card class="scroll_card">
-                <img src="/assets/images/dummy.jpeg" />
+                <img [src]="item.first_image" />
                 <p class="name">
-                    Ajay kumar
+                    {{item.name}}
                 </p>
                 <p>
-                    25yrs, 5'5"
+                    {{item.age}}yrs, <ion-text *ngIf="item.user_detail.height_detail_api">, {{item.user_detail.height_detail_api.height_label_feet}}</ion-text>
                 </p>
                 <p>
-                    Hindi, Saini
-                </p>
-                <p>
-                    Meerut, Utter Pradesh
-                </p>
-                <ion-button expand="block" fill="outline">Connect Now</ion-button>
-            </ion-card>
-        </ion-slide>
-        <ion-slide>
-            <ion-card class="scroll_card">
-                <img src="/assets/images/dummy.jpeg" />
-                <p class="name">
-                    Ajay kumar
-                </p>
-                <p>
-                    25yrs, 5'5"
-                </p>
-                <p>
-                    Hindi, Saini
-                </p>
-                <p>
-                    Meerut, Utter Pradesh
-                </p>
-                <ion-button expand="block" fill="outline">Connect Now</ion-button>
-            </ion-card>
-        </ion-slide>
-        <ion-slide>
-            <ion-card class="scroll_card">
-                <img src="/assets/images/dummy.jpeg" />
-                <p class="name">
-                    Ajay kumar
-                </p>
-                <p>
-                    25yrs, 5'5"
-                </p>
-                <p>
-                    Hindi, Saini
-                </p>
-                <p>
-                    Meerut, Utter Pradesh
-                </p>
-                <ion-button expand="block" fill="outline">Connect Now</ion-button>
-            </ion-card>
-        </ion-slide>
-        <ion-slide>
-            <ion-card class="scroll_card">
-                <img src="/assets/images/dummy.jpeg" />
-                <p class="name">
-                    Ajay kumar
-                </p>
-                <p>
-                    25yrs, 5'5"
-                </p>
-                <p>
-                    Hindi, Saini
-                </p>
-                <p>
-                    Meerut, Utter Pradesh
-                </p>
+                    <ion-text *ngIf="item.user_detail.religion_detail_api">{{item.user_detail.religion_detail_api.religion}}</ion-text><ion-text *ngIf="item.user_detail.community_detail_api">, {{item.user_detail.community_detail_api.community}}</ion-text>
+                   </p>
+                  <p>
+                    <ion-text *ngIf="item.user_detail.city_detail_api">{{item.user_detail.city_detail_api.name}}</ion-text><ion-text *ngIf="item.user_detail.state_detail_api">, {{item.user_detail.state_detail_api.name}}</ion-text> <ion-text *ngIf="item.user_detail.country_detail_api">{{item.user_detail.country_detail_api.name}}</ion-text>
+                  </p>
                 <ion-button expand="block" fill="outline">Connect Now</ion-button>
             </ion-card>
         </ion-slide>
