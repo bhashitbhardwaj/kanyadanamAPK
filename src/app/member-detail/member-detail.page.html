@@ -1,191 +1,303 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
-    <ion-title class="ion-text-center logo">
-      <img src="/assets/images/knnewlogo.png">
-    </ion-title>
-    <ion-buttons slot="end">
-      <ion-button>
-        <ion-icon slot="icon-only" name="search"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-title class="ion-text-center logo">
+            <img src="/assets/images/knnewlogo.png">
+        </ion-title>
+        <ion-buttons slot="end">
+            <ion-button>
+                <ion-icon slot="icon-only" name="search"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
 </ion-header>
 <ion-content>
 
-  <ion-card class="scroll_card" *ngIf="userData">
-    <img (click)="openModal()" [src]="userData.user.first_image" />
-    <div class="data">
-      <p class="name">
-        {{userData.user.name}}
-      </p>
-      <p>
-        {{userData.user.age}}yrs, <ion-text *ngIf="userData.user_details.height">{{userData.user_details.height[0].height_label_feet}}</ion-text> <ion-text *ngIf="userData.user_details.occupation"> *{{userData.user_details.occupation[0].name}}</ion-text> 
-      </p>
-      <p >
-        <ion-text *ngIf="userData.user_details.religion_id && userData.user_details.religion_id[0]">{{userData.user_details.religion_id[0].religion}}</ion-text>, <ion-text *ngIf="userData.user_details.community_id">{{userData.user_details.community_id[0].community}}</ion-text>
-     </p>
-     <p>
-      <ion-text *ngIf="userData.user_details.city_id">{{userData.user_details.city_id[0].name}}</ion-text><ion-text *ngIf="userData.user_details.state_id">, {{userData.user_details.state_id[0].name}}</ion-text> <ion-text *ngIf="userData.user_details.country_id">{{userData.user_details.country_id[0].name}}</ion-text>
-  </p>
-    </div>
-  </ion-card>
-  <ion-card *ngIf="userData">
-    <div class="about">
-      <h6>About {{userData.user.name}}</h6>
-      <p>{{userData.user.about}}</p>
-    </div>
-  </ion-card>
+    <ion-card class="scroll_card" *ngIf="userData">
+        <img (click)="openModal()" [src]="userData.user.first_image" />
+        <div class="data">
+            <p class="name">
+                {{userData.user.name}}
+            </p>
+            <p>
+                {{userData.user.age}}yrs,
+                <ion-text *ngIf="userData.user_details.height">{{userData.user_details.height[0].height_label_feet}}</ion-text>
+                <ion-text *ngIf="userData.user_details.occupation"> *{{userData.user_details.occupation[0].name}}</ion-text>
+            </p>
+            <p>
+                <ion-text *ngIf="userData.user_details.religion_id && userData.user_details.religion_id[0]">{{userData.user_details.religion_id[0].religion}}</ion-text>,
+                <ion-text *ngIf="userData.user_details.community_id">{{userData.user_details.community_id[0].community}}</ion-text>
+            </p>
+            <p>
+                <ion-text *ngIf="userData.user_details.city_id">{{userData.user_details.city_id[0].name}}</ion-text>
+                <ion-text *ngIf="userData.user_details.state_id">, {{userData.user_details.state_id[0].name}}</ion-text>
+                <ion-text *ngIf="userData.user_details.country_id">{{userData.user_details.country_id[0].name}}</ion-text>
+            </p>
+        </div>
+    </ion-card>
+    <ion-card *ngIf="userData">
+        <div class="about">
+            <h6>About {{userData.user.name}}</h6>
+            <p>{{userData.user.about}}</p>
+        </div>
+    </ion-card>
 
-<ion-card *ngIf="userData">
-  <div class="about">
-    <h6>Basic Detials</h6>
-    <ion-chip outline="true" color="danger">
-      <ion-label color="dark">Created By {{userData.user.create_profile_for}}</ion-label>
-    </ion-chip>
-    <ion-chip outline="true" color="danger">
-      <ion-label color="dark">Profile id - {{userData.user.uniq_id}}</ion-label>
-    </ion-chip>
-    <ion-chip outline="true" color="danger">
-      <ion-label color="dark">{{userData.user.age}} Yrs Old</ion-label>
-    </ion-chip>
-    <ion-chip outline="true" color="danger" *ngIf="userData.user_details.height">
-      <ion-label color="dark">Height- {{userData.user_details.height[0].height_label_feet}} </ion-label>
-    </ion-chip>
-    <ion-list>
-      <ion-item>
-        <ion-icon name="calendar-outline" slot="start" color="primary"></ion-icon>
-        <ion-label>
-          <h3>Birth Date</h3>
-          <p>{{userData.user.dobday}} - {{userData.user.dobmonth}} - {{userData.user.dobyear}}</p>
-        </ion-label>
-      </ion-item>
-      <ion-item *ngIf="userData.user_details.martialstatus">
-        <ion-icon name="person-outline" slot="start" color="primary"></ion-icon>
-        <ion-label>
-          <h3>Marital Status</h3>
-          <p>{{userData.user_details.martialstatus[0].name}}</p>
-        </ion-label>
-      </ion-item>
-      <ion-item *ngIf="userData.user_details.city_id">
-        <ion-icon name="location-outline" slot="start" color="primary"></ion-icon>
-        <ion-label>
-          <h3>Lives In</h3>
-          <p>{{userData.user_details.city_id[0].name}}</p>
-        </ion-label>
-      </ion-item>
-      <ion-item *ngIf="userData.user_details.religion_id && userData.user_details.religion_id[0]"> 
-        <ion-icon name="document-text-outline" slot="start" color="primary"></ion-icon>
-        <ion-label>
-          <h3>Religion & Mother Tongue</h3>
-          <p>{{userData.user_details.religion_id[0].religion}} & {{userData.user_details.tongue}}</p>
-        </ion-label>
-      </ion-item>
-      <ion-item *ngIf="userData.user_details.community_id">
-        <ion-icon name="people-circle-outline" slot="start" color="primary"></ion-icon>
-        <ion-label>
-          <h3>Community</h3>
-          <p>{{userData.user_details.community_id[0].community}}</p>
-        </ion-label>
-      </ion-item>
-      <ion-item *ngIf="userData.user_details.self_gotra">
-        <ion-icon name="people-outline" slot="start" color="primary"></ion-icon>
-        <ion-label>
-          <h3>Gothra</h3>
-          <p>{{userData.user_details.self_gotra}}</p>
-        </ion-label>
-      </ion-item>
-      <ion-item *ngIf="userData.user_details.diet">
-        <ion-icon name="restaurant-outline" slot="start" color="primary"></ion-icon>
-        <ion-label>
-          <h3>Diet Preference</h3>
-          <p>{{userData.user_details.diet}}</p>
-        </ion-label>
-      </ion-item>
-    </ion-list>
-  </div>
-</ion-card>
-<ion-card *ngIf="userData">
-  <div class="about">
-    <h6>Contact Detials</h6>
-    <ion-list>
-      <ion-item>
-        <ion-icon name="call-outline" slot="start" color="primary"></ion-icon>
-        <ion-label>
-          <h3>Contact No.</h3>
-          <p>{{userData.user.mobile}}</p>
-        </ion-label>
-      </ion-item>
-      <ion-item>
-        <ion-icon name="mail-outline" slot="start" color="primary"></ion-icon>
-        <ion-label>
-          <h3>Email ID</h3>
-          <p>{{userData.user.email}}</p>
-        </ion-label>
-      </ion-item>
-    </ion-list>
-  </div>
-</ion-card>
-<ion-card *ngIf="userData">
-  <div class="about">
-    <h6>Faimly Details</h6>
-    <p>{{userData.user.familydetails}}</p>
-  </div>
-</ion-card>
-<ion-card *ngIf="userData">
-  <div class="about">
-    <h6>Career & Education</h6>
-    <ion-list>
-      <ion-item *ngIf="userData.user_details.occupation">
-        <ion-icon name="briefcase-outline" slot="start" color="primary"></ion-icon>
-        <ion-label>
-          <h3>Profession</h3>
-          <p>{{userData.user_details.occupation[0].name}}</p>
-        </ion-label>
-      </ion-item>
-      <ion-item *ngIf="userData.user_details.workwith">
-        <ion-icon name="business-outline" slot="start" color="primary"></ion-icon>
-        <ion-label>
-          <h3>Working With</h3>
-          <p>{{userData.user_details.workwith[0].name}}</p>
-        </ion-label>
-      </ion-item>
-      <ion-item *ngIf="userData.user_details.annualincome">
-        <ion-icon name="wallet-outline" slot="start" color="primary"></ion-icon>
-        <ion-label>
-          <h3>Annual Income</h3>
-          <p>{{userData.user_details.annualincome[0].name}} annually</p>
-        </ion-label>
-      </ion-item>
-      <ion-item *ngIf="userData.user_details.education_level && userData.user_details.education_level[0]">
-        <ion-icon name="school-outline" slot="start" color="primary"></ion-icon>
-        <ion-label>
-          <h3>Education</h3>
-          <p>{{userData.user_details.education_level[0].name}}</p>
-        </ion-label>
-      </ion-item>
-      <ion-item *ngIf="userData.user_details.education_field">
-        <ion-icon name="book-outline" slot="start" color="primary"></ion-icon>
-        <ion-label>
-          <h3>Education Field</h3>
-          <p>{{userData.user_details.education_field[0].name}}</p>
-        </ion-label>
-      </ion-item>
-      <!-- <ion-item>
+    <ion-card *ngIf="userData">
+        <div class="about">
+            <h6>Basic Detials</h6>
+            <ion-chip outline="true" color="danger">
+                <ion-label color="dark">Created By {{userData.user.create_profile_for}}</ion-label>
+            </ion-chip>
+            <ion-chip outline="true" color="danger">
+                <ion-label color="dark">Profile id - {{userData.user.uniq_id}}</ion-label>
+            </ion-chip>
+            <ion-chip outline="true" color="danger">
+                <ion-label color="dark">{{userData.user.age}} Yrs Old</ion-label>
+            </ion-chip>
+            <ion-chip outline="true" color="danger" *ngIf="userData.user_details.height">
+                <ion-label color="dark">Height- {{userData.user_details.height[0].height_label_feet}} </ion-label>
+            </ion-chip>
+            <ion-list>
+                <ion-item>
+                    <ion-icon name="calendar-outline" slot="start" color="primary"></ion-icon>
+                    <ion-label>
+                        <h3>Birth Date</h3>
+                        <p>{{userData.user.dobday}} - {{userData.user.dobmonth}} - {{userData.user.dobyear}}</p>
+                    </ion-label>
+                </ion-item>
+                <ion-item *ngIf="userData.user_details.martialstatus">
+                    <ion-icon name="person-outline" slot="start" color="primary"></ion-icon>
+                    <ion-label>
+                        <h3>Marital Status</h3>
+                        <p>{{userData.user_details.martialstatus[0].name}}</p>
+                    </ion-label>
+                </ion-item>
+                <ion-item *ngIf="userData.user_details.city_id">
+                    <ion-icon name="location-outline" slot="start" color="primary"></ion-icon>
+                    <ion-label>
+                        <h3>Lives In</h3>
+                        <p>{{userData.user_details.city_id[0].name}}</p>
+                    </ion-label>
+                </ion-item>
+                <ion-item *ngIf="userData.user_details.religion_id && userData.user_details.religion_id[0]">
+                    <ion-icon name="document-text-outline" slot="start" color="primary"></ion-icon>
+                    <ion-label>
+                        <h3>Religion & Mother Tongue</h3>
+                        <p>{{userData.user_details.religion_id[0].religion}} & {{userData.user_details.tongue}}</p>
+                    </ion-label>
+                </ion-item>
+                <ion-item *ngIf="userData.user_details.community_id">
+                    <ion-icon name="people-circle-outline" slot="start" color="primary"></ion-icon>
+                    <ion-label>
+                        <h3>Community</h3>
+                        <p>{{userData.user_details.community_id[0].community}}</p>
+                    </ion-label>
+                </ion-item>
+                <ion-item *ngIf="userData.user_details.self_gotra">
+                    <ion-icon name="people-outline" slot="start" color="primary"></ion-icon>
+                    <ion-label>
+                        <h3>Gothra</h3>
+                        <p>{{userData.user_details.self_gotra}}</p>
+                    </ion-label>
+                </ion-item>
+                <ion-item *ngIf="userData.user_details.diet">
+                    <ion-icon name="restaurant-outline" slot="start" color="primary"></ion-icon>
+                    <ion-label>
+                        <h3>Diet Preference</h3>
+                        <p>{{userData.user_details.diet}}</p>
+                    </ion-label>
+                </ion-item>
+            </ion-list>
+        </div>
+    </ion-card>
+    <ion-card *ngIf="userData">
+        <div class="about">
+            <h6>Contact Detials</h6>
+            <ion-list>
+                <ion-item>
+                    <ion-icon name="call-outline" slot="start" color="primary"></ion-icon>
+                    <ion-label>
+                        <h3>Contact No.</h3>
+                        <p>{{userData.user.mobile}}</p>
+                    </ion-label>
+                </ion-item>
+                <ion-item>
+                    <ion-icon name="mail-outline" slot="start" color="primary"></ion-icon>
+                    <ion-label>
+                        <h3>Email ID</h3>
+                        <p>{{userData.user.email}}</p>
+                    </ion-label>
+                </ion-item>
+            </ion-list>
+        </div>
+    </ion-card>
+    <ion-card *ngIf="userData">
+        <div class="about">
+            <h6>Faimly Details</h6>
+            <p>{{userData.user.familydetails}}</p>
+        </div>
+    </ion-card>
+    <ion-card *ngIf="userData">
+        <div class="about">
+            <h6>Career & Education</h6>
+            <ion-list>
+                <ion-item *ngIf="userData.user_details.occupation">
+                    <ion-icon name="briefcase-outline" slot="start" color="primary"></ion-icon>
+                    <ion-label>
+                        <h3>Profession</h3>
+                        <p>{{userData.user_details.occupation[0].name}}</p>
+                    </ion-label>
+                </ion-item>
+                <ion-item *ngIf="userData.user_details.workwith">
+                    <ion-icon name="business-outline" slot="start" color="primary"></ion-icon>
+                    <ion-label>
+                        <h3>Working With</h3>
+                        <p>{{userData.user_details.workwith[0].name}}</p>
+                    </ion-label>
+                </ion-item>
+                <ion-item *ngIf="userData.user_details.annualincome">
+                    <ion-icon name="wallet-outline" slot="start" color="primary"></ion-icon>
+                    <ion-label>
+                        <h3>Annual Income</h3>
+                        <p>{{userData.user_details.annualincome[0].name}} annually</p>
+                    </ion-label>
+                </ion-item>
+                <ion-item *ngIf="userData.user_details.education_level && userData.user_details.education_level[0]">
+                    <ion-icon name="school-outline" slot="start" color="primary"></ion-icon>
+                    <ion-label>
+                        <h3>Education</h3>
+                        <p>{{userData.user_details.education_level[0].name}}</p>
+                    </ion-label>
+                </ion-item>
+                <ion-item *ngIf="userData.user_details.education_field">
+                    <ion-icon name="book-outline" slot="start" color="primary"></ion-icon>
+                    <ion-label>
+                        <h3>Education Field</h3>
+                        <p>{{userData.user_details.education_field[0].name}}</p>
+                    </ion-label>
+                </ion-item>
+                <!-- <ion-item>
         <ion-icon name="home-outline" slot="start" color="primary"></ion-icon>
         <ion-label>
           <h3>College Name</h3>
           <p>NIT Jamshedpur</p>
         </ion-label>
       </ion-item> -->
-    </ion-list>
-  </div>
-</ion-card>
+            </ion-list>
+        </div>
+    </ion-card>
+    <ion-card *ngIf="userData">
+        <div class="about">
+            <h6>Partner Preferences</h6>
+            <ion-list>
+                <ion-item *ngIf="userData.partner_details.age_from">
+                    <ion-icon name="document-text-outline" slot="start" color="primary"></ion-icon>
+                    <ion-label>
+                        <h3>Age</h3>
+                        <p>{{userData.partner_details.age_from}} years to {{userData.partner_details.age_to}}</p>
+                    </ion-label>
+                </ion-item>
+                <ion-item *ngIf="userData.partner_details.height_from && userData.partner_details.height_from[0]">
+                    <ion-icon name="document-text-outline" slot="start" color="primary"></ion-icon>
+                    <ion-label>
+                        <h3>Height From</h3>
+                        <p>{{userData.partner_details.height_from[0].height_label_feet}} ({{userData.partner_details.height_from[0].height_value_cm}} cm)</p>
+                    </ion-label>
+                </ion-item>
+                <ion-item *ngIf="userData.partner_details.height_to && userData.partner_details.height_to[0]">
+                    <ion-icon name="document-text-outline" slot="start" color="primary"></ion-icon>
+                    <ion-label>
+                        <h3>Height To</h3>
+                        <p>{{userData.partner_details.height_to[0].height_label_feet}} ({{userData.partner_details.height_to[0].height_value_cm}} cm)</p>
+                    </ion-label>
+                </ion-item>
+                <ion-item *ngIf="userData.partner_details.martialstatus">
+                    <ion-icon name="document-text-outline" slot="start" color="primary"></ion-icon>
+                    <ion-label>
+                        <h3>Martial Status</h3>
+                        <p class="ion-text-wrap">{{userData.partner_details.martialstatus}}</p>
+                    </ion-label>
+                </ion-item>
+                <ion-item *ngIf="userData.partner_details.religion">
+                    <ion-icon name="document-text-outline" slot="start" color="primary"></ion-icon>
+                    <ion-label>
+                        <h3>Religion</h3>
+                        <p class="ion-text-wrap">{{userData.partner_details.religion}}</p>
+                    </ion-label>
+                </ion-item>
+                <ion-item *ngIf="userData.partner_details.tongue">
+                    <ion-icon name="document-text-outline" slot="start" color="primary"></ion-icon>
+                    <ion-label>
+                        <h3>Tongue</h3>
+                        <p class="ion-text-wrap">{{userData.partner_details.tongue}}</p>
+                    </ion-label>
+                </ion-item>
+                <ion-item *ngIf="userData.partner_details.community">
+                    <ion-icon name="document-text-outline" slot="start" color="primary"></ion-icon>
+                    <ion-label>
+                        <h3>Community</h3>
+                        <p class="ion-text-wrap">{{userData.partner_details.community}}</p>
+                    </ion-label>
+                </ion-item>
+                <ion-item *ngIf="userData.partner_details.country_id">
+                    <ion-icon name="document-text-outline" slot="start" color="primary"></ion-icon>
+                    <ion-label>
+                        <h3>Country</h3>
+                        <p class="ion-text-wrap">{{userData.partner_details.country_id}}</p>
+                    </ion-label>
+                </ion-item>
+                <ion-item *ngIf="userData.partner_details.state_id">
+                    <ion-icon name="document-text-outline" slot="start" color="primary"></ion-icon>
+                    <ion-label>
+                        <h3>State</h3>
+                        <p class="ion-text-wrap">{{userData.partner_details.state_id}}</p>
+                    </ion-label>
+                </ion-item>
+                <ion-item *ngIf="userData.partner_details.education_level">
+                    <ion-icon name="school-outline" slot="start" color="primary"></ion-icon>
+                    <ion-label>
+                        <h3>Education</h3>
+                        <p class="ion-text-wrap">{{userData.partner_details.education_level}}</p>
+                    </ion-label>
+                </ion-item>
+                <ion-item *ngIf="userData.partner_details.workwith">
+                    <ion-icon name="book-outline" slot="start" color="primary"></ion-icon>
+                    <ion-label>
+                        <h3>Work With</h3>
+                        <p class="ion-text-wrap">{{userData.partner_details.workwith}}</p>
+                    </ion-label>
+                </ion-item>
+                <ion-item *ngIf="userData.partner_details.occupation">
+                    <ion-icon name="book-outline" slot="start" color="primary"></ion-icon>
+                    <ion-label>
+                        <h3>Occupation</h3>
+                        <p class="ion-text-wrap">{{userData.partner_details.occupation}}</p>
+                    </ion-label>
+                </ion-item>
+                <ion-item *ngIf="userData.partner_details.annualincome">
+                    <ion-icon name="document-text-outline" slot="start" color="primary"></ion-icon>
+                    <ion-label>
+                        <h3>Annual Income</h3>
+                        <p class="ion-text-wrap">{{userData.partner_details.annualincome}} annually</p>
+                    </ion-label>
+                </ion-item>
+
+
+                <!-- <ion-item>
+        <ion-icon name="home-outline" slot="start" color="primary"></ion-icon>
+        <ion-label>
+          <h3>College Name</h3>
+          <p>NIT Jamshedpur</p>
+        </ion-label>
+      </ion-item> -->
+            </ion-list>
+        </div>
+    </ion-card>
 </ion-content>
 <ion-footer>
-  <ion-toolbar>
-    <ion-button expand="full">Connect Now</ion-button>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-button expand="full">Connect Now</ion-button>
+    </ion-toolbar>
 </ion-footer>
