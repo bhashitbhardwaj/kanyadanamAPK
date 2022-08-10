@@ -19,7 +19,7 @@
         <p class="title1">New Matches <ion-text *ngIf="count.new_matches">({{count.new_matches}})</ion-text></p>
         <p class="title2" (click)="segmentChanged('new_matches')">See All</p>
     </div>
-    <ion-slides [options]="slideOpts" *ngIf="data.new_matches">
+    <ion-slides [options]="slideOpts" >
         <ion-slide *ngFor="let item of data.new_matches">
             <ion-card class="scroll_card" >
                 <img [src]="item.first_image" />
@@ -44,7 +44,7 @@
         <p class="title2" (click)="segmentChanged('my_matches')">See All</p>
     </div>
 
-    <ion-slides [options]="slideOpts" *ngIf="data.my_matches">
+    <ion-slides [options]="slideOpts" >
         <ion-slide *ngFor="let item of data.my_matches">
             <ion-card class="scroll_card">
                 <img [src]="item.first_image" />
@@ -69,7 +69,7 @@
         <p class="title2" (click)="segmentChanged('recent_view')">See All</p>
     </div>
 
-    <ion-slides [options]="slideOpts" *ngIf="data.recent_view">
+    <ion-slides [options]="slideOpts" >
         <ion-slide *ngFor="let item of data.recent_view">
             <ion-card class="scroll_card">
                 <img [src]="item.first_image" />
