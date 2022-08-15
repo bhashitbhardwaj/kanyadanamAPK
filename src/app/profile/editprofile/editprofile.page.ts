@@ -14,7 +14,6 @@ import { ToastService } from 'src/app/provider/toast.service';
 })
 export class EditprofilePage implements OnInit {
   dropDown: any = {};
-  selectedData: any = {};
   rForm: FormGroup;
   constructor(
     private profileForm: FormBuilder,
@@ -58,10 +57,21 @@ export class EditprofilePage implements OnInit {
     value: any
   }) {
     console.log('port:', event.value);
-    this.dropDown.states = [];
-    this.selectedData.state = null;
+    this.getCity(event.value.id);
+  }
+
+  countryChange(event: {
+    component: IonicSelectableComponent,
+    value: any
+  }) {
+    console.log('port:', event.value);
+    this.getState(event.value.id);
+  }
+  getCity(id)
+  {
+    this.dropDown.cities = [];
     this.api.postData('api/getCityArrayOrSingle',{
-      state_id:[event.value.id]
+      state_id:[id]
     }).subscribe(res => {
       if (res.status) {
         console.log(res);
@@ -76,16 +86,11 @@ export class EditprofilePage implements OnInit {
       }
     })
   }
-
-  countryChange(event: {
-    component: IonicSelectableComponent,
-    value: any
-  }) {
-    console.log('port:', event.value);
+  getState(id)
+  {
     this.dropDown.states = [];
-    this.selectedData.state = null;
     this.api.postData('api/getStateArrayOrSingle',{
-      country_id:[event.value.id]
+      country_id:[id]
     }).subscribe(res => {
       if (res.status) {
         console.log(res);
@@ -260,8 +265,16 @@ export class EditprofilePage implements OnInit {
           "tongue": res.data.user_detail.user_details.tongue,
           "religion":(res.data.user_detail.user_details && res.data.user_detail.user_details.religion_id && res.data.user_detail.user_details.religion_id.length)?res.data.user_detail.user_details.religion_id[0].id:null,
           "create_profile_for": res.data.user_detail.user.create_profile_for,
-          "dob": res.data.user_detail.user.dobday + '/' + res.data.user_detail.user.dobmonth + '/' + res.data.user_detail.user.dobyear
+          "dob": res.data.user_detail.user.dobmonth + '/' + res.data.user_detail.user.dobday + '/' +  res.data.user_detail.user.dobyear
       });
+      if((res.data.user_detail.user_details && res.data.user_detail.user_details.country_id))
+      {
+        this.getState(res.data.user_detail.user_details.country_id[0].id);
+      }
+      if((res.data.user_detail.user_details && res.data.user_detail.user_details.state_id))
+      {
+        this.getCity(res.data.user_detail.user_details.state_id[0].id);
+      }
       }
       else {
         this.toast.Notify({

@@ -1,6 +1,7 @@
       ion-card {
-          position: relative;
-          text-align: center;
+        height: 250px;
+        position: relative;
+        text-align: center;
       }
       
       //Bhashit
@@ -33,16 +34,27 @@
       
       //bhashit
       .scroll_card {
+        background-repeat:no-repeat;
+        background-size:contain;
+        background-position:center;
+        .top_button{
+            font-weight: 500;
+            margin-top: -155px;
+        }
           .wishlist {
               font-size: 20px;
-              position: absolute;
+              float: left;
+          }
+          .images{
+            font-size: 20px;
+            float: right;
           }
           img {
               height: 300px;
           }
           .data {
               font-weight: 500;
-              margin-top: -155px;
+              margin-top: 78px;
               .name {
                   font-size: 16px;
                   padding-bottom: 5px;
@@ -69,4 +81,6 @@
           }
       }
       
-      //
+      .no_data{
+        height: auto;
+      }

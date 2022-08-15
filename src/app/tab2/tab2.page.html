@@ -34,42 +34,57 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" class="card-background-page">
-    <ion-card class="scroll_card" *ngFor="let item of data" (click) = "openDetailpage(item.uniq_id)" >
-        <ion-button class="wishlist" size="large" fill="clear" *ngIf="item.isshowWishlist"  (click) = "connect(item , 'wishlist');$event.stopPropagation();">
-            <ion-icon slot="start" name="heart-outline"></ion-icon>
-        </ion-button>
-        <ion-button class="wishlist" size="large" fill="clear" *ngIf="!item.isshowWishlist">
-          <ion-icon slot="start" name="heart"></ion-icon>
-        </ion-button>
-        <img [src]="item.first_image" />
-        <div class="data">
-            <p class="name">
-                {{item.name}}
-            </p>
-            <p>
-                {{item.age }}yrs<ion-text *ngIf="item.user_detail.height_detail_api">, {{item.user_detail.height_detail_api.height_label_feet}}</ion-text>
-            </p>
-            <p>
-              <ion-text *ngIf="item.user_detail.religion_detail_api">{{item.user_detail.religion_detail_api.religion}}</ion-text><ion-text *ngIf="item.user_detail.community_detail_api">, {{item.user_detail.community_detail_api.community}}</ion-text>
-             </p>
-            <p>
-              <ion-text *ngIf="item.user_detail.city_detail_api">{{item.user_detail.city_detail_api.name}}</ion-text><ion-text *ngIf="item.user_detail.state_detail_api">, {{item.user_detail.state_detail_api.name}}</ion-text> <ion-text *ngIf="item.user_detail.country_detail_api">{{item.user_detail.country_detail_api.name}}</ion-text>
-            </p>
-            <ion-row class="button_list">
-                <ion-col>
-                    <ion-button size="small" expand="block" *ngIf="item.isshow" (click) = "connect(item , 'connect');$event.stopPropagation();">
-                        <ion-icon slot="start" *ngIf="!item.isshow" name="checkmark-circle-outline"></ion-icon>
-                        Connect Now
-                    </ion-button>
-                    <ion-button size="small" color="light" *ngIf="!item.isshow" expand="block" (click) = "$event.stopPropagation();">
-                      <ion-icon slot="start" name="checkmark-circle-outline"></ion-icon>
-                      Request Sent
+    <ion-card class="scroll_card" [style.background-image]="'url('+item.first_image+')'" *ngFor="let item of data" (click) = "openDetailpage(item.uniq_id)" >
+      <div>
+        <ion-row>
+          <ion-col size="6">
+            <ion-button class="wishlist" size="large" fill="clear" *ngIf="item.isshowWishlist"  (click) = "connect(item , 'wishlist');$event.stopPropagation();">
+              <ion-icon slot="start" name="heart-outline"></ion-icon>
+          </ion-button>
+          <ion-button class="wishlist" size="large" fill="clear" *ngIf="!item.isshowWishlist">
+            <ion-icon slot="start" name="heart"></ion-icon>
+          </ion-button>
+          </ion-col>
+          <ion-col size="6">
+            <ion-button class="images" size="large" fill="clear" *ngIf="item.isshowWishlist">
+              <ion-icon name="images" slot="end"></ion-icon>
+              {{item.imageCount}}
+          </ion-button>
+          </ion-col>
+        </ion-row>
+      </div>
+     <div>
+      <!-- <img [src]="item.first_image" /> -->
+      <div class="data">
+          <p class="name">
+              {{item.name}}
+          </p>
+          <p>
+              {{item.age }}yrs<ion-text *ngIf="item.user_detail.height_detail_api">, {{item.user_detail.height_detail_api.height_label_feet}}</ion-text>
+          </p>
+          <p>
+            <ion-text *ngIf="item.user_detail.religion_detail_api">{{item.user_detail.religion_detail_api.religion}}</ion-text><ion-text *ngIf="item.user_detail.community_detail_api">, {{item.user_detail.community_detail_api.community}}</ion-text>
+           </p>
+          <p>
+            <ion-text *ngIf="item.user_detail.city_detail_api">{{item.user_detail.city_detail_api.name}}</ion-text><ion-text *ngIf="item.user_detail.state_detail_api">, {{item.user_detail.state_detail_api.name}}</ion-text> <ion-text *ngIf="item.user_detail.country_detail_api">{{item.user_detail.country_detail_api.name}}</ion-text>
+          </p>
+          <ion-row class="button_list">
+              <ion-col>
+                  <ion-button size="small" expand="block" *ngIf="item.isshow" (click) = "connect(item , 'connect');$event.stopPropagation();">
+                      <ion-icon slot="start" *ngIf="!item.isshow" name="checkmark-circle-outline"></ion-icon>
+                      Connect Now
                   </ion-button>
-                </ion-col>
-            </ion-row>
-        </div>
+                  <ion-button size="small" color="light" *ngIf="!item.isshow" expand="block" (click) = "$event.stopPropagation();">
+                    <ion-icon slot="start" name="checkmark-circle-outline"></ion-icon>
+                    Request Sent
+                </ion-button>
+              </ion-col>
+          </ion-row>
+      </div>
+     </div>
+        
     </ion-card>
-    <ion-card *ngIf="!data.length">
+    <ion-card *ngIf="!data.length" class="no_data">
       <ion-button size="large" expand="block" fill="clear" color="danger">
         <ion-icon slot="start" name="alert-circle"></ion-icon>
         No Data Found

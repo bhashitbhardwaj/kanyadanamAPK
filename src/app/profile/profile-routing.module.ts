@@ -54,6 +54,10 @@ const routes: Routes = [
   {
     path: 'emailandsmsalerts',
     loadChildren: () => import('./emailandsmsalerts/emailandsmsalerts.module').then( m => m.EmailandsmsalertsPageModule)
+  },
+  {
+    path: 'uploadpic',
+    loadChildren: () => import('./uploadpic/uploadpic.module').then( m => m.UploadpicPageModule)
   }
 
 ];
