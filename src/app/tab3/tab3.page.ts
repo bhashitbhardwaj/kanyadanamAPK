@@ -91,11 +91,6 @@ export class Tab3Page {
       }
       else{
         this.data = [];
-          this.toast.Notify({
-            message:res.message,
-            duration:3000,
-            position:'top'
-          })
       }
     })
   }

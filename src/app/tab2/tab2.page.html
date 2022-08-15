@@ -35,8 +35,11 @@
 
 <ion-content [fullscreen]="true" class="card-background-page">
     <ion-card class="scroll_card" *ngFor="let item of data" (click) = "openDetailpage(item.uniq_id)" >
-        <ion-button class="wishlist" size="large" fill="clear">
+        <ion-button class="wishlist" size="large" fill="clear" *ngIf="item.isshowWishlist"  (click) = "connect(item , 'wishlist');$event.stopPropagation();">
             <ion-icon slot="start" name="heart-outline"></ion-icon>
+        </ion-button>
+        <ion-button class="wishlist" size="large" fill="clear" *ngIf="!item.isshowWishlist">
+          <ion-icon slot="start" name="heart"></ion-icon>
         </ion-button>
         <img [src]="item.first_image" />
         <div class="data">
@@ -66,7 +69,12 @@
             </ion-row>
         </div>
     </ion-card>
-
+    <ion-card *ngIf="!data.length">
+      <ion-button size="large" expand="block" fill="clear" color="danger">
+        <ion-icon slot="start" name="alert-circle"></ion-icon>
+        No Data Found
+      </ion-button>
+    </ion-card>
 <!-- fab placed to the top end -->
 <ion-fab vertical="top" horizontal="end" slot="fixed">
     <ion-fab-button size="small" (click)="openModal()">

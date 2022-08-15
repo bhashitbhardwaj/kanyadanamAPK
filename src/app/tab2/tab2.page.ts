@@ -50,7 +50,13 @@ export class Tab2Page {
       if(res.status)
       {
         console.log(res);
-        item.isshow = false;
+        if(connect == 'wishlist')
+        {
+          item.isshowWishlist = false;
+        }
+        else{
+          item.isshow = false;
+        }
         this.toast.Notify({
           message:res.message,
           duration:3000,
@@ -128,7 +134,11 @@ export class Tab2Page {
       if(res.status && res.data.total_count)
       {
         this.data = res.data.user_detail;
-        this.data.map(user => user.isshow = true);
+        this.data.map(user => {
+          user.isshow = true,
+          user.isshowWishlist = true
+        });
+
         console.log(this.data);
         switch (id.search_type) {
             case "new_matches":
@@ -182,11 +192,6 @@ export class Tab2Page {
       }
       else{
         this.data = [];
-          this.toast.Notify({
-            message:res.message,
-            duration:3000,
-            position:'top'
-          })
       }
     })
   }
