@@ -20,8 +20,8 @@
         <p class="title2" (click)="segmentChanged('new_matches')">See All</p>
     </div>
     <ion-slides [options]="slideOpts" >
-        <ion-slide *ngFor="let item of data.new_matches">
-            <ion-card class="scroll_card" >
+        <ion-slide *ngFor="let item of data.new_matches;let ind = index">
+            <ion-card class="scroll_card" (click)="openDetailpage(item.uniq_id)" >
                 <img [src]="item.first_image" />
                 <p class="name">
                     {{item.name}}
@@ -35,7 +35,8 @@
                   <p>
                     <ion-text *ngIf="item.user_detail.city_detail_api">{{item.user_detail.city_detail_api.name}}</ion-text><ion-text *ngIf="item.user_detail.state_detail_api">, {{item.user_detail.state_detail_api.name}}</ion-text> <ion-text *ngIf="item.user_detail.country_detail_api">{{item.user_detail.country_detail_api.name}}</ion-text>
                   </p>
-                <ion-button expand="block" fill="outline">Connect Now</ion-button>
+                <ion-button expand="block" fill="outline" *ngIf="item.isshow" (click) = "connect(item , 'connect');$event.stopPropagation();">Connect Now</ion-button>
+                <ion-button expand="block" color="light" *ngIf="!item.isshow" (click) = "$event.stopPropagation();">Request Sent</ion-button>
             </ion-card>
         </ion-slide>
     </ion-slides>
@@ -46,7 +47,7 @@
 
     <ion-slides [options]="slideOpts" >
         <ion-slide *ngFor="let item of data.my_matches">
-            <ion-card class="scroll_card">
+            <ion-card class="scroll_card" (click)="openDetailpage(item.uniq_id)">
                 <img [src]="item.first_image" />
                 <p class="name">
                     {{item.name}}
@@ -60,7 +61,8 @@
                   <p>
                     <ion-text *ngIf="item.user_detail.city_detail_api">{{item.user_detail.city_detail_api.name}}</ion-text><ion-text *ngIf="item.user_detail.state_detail_api">, {{item.user_detail.state_detail_api.name}}</ion-text> <ion-text *ngIf="item.user_detail.country_detail_api">{{item.user_detail.country_detail_api.name}}</ion-text>
                   </p>
-                <ion-button expand="block" fill="outline">Connect Now</ion-button>
+                <ion-button expand="block" fill="outline" *ngIf="item.isshow" (click) = "connect(item , 'connect');$event.stopPropagation();">Connect Now</ion-button>
+                <ion-button expand="block" color="light" *ngIf="!item.isshow" (click) = "$event.stopPropagation();">Request Sent</ion-button>
             </ion-card>
         </ion-slide>
     </ion-slides>
@@ -71,7 +73,7 @@
 
     <ion-slides [options]="slideOpts" >
         <ion-slide *ngFor="let item of data.recent_view">
-            <ion-card class="scroll_card">
+            <ion-card class="scroll_card" (click)="openDetailpage(item.uniq_id)">
                 <img [src]="item.first_image" />
                 <p class="name">
                     {{item.name}}
@@ -85,7 +87,8 @@
                   <p>
                     <ion-text *ngIf="item.user_detail.city_detail_api">{{item.user_detail.city_detail_api.name}}</ion-text><ion-text *ngIf="item.user_detail.state_detail_api">, {{item.user_detail.state_detail_api.name}}</ion-text> <ion-text *ngIf="item.user_detail.country_detail_api">{{item.user_detail.country_detail_api.name}}</ion-text>
                   </p>
-                <ion-button expand="block" fill="outline">Connect Now</ion-button>
+                <ion-button expand="block" fill="outline" *ngIf="item.isshow" (click) = "connect(item , 'connect');$event.stopPropagation();">Connect Now</ion-button>
+                <ion-button expand="block" color="light" *ngIf="!item.isshow" (click) = "$event.stopPropagation();">Request Sent</ion-button>
             </ion-card>
         </ion-slide>
     </ion-slides>

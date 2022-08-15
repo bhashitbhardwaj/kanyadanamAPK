@@ -63,25 +63,31 @@
    
     <ion-row>
       <ion-col *ngIf="item.is_request_sent">
-        <ion-button size="small" expand="block" color="light" >
+        <ion-button size="small" expand="block" color="light" (click)="$event.stopPropagation();">
           <ion-icon slot="start" name="close-circle-outline"></ion-icon>
           Request Sent
         </ion-button>
       </ion-col>
       <ion-col *ngIf="item.is_decline_button" >
-        <ion-button size="small" expand="block" color="light" (click)="decline()">
+        <ion-button size="small" expand="block" color="light" (click)="connect(item,'decline');$event.stopPropagation();">
           <ion-icon slot="start" name="close-circle-outline"></ion-icon>
           Decline
         </ion-button>
       </ion-col>
       <ion-col *ngIf="item.is_accept_button">
-        <ion-button size="small" expand="block"  (click)="accept()">
+        <ion-button size="small" expand="block"  (click)="connect(item,'accept');$event.stopPropagation();">
           <ion-icon slot="start" name="checkmark-circle-outline"></ion-icon>
           Accept
         </ion-button>
       </ion-col>
+      <ion-col *ngIf="item.is_chat">
+        <ion-button size="small" expand="block"  (click)="chat();$event.stopPropagation();">
+          <ion-icon slot="start" name="checkmark-circle-outline"></ion-icon>
+          Chat Now
+        </ion-button>
+      </ion-col>
       <ion-col *ngIf="item.is_connect_button">
-        <ion-button size="small" expand="block"  (click)="accept()">
+        <ion-button size="small" expand="block"  (click)="connect(item,'connect');$event.stopPropagation();">
           <ion-icon slot="start" name="checkmark-circle-outline"></ion-icon>
           Connect Now
         </ion-button>

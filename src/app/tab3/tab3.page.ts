@@ -42,14 +42,36 @@ export class Tab3Page {
     this.inbox(ev.detail.value)
   }
 
-  decline()
+  chat()
   {
 
   }
 
-  accept()
+  connect(item,connect)
   {
-    
+    this.api.postDataWithAuth('api/requestForConnect',{
+      "to_id":item.id,
+      "requestType":connect
+    }
+    ).subscribe(res=>{
+      if(res.status)
+      {
+        console.log(res);
+        this.data.splice(this.data.findIndex(a => a.id === item.id) , 1)
+        this.toast.Notify({
+          message:res.message,
+          duration:3000,
+          position:'top'
+        })
+      }
+      else{
+          this.toast.Notify({
+            message:res.message,
+            duration:3000,
+            position:'top'
+          })
+      }
+    })
   }
   inbox(id:any)
   {
@@ -65,55 +87,7 @@ export class Tab3Page {
       {
         console.log(res);
         this.data = res.data.user_detail;
-        switch (id) {
-            case "invitation":
-              this.count = {
-                invitation:res.data.total_count,
-                accepted:0,
-                sent:0,
-                wishlist:0,
-                decline:0
-              };
-            break;
-            case "accepted":
-              this.count = {
-                invitation:0,
-                accepted:res.data.total_count,
-                sent:0,
-                wishlist:0,
-                decline:0
-              };
-            break;
-            case "sent":
-              this.count = {
-                invitation:0,
-                accepted:0,
-                sent:res.data.total_count,
-                wishlist:0,
-                decline:0
-              };
-            break;
-            case "wishlist":
-              this.count = {
-                invitation:0,
-                accepted:0,
-                sent:0,
-                wishlist:res.data.total_count,
-                decline:0
-              };
-            break;
-            case "decline":
-              this.count = {
-                invitation:0,
-                accepted:0,
-                sent:0,
-                wishlist:0,
-                decline:res.data.total_count
-              };
-            break;
-          default:
-            break;
-        }
+        this.updateCount(res.data,id)
       }
       else{
         this.data = [];
@@ -124,5 +98,58 @@ export class Tab3Page {
           })
       }
     })
+  }
+
+  updateCount(data,id)
+  {
+    switch (id) {
+      case "invitation":
+        this.count = {
+          invitation:data.total_count,
+          accepted:0,
+          sent:0,
+          wishlist:0,
+          decline:0
+        };
+      break;
+      case "accepted":
+        this.count = {
+          invitation:0,
+          accepted:data.total_count,
+          sent:0,
+          wishlist:0,
+          decline:0
+        };
+      break;
+      case "sent":
+        this.count = {
+          invitation:0,
+          accepted:0,
+          sent:data.total_count,
+          wishlist:0,
+          decline:0
+        };
+      break;
+      case "wishlist":
+        this.count = {
+          invitation:0,
+          accepted:0,
+          sent:0,
+          wishlist:data.total_count,
+          decline:0
+        };
+      break;
+      case "decline":
+        this.count = {
+          invitation:0,
+          accepted:0,
+          sent:0,
+          wishlist:0,
+          decline:data.total_count
+        };
+      break;
+    default:
+      break;
+  }
   }
 }

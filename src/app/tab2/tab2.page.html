@@ -54,10 +54,14 @@
             </p>
             <ion-row class="button_list">
                 <ion-col>
-                    <ion-button size="small" expand="block" (click) = "connect();$event.stopPropagation();">
-                        <ion-icon slot="start" name="checkmark-circle-outline"></ion-icon>
+                    <ion-button size="small" expand="block" *ngIf="item.isshow" (click) = "connect(item , 'connect');$event.stopPropagation();">
+                        <ion-icon slot="start" *ngIf="!item.isshow" name="checkmark-circle-outline"></ion-icon>
                         Connect Now
                     </ion-button>
+                    <ion-button size="small" color="light" *ngIf="!item.isshow" expand="block" (click) = "$event.stopPropagation();">
+                      <ion-icon slot="start" name="checkmark-circle-outline"></ion-icon>
+                      Request Sent
+                  </ion-button>
                 </ion-col>
             </ion-row>
         </div>

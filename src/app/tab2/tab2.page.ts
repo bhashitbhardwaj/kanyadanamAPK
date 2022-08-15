@@ -40,9 +40,31 @@ export class Tab2Page {
     this.router.navigateByUrl('/member-detail',{ state:uniq_id});
   }
 
-  connect()
+  connect(item,connect)
   {
-    
+    this.api.postDataWithAuth('api/requestForConnect',{
+      "to_id":item.id,
+      "requestType":connect
+    }
+    ).subscribe(res=>{
+      if(res.status)
+      {
+        console.log(res);
+        item.isshow = false;
+        this.toast.Notify({
+          message:res.message,
+          duration:3000,
+          position:'top'
+        })
+      }
+      else{
+          this.toast.Notify({
+            message:res.message,
+            duration:3000,
+            position:'top'
+          })
+      }
+    })
   }
 
   segmentChanged(ev: any) {
@@ -105,8 +127,9 @@ export class Tab2Page {
       //this.loader.Hide();
       if(res.status && res.data.total_count)
       {
-        console.log(res);
         this.data = res.data.user_detail;
+        this.data.map(user => user.isshow = true);
+        console.log(this.data);
         switch (id.search_type) {
             case "new_matches":
               this.count = {

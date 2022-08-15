@@ -43,6 +43,38 @@ export class Tab1Page {
     "res_start": 0
     })
   }
+
+  openDetailpage(uniq_id)
+  {
+    this.router.navigateByUrl('/member-detail',{ state:uniq_id});
+  }
+
+  connect(item,connect)
+  {
+    this.api.postDataWithAuth('api/requestForConnect',{
+      "to_id":item.id,
+      "requestType":connect
+    }
+    ).subscribe(res=>{
+      if(res.status)
+      {
+        console.log(res);
+        item.isshow = false;
+        this.toast.Notify({
+          message:res.message,
+          duration:3000,
+          position:'top'
+        })
+      }
+      else{
+          this.toast.Notify({
+            message:res.message,
+            duration:3000,
+            position:'top'
+          })
+      }
+    })
+  }
   segmentChanged(ev: any) {
     if(ev)
     {
@@ -58,19 +90,21 @@ export class Tab1Page {
     ).subscribe(res=>{
       if(res.status && res.data.total_count)
       {
-        console.log(res);
         switch (id.search_type) {
           case "new_matches":
             this.count.new_matches = res.data.total_count;
             this.data.new_matches = res.data.user_detail;
+            this.data.new_matches.map(user => user.isshow = true)
           break;
           case "my_matches":
             this.count.my_matches = res.data.total_count;
             this.data.my_matches = res.data.user_detail;
+            this.data.my_matches.map(user => user.isshow = true)
           break;
           case "recent_view":
             this.count.recent_view = res.data.total_count;
             this.data.recent_view = res.data.user_detail;
+            this.data.recent_view.map(user => user.isshow = true)
           break;
         default:
           break;
