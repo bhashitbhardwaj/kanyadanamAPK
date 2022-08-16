@@ -88,7 +88,7 @@ export class Tab1Page {
   {
     this.api.postDataWithAuth('api/search',id
     ).subscribe(res=>{
-      if(res.status && res.data.total_count)
+      if(res.status)
       {
         switch (id.search_type) {
           case "new_matches":

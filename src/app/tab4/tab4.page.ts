@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { computeStackId } from '@ionic/angular/directives/navigation/stack-utils';
 
 @Component({
   selector: 'app-tab4',
@@ -11,5 +12,8 @@ export class Tab4Page implements OnInit {
 
   ngOnInit() {
   }
-
+  search(text)
+  {
+    console.log(text.detail.value);
+  }
 }
