@@ -16,10 +16,19 @@ export class LoaderService {
     this.Loader.present();
   }
 
-  Hide(): void {
-    if (this.Loader) {
-      this.Loader.dismiss();
-    }
+   Hide() {
+      if (this.Loader) {
+        this.Loader.dismiss();
+      }
+      else{
+        setTimeout(() => {
+          if (this.Loader) {
+            this.Loader.dismiss();
+          }
+        }, 5000);
+      }
+    
+    
   }
 
 }

@@ -8,44 +8,57 @@
         </ion-title>
         <ion-buttons slot="end">
             <ion-button [routerLink]="'/search'">
-                <ion-icon slot="icon-only" name="search" ></ion-icon>
+                <ion-icon slot="icon-only" name="search"></ion-icon>
             </ion-button>
         </ion-buttons>
     </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-    <div class="title">
-        <p class="title1">New Matches <ion-text *ngIf="count.new_matches">({{count.new_matches}})</ion-text></p>
+    <div class="title" *ngIf="count.new_matches">
+        <p class="title1">New Matches <ion-text >({{count.new_matches}})</ion-text>
+        </p>
         <p class="title2" (click)="segmentChanged('new_matches')">See All</p>
     </div>
-    <ion-slides [options]="slideOpts" >
+    <ion-slides [options]="slideOpts">
         <ion-slide *ngFor="let item of data.new_matches;let ind = index">
-            <ion-card class="scroll_card" (click)="openDetailpage(item.uniq_id)" >
+            <ion-card class="scroll_card" (click)="openDetailpage(item.uniq_id)">
                 <img [src]="item.first_image" />
                 <p class="name">
                     {{item.name}}
                 </p>
                 <p>
-                    {{item.age}}yrs, <ion-text *ngIf="item.user_detail.height_detail_api">, {{item.user_detail.height_detail_api.height_label_feet}}</ion-text>
+                    {{item.age}}yrs, <ion-text *ngIf="item.user_detail.height_detail_api">,
+                        {{item.user_detail.height_detail_api.height_label_feet}}</ion-text>
                 </p>
                 <p>
-                    <ion-text *ngIf="item.user_detail.religion_detail_api">{{item.user_detail.religion_detail_api.religion}}</ion-text><ion-text *ngIf="item.user_detail.community_detail_api">, {{item.user_detail.community_detail_api.community}}</ion-text>
-                   </p>
-                  <p>
-                    <ion-text *ngIf="item.user_detail.city_detail_api">{{item.user_detail.city_detail_api.name}}</ion-text><ion-text *ngIf="item.user_detail.state_detail_api">, {{item.user_detail.state_detail_api.name}}</ion-text> <ion-text *ngIf="item.user_detail.country_detail_api">{{item.user_detail.country_detail_api.name}}</ion-text>
-                  </p>
-                <ion-button expand="block" fill="outline" *ngIf="item.isshow" (click) = "connect(item , 'connect');$event.stopPropagation();">Connect Now</ion-button>
-                <ion-button expand="block" color="light" *ngIf="!item.isshow" (click) = "$event.stopPropagation();">Request Sent</ion-button>
+                    <ion-text *ngIf="item.user_detail.religion_detail_api">
+                        {{item.user_detail.religion_detail_api.religion}}</ion-text>
+                    <ion-text *ngIf="item.user_detail.community_detail_api">,
+                        {{item.user_detail.community_detail_api.community}}</ion-text>
+                </p>
+                <p>
+                    <ion-text *ngIf="item.user_detail.city_detail_api">{{item.user_detail.city_detail_api.name}}
+                    </ion-text>
+                    <ion-text *ngIf="item.user_detail.state_detail_api">, {{item.user_detail.state_detail_api.name}}
+                    </ion-text>
+                    <ion-text *ngIf="item.user_detail.country_detail_api">{{item.user_detail.country_detail_api.name}}
+                    </ion-text>
+                </p>
+                <ion-button expand="block" fill="outline" *ngIf="item.isshow"
+                    (click)="connect(item , 'connect');$event.stopPropagation();">Connect Now</ion-button>
+                <ion-button expand="block" color="light" *ngIf="!item.isshow" (click)="$event.stopPropagation();">
+                    Request Sent</ion-button>
             </ion-card>
         </ion-slide>
     </ion-slides>
-    <div class="title" id="my_match">
-        <p class="title1">My Matches <ion-text *ngIf="count.my_matches">({{count.my_matches}})</ion-text></p>
+    <div class="title" id="my_match" *ngIf="count.my_matches">
+        <p class="title1">My Matches <ion-text >({{count.my_matches}})</ion-text>
+        </p>
         <p class="title2" (click)="segmentChanged('my_matches')">See All</p>
     </div>
 
-    <ion-slides [options]="slideOpts" >
+    <ion-slides [options]="slideOpts">
         <ion-slide *ngFor="let item of data.my_matches">
             <ion-card class="scroll_card" (click)="openDetailpage(item.uniq_id)">
                 <img [src]="item.first_image" />
@@ -53,25 +66,37 @@
                     {{item.name}}
                 </p>
                 <p>
-                    {{item.age}}yrs, <ion-text *ngIf="item.user_detail.height_detail_api">, {{item.user_detail.height_detail_api.height_label_feet}}</ion-text>
+                    {{item.age}}yrs, <ion-text *ngIf="item.user_detail.height_detail_api">,
+                        {{item.user_detail.height_detail_api.height_label_feet}}</ion-text>
                 </p>
                 <p>
-                    <ion-text *ngIf="item.user_detail.religion_detail_api">{{item.user_detail.religion_detail_api.religion}}</ion-text><ion-text *ngIf="item.user_detail.community_detail_api">, {{item.user_detail.community_detail_api.community}}</ion-text>
-                   </p>
-                  <p>
-                    <ion-text *ngIf="item.user_detail.city_detail_api">{{item.user_detail.city_detail_api.name}}</ion-text><ion-text *ngIf="item.user_detail.state_detail_api">, {{item.user_detail.state_detail_api.name}}</ion-text> <ion-text *ngIf="item.user_detail.country_detail_api">{{item.user_detail.country_detail_api.name}}</ion-text>
-                  </p>
-                <ion-button expand="block" fill="outline" *ngIf="item.isshow" (click) = "connect(item , 'connect');$event.stopPropagation();">Connect Now</ion-button>
-                <ion-button expand="block" color="light" *ngIf="!item.isshow" (click) = "$event.stopPropagation();">Request Sent</ion-button>
+                    <ion-text *ngIf="item.user_detail.religion_detail_api">
+                        {{item.user_detail.religion_detail_api.religion}}</ion-text>
+                    <ion-text *ngIf="item.user_detail.community_detail_api">,
+                        {{item.user_detail.community_detail_api.community}}</ion-text>
+                </p>
+                <p>
+                    <ion-text *ngIf="item.user_detail.city_detail_api">{{item.user_detail.city_detail_api.name}}
+                    </ion-text>
+                    <ion-text *ngIf="item.user_detail.state_detail_api">, {{item.user_detail.state_detail_api.name}}
+                    </ion-text>
+                    <ion-text *ngIf="item.user_detail.country_detail_api">{{item.user_detail.country_detail_api.name}}
+                    </ion-text>
+                </p>
+                <ion-button expand="block" fill="outline" *ngIf="item.isshow"
+                    (click)="connect(item , 'connect');$event.stopPropagation();">Connect Now</ion-button>
+                <ion-button expand="block" color="light" *ngIf="!item.isshow" (click)="$event.stopPropagation();">
+                    Request Sent</ion-button>
             </ion-card>
         </ion-slide>
     </ion-slides>
-    <div class="title" id="Recent_Profile_Visitors">
-        <p class="title1">Recent Profile Visitors <ion-text *ngIf="count.recent_view">({{count.recent_view}})</ion-text></p>
+    <div class="title" id="Recent_Profile_Visitors" *ngIf="count.recent_view">
+        <p class="title1">Recent Profile Visitors <ion-text >({{count.recent_view}})</ion-text>
+        </p>
         <p class="title2" (click)="segmentChanged('recent_view')">See All</p>
     </div>
 
-    <ion-slides [options]="slideOpts" >
+    <ion-slides [options]="slideOpts">
         <ion-slide *ngFor="let item of data.recent_view">
             <ion-card class="scroll_card" (click)="openDetailpage(item.uniq_id)">
                 <img [src]="item.first_image" />
@@ -79,16 +104,27 @@
                     {{item.name}}
                 </p>
                 <p>
-                    {{item.age}}yrs, <ion-text *ngIf="item.user_detail.height_detail_api">, {{item.user_detail.height_detail_api.height_label_feet}}</ion-text>
+                    {{item.age}}yrs, <ion-text *ngIf="item.user_detail.height_detail_api">,
+                        {{item.user_detail.height_detail_api.height_label_feet}}</ion-text>
                 </p>
                 <p>
-                    <ion-text *ngIf="item.user_detail.religion_detail_api">{{item.user_detail.religion_detail_api.religion}}</ion-text><ion-text *ngIf="item.user_detail.community_detail_api">, {{item.user_detail.community_detail_api.community}}</ion-text>
-                   </p>
-                  <p>
-                    <ion-text *ngIf="item.user_detail.city_detail_api">{{item.user_detail.city_detail_api.name}}</ion-text><ion-text *ngIf="item.user_detail.state_detail_api">, {{item.user_detail.state_detail_api.name}}</ion-text> <ion-text *ngIf="item.user_detail.country_detail_api">{{item.user_detail.country_detail_api.name}}</ion-text>
-                  </p>
-                <ion-button expand="block" fill="outline" *ngIf="item.isshow" (click) = "connect(item , 'connect');$event.stopPropagation();">Connect Now</ion-button>
-                <ion-button expand="block" color="light" *ngIf="!item.isshow" (click) = "$event.stopPropagation();">Request Sent</ion-button>
+                    <ion-text *ngIf="item.user_detail.religion_detail_api">
+                        {{item.user_detail.religion_detail_api.religion}}</ion-text>
+                    <ion-text *ngIf="item.user_detail.community_detail_api">,
+                        {{item.user_detail.community_detail_api.community}}</ion-text>
+                </p>
+                <p>
+                    <ion-text *ngIf="item.user_detail.city_detail_api">{{item.user_detail.city_detail_api.name}}
+                    </ion-text>
+                    <ion-text *ngIf="item.user_detail.state_detail_api">, {{item.user_detail.state_detail_api.name}}
+                    </ion-text>
+                    <ion-text *ngIf="item.user_detail.country_detail_api">{{item.user_detail.country_detail_api.name}}
+                    </ion-text>
+                </p>
+                <ion-button expand="block" fill="outline" *ngIf="item.isshow"
+                    (click)="connect(item , 'connect');$event.stopPropagation();">Connect Now</ion-button>
+                <ion-button expand="block" color="light" *ngIf="!item.isshow" (click)="$event.stopPropagation();">
+                    Request Sent</ion-button>
             </ion-card>
         </ion-slide>
     </ion-slides>

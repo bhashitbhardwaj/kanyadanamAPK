@@ -25,58 +25,19 @@
       <img [src]="photo">
     </ion-card-content>
   </ion-card>
-  <ion-radio-group value="2">
+  <ion-radio-group (ionChange)="radioSelect($event)">
     <ion-row>
-      <ion-col size="6">
+      <ion-col size="6" *ngFor="let item of pics">
         <ion-card>
         <ion-item>
           <ion-label>Set as Profle Pictue</ion-label>
-          <ion-radio value="1"></ion-radio>
+          <ion-radio value="{{item.id}}"></ion-radio>
         </ion-item>
-          <img src="/assets/images/avatar.jpeg">
-        <ion-button size="small" expand="block">
+          <img class="pic_profile" [src]="item.image">
+        <ion-button size="small" expand="block" (click) = "remove(item.id)">
           <ion-icon slot="start" name="trash"></ion-icon>
           Remove Photo
         </ion-button>
-        </ion-card>
-      </ion-col>
-      <ion-col size="6">
-        <ion-card>
-        <ion-item>
-          <ion-label>Set as Profle Pictue</ion-label>
-          <ion-radio value="2"></ion-radio>
-        </ion-item>
-          <img src="/assets/images/avatar.jpeg">
-          <ion-button size="small" expand="block">
-            <ion-icon slot="start" name="trash"></ion-icon>
-            Remove Photo
-          </ion-button>
-        </ion-card>
-      </ion-col>
-      <ion-col size="6">
-        <ion-card>
-        <ion-item>
-          <ion-label>Set as Profle Pictue</ion-label>
-          <ion-radio value="3"></ion-radio>
-        </ion-item>
-          <img src="/assets/images/avatar.jpeg">
-          <ion-button size="small" expand="block">
-            <ion-icon slot="start" name="trash"></ion-icon>
-            Remove Photo
-          </ion-button>
-        </ion-card>
-      </ion-col>
-      <ion-col size="6">
-        <ion-card>
-        <ion-item>
-          <ion-label>Set as Profle Pictue</ion-label>
-          <ion-radio value="4"></ion-radio>
-        </ion-item>
-          <img src="/assets/images/avatar.jpeg">
-          <ion-button size="small" expand="block">
-            <ion-icon slot="start" name="trash"></ion-icon>
-            Remove Photo
-          </ion-button>
         </ion-card>
       </ion-col>
   </ion-row>
