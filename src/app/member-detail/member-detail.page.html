@@ -14,9 +14,26 @@
     </ion-toolbar>
 </ion-header>
 <ion-content>
-
-    <ion-card class="scroll_card" *ngIf="userData">
-        <img (click)="openModal()" [src]="userData.user.first_image" />
+    <ion-card class="scroll_card" [style.background-image]="'url('+userData.user.first_image+')'" *ngIf="userData">
+        <div>
+            <ion-row>
+              <ion-col size="6">
+                <ion-button class="wishlist" size="large" fill="clear" *ngIf="userData.isshowWishlist"  (click) = "connect(userData , 'wishlist');$event.stopPropagation();">
+                  <ion-icon slot="start" name="heart-outline"></ion-icon>
+              </ion-button>
+              <ion-button class="wishlist" size="large" fill="clear" *ngIf="!userData.isshowWishlist">
+                <ion-icon slot="start" name="heart"></ion-icon>
+              </ion-button>
+              </ion-col>
+              <ion-col size="6">
+                <ion-button class="images" size="large" fill="clear" *ngIf="userData.user.imageCount" (click) = "openModal(userData.user.uniq_id);$event.stopPropagation();">
+                  <ion-icon name="images" slot="end"></ion-icon>
+                  {{userData.user.imageCount}}
+              </ion-button>
+              </ion-col>
+            </ion-row>
+          </div>
+        <!-- <img (click)="openModal(userData.user.uniq_id)" [src]="userData.user.first_image" /> -->
         <div class="data">
             <p class="name">
                 {{userData.user.name}}
@@ -178,13 +195,6 @@
                         <p>{{userData.user_details.education_field[0].name}}</p>
                     </ion-label>
                 </ion-item>
-                <!-- <ion-item>
-        <ion-icon name="home-outline" slot="start" color="primary"></ion-icon>
-        <ion-label>
-          <h3>College Name</h3>
-          <p>NIT Jamshedpur</p>
-        </ion-label>
-      </ion-item> -->
             </ion-list>
         </div>
     </ion-card>
@@ -283,21 +293,13 @@
                         <p class="ion-text-wrap">{{userData.partner_details.annualincome}} annually</p>
                     </ion-label>
                 </ion-item>
-
-
-                <!-- <ion-item>
-        <ion-icon name="home-outline" slot="start" color="primary"></ion-icon>
-        <ion-label>
-          <h3>College Name</h3>
-          <p>NIT Jamshedpur</p>
-        </ion-label>
-      </ion-item> -->
             </ion-list>
         </div>
     </ion-card>
 </ion-content>
-<ion-footer>
+<ion-footer *ngIf="userData">
     <ion-toolbar>
-        <ion-button expand="full">Connect Now</ion-button>
+        <ion-button *ngIf="userData.isshow" expand="full" (click) = "connect(userData , 'connect')">Connect Now</ion-button>
+        <ion-button expand="full" *ngIf="!userData.isshow">Request Sent</ion-button>
     </ion-toolbar>
 </ion-footer>

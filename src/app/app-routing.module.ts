@@ -45,7 +45,11 @@ const routes: Routes = [
   {
     path: 'matchfilter',
     loadChildren: () => import('./matchfilter/matchfilter.module').then( m => m.MatchfilterPageModule)
+  },  {
+    path: 'images-slider',
+    loadChildren: () => import('./images-slider/images-slider.module').then( m => m.ImagesSliderPageModule)
   }
+
 
 
 ];

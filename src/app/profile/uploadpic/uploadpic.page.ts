@@ -1,7 +1,7 @@
 import { Component, ElementRef, ViewChild, OnInit } from '@angular/core';
 import { Capacitor } from '@capacitor/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { Platform } from '@ionic/angular';
+import { ActionSheetController, Platform } from '@ionic/angular';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 import { LoaderService } from 'src/app/provider/loader.service';
 import { ApiService } from 'src/app/provider/api.service';
@@ -16,14 +16,18 @@ export class UploadpicPage implements OnInit {
   @ViewChild('filePicker', { static: false }) filePickerRef: ElementRef<HTMLInputElement>;
   isDesktop: boolean;
   pics:any = [];
+  isProfile:any;
+  isFirstTime:boolean = false;
   constructor(
     private platform: Platform,
     private loader: LoaderService,
     private api: ApiService,
     private toast: ToastService,
+    public actionSheetController: ActionSheetController,
     private sanitizer: DomSanitizer) { }
 
     ngOnInit() {
+      console.log(this.platform.platforms());
       if ((this.platform.is('mobile') && this.platform.is('hybrid')) || this.platform.is('desktop')) {
         this.isDesktop = true;
       }
@@ -36,6 +40,7 @@ export class UploadpicPage implements OnInit {
           {
             console.log(res);
             this.pics = res.data.user_detail.userImageArray;
+            this.isProfile =  (res.data.profile_image_id)? res.data.profile_image_id.toString(): ""; 
           }
           else{
               this.toast.Notify({
@@ -73,29 +78,59 @@ export class UploadpicPage implements OnInit {
     radioSelect(data)
     {
       console.log(data);
-      this.loader.Show('Loading...');
-      this.api.postDataWithAuth('api/setProfileImage',{
-        imageId:data.detail.value
-      }
-      ).subscribe(res=>{
-        this.loader.Hide();
-        if(res.status)
-        {
-          console.log(res);
-          this.toast.Notify({
-            message:res.message,
-            duration:3000,
-            position:'top'
-          })
+      if(this.isFirstTime)
+      {
+        this.loader.Show('Loading...');
+        this.api.postDataWithAuth('api/setProfileImage',{
+          imageId:data.detail.value
         }
-        else{
+        ).subscribe(res=>{
+          this.loader.Hide();
+          if(res.status)
+          {
+            console.log(res);
             this.toast.Notify({
               message:res.message,
               duration:3000,
               position:'top'
             })
-        }
-      })
+          }
+          else{
+              this.toast.Notify({
+                message:res.message,
+                duration:3000,
+                position:'top'
+              })
+          }
+        })
+      }
+      this.isFirstTime = true;
+    }
+
+    async presentActionSheet() {
+      const actionSheet = await this.actionSheetController.create({
+        header: 'Photo',
+        cssClass: 'my-custom-class',
+        buttons: [{
+          text: 'Take Picture',
+          icon: 'camera-outline',
+          handler: () => {
+            console.log('Share clicked');
+            this.capture();
+          }
+        }, {
+          text: 'From Photos',
+          icon: 'image-outline',
+          handler: () => {
+            console.log('Favorite clicked');
+            this.getPicture();
+          }
+        }]
+      });
+      await actionSheet.present();
+  
+      const { role, data } = await actionSheet.onDidDismiss();
+      console.log('onDidDismiss resolved with role and data', role, data);
     }
 
   async getPicture() {
@@ -103,15 +138,39 @@ export class UploadpicPage implements OnInit {
       this.filePickerRef.nativeElement.click();
       return;
     }
+    
     const image = await Camera.getPhoto({
       quality: 100,
       width: 400,
       allowEditing: true,
       promptLabelCancel:'Cancel',
       resultType: CameraResultType.DataUrl,
-      source: CameraSource.Prompt
+      source: CameraSource.Photos
     });
-    this.uploadpic(image.dataUrl);
+    if(image)
+    {
+      this.uploadpic(image.dataUrl);
+    }
+  }
+
+  async capture() {
+    if (!Capacitor.isPluginAvailable('Camera') || (this.isDesktop)) {
+      this.filePickerRef.nativeElement.click();
+      return;
+    }
+    
+    const image = await Camera.getPhoto({
+      quality: 100,
+      width: 400,
+      allowEditing: true,
+      promptLabelCancel:'Cancel',
+      resultType: CameraResultType.DataUrl,
+      source: CameraSource.Camera
+    });
+    if(image)
+    {
+      this.uploadpic(image.dataUrl);
+    }
   }
 
   uploadpic(dataUrl)

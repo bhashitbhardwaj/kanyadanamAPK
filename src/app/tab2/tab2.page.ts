@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
+import { ImagesSliderPage } from '../images-slider/images-slider.page';
 import { MatchfilterPage } from '../matchfilter/matchfilter.page';
 import { ApiService } from '../provider/api.service';
 import { LoaderService } from '../provider/loader.service';
@@ -195,6 +196,26 @@ export class Tab2Page {
       }
     })
   }
+
+  async openSlider(uniq_id)
+  {
+    const modal = await this.modalCtrl.create({
+      component: ImagesSliderPage,
+      cssClass: 'product-zoom-modal',
+      componentProps: {
+        imgurl : uniq_id
+  },
+      presentingElement: await this.modalCtrl.getTop()
+    });
+    await modal.present();
+    await modal.onWillDismiss().then((result) => {
+      console.log('result :>> ', result);
+      
+    }).catch((err) => {
+      console.log('err :>> ', err);
+    });
+  }
+
   async openModal() {
     const modal = await this.modalCtrl.create({
       component: MatchfilterPage,

@@ -46,7 +46,7 @@
           </ion-button>
           </ion-col>
           <ion-col size="6">
-            <ion-button class="images" size="large" fill="clear" *ngIf="item.imageCount">
+            <ion-button class="images" size="large" fill="clear" *ngIf="item.imageCount" (click) = "openSlider(item.uniq_id);$event.stopPropagation();">
               <ion-icon name="images" slot="end"></ion-icon>
               {{item.imageCount}}
           </ion-button>
@@ -71,7 +71,7 @@
           <ion-row class="button_list">
               <ion-col>
                   <ion-button size="small" expand="block" *ngIf="item.isshow" (click) = "connect(item , 'connect');$event.stopPropagation();">
-                      <ion-icon slot="start" *ngIf="!item.isshow" name="checkmark-circle-outline"></ion-icon>
+                      <ion-icon slot="start" name="checkmark-circle-outline"></ion-icon>
                       Connect Now
                   </ion-button>
                   <ion-button size="small" color="light" *ngIf="!item.isshow" expand="block" (click) = "$event.stopPropagation();">
