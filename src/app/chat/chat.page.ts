@@ -128,7 +128,7 @@ export class ChatPage implements OnInit {
         this.getAllChat(navParams.id);
       }
       else{
-        this.getAllChat(6)
+        //this.getAllChat(6)
       }
       })
   }
