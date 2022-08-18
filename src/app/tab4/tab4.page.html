@@ -23,7 +23,9 @@
       </ion-avatar>
       <ion-label>
         <h2>{{item.name}} <ion-text class="last_time">{{item.last_seen}}</ion-text></h2>
-        <p *ngIf="item.last_msg">{{item.last_msg}}</p>
+        <p><ion-text *ngIf="item.last_msg">{{item.last_msg}} </ion-text>
+      <ion-text class="last_count" *ngIf="item.getUnreadMessageCount">{{item.getUnreadMessageCount}}</ion-text>
+      </p>
         <p *ngIf="item.online_status">{{item.online_status}}</p>
       </ion-label>
     </ion-item>

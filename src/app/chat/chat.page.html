@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
     <ion-toolbar>
       <ion-buttons slot="start">
-        <ion-back-button color="primary" (click)="backClick()"></ion-back-button>
+        <ion-back-button color="primary"></ion-back-button>
       </ion-buttons>
         <ion-item *ngIf="data && data.toUserDetailsArray" (click)="openDetailpage(data.toUserDetailsArray.uniq_id)" >
           <ion-avatar slot="start">
