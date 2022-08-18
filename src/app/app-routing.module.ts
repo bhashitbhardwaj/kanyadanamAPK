@@ -48,6 +48,10 @@ const routes: Routes = [
   },  {
     path: 'images-slider',
     loadChildren: () => import('./images-slider/images-slider.module').then( m => m.ImagesSliderPageModule)
+  },
+  {
+    path: 'chat',
+    loadChildren: () => import('./chat/chat.module').then( m => m.ChatPageModule)
   }
 
 

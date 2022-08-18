@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IonicSelectableComponent } from 'ionic-selectable';
 import { ApiService } from 'src/app/provider/api.service';
 import { LoaderService } from 'src/app/provider/loader.service';
@@ -15,13 +15,15 @@ import { ToastService } from 'src/app/provider/toast.service';
 export class EditprofilePage implements OnInit {
   dropDown: any = {};
   rForm: FormGroup;
+  isnavi:any = 0;
   constructor(
     private profileForm: FormBuilder,
     private router: Router,
     private loader: LoaderService,
     private api: ApiService,
     private toast: ToastService,
-    private storage: StorageService
+    private storage: StorageService,
+    private route: ActivatedRoute
   ) { 
     this.rForm = this.profileForm.group({
       name: [null,Validators.required],
@@ -133,7 +135,13 @@ export class EditprofilePage implements OnInit {
           userdata.is_profile_complete = true;
           this.storage.Set('userData',userdata);
         }
-         this.router.navigateByUrl('/profile');
+        if(this.isnavi)
+          {
+            this.router.navigateByUrl('tabs');
+          }
+          else{
+            this.router.navigateByUrl('/profile');
+          }
        }
        else{
           this.toast.Notify({
@@ -145,6 +153,15 @@ export class EditprofilePage implements OnInit {
     })
   }
   ngOnInit() {
+    this.route.queryParams.subscribe(_p => {
+      const navParams = this.router.getCurrentNavigation().extras.state;
+      console.log(navParams);
+      if(navParams)
+      {
+        this.isnavi = navParams.tab;
+      }
+   
+    });
     this.api.getData('api/getReligions').subscribe(res => {
       if (res.status) {
         console.log(res);

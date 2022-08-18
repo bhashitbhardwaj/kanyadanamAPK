@@ -24,7 +24,9 @@ export class AuthGuardService implements CanActivate {
     }
     else if(!userdata.is_profile_complete)
     {
-      this.router.navigateByUrl('/profile/editprofile');
+      this.router.navigate(['/profile/editprofile'],{ state: {
+        tab: 1
+    } });
       return false;
     }
     return true;

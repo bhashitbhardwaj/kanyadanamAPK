@@ -61,7 +61,9 @@ export class SignupPage implements OnInit {
          console.log(res);
          this.storage.Set('userData',res.data);
          this.AuthGuardService.isLogin();
-         this.router.navigateByUrl('/profile/editprofile');
+         this.router.navigate(['/profile/editprofile'],{ state: {
+          tab: 1
+         } });
        }
        else{
           this.toast.Notify({

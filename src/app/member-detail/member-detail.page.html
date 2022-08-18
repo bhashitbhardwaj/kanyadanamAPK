@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
     <ion-toolbar>
         <ion-buttons slot="start">
-            <ion-back-button></ion-back-button>
+            <ion-back-button color="primary"></ion-back-button>
         </ion-buttons>
         <ion-title class="ion-text-center logo">
             <img src="/assets/images/knnewlogo.png">
@@ -300,6 +300,6 @@
 <ion-footer *ngIf="userData">
     <ion-toolbar>
         <ion-button *ngIf="userData.isshow" expand="full" (click) = "connect(userData , 'connect')">Connect Now</ion-button>
-        <ion-button expand="full" *ngIf="!userData.isshow">Request Sent</ion-button>
+        <ion-button color="light" expand="full" *ngIf="!userData.isshow">Request Sent</ion-button>
     </ion-toolbar>
 </ion-footer>

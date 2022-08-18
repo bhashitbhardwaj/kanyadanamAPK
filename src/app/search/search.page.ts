@@ -34,11 +34,15 @@ export class SearchPage implements OnInit {
     this.selectedData.country.forEach(obj => {
       country.push(obj.id)
     });
-  
+    var heightFrom =[];
+    this.selectedData.heightFrom= this.selectedData.heightFrom || [];
+    this.selectedData.heightFrom.forEach(obj => {
+      heightFrom.push(obj.id)
+    });
     this.router.navigate(['/tabs/tab2'],{ state: {
           search_type:"basic_search" ,
           age_range:this.selectedData.age.lower+":"+this.selectedData.age.upper,
-          height:(this.selectedData.heightFrom)?[this.selectedData.heightFrom.id]:[],
+          height:heightFrom,
           tongue:tongue,
           martialstatus:this.selectedData.marital_status,
           religion:this.selectedData.religion,

@@ -72,8 +72,13 @@ export class AdvancesearchPage implements OnInit {
     this.selectedData.annual_income.forEach(obj => {
       annualincome.push(obj.id)
     });
+    var heightFrom =[];
+    this.selectedData.heightFrom = this.selectedData.heightFrom || [];
+    this.selectedData.heightFrom.forEach(obj => {
+      heightFrom.push(obj.id)
+    });
     this.router.navigateByUrl('/tabs/tab2',{ state: {
-          height:(this.selectedData.heightFrom)?[this.selectedData.heightFrom.id]:[],
+          height:heightFrom,
           tongue:tongue,
           martialstatus:this.selectedData.marital_status,
           religion:this.selectedData.religion,
