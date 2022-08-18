@@ -50,13 +50,13 @@
         {{item.name}}
       </p>
       <p>
-        {{item.age }}yrs, <ion-text *ngIf="item.user_detail.height_detail_api">{{item.user_detail.height_detail_api.height_label_feet}}</ion-text>
+        {{item.age }}yrs, <ion-text *ngIf="item.user_detail && item.user_detail.height_detail_api">{{item.user_detail.height_detail_api.height_label_feet}}</ion-text>
     </p>
     <p>
-      <ion-text *ngIf="item.user_detail.religion_detail_api"> {{item.user_detail.religion_detail_api.religion}}</ion-text> <ion-text *ngIf="item.user_detail.community_detail_api">,{{item.user_detail.community_detail_api.community}}</ion-text> 
+      <ion-text *ngIf="item.user_detail && item.user_detail.religion_detail_api"> {{item.user_detail.religion_detail_api.religion}}</ion-text> <ion-text *ngIf="item.user_detail && item.user_detail.community_detail_api">,{{item.user_detail.community_detail_api.community}}</ion-text> 
      </p>
     <p>
-      <ion-text *ngIf="item.user_detail.city_detail_api">{{item.user_detail.city_detail_api.name}}</ion-text><ion-text *ngIf="item.user_detail.state_detail_api">,  {{item.user_detail.state_detail_api.name}} </ion-text><ion-text *ngIf="item.user_detail.country_detail_api">{{item.user_detail.country_detail_api.name}}</ion-text> 
+      <ion-text *ngIf="item.user_detail && item.user_detail.city_detail_api">{{item.user_detail.city_detail_api.name}}</ion-text><ion-text *ngIf="item.user_detail && item.user_detail.state_detail_api">,  {{item.user_detail.state_detail_api.name}} </ion-text><ion-text *ngIf="item.user_detail && item.user_detail.country_detail_api">{{item.user_detail.country_detail_api.name}}</ion-text> 
     </p>
       <hr>
     </div>
