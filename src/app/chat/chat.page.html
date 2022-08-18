@@ -1,0 +1,44 @@
+<ion-header [translucent]="true">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button color="primary" (click)="backClick()"></ion-back-button>
+      </ion-buttons>
+        <ion-item *ngIf="data && data.toUserDetailsArray" (click)="openDetailpage(data.toUserDetailsArray.uniq_id)" >
+          <ion-avatar slot="start">
+            <img [src]="data.toUserDetailsArray.first_image" />
+          </ion-avatar>
+          <ion-label >
+            <h2>{{data.toUserDetailsArray.name}}</h2>
+            <p *ngIf="data.toUserDetailsArray.online_status">{{data.toUserDetailsArray.online_status}}</p>
+          </ion-label>
+        </ion-item>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content #content>
+  <div *ngIf="data && data.data" >
+    <div *ngFor="let item of data.data" class="main_dev">
+        <div class="container" *ngIf="!item.is_right_msg">
+            <p>{{item.message}} <span class="time-left">{{item.last_msg_sent_time}}</span></p>
+        </div>
+      <div class="container darker" *ngIf="item.is_right_msg">
+       <p>{{item.message}} <span class="time-right">{{item.last_msg_sent_time}}</span></p>
+      </div>
+    </div>
+  </div>
+</ion-content>
+<!-- Fade Footer -->
+<ion-footer>
+  <ion-toolbar color="light">
+    <ion-row>
+       <ion-col size="9">
+        <ion-input placeholder="Message" clearInput="true" [(ngModel)]="msg"></ion-input>
+       </ion-col>
+       <ion-col size="3">
+        <ion-button class="footer_botton" (click)="send()">
+          <ion-icon slot="icon-only" name="send"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>
