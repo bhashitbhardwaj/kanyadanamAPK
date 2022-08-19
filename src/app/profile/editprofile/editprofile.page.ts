@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MenuController } from '@ionic/angular';
 import { IonicSelectableComponent } from 'ionic-selectable';
 import { ApiService } from 'src/app/provider/api.service';
 import { LoaderService } from 'src/app/provider/loader.service';
@@ -23,7 +24,8 @@ export class EditprofilePage implements OnInit {
     private api: ApiService,
     private toast: ToastService,
     private storage: StorageService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private menu: MenuController
   ) { 
     this.rForm = this.profileForm.group({
       name: [null,Validators.required],
@@ -137,6 +139,7 @@ export class EditprofilePage implements OnInit {
         }
         if(this.isnavi)
           {
+            this.menu.enable(true);
             this.router.navigateByUrl('tabs');
           }
           else{
@@ -158,6 +161,7 @@ export class EditprofilePage implements OnInit {
       console.log(navParams);
       if(navParams)
       {
+        this.menu.enable(false)
         this.isnavi = navParams.tab;
       }
    

@@ -22,7 +22,7 @@
   </div>
   </ion-toolbar> -->
   <ion-toolbar>
-    <ion-segment scrollable value="invitation" (ionChange)="segmentChanged($event)">
+    <ion-segment scrollable [(ngModel)]="selectedTab" (ionChange)="segmentChanged($event)">
       <ion-segment-button value="invitation">
         <ion-label>Invitation <ion-text *ngIf="count.invitation">({{count.invitation}})</ion-text></ion-label>
       </ion-segment-button>
@@ -81,7 +81,7 @@
         </ion-button>
       </ion-col>
       <ion-col *ngIf="item.is_chat">
-        <ion-button size="small" expand="block"  (click)="chat();$event.stopPropagation();">
+        <ion-button size="small" expand="block"  (click)="chat(item.id);$event.stopPropagation();">
           <ion-icon slot="start" name="checkmark-circle-outline"></ion-icon>
           Chat Now
         </ion-button>

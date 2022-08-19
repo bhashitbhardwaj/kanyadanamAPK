@@ -77,7 +77,9 @@ export class ChatPage implements OnInit {
             console.log(res);
             this.data = res.data.user_detail;
             this.content.scrollToBottom();
-            this.getUnreadMsg();
+            this.stopInterval = setInterval(() => {
+              this.getUnreadMsg();
+            }, 10000);
           }
           else{
               this.toast.Notify({
@@ -100,9 +102,6 @@ export class ChatPage implements OnInit {
         console.log(res);
         this.data.data = this.data.data.concat(res.data.user_detail.data);
         this.content.scrollToBottom();
-        this.stopInterval = setTimeout(() => {
-          this.getUnreadMsg();
-        }, 10000);
       }
       else{
           this.toast.Notify({
@@ -126,9 +125,6 @@ export class ChatPage implements OnInit {
       if(navParams)
       {
         this.getAllChat(navParams.id);
-      }
-      else{
-        //this.getAllChat(6)
       }
       })
   }

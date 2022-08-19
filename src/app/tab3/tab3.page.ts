@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { ApiService } from '../provider/api.service';
 import { LoaderService } from '../provider/loader.service';
@@ -19,17 +19,22 @@ export class Tab3Page {
     decline:0
   };
   data:any = [];
+  selectedTab:any;
   constructor(
     private router: Router,
     public modalCtrl: ModalController,
     private loader: LoaderService,
     private api: ApiService,
-    private toast: ToastService
+    private toast: ToastService,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit()
   {
-    this.inbox('invitation')
+    this.route.queryParams.subscribe(_p => {
+      this.selectedTab = 'invitation';
+      this.inbox('invitation',0)
+    });
   }
 
   openDetailpage(uniq_id)
@@ -39,12 +44,14 @@ export class Tab3Page {
   
   segmentChanged(ev: any) {
     console.log('Segment changed', ev);
-    this.inbox(ev.detail.value)
+    this.inbox(ev.detail.value,1)
   }
 
-  chat()
+  chat(id)
   {
-
+    this.router.navigate(['/chat'],{ state: {
+      id:id
+  } });
   }
 
   connect(item,connect)
@@ -73,10 +80,11 @@ export class Tab3Page {
       }
     })
   }
-  inbox(id:any)
+
+  inbox(id:any,loader)
   {
     console.log('Segment changed', id);
-    this.loader.Show('Loading...');
+    (loader)?this.loader.Show('Loading...'):"";
     this.api.postDataWithAuth('api/getInboxResultByUniqueID',
     {
       "inbox_type": id,
@@ -91,6 +99,13 @@ export class Tab3Page {
       }
       else{
         this.data = [];
+        this.count = {
+          invitation:0,
+          accepted:0,
+          sent:0,
+          wishlist:0,
+          decline:0
+        };
       }
     })
   }

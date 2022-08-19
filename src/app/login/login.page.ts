@@ -50,7 +50,7 @@ export class LoginPage implements OnInit {
          this.storage.Set('userData',res.data);
          this.AuthGuardService.isLogin();
          this.menu.enable(true)
-         this.router.navigateByUrl('/tabs');
+         this.router.navigate(['/tabs'],{ replaceUrl: true });
        }
        else{
           this.toast.Notify({

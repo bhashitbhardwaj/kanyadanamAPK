@@ -27,8 +27,6 @@ export class LoaderService {
           }
         }, 5000);
       }
-    
-    
   }
 
 }

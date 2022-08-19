@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { LoadingController } from '@ionic/angular';
 import { ApiService } from '../provider/api.service';
 import { LoaderService } from '../provider/loader.service';
 import { ToastService } from '../provider/toast.service';
@@ -10,6 +11,7 @@ import { ToastService } from '../provider/toast.service';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page {
+  public Loader: any;
   slideOpts = {
     slidesPerView: 2.2,
     freeMode: true
@@ -28,20 +30,11 @@ export class Tab1Page {
     private router: Router,
     private loader: LoaderService,
     private api: ApiService,
-    private toast: ToastService
+    private toast: ToastService,
+    private route: ActivatedRoute,
+    public loading: LoadingController
   ) {
-    this.inbox({
-      "search_type":'new_matches',
-      "res_start": 0
-    })
-    this.inbox({
-      "search_type":'my_matches' ,
-      "res_start": 0
-    })
-    this.inbox({
-    "search_type":'recent_view' ,
-    "res_start": 0
-    })
+    
   }
 
   openDetailpage(uniq_id)
@@ -49,6 +42,31 @@ export class Tab1Page {
     this.router.navigateByUrl('/member-detail',{ state:uniq_id});
   }
 
+  async showLoading() {
+    this.Loader = await this.loading.create({
+      message: 'Loading...'
+    });
+    this.Loader.present();
+  }
+
+   ngOnInit()
+  {
+    this.route.queryParams.subscribe(_p => {
+      this.showLoading();
+      this.inbox({
+        "search_type":'new_matches',
+        "res_start": 0
+      })
+      this.inbox({
+        "search_type":'my_matches' ,
+        "res_start": 0
+      })
+      this.inbox({
+      "search_type":'recent_view' ,
+      "res_start": 0
+      })
+    });
+  }
   connect(item,connect)
   {
     this.api.postDataWithAuth('api/requestForConnect',{
@@ -84,10 +102,26 @@ export class Tab1Page {
         } });
     }
   }
+
+  Hide() {
+    if (this.Loader) {
+      this.Loader.dismiss();
+    }
+    else{
+      setTimeout(() => {
+        if (this.Loader) {
+          this.Loader.dismiss();
+        }
+      }, 5000);
+    }
+}
+
   inbox(id:any)
   {
+    //this.loader.Show('Loading...')
     this.api.postDataWithAuth('api/search',id
     ).subscribe(res=>{
+      this.Hide();
       if(res.status)
       {
         switch (id.search_type) {

@@ -36,6 +36,10 @@ export class Tab2Page {
      
     }
     
+    ionViewWillEnter()
+  {
+    console.log("ionViewWillEnter2");
+  }
   openDetailpage(uniq_id)
   {
     this.router.navigateByUrl('/member-detail',{ state:uniq_id});
@@ -80,7 +84,7 @@ export class Tab2Page {
       this.inbox({
         "search_type":ev.detail.value ,
         "res_start": 0
-    })
+    },1)
     }
   }
 
@@ -88,50 +92,45 @@ export class Tab2Page {
   {
     this.route.queryParams.subscribe(_p => {
       const navParams = this.router.getCurrentNavigation().extras.state;
-      if(navParams)
-      {
-        console.log('Segment changed', navParams);
-        switch (navParams.search_type) {
-          case "new_matches":
-            this.selectedTab = 'new_matches';
-          break;
-          case "my_matches":
-            this.selectedTab = 'my_matches';
-          break;
-          case "recent_view":
-            this.selectedTab = 'recent_view';
-          break;
-          default:
-            this.selectedTab = '';
-            
-          break;
-       }
-       this.count = {
-        new_matches:0,
-        today_matches:0,
-        my_matches:0,
-        more_matches:0,
-        recent_view:0
-      };
-      this.inbox(navParams);
+       if(navParams)
+       {
+         console.log('Segment changed', navParams);
+         switch (navParams.search_type) {
+           case "new_matches":
+             this.selectedTab = 'new_matches';
+           break;
+           case "my_matches":
+             this.selectedTab = 'my_matches';
+           break;
+           case "recent_view":
+             this.selectedTab = 'recent_view';
+           break;
+           default:
+             this.selectedTab = '';
+           break;
+        }
+        this.inbox({
+          "search_type":navParams.search_type,
+          "res_start": 0
+        },0)
       }
       else{
         this.selectedTab = 'new_matches';
-          this.inbox({
-            "search_type":'new_matches',
-            "res_start": 0
-        })
+        this.inbox({
+          "search_type":'new_matches',
+              "res_start": 0
+        },0)
       }
-    })
+     });
   }
 
-  inbox(id:any)
+  inbox(id:any,loader)
   {
-    //this.loader.Show('Loading...');
+    (loader)?this.loader.Show('Loading...'):"";
     this.search_type = id.search_type;
     this.api.postDataWithAuth('api/search',id
     ).subscribe(res=>{
-      //this.loader.Hide();
+      this.loader.Hide();
       if(res.status && res.data.total_count)
       {
         this.data = res.data.user_detail;
@@ -193,6 +192,13 @@ export class Tab2Page {
       }
       else{
         this.data = [];
+        this.count = {
+          new_matches:0,
+          today_matches:0,
+          my_matches:0,
+          more_matches:0,
+          recent_view:0
+        };
       }
     })
   }
