@@ -40,18 +40,20 @@ export class ForgotpasswordPage implements OnInit {
        {
          console.log(res);
          this.toast.Notify({
-          message: res.message,
+          message:res.message,
           duration:3000,
-          position:'top'
+          color:'primary',
+          position:'bottom'
         })
         this.router.navigateByUrl('/login');
        }
        else{
           this.toast.Notify({
-            message: JSON.stringify(res.errors),
-            duration:3000,
-            position:'top'
-          })
+          message:JSON.stringify(res.errors),
+          duration:3000,
+          color:'primary',
+          position:'bottom'
+        })
        }
     })
   }

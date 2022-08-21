@@ -65,15 +65,17 @@ export class Tab2Page {
         this.toast.Notify({
           message:res.message,
           duration:3000,
-          position:'top'
+          color:'primary',
+          position:'bottom'
         })
       }
       else{
-          this.toast.Notify({
-            message:res.message,
-            duration:3000,
-            position:'top'
-          })
+           this.toast.Notify({
+          message:res.message,
+          duration:3000,
+          color:'primary',
+          position:'bottom'
+        })
       }
     })
   }
@@ -189,6 +191,11 @@ export class Tab2Page {
           default:
             break;
         }
+        document.getElementById(id.search_type).scrollIntoView({
+          behavior: 'smooth',
+          block: 'center',
+          inline: 'center'
+        });
       }
       else{
         this.data = [];
@@ -305,18 +312,20 @@ export class Tab2Page {
           if(res.status)
           {
             console.log(res);
-            this.toast.Notify({
-              message:res.message,
-              duration:3000,
-              position:'top'
-            })
+             this.toast.Notify({
+          message:res.message,
+          duration:3000,
+          color:'primary',
+          position:'bottom'
+        })
           }
           else{
-              this.toast.Notify({
-                message:res.message,
-                duration:3000,
-                position:'top'
-              })
+               this.toast.Notify({
+          message:res.message,
+          duration:3000,
+          color:'primary',
+          position:'bottom'
+        })
           }
         })
     }

@@ -46,19 +46,21 @@ export class HideanddeleteaccountPage implements OnInit {
        if(res.status)
        {
          console.log(res);
-         this.toast.Notify({
-          message:res.msg,
+          this.toast.Notify({
+          message:res.message,
           duration:3000,
-          position:'top'
+          color:'primary',
+          position:'bottom'
         })
         this.router.navigateByUrl('/profile');
        }
        else{
-          this.toast.Notify({
-            message:res.message,
-            duration:3000,
-            position:'top'
-          })
+           this.toast.Notify({
+          message:res.message,
+          duration:3000,
+          color:'primary',
+          position:'bottom'
+        })
        }
     })
   }
@@ -91,10 +93,11 @@ export class HideanddeleteaccountPage implements OnInit {
 
       }
       else {
-        this.toast.Notify({
-          message: res.message,
-          duration: 3000,
-          position: 'top'
+         this.toast.Notify({
+          message:res.message,
+          duration:3000,
+          color:'primary',
+          position:'bottom'
         })
       }
     })

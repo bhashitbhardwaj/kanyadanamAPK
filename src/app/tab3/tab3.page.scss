@@ -22,10 +22,11 @@
 }
 .scroll_card {
     img {
-        width: 250px;
-    height: 250px;
-    padding: 10px;
-    border-radius: 125px;
+        margin-top: 8px;
+        width: 200px;
+        height: 200px;
+        border-radius: 100px;
+        border: 1px solid #D9495E;
     }
 
     .data {
@@ -39,7 +40,7 @@
             padding-bottom: 5px;
             font-size: 16px;
             font-weight: 400;
-            color: black;
+            color: #D9495E;
         }
 
         .button_list {

@@ -58,10 +58,11 @@ export class Tab4Page implements OnInit {
         }, res.data.user_detail.refresh_time_sec * 1000);
       }
       else {
-        this.toast.Notify({
-          message: res.message,
-          duration: 3000,
-          position: 'top'
+         this.toast.Notify({
+          message:res.message,
+          duration:3000,
+          color:'primary',
+          position:'bottom'
         })
       }
     })

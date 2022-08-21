@@ -41,10 +41,11 @@ export class UploadpicPage implements OnInit {
         this.isProfile = (res.data.profile_image_id) ? res.data.profile_image_id.toString() : "";
       }
       else {
-        this.toast.Notify({
-          message: res.message,
-          duration: 3000,
-          position: 'top'
+         this.toast.Notify({
+          message:res.message,
+          duration:3000,
+          color:'primary',
+          position:'bottom'
         })
       }
     })
@@ -62,10 +63,11 @@ export class UploadpicPage implements OnInit {
         this.pics.splice(this.pics.findIndex(a => a.id === id), 1)
       }
       else {
-        this.toast.Notify({
-          message: res.message,
-          duration: 3000,
-          position: 'top'
+         this.toast.Notify({
+          message:res.message,
+          duration:3000,
+          color:'primary',
+          position:'bottom'
         })
       }
     })
@@ -83,17 +85,19 @@ export class UploadpicPage implements OnInit {
         if (res.status) {
           console.log(res);
           this.toast.Notify({
-            message: res.message,
-            duration: 3000,
-            position: 'top'
-          })
+          message:res.message,
+          duration:3000,
+          color:'primary',
+          position:'bottom'
+        })
         }
         else {
           this.toast.Notify({
-            message: res.message,
-            duration: 3000,
-            position: 'top'
-          })
+          message:res.message,
+          duration:3000,
+          color:'primary',
+          position:'bottom'
+        })
         }
       })
     }
@@ -131,12 +135,19 @@ export class UploadpicPage implements OnInit {
           id: res.data.imgID,
           image: res.data.imgName
         });
+        this.toast.Notify({
+          message:res.message,
+          duration:3000,
+          color:'primary',
+          position:'bottom'
+        })
       }
       else {
-        this.toast.Notify({
-          message: res.message,
-          duration: 3000,
-          position: 'top'
+         this.toast.Notify({
+          message:res.message,
+          duration:3000,
+          color:'primary',
+          position:'bottom'
         })
       }
     })

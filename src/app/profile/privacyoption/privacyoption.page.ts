@@ -72,16 +72,18 @@ export class PrivacyoptionPage implements OnInit {
          this.toast.Notify({
           message:res.message,
           duration:3000,
-          position:'top'
+          color:'primary',
+          position:'bottom'
         })
-        this.router.navigateByUrl('/profile');
+        this.router.navigateByUrl('/tabs');
        }
        else{
-          this.toast.Notify({
-            message:res.message,
-            duration:3000,
-            position:'top'
-          })
+           this.toast.Notify({
+          message:res.message,
+          duration:3000,
+          color:'primary',
+          position:'bottom'
+        })
        }
     })
   }
@@ -123,18 +125,14 @@ export class PrivacyoptionPage implements OnInit {
           if(res.data.user_detail.privacyOptionArray.web_notification_privacy!=null){
             this.selectedData.web_notification_privacy = res.data.user_detail.privacyOptionArray.web_notification_privacy;
           }
-          
-
         }
-        
-        
-
       }
       else {
-        this.toast.Notify({
-          message: res.message,
-          duration: 3000,
-          position: 'top'
+         this.toast.Notify({
+          message:res.message,
+          duration:3000,
+          color:'primary',
+          position:'bottom'
         })
       }
     })

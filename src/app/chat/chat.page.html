@@ -12,6 +12,11 @@
             <p *ngIf="data.toUserDetailsArray.online_status">{{data.toUserDetailsArray.online_status}}</p>
           </ion-label>
         </ion-item>
+        <ion-buttons slot="end">
+          <ion-button (click)="presentPopover($event)">
+              <ion-icon slot="icon-only" name="ellipsis-vertical"></ion-icon>
+          </ion-button>
+      </ion-buttons>
     </ion-toolbar>
 </ion-header>
 

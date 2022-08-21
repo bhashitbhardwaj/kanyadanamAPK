@@ -70,20 +70,21 @@ export class HoroscopePage implements OnInit {
          this.toast.Notify({
           message:res.message,
           duration:3000,
-          position:'top'
+          color:'primary',
+          position:'bottom'
         })
-        this.router.navigateByUrl('/profile');
+        this.router.navigateByUrl('/tabs');
        }
        else{
-          this.toast.Notify({
-            message:res.message,
-            duration:3000,
-            position:'top'
-          })
+           this.toast.Notify({
+          message:res.message,
+          duration:3000,
+          color:'primary',
+          position:'bottom'
+        })
        }
     })
   }
-
 
   stateChange(event: {
     component: IonicSelectableComponent,
@@ -100,10 +101,11 @@ export class HoroscopePage implements OnInit {
         this.dropDown.cities = res.data;
       }
       else {
-        this.toast.Notify({
-          message: res.message,
-          duration: 3000,
-          position: 'top'
+         this.toast.Notify({
+          message:res.message,
+          duration:3000,
+          color:'primary',
+          position:'bottom'
         })
       }
     })
@@ -120,14 +122,14 @@ export class HoroscopePage implements OnInit {
       country_id:[event.value.id]
     }).subscribe(res => {
       if (res.status) {
-        //console.log(res);
         this.dropDown.states = res.data;
       }
       else {
-        this.toast.Notify({
-          message: res.message,
-          duration: 3000,
-          position: 'top'
+         this.toast.Notify({
+          message:res.message,
+          duration:3000,
+          color:'primary',
+          position:'bottom'
         })
       }
     })
@@ -136,30 +138,25 @@ export class HoroscopePage implements OnInit {
   ngOnInit() {
     this.api.getData('api/getCountries').subscribe(res => {
       if (res.status) {
-        //console.log(res);
         this.dropDown.countries = res.data;
       }
       else {
-        this.toast.Notify({
-          message: res.message,
-          duration: 3000,
-          position: 'top'
+         this.toast.Notify({
+          message:res.message,
+          duration:3000,
+          color:'primary',
+          position:'bottom'
         })
       }
     })
-
     this.getHoroscope()
-
-
   }
 
   getHoroscope(){
-
     this.loader.Show('Loading...');
     this.api.postDataWithAuth('api/getHoroscope',{}).subscribe(res => {
       this.loader.Hide();
       if (res.status) {
-        //console.log(res.data.user_detail.horoscopeArray);
         if(res.data.user_detail.horoscopeArray && Object.keys(res.data.user_detail.horoscopeArray).length){    
           this.selectedData.country = (res.data.user_detail.horoscopeArray.country_id)?res.data.user_detail.horoscopeArray.country_id[0]:null;
           this.selectedData.state = (res.data.user_detail.horoscopeArray.state_id)?res.data.user_detail.horoscopeArray.state_id[0]:null;
@@ -168,8 +165,6 @@ export class HoroscopePage implements OnInit {
             var timeH = res.data.user_detail.horoscopeArray.time_of_birth.split('|')[0];
             var timeM = res.data.user_detail.horoscopeArray.time_of_birth.split('|')[1];
             var time_of_birth = new Date();
-            
-            //console.log(res.data.user_detail.horoscopeArray.time_of_birth);
             time_of_birth.setHours(timeH);
             time_of_birth.setMinutes(timeM);
             console.log(time_of_birth);
@@ -177,28 +172,16 @@ export class HoroscopePage implements OnInit {
           }
           this.selectedData.setting = (res.data.user_detail.horoscopeArray.setting)?res.data.user_detail.horoscopeArray.setting:null;
           this.selectedData.format = (res.data.user_detail.horoscopeArray.format)?res.data.user_detail.horoscopeArray.format:null;
-          // if(res.data.user_detail.horoscopeArray.setting!=null){
-          //   this.selectedData.setting = res.data.user_detail.horoscopeArray.setting;
-          // }
-          // if(res.data.user_detail.horoscopeArray.format!=null){
-          //   this.selectedData.format = res.data.user_detail.horoscopeArray.format;
-          // }
-
         }
-        
-        
-
       }
       else {
-        this.toast.Notify({
-          message: res.message,
-          duration: 3000,
-          position: 'top'
+         this.toast.Notify({
+          message:res.message,
+          duration:3000,
+          color:'primary',
+          position:'bottom'
         })
       }
     })
-
   }
-
-
 }

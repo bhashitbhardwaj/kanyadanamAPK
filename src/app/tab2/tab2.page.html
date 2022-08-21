@@ -14,23 +14,23 @@
   </ion-toolbar>
   <ion-toolbar>
     <ion-segment scrollable [(ngModel)]="selectedTab" (ionChange)="segmentChanged($event)">
-      <ion-segment-button value="new_matches">
+      <ion-segment-button value="new_matches" id="new_matches">
         <ion-label>New Matches <ion-text *ngIf="count.new_matches">({{count.new_matches}})</ion-text>
         </ion-label>
       </ion-segment-button>
-      <ion-segment-button value="today_matches">
+      <ion-segment-button value="today_matches" id="today_matches">
         <ion-label>Today's Matches <ion-text *ngIf="count.today_matches">({{count.today_matches}})</ion-text>
         </ion-label>
       </ion-segment-button>
-      <ion-segment-button value="my_matches">
+      <ion-segment-button value="my_matches" id="my_matches">
         <ion-label>My Matches <ion-text *ngIf="count.my_matches">({{count.my_matches}})</ion-text>
         </ion-label>
       </ion-segment-button>
-      <ion-segment-button value="more_matches">
+      <ion-segment-button value="more_matches" id="more_matches">
         <ion-label>More Matches <ion-text *ngIf="count.more_matches">({{count.more_matches}})</ion-text>
         </ion-label>
       </ion-segment-button>
-      <ion-segment-button value="recent_view">
+      <ion-segment-button value="recent_view" id="recent_view">
         <ion-label>Recently Viewed <ion-text *ngIf="count.recent_view">({{count.recent_view}})</ion-text>
         </ion-label>
       </ion-segment-button>

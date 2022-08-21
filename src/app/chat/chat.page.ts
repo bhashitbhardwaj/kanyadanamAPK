@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { PopoverController } from '@ionic/angular';
+import { PopoverComponent } from '../popover/popover.component';
 import { ApiService } from '../provider/api.service';
 import { LoaderService } from '../provider/loader.service';
 import { ToastService } from '../provider/toast.service';
@@ -12,6 +14,8 @@ import { ToastService } from '../provider/toast.service';
 })
 export class ChatPage implements OnInit {
   @ViewChild('content') private content: any;
+  @ViewChild('popover') popover;
+  isOpen = false;
   data:any;
   msg:any = "";
   stopInterval:any;
@@ -20,10 +24,24 @@ export class ChatPage implements OnInit {
     private api: ApiService,
     private toast: ToastService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    public popoverController: PopoverController
   ) {
     
    }
+
+   async presentPopover(e: Event) {
+    const popover = await this.popoverController.create({
+      component: PopoverComponent,
+      event: e,
+      componentProps: {
+        user_id : this.data.toUserDetailsArray.uniq_id
+      }
+    });
+
+    await popover.present();
+    const { role } = await popover.onDidDismiss();
+  }
 
   openDetailpage(uniq_id)
   {
@@ -53,11 +71,12 @@ export class ChatPage implements OnInit {
           this.msg = "";
         }
         else{
-            this.toast.Notify({
-              message:res.message,
-              duration:3000,
-              position:'top'
-            })
+             this.toast.Notify({
+          message:res.message,
+          duration:3000,
+          color:'primary',
+          position:'bottom'
+        })
         }
       })
     }
@@ -82,11 +101,12 @@ export class ChatPage implements OnInit {
             }, 10000);
           }
           else{
-              this.toast.Notify({
-                message:res.message,
-                duration:3000,
-                position:'top'
-              })
+               this.toast.Notify({
+          message:res.message,
+          duration:3000,
+          color:'primary',
+          position:'bottom'
+        })
           }
         })
   }
@@ -104,11 +124,12 @@ export class ChatPage implements OnInit {
         this.content.scrollToBottom();
       }
       else{
-          this.toast.Notify({
-            message:res.message,
-            duration:3000,
-            position:'top'
-          })
+           this.toast.Notify({
+          message:res.message,
+          duration:3000,
+          color:'primary',
+          position:'bottom'
+        })
       }
     })
   }

@@ -53,11 +53,12 @@ export class LoginPage implements OnInit {
          this.router.navigate(['/tabs'],{ replaceUrl: true });
        }
        else{
-          this.toast.Notify({
-            message:res.message,
-            duration:3000,
-            position:'top'
-          })
+           this.toast.Notify({
+          message:res.message,
+          duration:3000,
+          color:'primary',
+          position:'bottom'
+        })
        }
     })
   }

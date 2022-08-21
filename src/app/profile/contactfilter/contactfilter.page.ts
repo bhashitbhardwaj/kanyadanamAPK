@@ -31,10 +31,11 @@ export class ContactfilterPage implements OnInit {
         this.dropDown.heightFrom = res.data;
       }
       else {
-        this.toast.Notify({
-          message: res.message,
-          duration: 3000,
-          position: 'top'
+         this.toast.Notify({
+          message:res.message,
+          duration:3000,
+          color:'primary',
+          position:'bottom'
         })
       }
     })
@@ -44,10 +45,11 @@ export class ContactfilterPage implements OnInit {
         this.dropDown.religions = res.data;
       }
       else {
-        this.toast.Notify({
-          message: res.message,
-          duration: 3000,
-          position: 'top'
+         this.toast.Notify({
+          message:res.message,
+          duration:3000,
+          color:'primary',
+          position:'bottom'
         })
       }
     })
@@ -57,10 +59,11 @@ export class ContactfilterPage implements OnInit {
         this.dropDown.martialstatus = res.data;
       }
       else {
-        this.toast.Notify({
-          message: res.message,
-          duration: 3000,
-          position: 'top'
+         this.toast.Notify({
+          message:res.message,
+          duration:3000,
+          color:'primary',
+          position:'bottom'
         })
       }
     })
@@ -70,10 +73,11 @@ export class ContactfilterPage implements OnInit {
         this.dropDown.tongues = res.data;
       }
       else {
-        this.toast.Notify({
-          message: res.message,
-          duration: 3000,
-          position: 'top'
+         this.toast.Notify({
+          message:res.message,
+          duration:3000,
+          color:'primary',
+          position:'bottom'
         })
       }
     })
@@ -83,10 +87,11 @@ export class ContactfilterPage implements OnInit {
         this.dropDown.communities = res.data;
       }
       else {
-        this.toast.Notify({
-          message: res.message,
-          duration: 3000,
-          position: 'top'
+         this.toast.Notify({
+          message:res.message,
+          duration:3000,
+          color:'primary',
+          position:'bottom'
         })
       }
     })
@@ -96,10 +101,11 @@ export class ContactfilterPage implements OnInit {
         this.dropDown.countries = res.data;
       }
       else {
-        this.toast.Notify({
-          message: res.message,
-          duration: 3000,
-          position: 'top'
+         this.toast.Notify({
+          message:res.message,
+          duration:3000,
+          color:'primary',
+          position:'bottom'
         })
       }
     })
@@ -149,10 +155,11 @@ export class ContactfilterPage implements OnInit {
         }
       }
       else {
-        this.toast.Notify({
-          message: res.message,
-          duration: 3000,
-          position: 'top'
+         this.toast.Notify({
+          message:res.message,
+          duration:3000,
+          color:'primary',
+          position:'bottom'
         })
       }
     })
@@ -196,16 +203,18 @@ export class ContactfilterPage implements OnInit {
          this.toast.Notify({
           message:res.message,
           duration:3000,
-          position:'top'
+          color:'primary',
+          position:'bottom'
         })
         this.router.navigateByUrl('/profile');
        }
        else{
-          this.toast.Notify({
-            message:res.message,
-            duration:3000,
-            position:'top'
-          })
+           this.toast.Notify({
+          message:res.message,
+          duration:3000,
+          color:'primary',
+          position:'bottom'
+        })
        }
     })
   }

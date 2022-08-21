@@ -42,10 +42,11 @@ export class ProfilePage implements OnInit {
         this.userData.user_details.education_level = this.userData.user_details.education_level && this.userData.user_details.education_level.map(user => user.name).join(', ');
       }
       else {
-        this.toast.Notify({
-          message: res.message,
-          duration: 3000,
-          position: 'top'
+         this.toast.Notify({
+          message:res.message,
+          duration:3000,
+          color:'primary',
+          position:'bottom'
         })
       }
     });

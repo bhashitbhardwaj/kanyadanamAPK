@@ -67,10 +67,11 @@ export class SignupPage implements OnInit {
        }
        else{
           this.toast.Notify({
-            message: JSON.stringify(res.errors),
-            duration:3000,
-            position:'top'
-          })
+          message:JSON.stringify(res.errors),
+          duration:3000,
+          color:'primary',
+          position:'bottom'
+        })
        }
     })
   }

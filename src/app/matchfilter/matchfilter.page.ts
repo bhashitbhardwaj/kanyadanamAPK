@@ -48,10 +48,11 @@ export class MatchfilterPage implements OnInit {
         this.dropDown.cities = res.data;
       }
       else {
-        this.toast.Notify({
-          message: res.message,
-          duration: 3000,
-          position: 'top'
+         this.toast.Notify({
+          message:res.message,
+          duration:3000,
+          color:'primary',
+          position:'bottom'
         })
       }
     })
@@ -84,10 +85,11 @@ export class MatchfilterPage implements OnInit {
         }
       }
       else {
-        this.toast.Notify({
-          message: res.message,
-          duration: 3000,
-          position: 'top'
+         this.toast.Notify({
+          message:res.message,
+          duration:3000,
+          color:'primary',
+          position:'bottom'
         })
       }
     })
@@ -102,10 +104,11 @@ export class MatchfilterPage implements OnInit {
         this.selectedData.heightFrom = (this.selectedRefine)?this.selectedRefine.heightFrom:[];
       }
       else {
-        this.toast.Notify({
-          message: res.message,
-          duration: 3000,
-          position: 'top'
+         this.toast.Notify({
+          message:res.message,
+          duration:3000,
+          color:'primary',
+          position:'bottom'
         })
       }
     })
@@ -116,10 +119,11 @@ export class MatchfilterPage implements OnInit {
         this.selectedData.religion = (this.selectedRefine)?this.selectedRefine.religion:[];
       }
       else {
-        this.toast.Notify({
-          message: res.message,
-          duration: 3000,
-          position: 'top'
+         this.toast.Notify({
+          message:res.message,
+          duration:3000,
+          color:'primary',
+          position:'bottom'
         })
       }
     })
@@ -130,10 +134,11 @@ export class MatchfilterPage implements OnInit {
         this.selectedData.tongue = (this.selectedRefine)?this.selectedRefine.tongue:[];
       }
       else {
-        this.toast.Notify({
-          message: res.message,
-          duration: 3000,
-          position: 'top'
+         this.toast.Notify({
+          message:res.message,
+          duration:3000,
+          color:'primary',
+          position:'bottom'
         })
       }
     })
@@ -145,10 +150,11 @@ export class MatchfilterPage implements OnInit {
         this.selectedData.marital_status = (this.selectedRefine)?this.selectedRefine.marital_status:[];
       }
       else {
-        this.toast.Notify({
-          message: res.message,
-          duration: 3000,
-          position: 'top'
+         this.toast.Notify({
+          message:res.message,
+          duration:3000,
+          color:'primary',
+          position:'bottom'
         })
       }
     })
@@ -159,10 +165,11 @@ export class MatchfilterPage implements OnInit {
         this.selectedData.community = (this.selectedRefine)?this.selectedRefine.community:[];
       }
       else {
-        this.toast.Notify({
-          message: res.message,
-          duration: 3000,
-          position: 'top'
+         this.toast.Notify({
+          message:res.message,
+          duration:3000,
+          color:'primary',
+          position:'bottom'
         })
       }
     })
@@ -174,10 +181,11 @@ export class MatchfilterPage implements OnInit {
         this.getState(this.selectedData.country,true);
       }
       else {
-        this.toast.Notify({
-          message: res.message,
-          duration: 3000,
-          position: 'top'
+         this.toast.Notify({
+          message:res.message,
+          duration:3000,
+          color:'primary',
+          position:'bottom'
         })
       }
     })
@@ -188,10 +196,11 @@ export class MatchfilterPage implements OnInit {
         this.selectedData.profession_area = (this.selectedRefine)?this.selectedRefine.profession_area:[];
       }
       else {
-        this.toast.Notify({
-          message: res.message,
-          duration: 3000,
-          position: 'top'
+         this.toast.Notify({
+          message:res.message,
+          duration:3000,
+          color:'primary',
+          position:'bottom'
         })
       }
     })
@@ -202,10 +211,11 @@ export class MatchfilterPage implements OnInit {
         this.selectedData.workign_with = (this.selectedRefine)?this.selectedRefine.workign_with:[];
       }
       else {
-        this.toast.Notify({
-          message: res.message,
-          duration: 3000,
-          position: 'top'
+         this.toast.Notify({
+          message:res.message,
+          duration:3000,
+          color:'primary',
+          position:'bottom'
         })
       }
     })
@@ -216,10 +226,11 @@ export class MatchfilterPage implements OnInit {
         this.selectedData.education = (this.selectedRefine)?this.selectedRefine.education:[];
       }
       else {
-        this.toast.Notify({
-          message: res.message,
-          duration: 3000,
-          position: 'top'
+         this.toast.Notify({
+          message:res.message,
+          duration:3000,
+          color:'primary',
+          position:'bottom'
         })
       }
     })
@@ -230,10 +241,11 @@ export class MatchfilterPage implements OnInit {
         this.selectedData.annual_income = (this.selectedRefine)?this.selectedRefine.annual_income:[];
       }
       else {
-        this.toast.Notify({
-          message: res.message,
-          duration: 3000,
-          position: 'top'
+         this.toast.Notify({
+          message:res.message,
+          duration:3000,
+          color:'primary',
+          position:'bottom'
         })
       }
     })

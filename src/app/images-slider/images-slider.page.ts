@@ -44,11 +44,12 @@ export class ImagesSliderPage implements OnInit {
             this.pics = res.data.user_detail.userImageArray || [];
           }
           else{
-              this.toast.Notify({
-                message:res.message,
-                duration:3000,
-                position:'top'
-              })
+               this.toast.Notify({
+          message:res.message,
+          duration:3000,
+          color:'primary',
+          position:'bottom'
+        })
           }
         })
   }

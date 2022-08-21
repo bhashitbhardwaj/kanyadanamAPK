@@ -83,37 +83,31 @@ export class EmailandsmsalertsPage implements OnInit {
          this.toast.Notify({
           message:res.message,
           duration:3000,
-          position:'top'
+          color:'primary',
+          position:'bottom'
         })
-        this.router.navigateByUrl('/profile');
+        this.router.navigateByUrl('/tabs');
        }
        else{
-          this.toast.Notify({
-            message:res.message,
-            duration:3000,
-            position:'top'
-          })
+           this.toast.Notify({
+          message:res.message,
+          duration:3000,
+          color:'primary',
+          position:'bottom'
+        })
        }
     })
   }
 
   ngOnInit() {
-    
-  
     this.getEmailAndSmsAlertDetails()
-
-
   }
 
-
   getEmailAndSmsAlertDetails(){
-
     this.loader.Show('Loading...');
     this.api.postDataWithAuth('api/getEmailAndSmsAlertDetails',{}).subscribe(res => {
       this.loader.Hide();
       if (res.status) {
-        //console.log(res.data.user_detail);
-        //console.log(Object.keys(res.data.user_detail.alertsArray).length);
         if(res.data.user_detail.alertsArray && Object.keys(res.data.user_detail.alertsArray).length){
 
           if(res.data.user_detail.alertsArray.match_mail_photo_match_mail!=null){
@@ -143,21 +137,16 @@ export class EmailandsmsalertsPage implements OnInit {
           if(res.data.user_detail.alertsArray.kndnm_special!=null){
             this.selectedData.kndnm_special = res.data.user_detail.alertsArray.kndnm_special;
           }
-
         }
-        
-        
-
       }
       else {
-        this.toast.Notify({
-          message: res.message,
-          duration: 3000,
-          position: 'top'
+         this.toast.Notify({
+          message:res.message,
+          duration:3000,
+          color:'primary',
+          position:'bottom'
         })
       }
     })
-
   }
-
 }

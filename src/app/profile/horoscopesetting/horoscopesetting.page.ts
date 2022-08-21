@@ -35,8 +35,6 @@ export class HoroscopesettingPage implements OnInit {
     { val: 'Ordinary Check Required', isChecked: false },
     { val: 'Strict Check Required', isChecked: false }
   ];
-  
-  
   constructor(
     private router: Router,
     private loader: LoaderService,
@@ -46,7 +44,6 @@ export class HoroscopesettingPage implements OnInit {
   }
 
   save() {
-    
     console.log('save:', this.selectedData);
     this.loader.Show('Loading...');
     this.api.postDataWithAuth('api/updateHoroscopeSetting',
@@ -64,16 +61,18 @@ export class HoroscopesettingPage implements OnInit {
          this.toast.Notify({
           message:res.message,
           duration:3000,
-          position:'top'
+          color:'primary',
+          position:'bottom'
         })
-        this.router.navigateByUrl('/profile');
+        this.router.navigateByUrl('/tabs');
        }
        else{
-          this.toast.Notify({
-            message:res.message,
-            duration:3000,
-            position:'top'
-          })
+           this.toast.Notify({
+          message:res.message,
+          duration:3000,
+          color:'primary',
+          position:'bottom'
+        })
        }
     })
   }
@@ -84,15 +83,11 @@ export class HoroscopesettingPage implements OnInit {
   }
 
   getHoroscope(){
-
     this.loader.Show('Loading...');
     this.api.postDataWithAuth('api/getHoroscope',{}).subscribe(res => {
       this.loader.Hide();
       if (res.status) {
-        //console.log(res.data.user_detail);
-        //console.log(Object.keys(res.data.user_detail.alertsArray).length);
         if(res.data.user_detail.horoscopeArray && Object.keys(res.data.user_detail.horoscopeArray).length){
-
           if(res.data.user_detail.horoscopeArray.horoscope_match_format!=null){
             this.selectedData.horoscope_match_format = res.data.user_detail.horoscopeArray.horoscope_match_format;
           }
@@ -108,23 +103,16 @@ export class HoroscopesettingPage implements OnInit {
           if(res.data.user_detail.horoscopeArray.dasa!=null){
             this.selectedData.dasa = res.data.user_detail.horoscopeArray.dasa;
           }
-
         }
-        
-        
-
-      }
+     }
       else {
-        this.toast.Notify({
-          message: res.message,
-          duration: 3000,
-          position: 'top'
+         this.toast.Notify({
+          message:res.message,
+          duration:3000,
+          color:'primary',
+          position:'bottom'
         })
       }
     })
-
   }
-
-
-
 }

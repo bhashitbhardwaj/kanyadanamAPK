@@ -51,19 +51,21 @@ export class EducationprofessiondetailsPage implements OnInit {
        if(res.status)
        {
          console.log(res);
-         this.toast.Notify({
+          this.toast.Notify({
           message:res.msg,
           duration:3000,
-          position:'top'
+          color:'primary',
+          position:'bottom'
         })
         this.router.navigateByUrl('/profile');
        }
        else{
-          this.toast.Notify({
-            message:res.message,
-            duration:3000,
-            position:'top'
-          })
+           this.toast.Notify({
+          message:res.message,
+          duration:3000,
+          color:'primary',
+          position:'bottom'
+        })
        }
     })
   }
@@ -76,10 +78,11 @@ export class EducationprofessiondetailsPage implements OnInit {
         this.dropDown.occupations = res.data;
       }
       else {
-        this.toast.Notify({
-          message: res.message,
-          duration: 3000,
-          position: 'top'
+         this.toast.Notify({
+          message:res.message,
+          duration:3000,
+          color:'primary',
+          position:'bottom'
         })
       }
     })
@@ -89,10 +92,11 @@ export class EducationprofessiondetailsPage implements OnInit {
         this.dropDown.workWiths = res.data;
       }
       else {
-        this.toast.Notify({
-          message: res.message,
-          duration: 3000,
-          position: 'top'
+         this.toast.Notify({
+          message:res.message,
+          duration:3000,
+          color:'primary',
+          position:'bottom'
         })
       }
     })
@@ -102,10 +106,11 @@ export class EducationprofessiondetailsPage implements OnInit {
         this.dropDown.educationLevels = res.data;
       }
       else {
-        this.toast.Notify({
-          message: res.message,
-          duration: 3000,
-          position: 'top'
+         this.toast.Notify({
+          message:res.message,
+          duration:3000,
+          color:'primary',
+          position:'bottom'
         })
       }
     })
@@ -115,10 +120,11 @@ export class EducationprofessiondetailsPage implements OnInit {
         this.dropDown.educationFields = res.data;
       }
       else {
-        this.toast.Notify({
-          message: res.message,
-          duration: 3000,
-          position: 'top'
+         this.toast.Notify({
+          message:res.message,
+          duration:3000,
+          color:'primary',
+          position:'bottom'
         })
       }
     })
@@ -128,10 +134,11 @@ export class EducationprofessiondetailsPage implements OnInit {
         this.dropDown.annualIncomes = res.data;
       }
       else {
-        this.toast.Notify({
-          message: res.message,
-          duration: 3000,
-          position: 'top'
+         this.toast.Notify({
+          message:res.message,
+          duration:3000,
+          color:'primary',
+          position:'bottom'
         })
       }
     })
@@ -159,10 +166,11 @@ export class EducationprofessiondetailsPage implements OnInit {
         }
       }
       else {
-        this.toast.Notify({
-          message: res.message,
-          duration: 3000,
-          position: 'top'
+         this.toast.Notify({
+          message:res.message,
+          duration:3000,
+          color:'primary',
+          position:'bottom'
         })
       }
     })

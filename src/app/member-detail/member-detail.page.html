@@ -85,7 +85,7 @@
                     </ion-label>
                 </ion-item>
                 <ion-item *ngIf="userData.user_details.martialstatus">
-                    <ion-icon name="person-outline" slot="start" color="primary"></ion-icon>
+                    <ion-icon name="people-circle" slot="start" color="primary"></ion-icon>
                     <ion-label>
                         <h3>Marital Status</h3>
                         <p>{{userData.user_details.martialstatus[0].name}}</p>
@@ -203,28 +203,28 @@
             <h6>Partner Preferences</h6>
             <ion-list>
                 <ion-item *ngIf="userData.partner_details.age_from">
-                    <ion-icon name="document-text-outline" slot="start" color="primary"></ion-icon>
+                    <ion-icon name="accessibility-outline" slot="start" color="primary"></ion-icon>
                     <ion-label>
                         <h3>Age</h3>
                         <p>{{userData.partner_details.age_from}} years to {{userData.partner_details.age_to}}</p>
                     </ion-label>
                 </ion-item>
                 <ion-item *ngIf="userData.partner_details.height_from && userData.partner_details.height_from[0]">
-                    <ion-icon name="document-text-outline" slot="start" color="primary"></ion-icon>
+                    <ion-icon name="body-outline" slot="start" color="primary"></ion-icon>
                     <ion-label>
                         <h3>Height From</h3>
                         <p>{{userData.partner_details.height_from[0].height_label_feet}} ({{userData.partner_details.height_from[0].height_value_cm}} cm)</p>
                     </ion-label>
                 </ion-item>
                 <ion-item *ngIf="userData.partner_details.height_to && userData.partner_details.height_to[0]">
-                    <ion-icon name="document-text-outline" slot="start" color="primary"></ion-icon>
+                    <ion-icon name="body-outline" slot="start" color="primary"></ion-icon>
                     <ion-label>
                         <h3>Height To</h3>
                         <p>{{userData.partner_details.height_to[0].height_label_feet}} ({{userData.partner_details.height_to[0].height_value_cm}} cm)</p>
                     </ion-label>
                 </ion-item>
                 <ion-item *ngIf="userData.partner_details.martialstatus">
-                    <ion-icon name="document-text-outline" slot="start" color="primary"></ion-icon>
+                    <ion-icon name="people-circle" slot="start" color="primary"></ion-icon>
                     <ion-label>
                         <h3>Martial Status</h3>
                         <p class="ion-text-wrap">{{userData.partner_details.martialstatus}}</p>
@@ -238,28 +238,28 @@
                     </ion-label>
                 </ion-item>
                 <ion-item *ngIf="userData.partner_details.tongue">
-                    <ion-icon name="document-text-outline" slot="start" color="primary"></ion-icon>
+                    <ion-icon name="language-outline" slot="start" color="primary"></ion-icon>
                     <ion-label>
                         <h3>Tongue</h3>
                         <p class="ion-text-wrap">{{userData.partner_details.tongue}}</p>
                     </ion-label>
                 </ion-item>
                 <ion-item *ngIf="userData.partner_details.community">
-                    <ion-icon name="document-text-outline" slot="start" color="primary"></ion-icon>
+                    <ion-icon name="people-circle-outline" slot="start" color="primary"></ion-icon>
                     <ion-label>
                         <h3>Community</h3>
                         <p class="ion-text-wrap">{{userData.partner_details.community}}</p>
                     </ion-label>
                 </ion-item>
                 <ion-item *ngIf="userData.partner_details.country_id">
-                    <ion-icon name="document-text-outline" slot="start" color="primary"></ion-icon>
+                    <ion-icon name="location-outline" slot="start" color="primary"></ion-icon>
                     <ion-label>
                         <h3>Country</h3>
                         <p class="ion-text-wrap">{{userData.partner_details.country_id}}</p>
                     </ion-label>
                 </ion-item>
                 <ion-item *ngIf="userData.partner_details.state_id">
-                    <ion-icon name="document-text-outline" slot="start" color="primary"></ion-icon>
+                    <ion-icon name="location-outline" slot="start" color="primary"></ion-icon>
                     <ion-label>
                         <h3>State</h3>
                         <p class="ion-text-wrap">{{userData.partner_details.state_id}}</p>
@@ -273,21 +273,21 @@
                     </ion-label>
                 </ion-item>
                 <ion-item *ngIf="userData.partner_details.workwith">
-                    <ion-icon name="book-outline" slot="start" color="primary"></ion-icon>
+                    <ion-icon name="business-outline" slot="start" color="primary"></ion-icon>
                     <ion-label>
                         <h3>Work With</h3>
                         <p class="ion-text-wrap">{{userData.partner_details.workwith}}</p>
                     </ion-label>
                 </ion-item>
                 <ion-item *ngIf="userData.partner_details.occupation">
-                    <ion-icon name="book-outline" slot="start" color="primary"></ion-icon>
+                    <ion-icon name="briefcase-outline" slot="start" color="primary"></ion-icon>
                     <ion-label>
                         <h3>Occupation</h3>
                         <p class="ion-text-wrap">{{userData.partner_details.occupation}}</p>
                     </ion-label>
                 </ion-item>
                 <ion-item *ngIf="userData.partner_details.annualincome">
-                    <ion-icon name="document-text-outline" slot="start" color="primary"></ion-icon>
+                    <ion-icon name="wallet-outline" slot="start" color="primary"></ion-icon>
                     <ion-label>
                         <h3>Annual Income</h3>
                         <p class="ion-text-wrap">{{userData.partner_details.annualincome}} annually</p>
