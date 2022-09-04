@@ -52,6 +52,10 @@ const routes: Routes = [
   {
     path: 'chat',
     loadChildren: () => import('./chat/chat.module').then( m => m.ChatPageModule)
+  },
+  {
+    path: 'popovermenu',
+    loadChildren: () => import('./popovermenu/popovermenu.module').then( m => m.PopovermenuPageModule)
   }
 
 

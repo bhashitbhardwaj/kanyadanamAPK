@@ -11,7 +11,7 @@ import { StorageService } from './provider/storage.service';
 export class AppComponent {
   constructor(
     private storage: StorageService,
-    private AuthGuardService:AuthGuardService,
+    public AuthGuardService:AuthGuardService,
     private router: Router
   ) {
      

@@ -3,17 +3,15 @@ import { Router } from '@angular/router';
 import { ActionSheetController, PopoverController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-popover',
-  templateUrl: './popover.component.html',
-  styleUrls: ['./popover.component.scss'],
+  selector: 'app-popovermenu',
+  templateUrl: './popovermenu.page.html',
+  styleUrls: ['./popovermenu.page.scss'],
 })
-export class PopoverComponent implements OnInit {
+export class PopovermenuPage implements OnInit {
   @Input() user_id: any;
-  constructor(
-    private router: Router,
+  constructor(private router: Router,
     public popoverController: PopoverController,
-    public actionSheetController: ActionSheetController
-  ) { }
+    public actionSheetController: ActionSheetController) { }
 
   ngOnInit() {
     console.log(this.user_id);
@@ -63,4 +61,5 @@ export class PopoverComponent implements OnInit {
     }
     console.log(this.user_id);
   }
+
 }

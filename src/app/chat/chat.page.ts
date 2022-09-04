@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PopoverController } from '@ionic/angular';
-import { PopoverComponent } from '../popover/popover.component';
+import { PopovermenuPage } from '../popovermenu/popovermenu.page';
 import { ApiService } from '../provider/api.service';
 import { LoaderService } from '../provider/loader.service';
 import { ToastService } from '../provider/toast.service';
@@ -32,7 +32,7 @@ export class ChatPage implements OnInit {
 
    async presentPopover(e: Event) {
     const popover = await this.popoverController.create({
-      component: PopoverComponent,
+      component: PopovermenuPage,
       event: e,
       componentProps: {
         user_id : this.data.toUserDetailsArray.uniq_id
