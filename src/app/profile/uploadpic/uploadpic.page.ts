@@ -61,6 +61,12 @@ export class UploadpicPage implements OnInit {
       if (res.status) {
         console.log(res);
         this.pics.splice(this.pics.findIndex(a => a.id === id), 1)
+        this.toast.Notify({
+          message:res.message,
+          duration:3000,
+          color:'primary',
+          position:'bottom'
+        })
       }
       else {
          this.toast.Notify({
